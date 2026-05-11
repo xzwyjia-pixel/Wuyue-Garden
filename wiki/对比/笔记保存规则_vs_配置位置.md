@@ -1,0 +1,1 @@
+{"content":"---\ncreated: 2026-05-11\naliases: [\"笔记保存规则 vs 配置位置\"]\ntags: [contrast, concept]\n---\n\n# 笔记保存规则 vs 配置位置\n\n## 同时出现于\n\n- [[Claude_Sync.md]]\n\n## 对比维度\n\n<!-- 请在此处填写对比维度 -->\n-\n"}

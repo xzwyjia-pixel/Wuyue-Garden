@@ -1,0 +1,1 @@
+E: \Obsidian\.obsidian\plugins\cmdr\main.js;

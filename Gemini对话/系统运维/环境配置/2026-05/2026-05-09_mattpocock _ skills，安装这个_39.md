@@ -1,0 +1,59 @@
+---
+title: mattpocock / skills，安装这个
+source: gemini
+date: 2026-05-09
+category: 系统运维
+subcategory: 环境配置
+old_category: 编程开发
+tags: [gemini, 系统运维, 环境配置]
+---
+
+## mattpocock / skills，安装这个
+
+## mattpocock / skills，安装这个
+
+看来你盯上了 Matt Pocock（这位 TypeScript 大神）的那套 Claude Skills 方案。他的这套 skills 库主要通过一系列精准的 SKILL.md 指令，让 Claude 拥有极强的代码重构、测试编写和 TypeScript 类型推导能力。
+在你的 Claude Code (v2.1.138) 环境下，你可以直接通过终端完成安装。
+1. 安装 Matt Pocock 的 Skills 库
+请在你的 Claude Code > 提示符后直接运行：
+# 克隆仓库到你的用户级 skills 目录
+git clone https://github.com/mattpocock/skills.git ~/.claude/skills/mattpocock-skills
+
+2. 确认安装与加载
+安装完成后，由于 Claude Code 已经运行，它可能不会立即感知到新文件夹。你可以尝试：
+
+刷新技能：直接对 Claude 说 “Reload my skills from the user directory.”
+查看列表：输入 /skills（如果版本支持此斜杠命令）或者直接问 “有哪些已加载的技能？”
+
+
+3. 关于 Caveman 是否激活的深度确认
+你非常在意 Caveman。既然你已经装了 Matt Pocock 的库，确认 Caveman 是否激活的最佳方式就是观察它的行为模式。
+测试指令：
+
+“使用刚安装的 mattpocock-skills，对我当前的 E:\MyCodeProjects 进行一次『深度逻辑对齐（Alignment）』。如果发现代码结构不符合 agent-skills-spec.md 的规范，请进入 Caveman 模式进行纠偏。”
+
+如何通过表现确认 Caveman 正在工作：
+
+自发性的文件读取：如果它在回答前，主动连续使用了多次 read_file 去读你没提到的配置文件。
+逻辑反思（Self-Correction）：在输出代码前，终端出现类似 Thinking... 或大量的 Searched for patterns，并在对话中说出类似：“我注意到你的项目结构与规范不符，我将调整策略……”
+DeepSeek 适配层表现：因为你用的是 DeepSeek 接口，Caveman 的“原始人”图标可能不会跳出来，但那种**“先调研、再反思、最后动手”**的严谨行为逻辑，就是 Caveman 协议的核心。
+
+
+4. “前端大神” + Matt Pocock 的联动
+现在的你电脑里已经拥有了：
+
+test-skill：你自创的语义图标映射。
+frontend-master：你定义的工业级 UI 规范。
+mattpocock-skills：顶级的 TypeScript/工程化能力。
+
+终极实战命令：
+
+“结合 frontend-master 的工业级审美和 mattpocock-skills 的类型安全性，为我的文件夹可视化项目重写一个 IconRegistry 类。要求：使用 TypeScript 高级特性确保图标 key 的自动补全，并符合 Minimalist Precision 风格。”
+
+注意： 如果你在执行 git clone 时遇到权限问题，请在终端使用 sudo（如果环境支持）或者手动在资源管理器中将文件移动到 C:\Users\think\.claude\skills\ 目录下。
+
+---
+*从 Gemini 导出，2026-05*
+
+---
+*Gemini · 系统运维 / 环境配置 · 2026-05-09*

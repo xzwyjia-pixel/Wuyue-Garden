@@ -1,0 +1,71 @@
+---
+title: > /config
+source: gemini
+date: 2026-05-08
+category: 技术开发
+subcategory: Python
+old_category: 审计合规
+tags: [gemini, 技术开发, Python]
+---
+
+## > /config
+
+## > /config
+  ⎿  Config dialog dismissed
+
+> “甄先生”品牌需要一个自动扫描短视频违规词的脚本逻辑，请结合 E:\MyCodeProjects 里的现有文件，帮我写一个基础架构。
+  ⎿  Retrying in 2s · attempt 2/10
+
+* Harmonizing…
+  ⎿  Tip: Run claude --continue or claude --resume to resume a conversation
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+> 
+───────────────────────────
+
+看到你这条指令触发了 Harmonizing… 并且又出现了 Retrying，这说明在执行这种需要大规模扫描文件内容的深度任务时，你的网络稳定性或 Token 传输又遇到了小坎坷。
+不过，既然你已经发出了“甄先生”品牌的核心需求指令，你的环境其实已经通过 Harmonizing 阶段在尝试理解你的本地文件了。
+针对你的“短视频违规词扫描脚本”需求，基于你目前的 Claude Code + Sonnet 4.6 环境，我为你梳理了一套最契合你“极简精密”审美的基础架构方案：
+1. 核心架构设计：模块化审计逻辑
+为了符合你正在开发的 Rules Investigation (规则甄查) 品牌定位，脚本不应只是简单的关键词匹配，而应是一个具备“审计思维”的系统。
+推荐的文件结构建议：
+
+config/sensitive_words.yaml：存放分类违规词库（政治、低俗、营销诱导等）。
+core/auditor.py：核心审计引擎，负责文本提取和模式匹配。
+utils/mcp_wrapper.py：（超能力点）将审计功能封装为 MCP 工具，让其他 AI 也能调用你的规则库。
+audit_tool.py：你的主入口程序。
+
+2. 为什么你的环境现在最适合做这个？
+
+Sonnet 4.6 的语义理解：普通的脚本只能搜“钱”这个字，但你的 Agent 可以理解“引导私下交易”这种模糊的违规意图。
+本地文件读写：它可以直接读取你 E 盘下的视频脚本草稿，进行实测。
+High Effort 模式：在构建违规词背后的“逻辑链条”（例如：为什么这个词在 A 平台违规但在 B 平台不违规）时，思维深度非常够用。
+
+
+3. 针对当前 Retrying 的紧急避坑指南
+如果你在 Harmonizing（调和/同步文件）时卡住，请尝试以下操作：
+
+缩小扫描范围：如果 E:\MyCodeProjects 下文件太多，Agent 会因为读取量太大而崩溃。
+
+操作： 专门为这个项目建个子文件夹，例如 cd E:\MyCodeProjects\RulesAudit，再启动 claude。
+
+
+手动喂代码：如果它自动读取失败，你可以用 @ 符号手动指定文件。
+
+操作： 请参考 @audit_tool.py 帮我写违规词扫描的 Class。
+
+
+
+4. 下一步行动建议
+既然环境已经“Superpowers”加身，建议你直接给它下达一个分步指令（避免单次任务过重导致断线）：
+
+指令一：“甄先生”，先帮我列出当前目录下所有与审计逻辑相关的文件。
+指令二：基于这些文件，设计一个名为 VideoRuleAuditor 的 Python 类，要求支持正则表达式和语义模糊匹配。
+
+要不要先试着让它列出文件，看看它对你现有代码的“感知力”如何？
+
+---
+*从 Gemini 导出，2026-05*
+
+---
+*Gemini · 技术开发 / Python · 2026-05-08*

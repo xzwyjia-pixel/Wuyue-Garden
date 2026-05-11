@@ -1,0 +1,315 @@
+{
+  "main": {
+    "id": "abf3502220d83a2a",
+    "type": "split",
+    "children": [
+      {
+        "id": "82db172d365475e7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0b787ffbe6e72b7f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "工作资料库/MyCodeProjects.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "MyCodeProjects"
+            }
+          },
+          {
+            "id": "a85a8df817c714e4",
+            "type": "leaf",
+            "state": {
+              "type": "smart-release-notes-view",
+              "state": {},
+              "icon": "file-text",
+              "title": "Release Notes"
+            }
+          },
+          {
+            "id": "352dd1f5acc6175c",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "AI/gemini/图片_JPG/1452064798342163489-283c0b8357d8532a.jpg"
+              },
+              "icon": "lucide-image",
+              "title": "1452064798342163489-283c0b8357d8532a"
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "a46f221d5eecbeab",
+    "type": "split",
+    "children": [
+      {
+        "id": "62f289324914d175",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "02a710e58bd05965",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": true
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "31a8bb4cf7f28aa8",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "b743c8a92fba5b11",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "4bf4e91e3e8ed550",
+    "type": "split",
+    "children": [
+      {
+        "id": "809b2d2cabd742d6",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7005c10b8405597d",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "免费模式.md",
+                "collapseAll": true,
+                "extraContext": true,
+                "sortOrder": "alphabetical",
+                "showSearch": true,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "免费模式 的反向链接列表"
+            }
+          },
+          {
+            "id": "113e6363e99f49e6",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "欢迎.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "欢迎 的出链列表"
+            }
+          },
+          {
+            "id": "e792fc8652e5d05f",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "dee31ba15e00ab5d",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
+            }
+          },
+          {
+            "id": "9d5dc0a67938d332",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "欢迎.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "欢迎 的大纲"
+            }
+          },
+          {
+            "id": "6ab82eddc70ac26c",
+            "type": "leaf",
+            "state": {
+              "type": "journal-calendar",
+              "state": {},
+              "icon": "calendar-days",
+              "title": "Calendar"
+            }
+          },
+          {
+            "id": "39cfab8d983de401",
+            "type": "leaf",
+            "state": {
+              "type": "tags-overview-view",
+              "state": {},
+              "icon": "tag",
+              "title": "Tags overview"
+            }
+          },
+          {
+            "id": "8afc4b28aa62e5a5",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {},
+              "icon": "calendar-with-checkmark",
+              "title": "Calendar"
+            }
+          },
+          {
+            "id": "c9f4ad3a81909c6f",
+            "type": "leaf",
+            "state": {
+              "type": "smart-env-status-view",
+              "state": {},
+              "icon": "gauge",
+              "title": "Smart Environment Status"
+            }
+          }
+        ],
+        "currentTab": 8
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "smart-connections:Smart Connections: Open connections view": false,
+      "smart-connections:Toggle Footer Connections": false,
+      "smart-connections:Smart Connections: Open random connection": false,
+      "smart-connections:Smart Lookup: Open lookup view": false,
+      "smart-connections-visualizer:Open smart connections visualizer": false,
+      "open-vscode:VS Code": false,
+      "obsidian-excalidraw-plugin:New drawing": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "bases:新建数据库": false,
+      "media-extended:Open media library": false,
+      "media-extended:Open media quick switcher": false,
+      "pdf-plus:PDF++: Toggle auto-copy": false,
+      "pdf-plus:PDF++: Toggle auto-focus": false,
+      "pdf-plus:PDF++: Toggle auto-paste": false,
+      "remotely-save:Remotely Save": false,
+      "tags-overview:Tags overview": false,
+      "templater-obsidian:Templater": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "obsidian42-brat:BRAT": false
+    }
+  },
+  "active": "02a710e58bd05965",
+  "lastOpenFiles": [
+    "scripts/concept_tracker.json",
+    "AI/gemini/图片_JPG/2026_04_22_08_50_06_IMG_0041-cd7d18e293e66d7b.jpg",
+    "AI/gemini/图片_JPG/65f9f9de9a39ec6af77b8154319ee832-efdc24d121daa21a.jpg",
+    "AI/gemini/图片_JPG/{A7EC5DE1-B691-4BC3-AD3F-D1AB795E-6a60c0a1f70a56cd.jpg",
+    "AI/gemini/图片_JPG/{2F83DEB2-5EFA-49AF-B6C5-B0B6D336-c854ad3d35ac28e3.jpg",
+    "wiki/对比/待办_vs_配置位置.md",
+    "wiki/对比/待办_vs_笔记保存规则.md",
+    "工作资料库/MyCodeProjects.md",
+    "wiki/对比/第2层损耗：社交资本贬值。_vs_视频号（私域_社交分发）.md",
+    "wiki/对比/第2层损耗：社交资本贬值。_vs_论据合理性与局限性.md",
+    "wiki/对比/第2层损耗：社交资本贬值。_vs_结果指标.md",
+    "wiki/对比/第2层损耗：社交资本贬值。_vs_逻辑严密性、平台差异性、转化风险意识、人设维护.md",
+    "wiki/对比/第1层损耗：人设分裂。_vs_逻辑严密性、平台差异性、转化风险意识、人设维护.md",
+    "wiki/对比/第1层损耗：人设分裂。_vs_行为绑定.md",
+    "wiki/对比/第1层损耗：人设分裂。_vs_算法价值：.md",
+    "wiki/对比/第1层损耗：人设分裂。_vs_第2层损耗：社交资本贬值。.md",
+    "wiki/对比/第1层损耗：人设分裂。_vs_视频号（私域_社交分发）.md",
+    "wiki/对比/第1层损耗：人设分裂。_vs_论据合理性与局限性.md",
+    "wiki/对比/第1层损耗：人设分裂。_vs_这套逻辑在视频号可能适得其反：.md",
+    "wiki/对比/第1层损耗：人设分裂。_vs_认知层面是合格的.md",
+    "wiki/对比/第1层损耗：人设分裂。_vs_第3层损耗：用户预期不统一。.md",
+    "wiki/对比/第1层损耗：人设分裂。_vs_结果指标.md",
+    "wiki/对比/MCP 服务端_vs_配置位置.md",
+    "wiki/对比/MCP 服务端_vs_待办.md",
+    "wiki/对比/MCP 服务端_vs_工具清单.md",
+    "wiki/对比/MCP 服务端_vs_概述.md",
+    "wiki/对比/MCP 服务端_vs_关键信息.md",
+    "wiki/对比/MCP 服务端_vs_笔记保存规则.md",
+    "wiki/对比/MCP 服务端_vs_抓取 Key 脚本.md",
+    "wiki/对比/2026-05-10 追加 — 存入 Obsidian 测试_vs_配置位置.md",
+    "scripts/__pycache__/obsidian_karpathy_agent.cpython-310.pyc",
+    "scripts/__pycache__",
+    "wiki/概念/工作资料库",
+    "wiki/对比/工作资料库/参考案例_vs_工作资料库",
+    "wiki/对比/AI话术脚本_vs_工作资料库",
+    "wiki/对比/工作资料库/宝妈直播诊断_vs_工作资料库",
+    "wiki/对比/工作资料库",
+    "wiki/对比/宝妈直播_vs_工作资料库",
+    "scripts/config.json",
+    "AI/gemini/图片_JPG/2890143757286466469-f0709128f24082ba.jpg",
+    "AI/gemini/图片_JPG/2026_04_22_08_50_16_IMG_0043-8c99009165cb913e.jpg",
+    "AI/gemini/图片_JPG/2025_10_16_11_26_46_img_0073-8473893f9df349ce.jpg",
+    "AI/gemini/图片_JPG/{A7EC5DE1-B691-4BC3-AD3F-D1AB795E-01534fe255b0cbd2.jpg",
+    "AI/gemini/图片_JPG/{297BE086-E35D-47DE-9B3A-75EB412D-247bc0ef4f9380bc.jpg",
+    "AI/gemini/图片_PNG/屏幕截图 2026-04-20 144137-8bf50aa94a4bb889.png",
+    "未命名.canvas"
+  ]
+}

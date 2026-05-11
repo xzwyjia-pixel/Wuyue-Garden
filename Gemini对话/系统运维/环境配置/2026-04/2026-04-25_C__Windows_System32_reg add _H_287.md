@@ -1,0 +1,51 @@
+---
+title: C:\Windows\System32>reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "LaunchTo" /t REG_DWORD /d 1 /f
+source: gemini
+date: 2026-04-25
+category: 系统运维
+subcategory: 环境配置
+old_category: 系统运维
+tags: [gemini, 系统运维, 环境配置]
+---
+
+## C:\Windows\System32>reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "LaunchTo" /t REG_DWORD /d 1 /f
+
+## C:\Windows\System32>reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "LaunchTo" /t REG_DWORD /d 1 /f
+操作成功完成。
+
+既然这行命令已经操作成功，说明注册表权限没有问题。这行命令的作用是强行让资源管理器在启动时指向“此电脑”。
+如果此时按下 Win + E 依然没有反应，而通过命令或双击文件夹可以打开，这说明问题已经缩小到了快捷键响应层（HotKey Registry）。在 Windows 11 中，这是一个已知的特定注册表挂钩冲突。
+我们要进行最后一次“精准对焦”修复，请按以下步骤操作：
+1. 强行接管 explorer.exe 的 Shell 协议
+请在管理员 CMD 窗口中（或者直接复制运行）执行这组命令。它们会重置 Win + E 调用的底层全局唯一标识符（CLSID）：
+reg add "HKCU\Software\Classes\CLSID\{52205fd8-5dfb-4472-8046-3306e0f391a2}\shell\opennewwindow\command" /ve /t REG_EXPAND_SZ /d "%%SystemRoot%%\Explorer.exe" /f
+
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\CommandStore\shell\Windows.Explore\command" /ve /t REG_EXPAND_SZ /d "%%SystemRoot%%\Explorer.exe /e,:: {20D04FE0-3AEA-1069-A2D8-08002B30309D}" /f
+
+2. 彻底清理 Explorer 损坏的固定状态
+由于你之前的报错指向了 User Pinned\TaskBar（任务栏固定项），这说明你的任务栏配置文件可能锁死了。
+
+按下 Win + R，输入 %AppData%\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar 并回车。
+把里面的 “文件资源管理器” 快捷方式直接删除。
+然后回到任务管理器，重新启动“Windows 资源管理器”进程。
+
+3. 终极验证：检查是否有第三方“全局钩子”
+如果你执行完第一步并重启了资源管理器，Win + E 还是没反应，请做一个测试：
+
+按一下键盘上的 Win 键。 开始菜单弹出来了吗？
+
+如果弹出来了：说明 Win 键没坏，是 E 的关联被别的软件抢走了。
+如果没弹出来：说明你的 ThinkPad 开启了“Win 键屏蔽”或“游戏模式”。
+
+
+
+
+特别提醒：
+在你的右键菜单里有“清理右键菜单”插件，某些此类插件会启用一个叫 “上下文菜单增强” 的功能，它会劫持 explorer.exe 的所有快捷键响应。如果方便的话，请尝试在那个插件里寻找“恢复默认”或者暂时卸载它测试一下。
+现在请尝试一下第一步的命令并重启电脑（或注销），这是刷新全局热键表最稳妥的方式。执行完后按 Win + E 看看奇迹发生了吗？
+
+---
+*从 Gemini 导出，2026-04*
+
+---
+*Gemini · 系统运维 / 环境配置 · 2026-04-25*

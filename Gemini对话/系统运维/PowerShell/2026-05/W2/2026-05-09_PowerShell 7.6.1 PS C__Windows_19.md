@@ -1,0 +1,79 @@
+---
+title: PowerShell 7.6.1
+source: gemini
+date: 2026-05-09
+category: 系统运维
+subcategory: PowerShell
+old_category: Obsidian配置
+tags: [gemini, 系统运维, PowerShell]
+---
+
+## PowerShell 7.6.1
+
+## PowerShell 7.6.1
+PS C:\Windows\System32> cd E:/MyCodeProjects && git push --dry-run
+fatal: No configured push destination.
+Either specify the URL from the command-line or configure a remote repository using
+
+    git remote add <name> <url>
+
+and then push using the remote name
+
+    git push <name>
+
+PS E:\MyCodeProjects> git remote add origin <你的仓库URL>
+>> git branch -M master
+ParserError:
+Line |
+   1 |  git remote add origin <你的仓库URL>
+     |                        ~
+     | The '<' operator is reserved for future use.
+PS E:\MyCodeProjects> # 1. 关联远程仓库（请替换实际 URL，不要带尖括号）
+>> git remote add origin https://github.com/你的用户名/你的仓库名.git
+>>
+>> # 2. 切换主分支名为 master
+>> git branch -M master
+>>
+>> # 3. 最终权限预检
+>> git push -u origin master --dry-run
+remote: Repository not found.
+fatal: repository 'https://github.com/你的用户名/你的仓库名.git/' not found
+PS E:\MyCodeProjects>
+
+审计结论：远程仓库连接失败 (Audit Report)
+1. 结论 (Conclusion)
+GitHub 仓库未找到或权限未打通。 报错 Repository not found 表明 Git 无法通过你输入的 URL 找到对应的云端仓库。这通常是因为：
+
+URL 占位符未替换：你可能直接运行了带有“你的用户名/你的仓库名”的示例代码，而没有替换为你在 GitHub 上真实创建的路径。
+云端仓库未创建：你需要先在浏览器访问 github.com/new 手动创建一个名为 RuleInvestigator（或其他名称）的仓库。
+
+2. 修正步骤 (Correction Actions)
+第一步：获取真实 URL
+请登录 GitHub，进入你新建的仓库页面，点击绿色 "Code" 按钮，复制 HTTPS 链接。它应该类似于：https://github.com/Zhen/RuleInvestigator.git。
+第二步：重置并关联远程地址
+在 PowerShell 中执行以下命令（请务必将下方 URL 替换为你刚才复制的真实链接）：
+# 先删除错误的远程关联
+git remote remove origin
+
+# 添加真实的远程关联（请在此处替换为你复制的 URL）
+git remote add origin https://github.com/替换为你的用户名/替换为你的仓库名.git
+
+# 再次预检
+git push -u origin master --dry-run
+
+3. 阶段三指令执行策略 (Phase 3 Strategy)
+当 git push --dry-run 不再报错并显示 Everything up-to-date 时，请立即向 Claude Code 发送以下指令，开始自动化构建：
+
+指令： > "执行阶段三：1. 编写 obsidian_sync.py。读取 E:/MyCodeProjects 下的运行日志，在 notes 目录生成符合‘极简主义’与‘结论先行’原则的 Markdown 审计报告。报告需包含 [[YYYY-MM-DD]] 格式的双链。2. 执行自动化 Git 同步。先运行 git pull --rebase origin master 确保本地代码最新，随后执行 git add . && git commit -m 'Auto-sync: Phase 3 Infrastructure' && git push origin master。若遇到任何冲突或权限拒绝，立即停止并输出事实日志，严禁编造执行成功的结果。"
+
+
+⚠️ 确定性提醒 (Protocol Reminder)
+
+先读后改：在 Claude Code 编写 obsidian_sync.py 前，它会读取你的目录结构，确保不会破坏你现有的 E 盘文件。
+如实反馈：如果 git push 因为 GitHub 密码/Token 验证失败，Claude Code 会直接报告 Authentication failed，此时我们将需要引导你完成个人访问令牌（PAT）的配置。
+
+---
+*从 Gemini 导出，2026-05*
+
+---
+*Gemini · 系统运维 / PowerShell · 2026-05-09*

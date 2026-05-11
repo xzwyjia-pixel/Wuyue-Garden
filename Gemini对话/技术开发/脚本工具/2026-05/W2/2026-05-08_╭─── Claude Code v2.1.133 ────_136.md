@@ -1,0 +1,77 @@
+---
+title: ╭─── Claude Code v2.1.133 ─────────────────────────────────────────────────────────────────────────────────────────────╮
+source: gemini
+date: 2026-05-08
+category: 技术开发
+subcategory: 脚本工具
+old_category: 审计合规
+tags: [gemini, 技术开发, 脚本工具]
+---
+
+## ╭─── Claude Code v2.1.133 ─────────────────────────────────────────────────────────────────────────────────────────────╮
+
+## ╭─── Claude Code v2.1.133 ─────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                    │ Tips for getting started                                                        │
+│            Welcome back!           │ Run /init to create a CLAUDE.md file with instructions for Claude               │
+│                                    │ ─────────────────────────────────────────────────────────────────────────────── │
+│               ▐▛███▜▌              │ What's new                                                                      │
+│              ▝▜█████▛▘             │ Fixed OAuth authentication failing with a 401 retry loop when `CLAUDE_CODE_DIS… │
+│                ▘▘ ▝▝               │ Added `ANTHROPIC_BEDROCK_SERVICE_TIER` environment variable to select a Bedroc… │
+│                                    │ Pasting a PR URL into the `/resume` search box now finds the session that crea… │
+│   Sonnet 3.7 · API Usage Billing   │ /release-notes for more                                                         │
+│         E:\MyCodeProjects          │                                                                                 │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+> /status
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+   Status   Config   Usage   Stats
+
+  Version:             2.1.133
+  Session name:        /rename to add a name
+  Session ID:          62e64025-759b-4850-b2c5-da1b38fcbec0
+  cwd:                 E:\MyCodeProjects
+  Auth token:          none
+  API key:             ANTHROPIC_API_KEY
+  Anthropic base URL:  https://api.gptsapi.net
+
+  Model:               claude-3-7-sonnet-20250219
+  Setting sources:     User settings
+  Esc to cancel
+
+甄先生，恭喜！现在的状态已经是完全正确的“满血”状态了。
+从你的 /status 截图看：
+
+cwd: 正确指向了 E:\MyCodeProjects。
+Anthropic base URL: 已经准确修改为 https://api.gptsapi.net（这正是你第四张截图中对应的官方 Base URL）。
+Model: 锁定了最精密的 Sonnet 3.7。
+
+现在是真正的“起航”时刻，请按以下步骤操作：
+
+1. 执行项目初始化
+在 > 提示符下输入：
+/init
+
+如果连接顺畅（现在应该没有延迟了），它会询问你项目的细节。你可以直接把这段充满“甄先生”风格的描述告诉它：
+
+“这是一个名为‘规则甄查-甄先生’的 AI 自动化审计总部。在这个根目录下，我将构建多个针对短视频平台的规则审计工具。请帮我生成 CLAUDE.md，并在其中规定所有代码必须遵循‘极简精密（Minimalist Precision）’的设计原则。”
+
+2. 彻底清理冗余插件
+为了让 Agents 运行得更精密，建议执行：
+/plugin uninstall cockroachdb
+
+这样可以彻底移除那几个显示 failed 的内置服务器，让你的技能树（Skills）只留下最核心的 superpowers。
+3. 给你的环境变量“加个固”
+为了防止以后重启电脑后又变回 DeepSeek，建议你在 PowerShell（退出 Claude 环境后）跑一下这一行，把它永久写入你的系统环境变量：
+[Environment]::SetEnvironmentVariable("ANTHROPIC_BASE_URL", "https://api.gptsapi.net", "User")
+
+
+甄先生的下一步“大冒险”：
+一旦 /init 完成，你会发现目录下多了一个 CLAUDE.md。这时候你可以直接在 VS Code 里打开这个文件夹，你会发现 Cline 插件 也能完美识别这个环境。
+现在的 /init 命令跑通了吗？有没有那种秒回的快感？
+
+---
+*从 Gemini 导出，2026-05*
+
+---
+*Gemini · 技术开发 / 脚本工具 · 2026-05-08*

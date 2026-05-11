@@ -1,0 +1,122 @@
+---
+title: ● There's an issue with the selected model (claude-sonnet-4-6). It may not exist or you may not have access to it. Run /model to pick a different model.
+source: gemini
+date: 2026-05-08
+category: 技术开发
+subcategory: Python
+old_category: 审计合规
+tags: [gemini, 技术开发, Python]
+---
+
+## ● There's an issue with the selected model (claude-sonnet-4-6). It may not exist or you may not have access to it. Run /model to pick a different model.
+
+## ● There's an issue with the selected model (claude-sonnet-4-6). It may not exist or you may not have access to it. Run /model to pick a different model.
+
+✻ Cogitated for 3s
+
+> /model claude-3-7-sonnet-latest
+  ⎿  Model 'claude-3-7-sonnet-latest' not found
+
+> /model claude-3-5-sonnet-20241022
+  ⎿  Model 'claude-3-5-sonnet-20241022' not found
+
+> /model claude-3-5-sonnet
+  ⎿  Model 'claude-3-5-sonnet' not found
+
+> /model claude-sonnet-4-5-20250929
+  ⎿  Model 'claude-sonnet-4-5-20250929' not found
+
+> /model
+  ⎿  Set model to Sonnet 4.6
+
+> 指令：
+  `基于“极简精密”的品牌定位，请立即执行：
+
+  读取 @audit_tool.py，提取其核心过滤逻辑与敏感词。
+
+  在 E:\MyCodeProjects 目录下生成 rules.json。
+
+  严格分级逻辑：
+
+  HIGH: 封号风险（如违禁词、政治、黑产）。
+
+  MEDIUM: 限流风险（如营销导流、站外口令）。
+
+  LOW: 规范建议（如画质、错别字、静奢风审美偏离）。
+
+  生成后，直接调用 !python -m json.tool rules.json 验证并展示。`
+
+● There's an issue with the selected model (claude-sonnet-4-6). It may not exist or you may not have access to it. Run /model to pick a different model.
+
+✻ Sautéed for 4s
+
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+> 
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ? for shortcuts
+
+甄先生，这种**“刚对齐又滑脱”**的现象，揭示了一个非常细节的“中转层”逻辑：
+即使 /model 菜单让你选择了 Sonnet 4.6，但当你真正下达复杂指令时，中转站（api.gptsapi.net）由于无法在后端找到官方对应的 claude-sonnet-4-6 映射名，导致请求再次被弹回。
+1. 深度诊断：为什么会再次提示 not exist？
+
+别名陷阱：Claude Code 内部对 Sonnet 4.6 的识别与中转站对 claude-sonnet-4-5-20250929 的解析存在“代差”。
+状态归零：每次执行新指令，CLI 都会重新验证模型可用性。如果中转站没配置这个确切的别名，它就会在执行瞬间崩溃。
+
+
+2. “甄先生”的精密破解方案：强制覆盖
+既然自动选择不靠谱，我们直接用 PowerShell 环境变量 强行把模型 ID “焊死”在中转站支持的那个 ID 上（根据你之前的仪表盘显示，确定是这个）。
+请按 Ctrl+C 退出当前的 Claude 进程，在 PowerShell 里输入这一行：
+# 强制指定模型 ID 为你仪表盘里那个能跑通的 ID
+$env:CLAUDE_CODE_MODEL="claude-sonnet-4-5-20250929"
+
+（如果这个 ID 还是不行，请参考仪表盘上显示的 Claude 3.5 Sonnet 的确切字符串替换它。）
+
+3. “三位一体”重启指令
+执行完上面的环境变量设置后，重新进入 claude，然后直接下达这个“不带废话”的指令：
+
+`“甄先生”复位指令：
+
+读取 @audit_tool.py。
+生成 rules.json (含 HIGH/MEDIUM/LOW 三级逻辑)。
+验证格式。
+(此时你应该能看到 Token 真正开始流转。)`
+
+
+
+4. 环境体检（针对中转站环境）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+维度状态修正逻辑API Base已定向 ✅指向 gptsapi.net/v1。模型 ID飘忽不定 ❌必须通过 $env:CLAUDE_CODE_MODEL 强制锁定。认证状态有效 ✅只要不报 401 就算成功。
+
+💡 甄先生的品牌哲学：
+“精密”不仅是逻辑的严丝合缝，更是对底层协议的绝对掌控。 这种“Sautéed”（煎炒）的状态说明它在尝试处理，但由于模型握手失败，它在空转。请执行 $env:CLAUDE_CODE_MODEL 设置，我们要强行结束这种“找不到模型”的捉迷藏游戏。
+你仪表盘里那个 Sonnet 4.5 的 ID 还在吗？把它贴到环境变量里，我们再试一次。
+
+---
+*从 Gemini 导出，2026-05*
+
+---
+*Gemini · 技术开发 / Python · 2026-05-08*

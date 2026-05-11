@@ -1,0 +1,61 @@
+---
+title: E:\MyCodeProjects\New Claude Project，把这个地址更新为：E:\MyCodeProjects
+source: gemini
+date: 2026-05-08
+category: 系统运维
+subcategory: PowerShell
+old_category: 系统运维
+tags: [gemini, 系统运维, PowerShell]
+---
+
+## E:\MyCodeProjects\New Claude Project，把这个地址更新为：E:\MyCodeProjects
+
+## E:\MyCodeProjects\New Claude Project，把这个地址更新为：E:\MyCodeProjects
+
+甄先生，明白。我们将工作重心从具体的子目录上移，直接锁定在 E:\MyCodeProjects 这个根目录下。这样更有利于你管理多个相关的“规则甄查”模块或工业自动化脚本。
+请在原生的 PowerShell 中执行以下指令，完成路径切换与 API 环境变量的最终校准：
+1. 切换并锁定工作目录
+# 切换到 E 盘根项目目录
+cd "E:\MyCodeProjects"
+
+2. 最终校准 API 环境变量 (修复 URL 解析错误)
+为了解决刚才那个“cannot be parsed as a URL”的问题，请务必将下方引号内的内容替换为你真实的、可用的代理信息。
+
+注意： 很多 SAPI 代理商要求 BASE_URL 结尾不要带 /v1，因为 Claude Code 会自动补全。如果你的代理地址是 https://api.xxx.com/v1，请尝试只填 https://api.xxx.com。
+
+# 1. 设置真实的代理地址 (请替换占位符)
+$finalUrl = "https://你的真实代理域名.com" 
+$finalKey = "sk-你的真实API密钥"
+
+# 2. 写入系统级变量
+[Environment]::SetEnvironmentVariable("ANTHROPIC_BASE_URL", $finalUrl, "User")
+[Environment]::SetEnvironmentVariable("ANTHROPIC_API_KEY", $finalKey, "User")
+
+# 3. 立即刷新当前窗口变量
+$env:ANTHROPIC_BASE_URL = $finalUrl
+$env:ANTHROPIC_API_KEY = $finalKey
+
+3. 干净启动 Claude Code
+清理掉之前在子目录下产生的缓存，从根目录重新开始。
+# 删除可能残留的旧配置
+Remove-Item "$env:AppData\claude-code\config.json" -Force -ErrorAction SilentlyContinue
+
+# 启动 Claude Code
+claude --model claude-3-7-sonnet-20250219
+
+
+甄先生的实战第一步：
+进入 > 提示符后，请立即执行：
+
+/status：检查 cwd 是否显示为 E:\MyCodeProjects，且 URL 不再包含中文占位符。
+/init：在这个目录下初始化 CLAUDE.md。
+
+后续建议：
+既然你现在是在 E:\MyCodeProjects 运行，如果你打开 VS Code，也请直接 Open Folder 到这个根目录。这样你的 Cline 插件就能同时访问到 New Claude Project 以及你未来添加的其他审计工具。
+甄先生，环境已经根据你的要求重新“定轴”。现在的连接状态通过了吗？
+
+---
+*从 Gemini 导出，2026-05*
+
+---
+*Gemini · 系统运维 / PowerShell · 2026-05-08*

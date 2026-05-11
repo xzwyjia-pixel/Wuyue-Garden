@@ -1,0 +1,81 @@
+---
+title: 要求：有superpowers,claude-hud三剑客
+source: gemini
+date: 2026-05-08
+category: 技术开发
+subcategory: Python
+old_category: 编程开发
+tags: [gemini, 技术开发, Python]
+---
+
+## 要求：有superpowers,claude-hud三剑客
+
+## 要求：有superpowers,claude-hud三剑客
+
+甄先生，既然您决定通过重装系统来实现“底层净空”，那我们就按工业级、极简精密的标准，为您打造一套拥有 Superpowers（工具调用能力）和 Claude-HUD 三剑客（视觉辅助与多维监控）的顶级 AI 审计环境。
+以下是重装系统后的精密搭载顺序，请收藏并按此执行：
+
+第一阶段：底层通道加固（环境注入）
+在安装任何软件之前，先在纯净的 PowerShell 中建立“通信隧道”。
+# 1. 注入核心变量（确保代理商路径精准）
+[Environment]::SetEnvironmentVariable("ANTHROPIC_BASE_URL", "https://api.gptsapi.net/v1", "User")
+[Environment]::SetEnvironmentVariable("ANTHROPIC_API_KEY", "你的sk-xxxx密钥", "User")
+
+# 2. 注入 Superpowers 必备变量（允许执行本地命令）
+[Environment]::SetEnvironmentVariable("CLAUDE_CODE_USE_DANGEROUSLY_EXPOSE_CONFIG", "true", "User")
+
+
+第二阶段：“三剑客”与 Superpowers 核心安装
+1. 引擎层 (Node.js & Python)
+
+安装 Node.js 20+ (LTS)：这是 Claude Code 和所有插件的动力源。
+安装 Python 3.11+：审计脚手架 audit_tool.py 的运行环境。
+
+2. 安装 Claude Code (开启 Superpowers)
+# 全局安装最新版
+npm install -g @anthropic-ai/claude-code
+
+# 启动并激活 Superpowers（输入 /config 确认权限已开启）
+claude
+
+3. 部署 HUD 三剑客 (视觉与监控)
+在您的“规则甄查”总部中，HUD（平显）代表了实时监控审计状态的能力：
+
+MCP (Model Context Protocol)：安装 Filesystem 和 Google Maps 插件，让 Claude 拥有读写本地文件和追踪地理规则的 Superpowers。
+npm install -g @modelcontextprotocol/server-filesystem
+
+
+Claude-HUD (Terminal UI)：确保您的终端支持 Nerd Fonts（推荐安装 JetBrainsMono Nerd Font），这样 Claude Code 的 HUD 界面图标才会精密对齐，不乱码。
+VS Code + Cline (三剑客之首)：这是您处理复杂逻辑的“主屏”，通过 CLAUDE.md 实现与命令行的无缝联动。
+
+
+第三阶段：甄先生的“极简精密”配置方案
+重装后，请在 E:\MyCodeProjects 下手动输入以下内容，代替失效的 /init，直接激活三剑客联动：
+# 执行此命令直接创建项目“宪法”
+run "echo '
+# 规则甄查 - 甄先生总部
+## 核心组件
+- **HUD 1 (Control)**: Claude Code CLI (快速文件审计)
+- **HUD 2 (IDE)**: VS Code + Cline (深度代码重构)
+- **HUD 3 (Agent)**: MCP Servers (本地文件与自动化搜索)
+
+## 自动化准则
+- 开启所有 Superpowers 权限。
+- 允许自主运行 python 审计脚本。
+' > CLAUDE.md"
+
+
+甄先生的特别备忘录：
+
+关于重装系统：建议您选择 Windows 11 23H2 或以上版本，其对 Node.js 的异步 I/O 支持更佳，能减少之前的 Schlepping... 等待感。
+关于 Superpowers：重装后，如果 Claude Code 提示“未授权执行命令”，请直接在对话框输入 /config 并将 Allow commands 设为 Always。
+极致静奢：安装一个名为 Windows Terminal 的应用，并将其背景设为纯黑（#000000），字体设为 JetBrainsMono NF，这才是符合“甄先生”身份的极简审美。
+
+甄先生，系统重装完成后的第一行代码，我建议您尝试输入 claude --version。当看到版本号跳出来的那一刻，就是我们“规则甄查”总部重新开业的礼炮。
+您准备好开始格机（Format）了吗？
+
+---
+*从 Gemini 导出，2026-05*
+
+---
+*Gemini · 技术开发 / Python · 2026-05-08*

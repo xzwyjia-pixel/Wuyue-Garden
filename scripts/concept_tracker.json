@@ -1,0 +1,919 @@
+{
+  "concepts": {
+    "抓取 Key 脚本": {
+      "count": 1,
+      "sources": [
+        "Claude_Sync.md"
+      ],
+      "wiki_created": false
+    },
+    "配置位置": {
+      "count": 1,
+      "sources": [
+        "Claude_Sync.md"
+      ],
+      "wiki_created": false
+    },
+    "API 地址": {
+      "count": 1,
+      "sources": [
+        "Claude_Sync.md"
+      ],
+      "wiki_created": false
+    },
+    "MCP 服务端": {
+      "count": 1,
+      "sources": [
+        "Claude_Sync.md"
+      ],
+      "wiki_created": false
+    },
+    "关键信息": {
+      "count": 1,
+      "sources": [
+        "Claude_Sync.md"
+      ],
+      "wiki_created": false
+    },
+    "概述": {
+      "count": 1,
+      "sources": [
+        "Claude_Sync.md"
+      ],
+      "wiki_created": false
+    },
+    "待办": {
+      "count": 1,
+      "sources": [
+        "Claude_Sync.md"
+      ],
+      "wiki_created": false
+    },
+    "2026-05-10 追加 — 存入 Obsidian 测试": {
+      "count": 1,
+      "sources": [
+        "Claude_Sync.md"
+      ],
+      "wiki_created": false
+    },
+    "工具清单": {
+      "count": 1,
+      "sources": [
+        "Claude_Sync.md"
+      ],
+      "wiki_created": false
+    },
+    "笔记保存规则": {
+      "count": 1,
+      "sources": [
+        "Claude_Sync.md"
+      ],
+      "wiki_created": false
+    },
+    "假设1：互动率是流量的主要开关": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "假设3：平台后台\"明文考核\"互动率": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "设计原则": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "这套逻辑在视频号可能适得其反：": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "半对半错。": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "四、改进建模：\"苏苏在浙里\"中庸话术模型": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "结果指标": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "第2层损耗：社交资本贬值。": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "行为绑定": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "原文盲区": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "\"想学的姐妹点个赞，下次出快手版\"": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "扣1用户占比 > 80% 的互动量": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "\"如果这道菜你也喜欢，它就是一个免费的赞，对我也很重要\"": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "第1层损耗：人设分裂。": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "多维综合评分": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "不对抗算法，不牺牲人设。": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "评论互动率 > 5% 但 GPM < 200": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "不对抗算法，不牺牲人设": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "社交冷启动问题": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "社交证明（Social Proof）": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "中庸话术模型": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "社交关系链": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "逻辑严密性、平台差异性、转化风险意识、人设维护": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "指标替换": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "视频号（私域/社交分发）": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "双端适配策略": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "总结评分": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "核心风险：互动率 ≠ 转化率 ≠ GPM": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "第3层损耗：用户预期不统一。": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "\"怎么买/多少钱\"等转化关键词命中率下降": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "考核指标": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "三、风险预警：低质互动陷阱": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "部分事实，但表述具有误导性。": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "话术模板（可直接开播）": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "论据合理性与局限性": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "\"一机双播\"场景下的品牌信任损耗风险": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "对照组设计存在致命缺陷。": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "\"能吃辣和不能吃辣的，公屏打个'辣'或'不辣'\"": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "抖音（公域/兴趣算法）": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "模型架构：TRM 三层模型": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "数据佐证：": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "一、逻辑结构拆解": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "具体预警指标": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "停留时长 < 45秒 但互动率高": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "算法价值：": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "认知层面是合格的": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "二、平台差异化适配分析": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "核心假设链": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "改造四原则": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "有效，但有前提条件：": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "即时互动信号": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "共情+价值输出": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "假设2：开放式问题是低响应率的唯一原因": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "抖音冷启动": {
+      "count": 1,
+      "sources": [
+        "直播互动话术批判性分析.md"
+      ],
+      "wiki_created": false
+    },
+    "1.2 论据可靠性评分": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "对于烹饪类直播，做菜过程本身就是内容。": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "稻草人论证": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "\"诊断-焦虑-方案\"闭环": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "③ 原文完全未提及GPM（千次观看成交额）": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "三、品牌损耗评估": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "3.3 品牌损耗量化评估": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "恐惧诉求": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "虚假二元选择": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "内容复用": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "不要二选一。": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "情感粘性下降": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "陪伴性互动": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "人均停留时长的权重实际上高于评论互动率": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "1.3 算法权重配比真实估算（2026年环境下）": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "二、心理操纵识别": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "3.2 封闭式指令对四类资产的损害": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "双端适配总表": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "② 互动率存在\"边际递减效应\"": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "框架控制": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "框架锁定": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "不可逆的原因：": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "单方面的亲密感": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "双向算法加分": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "中庸方案的底层逻辑：": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "论述与框架的脱节": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "用算法友好的结构，包裹人设真实的内容。": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "原文核心论证链：": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "为什么这对\"苏苏在浙里\"特别有效：": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "不套路感": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "适用场景：": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "原文从未提及任何转化指标": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "降低当场压力": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "中长期有效转化": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "建议一：嵌入式中和指令": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "2.2 心理操纵的综合效应": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "2.3 关键警觉信号": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "建议二：异步互动替代同步指令": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "该简化遗漏以下关键变量：": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "① 停留时长是比互动率更高权的指标": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "基数值太小": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "选项B：": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "确认偏误利用": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "内容资产贬值，间接损害了直播之外的流量来源。": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "1.1 \"机器只认动手不认说话\"——存在过度简化": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "3.1 \"苏苏在浙里\"的品牌资产结构": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "削弱决策者的独立判断力": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "拟社会关系": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "战术层面有参考价值": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "四、运营策略对冲建议（中庸方案）": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "实际差异可能只有0-1个人": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "核心原则": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "权威诉求": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "算法价值分析：": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "交易性互动": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "选项A：": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "\"套路雷达\"": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "社会证明": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "两个选项都排除了\"你原有的直播方式可能是对的\"这个可能性。": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "一个看了5分钟但不说话的用户，价值远高于一个扣了1就划走的用户": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "样本量谬误": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "稀缺性错觉": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "2.1 识别到的心理学手段": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "一、论据可靠性审计": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "筛选高价值用户": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    },
+    "战略层面存在重大瑕疵": {
+      "count": 1,
+      "sources": [
+        "直播运营话术深度批判性逻辑审计.md"
+      ],
+      "wiki_created": false
+    }
+  },
+  "processed_notes": [
+    "Claude_Sync.md",
+    "直播互动话术批判性分析.md",
+    "直播运营话术深度批判性逻辑审计.md"
+  ]
+}

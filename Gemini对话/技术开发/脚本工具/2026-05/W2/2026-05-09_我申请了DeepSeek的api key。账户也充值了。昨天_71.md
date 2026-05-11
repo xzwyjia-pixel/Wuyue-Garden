@@ -1,0 +1,63 @@
+---
+title: 我申请了DeepSeek的api key。账户也充值了。昨天我也配置好了计划用ollama，执行用DeepSeek的cline设置，这个方案可行吗？
+source: gemini
+date: 2026-05-09
+category: 技术开发
+subcategory: 脚本工具
+old_category: 编程开发
+tags: [gemini, 技术开发, 脚本工具]
+---
+
+## 我申请了DeepSeek的api key。账户也充值了。昨天我也配置好了计划用ollama，执行用DeepSeek的cline设置，这个方案可行吗？
+
+## 我申请了DeepSeek的api key。账户也充值了。昨天我也配置好了计划用ollama，执行用DeepSeek的cline设置，这个方案可行吗？
+
+这是一个非常可行且专业的方案！你这种“本地 + 云端”的混合模式，正是目前开发者在追求性价比时的“天花板”配置。
+在 Cline 中，这种策略被称为 Plan & Act Mode（计划与执行分离模式）。你的逻辑非常清晰：用本地 Ollama 免费进行“重上下文”的分析和规划，用云端 DeepSeek 进行“高质量”的代码写入。
+以下是针对你这个方案的深度优化建议和配置细节：
+1. 核心配置检查
+在 Cline 的设置中，请确保开启了分离配置。
+
+配置入口： 点击 Cline 侧边栏的设置（齿轮图标）。
+关键开关： 找到 "Use different models for Plan and Act"（使用不同的计划和执行模型）并勾选。
+Plan Mode（计划模式）： 选择 Ollama，模型推荐使用 qwen2.5-coder:7b 或 14b。Qwen 在指令遵循和代码分析上比 Llama 更适合这种场景。
+Act Mode（执行模式）： 选择 OpenAI Compatible (连接 DeepSeek)，模型填入 deepseek-chat。
+
+
+2. 为什么这个方案很“省”？
+
+规划阶段（Plan）： Cline 在规划时会读取大量文件上下文。如果你用云端模型，这部分“读取”动作会消耗大量 Input Token。用 Ollama 本地跑，这部分流量完全免费且隐私。
+执行阶段（Act）： 此时 Cline 已经明确了要改哪几行代码。虽然发给 DeepSeek 的上下文依然包含之前的讨论，但因为 DeepSeek 价格极低（甚至有缓存折扣），你的充值余额会非常耐用。
+
+
+3. 进阶“省钱”小贴士 (必看)
+既然你已经充值了 DeepSeek，为了防止 Token 意外“爆炸”，建议配合以下操作：
+
+
+配置 .clineignore：
+在项目根目录创建一个 .clineignore 文件。把 node_modules、dist、build、.git 以及大体积的二进制文件都写进去。
+
+原理： 这样 Cline 就不会在“计划阶段”盲目读取这些无关文件，能显著降低给本地/云端模型的压力。
+
+
+
+善用 /deep-planning 命令：
+在 2026 版的 Cline 中，你可以直接输入 /deep-planning。它会引导本地模型先进行深度调查，生成一个 implementation_plan.md。你可以在这个 Markdown 文件里手动删减不必要的步骤，确认无误后再切到 Act 模式让 DeepSeek 动手。
+
+
+Context Window 限制：
+在配置 Ollama 时，手动将 Context Window 设置为 32768 (32k) 左右。虽然设置太大会占用更多显存，但设置太小会导致它“忘记”之前的项目结构，从而导致执行报错，反而浪费了 Act 模式下的云端 Token。
+
+
+
+4. 一个潜在的风险
+模型能力的代差：
+如果你本地运行的模型太小（比如 llama3:8b），它的“计划能力”可能较弱，给出的修改建议可能是错误的。当 DeepSeek 拿到一个错误的计划去执行时，会产生报错，Cline 会尝试自动修复，这会形成多次云端调用。
+建议： 如果发现本地模型给的计划老是跑不通，可以尝试把 Plan Mode 也换成 deepseek-chat，因为 DeepSeek 的价格实在太便宜了，有时候省下的那点本地电费和折腾时间，可能还没 DeepSeek 几分钱的 Token 值钱。
+总结： 你的方案完全没问题。先用 本地 Qwen2.5-Coder (Ollama) 计划 + DeepSeek-V3 执行跑一周看看效果，这绝对是目前的省钱最优解。
+
+---
+*从 Gemini 导出，2026-05*
+
+---
+*Gemini · 技术开发 / 脚本工具 · 2026-05-09*

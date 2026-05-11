@@ -1,0 +1,64 @@
+---
+title: PowerShell 7.6.1
+source: gemini
+date: 2026-05-09
+category: 系统运维
+subcategory: PowerShell
+old_category: 审计合规
+tags: [gemini, 系统运维, PowerShell]
+---
+
+## PowerShell 7.6.1
+
+## PowerShell 7.6.1
+PS C:\Windows\System32> cd E:/MyCodeProjects && git push --dry-run
+fatal: No configured push destination.
+Either specify the URL from the command-line or configure a remote repository using
+
+    git remote add <name> <url>
+
+and then push using the remote name
+
+    git push <name>
+
+PS E:\MyCodeProjects> git remote add origin <你的仓库URL>
+>> git branch -M master
+ParserError:
+Line |
+   1 |  git remote add origin <你的仓库URL>
+     |                        ~
+     | The '<' operator is reserved for future use.
+PS E:\MyCodeProjects>
+
+诊断与修正 (Diagnostic & Fix)
+1. 结论 (Conclusion)
+报错原因是 PowerShell 7.6.1 将 < 字符识别为保留操作符。在执行 Git 指令时，URL 应当直接输入，不带尖括号。
+2. 修正指令 (Action)
+请在 PowerShell 中执行以下经过调整的命令。请注意： 将 [https://github.com/你的用户名/你的仓库名.git](https://github.com/你的用户名/你的仓库名.git) 替换为你实际的 GitHub 仓库地址。
+# 1. 关联远程仓库（请替换实际 URL，不要带尖括号）
+git remote add origin https://github.com/你的用户名/你的仓库名.git
+
+# 2. 切换主分支名为 master
+git branch -M master
+
+# 3. 最终权限预检
+git push -u origin master --dry-run
+
+
+3. 阶段三全自动执行指令 (Phase 3 Command)
+一旦上述命令执行成功且未报错，请立即将以下指令发送给 Claude Code：
+
+指令： > "执行阶段三：1. 编写 obsidian_sync.py。读取 E:/MyCodeProjects 下的运行日志，在 notes 目录生成符合‘极简主义’与‘结论先行’原则的 Markdown 审计报告。报告需包含 [[YYYY-MM-DD]] 格式的双链。2. 执行自动化 Git 同步。先运行 git pull --rebase origin master 确保本地代码最新，随后执行 git add . && git commit -m 'Auto-sync: Phase 3 Infrastructure' && git push origin master。若遇到任何冲突或权限拒绝，立即停止并输出事实日志，严禁编造执行成功的结果。"
+
+
+4. 逻辑留存 (Logic Tracing)
+
+环境适配：针对你的 ThinkPad P15V 上的 PowerShell 环境，后续所有脚本将避开特殊的 Shell 符号，确保兼容性。
+审计员思维：obsidian_sync.py 将作为你“规则甄查”系统的纸质化镜像，所有规则进化（Phase 2）和改写记录（Phase 1）都将在 Obsidian 中留下可追溯的证据链。
+确定性原则：如果在 git push 时出现凭据请求，脚本会因为非交互模式而报错停止，这符合我们“禁令优先”中防止盲目执行的原则。
+
+---
+*从 Gemini 导出，2026-05*
+
+---
+*Gemini · 系统运维 / PowerShell · 2026-05-09*

@@ -1,0 +1,77 @@
+---
+title: 好了。我想测试一下Claude对接DeepSeek，是否畅通
+source: gemini
+date: 2026-05-08
+category: 文案创意
+subcategory: 短视频脚本
+old_category: Claude/MCP
+tags: [gemini, 文案创意, 短视频脚本]
+---
+
+## 好了。我想测试一下Claude对接DeepSeek，是否畅通
+
+## 好了。我想测试一下Claude对接DeepSeek，是否畅通
+
+要测试 Claude（特别是通过 Cline、Claude Code 或 MCP 插件）与 DeepSeek 的对接是否畅通，最有效的方法不是简单的网页对话，而是通过终端或插件日志观察其协议握手。
+由于你之前遇到了 66-cad 这种语法错误，请按以下三个步骤进行最终验证：
+第一步：环境验证（排除语法陷阱）
+确保 Claude 调用的环境变量里没有语法错误。在 PowerShell 中运行：
+# 检查输出是否为你新申请的 Key，且没有多余的空格或字符
+write-host "当前 Key 状态：" $env:DEEPSEEK_API_KEY
+
+
+第二步：模拟 Claude 的调用逻辑
+Claude 对接 DeepSeek 通常走的是 OpenAI 兼容协议。我们直接模拟 Claude 发出一个指令。请直接复制以下代码运行：
+$testArgs = @(
+    "-k", "-s", "-i",
+    "-X", "POST", "https://api.deepseek.com/v1/chat/completions",
+    "-H", "Authorization: Bearer $($env:DEEPSEEK_API_KEY)",
+    "-H", "Content-Type: application/json",
+    "-d", '{"model":"deepseek-chat","messages":[{"role":"user","content":"你是谁？"}],"stream":false}',
+    "-x", "http://127.0.0.1:7890"
+)
+
+$response = & curl.exe @testArgs
+$response | Select-String "HTTP/1.1 200 OK", "deepseek"
+
+验证标准：
+
+如果看到 HTTP/1.1 200 OK，说明 API 链路 畅通。
+如果返回 JSON 中包含 "content":"...DeepSeek..."，说明 模型响应 畅通。
+
+
+第三步：在编辑器（VS Code / Cline）中实测
+如果你是在 VS Code 中使用 Cline (原 Claude Dev) 或 Claude Code 对接 DeepSeek，请进行以下操作：
+
+
+打开 Cline 设置：
+
+Provider: 选择 OpenAI Compatible。
+Base URL: 输入 [https://api.deepseek.com/v1](https://api.deepseek.com/v1)（注意末尾不要有空格）。
+API Key: 输入你刚才修正过的 Key。
+Model ID: 输入 deepseek-chat。
+
+
+
+输入测试指令：
+
+“请检查当前目录下的 audit_tool.py 是否存在语法错误。”
+
+
+
+观察日志：
+
+如果 Claude 能够列出文件并给出修改建议，说明 MCP/工具调用链路 已经彻底打通。
+重点排查：如果 Claude 报错 401，请检查 Key；如果报错 Connect Timeout，请检查你的代理软件（Clash）是否开启了“系统代理”模式，因为 VS Code 插件有时不走环境变量代理。
+
+
+
+💡 甄先生（Mr. Zhen）的小提醒：
+既然你的项目是“规则甄查”，在测试 Claude 时，你可以故意给它一段包含“违规词”的模拟短视频脚本，看它能否通过 DeepSeek 的推理能力识别出潜规则冲突。这既测试了连通性，也测试了你的核心审计逻辑。
+连通后如果看到返回数据，请告诉我，我们可以开始优化你的审计提示词（Prompt）了。
+
+---
+*从 Gemini 导出，2026-05*
+
+---
+*Gemini · 文案创意 / 短视频脚本 · 2026-05-08*
