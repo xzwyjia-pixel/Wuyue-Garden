@@ -4,8 +4,8 @@
   "title": "Optimize script for memorability",
   "titleGenerationStatus": "success",
   "createdAt": 1778596312459,
-  "updatedAt": 1778596357177,
-  "lastResponseAt": 1778596357177,
+  "updatedAt": 1778596753032,
+  "lastResponseAt": 1778596753032,
   "sessionId": "48b6f859-4c04-405c-837a-5534c4bbfc12",
   "providerState": {
     "providerSessionId": "48b6f859-4c04-405c-837a-5534c4bbfc12"
@@ -13,12 +13,12 @@
   "currentNote": "苏苏直播互动话术手册.md",
   "usage": {
     "model": "haiku",
-    "inputTokens": 49,
+    "inputTokens": 83,
     "cacheCreationInputTokens": 0,
-    "cacheReadInputTokens": 34304,
+    "cacheReadInputTokens": 62720,
     "contextWindow": 200000,
-    "contextTokens": 34353,
-    "percentage": 17,
+    "contextTokens": 62803,
+    "percentage": 31,
     "contextWindowIsAuthoritative": true
   }
 }
