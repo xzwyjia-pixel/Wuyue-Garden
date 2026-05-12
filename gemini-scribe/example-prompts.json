@@ -1,0 +1,18 @@
+[
+  {
+    "icon": "book-open",
+    "text": "Summarize the key audit findings for FanJie and XiaoTao from the Reference Cases folder"
+  },
+  {
+    "icon": "file-plus",
+    "text": "Create a summary of the 2026 North China project information found in the Inbox"
+  },
+  {
+    "icon": "folder-tree",
+    "text": "Review the raw AI conversation exports and suggest which ones belong in the Audit and Compliance folder"
+  },
+  {
+    "icon": "search",
+    "text": "Find all technical development notes related to C# and the Claude API from 2026"
+  }
+]

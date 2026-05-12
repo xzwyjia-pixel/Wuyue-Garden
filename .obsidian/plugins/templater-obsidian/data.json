@@ -1,0 +1,13 @@
+﻿{
+  "templates_folder": "obsidian/mycodeprojects",
+  "automatic_trigger": true,
+  "template_variables": [],
+  "system_trigger": "",
+  "enable_system_trigger": false,
+  "enable_file_templates": true,
+  "enable_folder_templates": true,
+  "date_format": "YYYY-MM-DD",
+  "time_format": "HH:mm",
+  "strict_line_whitespace": true,
+  "enable_snippets": true
+}

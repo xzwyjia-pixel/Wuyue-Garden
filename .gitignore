@@ -19,3 +19,9 @@ node_modules/
 Thumbs.db
 .DS_Store
 desktop.ini
+
+
+
+
+# Ignore Smart Environment folder
+.smart-env

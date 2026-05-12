@@ -1,0 +1,35 @@
+{
+  "mcpServers": {
+    "obsidian": {
+      "description": "Read, write, search, and manage main Obsidian vault notes",
+      "command": "node",
+      "args": [
+        "E:/ClaudeEnvironment/npm_global/node_modules/obsidian-mcp/build/main.js",
+        "E:/Obsidian"
+      ]
+    },
+    "mycodeprojects": {
+      "description": "Access MyCodeProjects vault (knowledge notes, audit tools data, code projects)",
+      "command": "node",
+      "args": [
+        "E:/ClaudeEnvironment/npm_global/node_modules/obsidian-mcp/build/main.js",
+        "E:/MyCodeProjects"
+      ]
+    },
+    "classicprojects": {
+      "description": "Access Classicprojects project documents",
+      "command": "node",
+      "args": [
+        "E:/ClaudeEnvironment/npm_global/node_modules/obsidian-mcp/build/main.js",
+        "E:/Classicprojects"
+      ]
+    },
+    "fetch": {
+      "description": "Fetch web page content and convert to markdown",
+      "command": "node",
+      "args": [
+        "E:/ClaudeEnvironment/custom-mcp-servers/fetch-server.js"
+      ]
+    }
+  }
+}

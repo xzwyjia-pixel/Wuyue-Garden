@@ -1,0 +1,109 @@
+{
+  "userName": "",
+  "permissionMode": "yolo",
+  "model": "haiku",
+  "thinkingBudget": "off",
+  "effortLevel": "high",
+  "serviceTier": "default",
+  "enableAutoTitleGeneration": true,
+  "titleGenerationModel": "",
+  "excludedTags": [],
+  "mediaFolder": "",
+  "systemPrompt": "## 自动保存到 Obsidian
+
+默认将所有工作内容保存到笔记库，除非用户明确说"不用存"或"只是看看"。
+
+## 文件夹规则
+
+| 内容类型 | 存放位置 |
+|---------|---------|
+| 分析报告、技术文档 | `知识库/` (选对应子分类: 技术开发/品牌设计/审计合规/直播运营/文案创意/方案咨询/系统运维/参考案例) |
+| 每日记录、日报 | `日程安排/` |
+| 速查卡片、常用命令 | `速查/` |
+| 快速捕获、临时笔记 | `收件箱/` |
+| 脚本、自动化工具 | `脚本/` |
+| 已完成项目、旧版本 | `归档/` |
+
+## 命名规范
+- 笔记名: [YYYY-MM-DD] 主题.md
+- 同主题更新追加，不重复创建
+- 每日记录合并到当日日报
+
+## 例外
+- 用户说"阶段总结"或"专项分析" → 聊天框输出，不自动存
+- 用户说"不用存"/"只是看看" → 不创建笔记",
+  "persistentExternalContextPaths": [],
+  "sharedEnvironmentVariables": "",
+  "envSnippets": [],
+  "customContextLimits": {},
+  "keyboardNavigation": {
+    "scrollUpKey": "w",
+    "scrollDownKey": "s",
+    "focusInputKey": "i"
+  },
+  "locale": "en",
+  "providerConfigs": {
+    "claude": {
+      "safeMode": "acceptEdits",
+      "cliPath": "E:\\ClaudeEnvironment\\npm_global\\node_modules\\@anthropic-ai\\claude-code\\cli-wrapper.cjs",
+      "cliPathsByHost": {},
+      "loadUserSettings": true,
+      "enableChrome": true,
+      "enableBangBash": true,
+      "enableOpus1M": true,
+      "enableSonnet1M": true,
+      "customModels": "",
+      "lastModel": "haiku",
+      "environmentVariables": "ANTHROPIC_BASE_URL=https://api.deepseek.com/anthropic\nANTHROPIC_API_KEY=sk-cad1b7bcd5dd4644a03c87c14a1fa690\nGOOGLE_API_KEY=AIzaSyCeda-68PcfV4CqGVvktYRFgfLTHg7TNAw",
+      "environmentHash": ""
+    },
+    "codex": {
+      "enabled": false,
+      "safeMode": "workspace-write",
+      "cliPath": "",
+      "cliPathsByHost": {},
+      "customModels": "",
+      "reasoningSummary": "detailed",
+      "environmentVariables": "",
+      "environmentHash": "",
+      "installationMethodsByHost": {
+        "XzWyJia": "native-windows"
+      },
+      "wslDistroOverridesByHost": {}
+    },
+    "opencode": {
+      "cliPath": "",
+      "cliPathsByHost": {
+        "XzWyJia": "E:\\ClaudeEnvironment\\npm_global\\claude"
+      },
+      "enabled": false,
+      "environmentHash": "",
+      "environmentVariables": "OPENCODE_ENABLE_EXA=1",
+      "modelAliases": {},
+      "preferredThinkingByModel": {},
+      "selectedMode": "",
+      "visibleModels": []
+    }
+  },
+  "settingsProvider": "claude",
+  "savedProviderModel": {
+    "claude": "haiku"
+  },
+  "savedProviderEffort": {
+    "claude": "high"
+  },
+  "savedProviderServiceTier": {},
+  "savedProviderThinkingBudget": {
+    "claude": "off"
+  },
+  "savedProviderPermissionMode": {
+    "claude": "yolo"
+  },
+  "lastCustomModel": "",
+  "maxTabs": 3,
+  "tabBarPosition": "input",
+  "enableAutoScroll": true,
+  "deferMathRenderingDuringStreaming": true,
+  "chatViewPlacement": "right-sidebar",
+  "hiddenProviderCommands": {}
+}
