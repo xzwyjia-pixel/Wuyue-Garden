@@ -1,0 +1,24 @@
+{
+  "id": "conv-1778596312459-2uz31qc6x",
+  "providerId": "claude",
+  "title": "Optimize script for memorability",
+  "titleGenerationStatus": "success",
+  "createdAt": 1778596312459,
+  "updatedAt": 1778596357177,
+  "lastResponseAt": 1778596357177,
+  "sessionId": "48b6f859-4c04-405c-837a-5534c4bbfc12",
+  "providerState": {
+    "providerSessionId": "48b6f859-4c04-405c-837a-5534c4bbfc12"
+  },
+  "currentNote": "苏苏直播互动话术手册.md",
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 49,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 34304,
+    "contextWindow": 200000,
+    "contextTokens": 34353,
+    "percentage": 17,
+    "contextWindowIsAuthoritative": true
+  }
+}
