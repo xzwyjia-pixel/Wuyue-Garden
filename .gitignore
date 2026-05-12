@@ -1,3 +1,21 @@
+# Obsidian workspace (personal state)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# Plugin binaries (reinstall via community plugins)
+.obsidian/plugins/*/main.js
+.obsidian/plugins/*/styles.css
+
+# Smart Environment data
 .smart-env/
+
+# Large media / binary assets
+原始资料/
+
+# Node
 node_modules/
 
+# OS files
+Thumbs.db
+.DS_Store
+desktop.ini
