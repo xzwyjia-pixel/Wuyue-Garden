@@ -1,0 +1,123 @@
+---
+title: > /doctor
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  Diagnostics
+  ├ Currently running: npm-global (2.1.133)
+  ├ Commit: cba57ffec4f5
+  ├ Platform: win32-x64
+  ├ Path: C:\Users\think\AppData\Roaming\npm\node_modules\@anthropic-ai\claude-code\bin\claude.exe
+  ├ Config install method: global
+  └ Search: OK (bundled)
+
+  Updates
+  ├ Auto-updates: enabled
+  ├ Update permissions: Yes
+  ├ Auto-update channel: latest
+  ├ Stable version: 2.1.123
+  └ Latest version: 2.1.133
+
+    Skill listing will be truncated
+      5 descriptions dropped (full descriptions kept for most-used skills) (1.1%/1% of context):
+    superpowers:verification-before-completion, superpowers:using-superpowers, superpowers:writing-skills, +2 more
+        run /skills to disable some, or raise skillListingBudgetFraction (currently 1%) in settings.json
+      Opting in would cost ~2k tokens for skills every session and uses rate limits faster
+
+  Still having issues? Run /feedback to report details.
+
+  Enter to continue
+source: gemini
+date: 2026-05-08
+category: 系统运维
+tags: [gemini, 系统运维]
+---
+
+## > /doctor
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  Diagnostics
+  ├ Currently running: npm-global (2.1.133)
+  ├ Commit: cba57ffec4f5
+  ├ Platform: win32-x64
+  ├ Path: C:\Users\think\AppData\Roaming\npm\node_modules\@anthropic-ai\claude-code\bin\claude.exe
+  ├ Config install method: global
+  └ Search: OK (bundled)
+
+  Updates
+  ├ Auto-updates: enabled
+  ├ Update permissions: Yes
+  ├ Auto-update channel: latest
+  ├ Stable version: 2.1.123
+  └ Latest version: 2.1.133
+
+    Skill listing will be truncated
+      5 descriptions dropped (full descriptions kept for most-used skills) (1.1%/1% of context):
+    superpowers:verification-before-completion, superpowers:using-superpowers, superpowers:writing-skills, +2 more
+        run /skills to disable some, or raise skillListingBudgetFraction (currently 1%) in settings.json
+      Opting in would cost ~2k tokens for skills every session and uses rate limits faster
+
+  Still having issues? Run /feedback to report details.
+
+  Enter to continue
+
+诊断结果出来了，这份 /doctor 报告揭开了你所谓“超能力”没装好的真相。
+1. 深度诊断：你的“超能力”被腰斩了
+注意看报告中的这一段：
+
+Skill listing will be truncated
+5 descriptions dropped: superpowers:verification-before-completion, superpowers:writing-skills, +2 more
+
+真相： 你的环境里确实装过 superpowers 相关的 Skill（这通常是你通过某种插件或自定义配置引入的），但因为你的 skillListingBudgetFraction（技能占用预算） 设置得太低（只有 1%），Claude 为了节省 Token 成本，把这 5 个技能的说明文档给扔掉了。
+后果： 虽然代码还在，但 Claude 的“大脑”现在不记得这些技能怎么用了，所以当你要求它重构或审计时，它会显得手足无措，甚至陷入 Retrying。
+
+2. 环境体检报告（甄先生的精密修正）
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+维度状态解决方案版本状态最新 (2.1.133)硬件没问题，不需要更新。配置风险预算不足 (1% context)必须提高技能配额，否则“超能力”无法激活。Skill 丢失确定丢弃 5 个包括你最关心的 writing-skills。
+
+3. “甄先生”的超级修复步骤
+为了找回你丢失的 Superpowers，请按顺序执行以下指令：
+第一步：扩充技能预算
+在 Claude 的 > 提示符下输入（或者去修改 settings.json）：
+
+/config 然后找到 skillListingBudgetFraction，或者直接要求它：
+“请帮我把 skillListingBudgetFraction 设置为 5%，确保所有的 superpowers 描述都能被加载。”
+
+第二步：彻底重启 Session
+为了让配置生效，请按 Ctrl + C 退出，然后重新运行：
+claude --new-session
+
+第三步：实战验证
+进入后，先输入 /skills。如果能看到 superpowers:writing-skills 等出现在列表中，说明你的超能力正式回归。
+
+4. 针对“甄先生”品牌的最终建议
+你之所以觉得环境不稳定，是因为你目前的 Context（上下文） 里塞满了之前报错的 PowerShell 碎代码和重试垃圾，导致技能空间被挤占。
+“极简精密”的第一步是：清场。
+按我的建议修改预算并开启 new-session。
+现在，你准备好执行第一步，把那 1% 的限制改掉吗？这是找回 caveman、skill creator 逻辑的唯一钥匙。
+
+---
+*从 Gemini 导出，2026-05*

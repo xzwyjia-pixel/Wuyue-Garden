@@ -1,0 +1,73 @@
+---
+title: 点击后没反应
+source: gemini
+date: 2026-05-10
+category: 编程开发
+tags: [gemini, 编程开发]
+---
+
+## 点击后没反应
+
+从你截取的这张图来看，问题原因已经非常清晰了：Obsidian 并没有把那个链接识别为可点击的“外部协议链接”，而是把它当成了一段纯文本。
+注意到图中链接显示为 [🚀 Click to Open in VS Code](vscode://...) 这种原始格式，而不是一个蓝色的、可点击的超链接。这是因为在 PowerShell 写入时，某些特殊字符导致 Obsidian 的 Markdown 解析出现了微小偏差。
+我们直接用最粗暴、最有效的方法修复它。请在 PowerShell 中执行下面这段“超兼容版”脚本，它去掉了所有可能干扰解析的图标和复杂转义：
+$apiKey = "8212fe30470f760008c2bc5a9faa24f07d838267fc995c09b8292a8464ab770c"
+$sourceDir = "E:\Mycodeprojects"
+$apiVaultUrl = "http://127.0.0.1:27123/vault/Michael_Product"
+
+$projects = Get-ChildItem $sourceDir -Directory | Where-Object { $_.Name -notlike ".*" -and $_.Name -notlike "__*" }
+$headers = @{ "Authorization" = "Bearer $apiKey"; "Content-Type" = "text/markdown" }
+
+foreach ($project in $projects) {
+    $name = $project.Name
+    $path = $project.FullName
+    # 转换为标准 URL 路径格式
+    $urlPath = $path.Replace("\", "/")
+    
+    $tag = "General"
+    if (Test-Path "$path\requirements.txt") { $tag = "AI_Python" }
+
+    # 重点：简化 Markdown 结构，确保链接被激活
+    $content = @"
+# Project: $name
+
+- Type: #$tag
+- Folder: $path
+
+[Open_in_VS_Code](vscode://file/$urlPath)
+
+---
+- [[Michael_Product_MOC]] | [[Category_$tag]]
+"@
+
+    $targetUrl = "$apiVaultUrl/$name.md"
+    Invoke-RestMethod -Method Put -Uri $targetUrl -Headers $headers -Body ([System.Text.Encoding]::UTF8.GetBytes($content))
+    Write-Host "Re-Linked: $name" -ForegroundColor Cyan
+}
+
+
+执行后的关键操作：
+
+
+切换到“阅读模式”：
+在 Obsidian 中，点击右上角的 “书本”图标（或者按下 Ctrl + E）。
+
+在编辑模式下，链接是不可以直接点击的（除非按住 Ctrl）。
+在阅读模式下，你应该能看到 Open_in_VS_Code 变成了蓝色。
+
+
+
+点击测试：
+点击那个蓝色的 Open_in_VS_Code。
+
+
+如果系统弹出弹窗：
+它会问你“是否允许 Obsidian 打开此链接？”，请务必选择 “是/允许”。
+
+
+为什么之前不行？
+从截图看，你的 Obsidian 还在编辑模式，且 Markdown 语法因为前后的空格或特殊字符（🚀）可能没有被正确触发成超链接。这次我精简了格式，去掉了所有花哨的装饰，确保它在任何模式下都能被系统识别为 vscode:// 协议。
+请再次运行这段代码，然后切换到阅读模式点一下试试，这次应该能直接唤醒 VS Code 了！
+
+---
+*从 Gemini 导出，2026-05*

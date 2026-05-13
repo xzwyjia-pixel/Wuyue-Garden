@@ -1,0 +1,79 @@
+[20260510_190947] === PHASE 1: Restructure MyCodeProjects ===
+[20260510_190947] RENAME: 01-Rules_Engine -> 01-规则引擎
+[20260510_190947] RENAME: 02-Audit_Tools -> 02-审计工具
+[20260510_190947] RENAME: 03-Production -> 03-生产素材
+[20260510_190947] RENAME: 04-Case_FanJie -> 04-凡姐案例
+[20260510_190947] RENAME: 05-Case_XiaoTao -> 05-小桃案例
+[20260510_190947] RENAME: 06-Archive -> 06-存档中心
+[20260510_190947] DELETE: empty 04-Audit_Reports
+[20260510_190947] MOVE: E:/MyCodeProjects\05-SubProjects\New Claude Project -> E:/MyCodeProjects\06-存档中心\New Claude Project
+[20260510_190947] MOVE: E:/MyCodeProjects\05-SubProjects\skill-creator -> E:/MyCodeProjects\06-存档中心\skill-creator
+[20260510_190947] DELETE: empty 05-SubProjects (moved to archive)
+[20260510_190947] MOVE: monitor_engine.py -> 02-审计工具/
+[20260510_190947] MOVE: monitor_桃.py -> 02-审计工具/
+[20260510_190947] MOVE: monitor_live.py -> 02-审计工具/
+[20260510_190947] MOVE: monitor_view.py -> 02-审计工具/
+[20260510_190947] MOVE: start_audit.py -> 02-审计工具/
+[20260510_190947] MOVE: live_observer.py -> 02-审计工具/
+[20260510_190947] MOVE: realtime_analyser.py -> 02-审计工具/
+[20260510_190947] MOVE: analyze_cleanup.py -> 02-审计工具/
+[20260510_190947] MOVE: analyze_e_drive.py -> 02-审计工具/
+[20260510_190947] MOVE: analyze_report.py -> 02-审计工具/
+[20260510_190947] MOVE: analyze_stream.py -> 02-审计工具/
+[20260510_190947] MOVE: test_coords.py -> 02-审计工具/
+[20260510_190947] MOVE: generate_audit_report.py -> 02-审计工具/
+[20260510_190947] MOVE: generate_ui_overlay.py -> 02-审计工具/
+[20260510_190947] MOVE: find_obsidian_api_key.py -> 02-审计工具/
+[20260510_190947] MOVE: deep_cleanup.py -> 02-审计工具/
+[20260510_190947] MOVE: cleanup_360.ps1 -> 02-审计工具/
+[20260510_190947] MOVE: run_cleanup_elevated.ps1 -> 02-审计工具/
+[20260510_190947] MOVE: live_data_fanjie.jsonl -> 04-凡姐案例/
+[20260510_190947] MOVE: triage_log_fanjie.jsonl -> 04-凡姐案例/
+[20260510_190947] MOVE: live_data.jsonl -> 05-小桃案例/
+[20260510_190947] MOVE: live_data_tao.jsonl -> 05-小桃案例/
+[20260510_190947] MOVE: triage_log.jsonl -> 05-小桃案例/
+[20260510_190947] MOVE: CLAUDE.md -> 03-生产素材/
+[20260510_190947] MOVE: Index.md -> 03-生产素材/
+[20260510_190947] MOVE: COO_Rules.md -> 03-生产素材/
+[20260510_190947] MOVE: instructions.md -> 03-生产素材/
+[20260510_190947] MOVE: E_cleanup_plan.md -> 06-存档中心/
+[20260510_190947] MOVE: E_drive_analysis.md -> 06-存档中心/
+[20260510_190947] MOVE: .mcp.json -> 03-生产素材/
+[20260510_190947] MOVE: logs/ -> 06-存档中心/
+[20260510_190947] MOVE: temp_frames/ -> 06-存档中心/
+[20260510_190947] DELETE: __pycache__/
+[20260510_190947] === PHASE 1 COMPLETE ===
+[20260510_190947] 
+[20260510_190947] === PHASE 2: Import from Obsidian Vault ===
+[20260510_190947] MOVE: vault/01-Production/规则甄查系统\core\traffic_detector_v1.py -> 03-生产素材/
+[20260510_190947] MOVE: vault/01-Production/规则甄查系统\技术\自动化检测脚本构想.md -> 03-生产素材/
+[20260510_190947] MOVE: vault/01-Production/规则甄查系统\文案\分镜脚本_S1E01.md -> 03-生产素材/
+[20260510_190947] MOVE: vault/01-Production/规则甄查系统\文案\视频脚本_S1.md -> 03-生产素材/
+[20260510_190947] MOVE: vault/01-Production/规则甄查系统\调研\短视频算法合规大纲.md -> 03-生产素材/
+[20260510_190947] DELETE: vault/01-Production/ (empty after move)
+[20260510_190947] MOVE: vault/Michael_Product/.claude.md -> 03-生产素材/docs/vault_notes/
+[20260510_190947] MOVE: vault/Michael_Product/.githooks.md -> 03-生产素材/docs/vault_notes/
+[20260510_190947] MOVE: vault/Michael_Product/.obsidian.md -> 03-生产素材/docs/vault_notes/
+[20260510_190947] MOVE: vault/Michael_Product/.vs.md -> 03-生产素材/docs/vault_notes/
+[20260510_190947] MOVE: vault/Michael_Product/01-Production.md -> 03-生产素材/docs/vault_notes/
+[20260510_190947] MOVE: vault/Michael_Product/02-SubProjects.md -> 03-生产素材/docs/vault_notes/
+[20260510_190947] MOVE: vault/Michael_Product/03-Archive.md -> 03-生产素材/docs/vault_notes/
+[20260510_190947] MOVE: vault/Michael_Product/data.md -> 03-生产素材/docs/vault_notes/
+[20260510_190947] MOVE: vault/Michael_Product/logs.md -> 03-生产素材/docs/vault_notes/
+[20260510_190947] MOVE: vault/Michael_Product/scripts.md -> 03-生产素材/docs/vault_notes/
+[20260510_190947] MOVE: vault/Michael_Product/temp_frames.md -> 03-生产素材/docs/vault_notes/
+[20260510_190947] MOVE: vault/Michael_Product/__pycache__.md -> 03-生产素材/docs/vault_notes/
+[20260510_190947] MOVE: vault/Michael_Product/01-Rules_Engine\Audit_Assets.md -> 03-生产素材/docs/vault_notes/
+[20260510_190947] MOVE: vault/Michael_Product/01-Rules_Engine\Platform_Compliance_Standard.md -> 03-生产素材/docs/vault_notes/
+[20260510_190947] MOVE: vault/Michael_Product/04-Audit_Reports\Comprehensive_Audit_0510.md -> 03-生产素材/docs/vault_notes/
+[20260510_190947] MOVE: vault/Michael_Product/04-Audit_Reports\Full_Audit_Dashboard.md -> 03-生产素材/docs/vault_notes/
+[20260510_190947] MOVE: vault/Michael_Product/04-Audit_Reports\Report_Auto_2026-05-10.md -> 03-生产素材/docs/vault_notes/
+[20260510_190947] MOVE: vault/Michael_Product/04-Case_FanJie\Report_凡姐走乡村_0510.md -> 03-生产素材/docs/vault_notes/
+[20260510_190947] MOVE: vault/Michael_Product/04-Log_Archive\Full_Audit_Deep_Dive.md -> 03-生产素材/docs/vault_notes/
+[20260510_190947] DELETE: vault/Michael_Product/ (empty after move)
+[20260510_190947] === PHASE 2 COMPLETE ===
+[20260510_190947] 
+[20260510_190947] === PHASE 3: Fix internal links ===
+[20260510_190947] FIX LINKS: 03-生产素材\instructions.md
+[20260510_190947] === PHASE 3 COMPLETE ===
+[20260510_190947] 

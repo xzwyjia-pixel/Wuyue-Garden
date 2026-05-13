@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "obsidian": {
+      "command": "python",
+      "args": ["core/obsidian_mcp_server.py"],
+      "cwd": "E:/MyCodeProjects/03-生产素材/规则甄查系统"
+    }
+  }
+}

@@ -1,0 +1,392 @@
+{
+  "extracted_at": "2026-05-09T13:12:35.679061",
+  "total_comments_scraped": 56,
+  "total_pains": 50,
+  "pains": [
+    {
+      "text": "有没有适合新手的AI工具推荐？",
+      "source": "AI",
+      "score": 3,
+      "keywords": [
+        "有没有",
+        "适合",
+        "推荐"
+      ]
+    },
+    {
+      "text": "有没有适合上班族的学习时间安排？",
+      "source": "知识分享",
+      "score": 2,
+      "keywords": [
+        "有没有",
+        "适合"
+      ]
+    },
+    {
+      "text": "看完了还是不知道怎么开始",
+      "source": "知识分享",
+      "score": 2,
+      "keywords": [
+        "怎么",
+        "开始"
+      ]
+    },
+    {
+      "text": "能不能推荐一些入门级的书单",
+      "source": "知识分享",
+      "score": 2,
+      "keywords": [
+        "能不能",
+        "推荐"
+      ]
+    },
+    {
+      "text": "你是怎么坚持下来的？",
+      "source": "知识分享",
+      "score": 2,
+      "keywords": [
+        "怎么",
+        "坚持"
+      ]
+    },
+    {
+      "text": "有没有不需要太多本钱的项目推荐？",
+      "source": "创业",
+      "score": 2,
+      "keywords": [
+        "有没有",
+        "推荐"
+      ]
+    },
+    {
+      "text": "会不会被割韭菜？怎么分辨靠谱项目？",
+      "source": "创业",
+      "score": 2,
+      "keywords": [
+        "怎么",
+        "靠谱"
+      ]
+    },
+    {
+      "text": "怎么判断一个理财产品靠不靠谱？",
+      "source": "理财",
+      "score": 2,
+      "keywords": [
+        "怎么",
+        "靠谱"
+      ]
+    },
+    {
+      "text": "能不能推荐几个稳健型的产品？",
+      "source": "理财",
+      "score": 2,
+      "keywords": [
+        "能不能",
+        "推荐"
+      ]
+    },
+    {
+      "text": "有没有适合懒人的定投方案？",
+      "source": "理财",
+      "score": 2,
+      "keywords": [
+        "有没有",
+        "适合"
+      ]
+    },
+    {
+      "text": "怎么才能记得住这么多知识点？",
+      "source": "知识分享",
+      "score": 1,
+      "keywords": [
+        "怎么"
+      ]
+    },
+    {
+      "text": "为什么我照着做效果不明显？",
+      "source": "知识分享",
+      "score": 1,
+      "keywords": [
+        "效果"
+      ]
+    },
+    {
+      "text": "有没有更简单的方法？",
+      "source": "知识分享",
+      "score": 1,
+      "keywords": [
+        "有没有"
+      ]
+    },
+    {
+      "text": "这些技巧适合零基础吗？",
+      "source": "知识分享",
+      "score": 1,
+      "keywords": [
+        "适合"
+      ]
+    },
+    {
+      "text": "能不能出一期慢节奏的教学视频？",
+      "source": "知识分享",
+      "score": 1,
+      "keywords": [
+        "能不能"
+      ]
+    },
+    {
+      "text": "内容太干，能不能多加点实操案例？",
+      "source": "知识分享",
+      "score": 1,
+      "keywords": [
+        "能不能"
+      ]
+    },
+    {
+      "text": "有没有交流群可以一起学习？",
+      "source": "知识分享",
+      "score": 1,
+      "keywords": [
+        "有没有"
+      ]
+    },
+    {
+      "text": "失败了你怎么办？有退路吗？",
+      "source": "创业",
+      "score": 1,
+      "keywords": [
+        "怎么"
+      ]
+    },
+    {
+      "text": "现在行情不好，适合创业吗？",
+      "source": "创业",
+      "score": 1,
+      "keywords": [
+        "适合"
+      ]
+    },
+    {
+      "text": "能不能带人一起做？",
+      "source": "创业",
+      "score": 1,
+      "keywords": [
+        "能不能"
+      ]
+    },
+    {
+      "text": "怎么找到第一批客户？",
+      "source": "创业",
+      "score": 1,
+      "keywords": [
+        "怎么"
+      ]
+    },
+    {
+      "text": "你是怎么平衡主业和副业的？",
+      "source": "创业",
+      "score": 1,
+      "keywords": [
+        "怎么"
+      ]
+    },
+    {
+      "text": "做了多久才开始盈利的？",
+      "source": "创业",
+      "score": 1,
+      "keywords": [
+        "开始"
+      ]
+    },
+    {
+      "text": "团队一开始几个人比较合适？",
+      "source": "创业",
+      "score": 1,
+      "keywords": [
+        "开始"
+      ]
+    },
+    {
+      "text": "如果第一年没盈利还要坚持吗？",
+      "source": "创业",
+      "score": 1,
+      "keywords": [
+        "坚持"
+      ]
+    },
+    {
+      "text": "基金亏了快20%要不要割肉？",
+      "source": "理财",
+      "score": 1,
+      "keywords": [
+        "亏"
+      ]
+    },
+    {
+      "text": "黄金现在还能买吗？",
+      "source": "理财",
+      "score": 1,
+      "keywords": [
+        "买"
+      ]
+    },
+    {
+      "text": "通货膨胀这么高，存钱是不是反而亏了？",
+      "source": "理财",
+      "score": 1,
+      "keywords": [
+        "亏"
+      ]
+    },
+    {
+      "text": "可转债打新现在还值得参与吗？",
+      "source": "理财",
+      "score": 1,
+      "keywords": [
+        "值得"
+      ]
+    },
+    {
+      "text": "怎么防止被银行理财经理忽悠？",
+      "source": "理财",
+      "score": 1,
+      "keywords": [
+        "怎么"
+      ]
+    },
+    {
+      "text": "哪个AI工具最好用？免费的有推荐吗？",
+      "source": "AI",
+      "score": 1,
+      "keywords": [
+        "推荐"
+      ]
+    },
+    {
+      "text": "提示词怎么写才能出高质量结果？",
+      "source": "AI",
+      "score": 1,
+      "keywords": [
+        "怎么"
+      ]
+    },
+    {
+      "text": "AI画画能商用吗？版权怎么算？",
+      "source": "AI",
+      "score": 1,
+      "keywords": [
+        "怎么"
+      ]
+    },
+    {
+      "text": "现在学AI还来得及吗？门槛高不高？",
+      "source": "AI",
+      "score": 1,
+      "keywords": [
+        "门槛"
+      ]
+    },
+    {
+      "text": "怎么用AI提升工作效率？有具体案例吗？",
+      "source": "AI",
+      "score": 1,
+      "keywords": [
+        "怎么"
+      ]
+    },
+    {
+      "text": "AI生成的代码安全吗？能用在生产环境？",
+      "source": "AI",
+      "score": 1,
+      "keywords": [
+        "安全"
+      ]
+    },
+    {
+      "text": "会不会用AI的人替代不会用的人？",
+      "source": "AI",
+      "score": 1,
+      "keywords": [
+        "替代"
+      ]
+    },
+    {
+      "text": "这些方法真的有用吗？实测过没有？",
+      "source": "知识分享",
+      "score": 0,
+      "keywords": []
+    },
+    {
+      "text": "你用了多久才形成这个体系的？",
+      "source": "知识分享",
+      "score": 0,
+      "keywords": []
+    },
+    {
+      "text": "看完收藏等于学会吗？",
+      "source": "知识分享",
+      "score": 0,
+      "keywords": []
+    },
+    {
+      "text": "启动资金最少需要多少？",
+      "source": "创业",
+      "score": 0,
+      "keywords": []
+    },
+    {
+      "text": "这个模式在小城市能跑通吗？",
+      "source": "创业",
+      "score": 0,
+      "keywords": []
+    },
+    {
+      "text": "投入产出比大概多少？",
+      "source": "创业",
+      "score": 0,
+      "keywords": []
+    },
+    {
+      "text": "需要注册公司吗？前期要办哪些手续？",
+      "source": "创业",
+      "score": 0,
+      "keywords": []
+    },
+    {
+      "text": "月薪5000真的有必要理财吗？",
+      "source": "理财",
+      "score": 0,
+      "keywords": []
+    },
+    {
+      "text": "银行存款和理财哪个更划算？",
+      "source": "理财",
+      "score": 0,
+      "keywords": []
+    },
+    {
+      "text": "有房贷还要不要投资？",
+      "source": "理财",
+      "score": 0,
+      "keywords": []
+    },
+    {
+      "text": "年轻人应该先攒钱还是先投资自己？",
+      "source": "理财",
+      "score": 0,
+      "keywords": []
+    },
+    {
+      "text": "理财会不会越理越少？",
+      "source": "理财",
+      "score": 0,
+      "keywords": []
+    },
+    {
+      "text": "资产配置的比例多久调整一次？",
+      "source": "理财",
+      "score": 0,
+      "keywords": []
+    }
+  ]
+}

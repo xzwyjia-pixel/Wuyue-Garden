@@ -1,0 +1,125 @@
+---
+title: 
+PS C:\Users\think> Write-Host "✅ 补丁已部署。请检查 Obsidian 中的 Open_in_VS_Code 链接。" -ForegroundColor Cyan
+✅ 补丁已部署。请检查 Obsidian 中的 Open_in_VS_Code 链接。
+PS C:\Users\think> Write-Host "--- Michael 的 VS Code 环境诊断 ---" -ForegroundColor Yellow
+--- Michael 的 VS Code 环境诊断 ---
+PS C:\Users\think>
+PS C:\Users\think> # 1. 检测命令行工具是否存在
+PS C:\Users\think> $codePath = Get-Command code -ErrorAction SilentlyContinue
+PS C:\Users\think> if ($codePath) {
+>>     Write-Host "✅ [命令行成功]: 'code' 命令已安装在环境变量中。" -ForegroundColor Green
+>>     Write-Host "位置: $($codePath.Source)"
+>> } else {
+>>     Write-Host "❌ [命令行失败]: 找不到 'code' 命令。你可能需要在 VS Code 中运行 'Install code command in PATH'。" -ForegroundColor Red
+>> }
+✅ [命令行成功]: 'code' 命令已安装在环境变量中。
+位置: E:\VSCode\bin\code.cmd
+PS C:\Users\think>
+PS C:\Users\think> # 2. 检测 VS Code 协议注册表 (这是跳转成功的关键)
+PS C:\Users\think> $registry = Get-ItemProperty -Path "HKCU:\Software\Classes\vscode" -ErrorAction SilentlyContinue
+PS C:\Users\think> if ($registry) {
+>>     Write-Host "✅ [协议成功]: Windows 注册表中已发现 'vscode://' 协议关联。" -ForegroundColor Green
+>> } else {
+>>     Write-Host "❌ [协议失败]: 注册表中找不到 vscode 协议。这是导致 Obsidian 点击没反应的核心原因。" -ForegroundColor Red
+>> }
+✅ [协议成功]: Windows 注册表中已发现 'vscode://' 协议关联。
+PS C:\Users\think>
+PS C:\Users\think> # 3. 尝试直接唤醒测试
+PS C:\Users\think> Write-Host "`n正在尝试唤醒 VS Code..." -ForegroundColor Cyan
+
+正在尝试唤醒 VS Code...
+PS C:\Users\think> Start-Process "vscode://file/E:/Mycodeprojects"
+Start-Process : 由于出现以下错误，无法运行此命令: 找不到应用程序。
+所在位置 行:1 字符: 1
++ Start-Process "vscode://file/E:/Mycodeprojects"
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Start-Process]，InvalidOperationException
+    + FullyQualifiedErrorId : InvalidOperationException,Microsoft.PowerShell.Commands.StartProcessCommand
+
+PS C:\Users\think>
+source: gemini
+date: 2026-05-10
+category: 系统运维
+tags: [gemini, 系统运维]
+---
+
+## 
+PS C:\Users\think> Write-Host "✅ 补丁已部署。请检查 Obsidian 中的 Open_in_VS_Code 链接。" -ForegroundColor Cyan
+✅ 补丁已部署。请检查 Obsidian 中的 Open_in_VS_Code 链接。
+PS C:\Users\think> Write-Host "--- Michael 的 VS Code 环境诊断 ---" -ForegroundColor Yellow
+--- Michael 的 VS Code 环境诊断 ---
+PS C:\Users\think>
+PS C:\Users\think> # 1. 检测命令行工具是否存在
+PS C:\Users\think> $codePath = Get-Command code -ErrorAction SilentlyContinue
+PS C:\Users\think> if ($codePath) {
+>>     Write-Host "✅ [命令行成功]: 'code' 命令已安装在环境变量中。" -ForegroundColor Green
+>>     Write-Host "位置: $($codePath.Source)"
+>> } else {
+>>     Write-Host "❌ [命令行失败]: 找不到 'code' 命令。你可能需要在 VS Code 中运行 'Install code command in PATH'。" -ForegroundColor Red
+>> }
+✅ [命令行成功]: 'code' 命令已安装在环境变量中。
+位置: E:\VSCode\bin\code.cmd
+PS C:\Users\think>
+PS C:\Users\think> # 2. 检测 VS Code 协议注册表 (这是跳转成功的关键)
+PS C:\Users\think> $registry = Get-ItemProperty -Path "HKCU:\Software\Classes\vscode" -ErrorAction SilentlyContinue
+PS C:\Users\think> if ($registry) {
+>>     Write-Host "✅ [协议成功]: Windows 注册表中已发现 'vscode://' 协议关联。" -ForegroundColor Green
+>> } else {
+>>     Write-Host "❌ [协议失败]: 注册表中找不到 vscode 协议。这是导致 Obsidian 点击没反应的核心原因。" -ForegroundColor Red
+>> }
+✅ [协议成功]: Windows 注册表中已发现 'vscode://' 协议关联。
+PS C:\Users\think>
+PS C:\Users\think> # 3. 尝试直接唤醒测试
+PS C:\Users\think> Write-Host "`n正在尝试唤醒 VS Code..." -ForegroundColor Cyan
+
+正在尝试唤醒 VS Code...
+PS C:\Users\think> Start-Process "vscode://file/E:/Mycodeprojects"
+Start-Process : 由于出现以下错误，无法运行此命令: 找不到应用程序。
+所在位置 行:1 字符: 1
++ Start-Process "vscode://file/E:/Mycodeprojects"
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Start-Process]，InvalidOperationException
+    + FullyQualifiedErrorId : InvalidOperationException,Microsoft.PowerShell.Commands.StartProcessCommand
+
+PS C:\Users\think>
+
+诊断结果非常清晰了：你的 VS Code 命令行工具（code.cmd）虽然存在，但 Windows 的 URL 协议分发器坏了。
+简单来说，Windows 知道有个东西叫 code，但当你喊 vscode://（这个协议头）时，系统虽然在注册表里看到了这个名字，却找不到它对应的“身体”（可执行程序）。这就是为什么你的 Start-Process 会报错“找不到应用程序”。
+请按以下两个步骤彻底修复这个“协议断层”：
+1. 彻底重新激活协议 (最快方案)
+你不需要卸载，只需要执行一次“注册”动作：
+
+打开 VS Code。
+按下 Ctrl + Shift + P。
+输入 shell。
+先执行：Shell Command: Uninstall 'code' command from PATH（先卸载）。
+再执行：Shell Command: Install 'code' command in PATH（重新安装）。
+
+注：如果弹出需要管理员权限，点击“是”。
+
+
+
+2. 检查安装路径的“后遗症”
+你的 VS Code 安装在 E:\VSCode，这属于自定义路径。有时候 Windows 升级或移动文件夹会导致注册表里的路径失效。
+请在 PowerShell 运行这段“强力修复”注册表的代码（这会把注册表里的门牌号强行指向你的 E 盘安装目录）：
+$vsExePath = "E:\VSCode\Code.exe" # 根据你刚才 code.cmd 的位置推算
+if (Test-Path $vsExePath) {
+    $regPath = "HKCU:\Software\Classes\vscode\shell\open\command"
+    if (!(Test-Path $regPath)) { New-Item -Path $regPath -Force }
+    Set-ItemProperty -Path $regPath -Name "(Default)" -Value "`"$vsExePath`" `"%1`""
+    Write-Host "✅ 注册表修复成功！协议已指向: $vsExePath" -ForegroundColor Green
+} else {
+    Write-Host "❌ 没找到 Code.exe，请确认你的安装目录是不是 E:\VSCode\Code.exe" -ForegroundColor Red
+}
+
+
+🏁 修复后的终极测试
+运行完上面的代码后，不需要回 Obsidian，直接在 PowerShell 运行这一句：
+Start-Process "vscode://file/E:/Mycodeprojects"
+
+如果这时候 VS Code 弹出来了，那么恭喜你，Obsidian 里的链接也会瞬间复活！ 如果还是报“找不到应用程序”，那说明 E:\VSCode 目录下可能缺少某个核心 dll 或是权限被锁死，这时候最省事的方法就是去官网下载最新的 User Installer 覆盖安装一下（数据和插件都不会丢，但它会自动帮你修好所有的系统关联）。
+现在的尝试结果如何？VS Code 睁眼了吗？
+
+---
+*从 Gemini 导出，2026-05*

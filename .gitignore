@@ -8,9 +8,7 @@
 
 # Smart Environment data
 .smart-env/
-
-# Large media / binary assets
-原始资料/
+.smart-env
 
 # Node
 node_modules/
@@ -20,8 +18,77 @@ Thumbs.db
 .DS_Store
 desktop.ini
 
+# Large media / binary assets
+原始资料/
 
+# Excalidraw data
+*.excalidraw
 
+# === Content folders: exclude pure media ===
+07_素材资源_截图附件模板/
 
-# Ignore Smart Environment folder
-.smart-env
+# Image files
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.bmp
+*.ico
+*.svg
+*.HEIC
+*.psd
+*.ai
+*.eps
+*.tif
+*.tiff
+
+# Video / Audio
+*.mp4
+*.avi
+*.mov
+*.wmv
+*.mkv
+*.webm
+*.mp3
+*.wav
+*.flac
+*.aac
+*.ogg
+
+# Documents / Archives
+*.pdf
+*.doc
+*.docx
+*.xls
+*.xlsx
+*.xlsm
+*.pptx
+*.mdb
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+
+# Engineering / CAD
+*.dwg
+*.dwf
+*.dxf
+
+# Large generated data
+*.jsonl
+*.sample
+
+# Fonts
+*.ttf
+*.ttc
+*.otf
+*.woff
+*.woff2
+
+# Logs
+*.log
+
+# Make.md cache
+.makemd/

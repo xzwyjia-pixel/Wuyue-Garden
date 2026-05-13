@@ -1,0 +1,45 @@
+---
+title: 第二招执行后，显示是操作完成。现在win+E 还是没有解决问题
+source: gemini
+date: 2026-04-25
+category: 其他
+tags: [gemini, 其他]
+---
+
+## 第二招执行后，显示是操作完成。现在win+E 还是没有解决问题
+
+既然之前的命令能成功打开资源管理器，说明路径是通的，但 Win + E 这个热键信号没有被系统正确捕捉。
+根据你作为 ThinkPad 用户且使用习惯较稳固的背景，结合目前注册表已基本修复的情况，Win + E 依然失效极有可能是以下三个隐藏深度最高的原因之一：
+1. 检查“Windows 键热键”是否在策略层被禁用
+有些优化软件会为了防止游戏误触，直接在系统策略里封死了 Win 组合键。
+
+按下 Win + R，输入 regedit 并回车。
+导航到：HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer
+在右侧找找看有没有一个叫 NoWinKeys 的值。
+如果有，请直接右键删除它，或者将其数值改为 0。
+然后再去这个路径看一眼（如果有的话）：HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer，同样删除 NoWinKeys。
+
+2. 重置文件夹启动“代理”
+Win + E 触发时，系统会调用一个“代理对象”。如果这个代理缓存坏了，按键就没反应。请在管理员 CMD 中执行这最后一行绝杀命令：
+reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "LaunchTo" /t REG_DWORD /d 1 /f
+
+注：d 1 代表默认打开“此电脑”，d 2 代表“快速访问”。执行后重启资源管理器测试。
+3. 排除“三方软件劫持”
+你之前的右键菜单里有 Bandizip 和 百度网盘。
+
+输入法劫持： 某些输入法（如搜狗、QQ输入法）的“快捷键设置”里有时会误占 Win + E。请尝试切换到系统自带的英文输入法，再按 Win + E 试试。
+ThinkPad 热键驱动： 检查任务栏右下角是否有联想的设置图标，确认没有开启“游戏模式”或“Fn 锁定”。
+
+
+最后的验证手段
+如果以上都无效，请做一个简单的实验：
+
+按下 Ctrl + Alt + Del，选择 注销。
+重新登录。
+
+如果注销重登后 Win + E 瞬间好了： 说明是某个随系统启动的软件（可能是你那几个右键插件）在运行过程中拦截了热键。
+如果还是不行： 建议进入 设置 -> 系统 -> 恢复 -> 立即重新启动，选择“启动修复”。因为这代表你系统的 Shell32.dll 全局热键表出现了非注册表层面的逻辑错误。
+目前执行完第一步的 NoWinKeys 检查，右侧有看到这个值吗？
+
+---
+*从 Gemini 导出，2026-04*

@@ -1,0 +1,68 @@
+---
+title: Prompted
+source: gemini
+date: 2026-05-04
+category: 编程开发
+tags: [gemini, 编程开发]
+---
+
+## Prompted
+
+从图片 image_aafb10.png 和新的截图来看，安装已经成功了，但你在运行代码时遇到了一个典型的环境误区。
+1. 错误原因排查
+在 image_aafe5b.png 中，你是在 PowerShell 终端里直接输入了 Python 代码。
+
+报错信息： The 'from' keyword is not supported in this version of the language.
+根本原因： PowerShell 是 Windows 的命令行外壳，它不认识 Python 语法。你必须先进入 Python 交互环境，或者将代码保存为 .py 文件再运行。
+
+
+2. 正确的运行步骤
+请按照以下任一方式操作：
+方法 A：进入 Python 交互模式（适合快速测试）
+
+在终端输入 python 并回车。
+当看到提示符变成 >>> 时，再粘贴代码。
+注意： 粘贴时请确保 api_key 已替换为你真实的 MiniMax 密钥。
+
+方法 B：保存为脚本运行（推荐，适合你的审计工具开发）
+
+在桌面或项目文件夹下新建一个文件，命名为 audit_test.py。
+将代码粘贴进去并保存。
+在 PowerShell 中运行该文件：
+python audit_test.py
+
+
+
+
+
+---
+
+### 3. 代码微调建议
+为了让你之前的 **Python 审计工具** 运行更顺畅，建议代码中加入编码声明，防止处理中文脚本时乱码：
+
+```python
+# -*- coding: utf-8 -*-
+from openai import OpenAI
+
+client = OpenAI(
+    api_key="你的_MINIMAX_API_KEY", # 替换为真实 Key
+    base_url="https://api.minimaxi.com/v1"
+)
+
+try:
+    response = client.chat.completions.create(
+        model="abab6.5-s-chat", # 建议使用最新模型名
+        messages=[
+            {"role": "system", "content": "你是一个内容审计专家。"},
+            {"role": "user", "content": "请检查这段文本是否有违规词：'赚-钱'、'蕞强'。"}
+        ]
+    )
+    print(response.choices[0].message.content)
+except Exception as e:
+    print(f"调用出错: {e}")
+
+提示
+由于你之前提到的 audit_tool.py 已经能成功检测到违规词，你可以直接将上述逻辑集成到你现有的 MCP 技能中，这样你的“规则甄查”就能通过 MiniMax 的大模型能力进行更智能的语义分析了。
+
+---
+*从 Gemini 导出，2026-05*

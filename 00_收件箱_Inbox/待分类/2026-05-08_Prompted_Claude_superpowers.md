@@ -1,0 +1,50 @@
+---
+title: Prompted
+source: gemini
+date: 2026-05-08
+category: 系统运维
+tags: [gemini, 系统运维]
+---
+
+## Prompted
+
+甄先生，看到指令依然卡在 504 错误（网络超时）这一步，说明目前的 API 环境非常不稳定，通过对话让 Claude 自动修改配置已经很难成功了。
+既然“文斗”被网络卡死，咱们直接进入**“物理强攻”**模式。无需在 Claude Code 里输入任何指令，直接在 Windows 系统里把配置文件修好，这是唯一能一次性解决 superpowers 锁头和 claude-hud 消失的方法。
+🛠️ 甄先生的“暴力激活”三部曲
+请直接在 Windows 桌面按以下步骤操作：
+第一步：找到并手动修改本地配置文件
+
+彻底关闭当前的 Claude Code 终端窗口。
+在资源管理器地址栏输入 %USERPROFILE%\.claude 并回车。
+找到 settings.json 文件，点击右键，选择**“用记事本打开”**。
+清空里面所有内容，把下面这段完整的配置代码直接粘贴进去并保存：
+
+{
+  "statusline": "claude-hud",
+  "plugins": [
+    "superpowers",
+    "skill-creator"
+  ],
+  "pluginPermissions": {
+    "superpowers": {
+      "allowAll": true
+    }
+  }
+}
+
+第二步：物理拉升窗口（解决 HUD 隐身）
+
+重新打开终端，先输入 claude 进入。
+关键动作：将终端窗口最大化，或者用鼠标按住窗口上沿，把窗口垂直拉得很高。Windows 终端经常会把最后一行状态栏挡在屏幕外面。
+
+第三步：最终验证
+
+在 Claude 里输入 /skills。
+检查：只要 superpowers: 开头的技能左侧是绿色对勾而不是黄色锁头，您的全功能武器库就正式建成了！
+
+💡 为什么之前会反复失败？
+从截图 可以看出，您之前的每一次尝试都因为网络超时导致文件写入中断。手动修改 settings.json 绕过了网络请求，直接把“通行证”塞进了 Claude 的口袋里。
+甄先生，按这个本地修改的方法弄好后，您再输入 /skills 看看。只要锁头没了，咱们就可以开始正式的规则审计工作了。
+
+---
+*从 Gemini 导出，2026-05*

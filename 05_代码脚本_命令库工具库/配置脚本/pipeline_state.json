@@ -1,0 +1,755 @@
+{
+  "pipeline_id": "20260509_135908",
+  "started_at": "2026-05-09T13:59:08.086570",
+  "steps": [
+    {
+      "step": "1/7",
+      "name": "抓取公告",
+      "status": "skipped",
+      "duration_s": 1.1,
+      "detail": ""
+    },
+    {
+      "step": "2/7",
+      "name": "进化规则",
+      "status": "ok",
+      "duration_s": 4.7,
+      "detail": ""
+    },
+    {
+      "step": "3/7",
+      "name": "审计改写",
+      "status": "ok",
+      "duration_s": 0,
+      "detail": "3 条, 3 通过"
+    },
+    {
+      "step": "4/7",
+      "name": "同步 Obsidian",
+      "status": "ok",
+      "duration_s": 0.1,
+      "detail": ""
+    },
+    {
+      "step": "5/7",
+      "name": "导出分发素材",
+      "status": "ok",
+      "duration_s": 1.3,
+      "detail": ""
+    },
+    {
+      "step": "6/7",
+      "name": "视觉审计",
+      "status": "ok",
+      "duration_s": 0.6,
+      "detail": ""
+    },
+    {
+      "step": "7/7",
+      "name": "云端同步",
+      "status": "ok",
+      "duration_s": 1.3,
+      "detail": ""
+    }
+  ],
+  "refine_cases": [
+    "这是全网第一的赚钱秘籍，绝对不封号，私信我领链接！",
+    "零成本创业，一学就会的赚钱方法。",
+    "点击领取私信我，最快入账方式，绝对赚钱。"
+  ],
+  "refine_results": [
+    {
+      "original_text": "这是全网第一的赚钱秘籍，绝对不封号，私信我领链接！",
+      "final_text": "深耕价值的资产增值逻辑，后台留言获取合规入口。",
+      "rounds": 1,
+      "round_history": [
+        {
+          "round": 1,
+          "text": "深耕价值的资产增值逻辑，后台留言获取合规入口。",
+          "risk_counts": {
+            "HIGH": 0,
+            "MEDIUM": 0,
+            "LOW": 0
+          },
+          "risk_count": 0,
+          "policy_fitness": {
+            "total_score": 49.6,
+            "dimensions": {
+              "原创度": {
+                "score": 40,
+                "weight": 0.3,
+                "description": "内容是否为独立创作，非搬运/洗稿",
+                "weighted_score": 12.0
+              },
+              "真实性": {
+                "score": 35,
+                "weight": 0.25,
+                "description": "内容是否有可验证的事实/数据支撑",
+                "weighted_score": 8.8
+              },
+              "价值性": {
+                "score": 35,
+                "weight": 0.25,
+                "description": "内容是否提供知识/技能/情绪价值",
+                "weighted_score": 8.8
+              },
+              "合规性": {
+                "score": 100,
+                "weight": 0.2,
+                "description": "内容是否完全符合平台最新规则",
+                "weighted_score": 20.0
+              }
+            },
+            "grade": "C · 待优化",
+            "suggestion": "风险较高，建议大幅修改后重新评估，避免触发平台处罚。"
+          }
+        }
+      ],
+      "pre_audit": {
+        "version": "2.0.1",
+        "mode": "standard",
+        "brand": "规则甄查 · 甄先生 v2.0",
+        "tagline": "红绿灯双向导航 · 红灯避险 · 绿灯起量",
+        "risk_points": [
+          {
+            "level": "HIGH",
+            "category": "违禁词 · 封号风险",
+            "word": "第一",
+            "risk": "绝对化用语，违反《广告法》第九条",
+            "replace_suggestion": "业内深耕 / 追求极致",
+            "policy_ref": "2026抖音《广告内容合规指引》第3.2条",
+            "action": "强制拦截"
+          },
+          {
+            "level": "HIGH",
+            "category": "违禁词 · 封号风险",
+            "word": "封号",
+            "risk": "承诺性表述，暗示平台规则可规避",
+            "replace_suggestion": "规范运营 / 长期合规",
+            "policy_ref": "2026抖音《社区自律公约》第5章",
+            "action": "强制拦截"
+          },
+          {
+            "level": "HIGH",
+            "category": "违禁词 · 封号风险",
+            "word": "绝对",
+            "risk": "绝对化断言，缺乏实证支撑",
+            "replace_suggestion": "确定性 / 高度一致",
+            "policy_ref": "2026《互联网广告管理办法》第11条",
+            "action": "强制拦截"
+          },
+          {
+            "level": "MEDIUM",
+            "category": "营销诱导 · 限流风险",
+            "word": "私信",
+            "risk": "诱导私域导流，触发平台导流检测",
+            "replace_suggestion": "后台留言 / 深度交流",
+            "policy_ref": "2026抖音《站外导流限制》第4条",
+            "action": "建议修改"
+          },
+          {
+            "level": "MEDIUM",
+            "category": "营销诱导 · 限流风险",
+            "word": "链接",
+            "risk": "外链跳转，触发平台外链审查机制",
+            "replace_suggestion": "入口 / 详情页",
+            "policy_ref": "2026视频号《外链管理规范》",
+            "action": "建议修改"
+          },
+          {
+            "level": "MEDIUM",
+            "category": "营销诱导 · 限流风险",
+            "word": "赚钱",
+            "risk": "金钱承诺，触发金融/投资类内容审查",
+            "replace_suggestion": "资产增值 / 商业赋能 / 价值增长",
+            "policy_ref": "2026《金融营销宣传合规指引》",
+            "action": "建议修改"
+          }
+        ],
+        "incentive_points": [],
+        "policy_fitness": {
+          "total_score": 29.6,
+          "dimensions": {
+            "原创度": {
+              "score": 40,
+              "weight": 0.3,
+              "description": "内容是否为独立创作，非搬运/洗稿",
+              "weighted_score": 12.0
+            },
+            "真实性": {
+              "score": 35,
+              "weight": 0.25,
+              "description": "内容是否有可验证的事实/数据支撑",
+              "weighted_score": 8.8
+            },
+            "价值性": {
+              "score": 35,
+              "weight": 0.25,
+              "description": "内容是否提供知识/技能/情绪价值",
+              "weighted_score": 8.8
+            },
+            "合规性": {
+              "score": 0,
+              "weight": 0.2,
+              "description": "内容是否完全符合平台最新规则",
+              "weighted_score": 0.0
+            }
+          },
+          "grade": "D · 高风险",
+          "suggestion": "⚠️ 高风险内容，强烈建议放弃当前版本，重新创作。"
+        },
+        "optimization_advice": [
+          "🔴 紧急：替换高风险词 「第一」、「封号」、「绝对」，建议改为 业内深耕 / 追求极致",
+          "🟡 注意：修改营销诱导词 「私信」、「链接」、「赚钱」，降低限流概率",
+          "📊 政策契合度提升：重点优化「原创度」「真实性」「价值性」「合规性」维度"
+        ],
+        "refined_content": "这是全网业内深耕的资产增值秘籍，确定性不规范运营，后台留言我领入口！"
+      },
+      "post_audit": {
+        "version": "2.0.1",
+        "mode": "standard",
+        "brand": "规则甄查 · 甄先生 v2.0",
+        "tagline": "红绿灯双向导航 · 红灯避险 · 绿灯起量",
+        "risk_points": [],
+        "incentive_points": [],
+        "policy_fitness": {
+          "total_score": 49.6,
+          "dimensions": {
+            "原创度": {
+              "score": 40,
+              "weight": 0.3,
+              "description": "内容是否为独立创作，非搬运/洗稿",
+              "weighted_score": 12.0
+            },
+            "真实性": {
+              "score": 35,
+              "weight": 0.25,
+              "description": "内容是否有可验证的事实/数据支撑",
+              "weighted_score": 8.8
+            },
+            "价值性": {
+              "score": 35,
+              "weight": 0.25,
+              "description": "内容是否提供知识/技能/情绪价值",
+              "weighted_score": 8.8
+            },
+            "合规性": {
+              "score": 100,
+              "weight": 0.2,
+              "description": "内容是否完全符合平台最新规则",
+              "weighted_score": 20.0
+            }
+          },
+          "grade": "C · 待优化",
+          "suggestion": "风险较高，建议大幅修改后重新评估，避免触发平台处罚。"
+        },
+        "optimization_advice": [
+          "📊 政策契合度提升：重点优化「原创度」「真实性」「价值性」维度"
+        ],
+        "refined_content": "深耕价值的资产增值逻辑，后台留言获取合规入口。"
+      },
+      "verified_safe": true,
+      "mode": "standard"
+    },
+    {
+      "original_text": "零成本创业，一学就会的赚钱方法。",
+      "final_text": "零成本启动，一学即用的价值增长路径。",
+      "rounds": 1,
+      "round_history": [
+        {
+          "round": 1,
+          "text": "零成本启动，一学即用的价值增长路径。",
+          "risk_counts": {
+            "HIGH": 0,
+            "MEDIUM": 0,
+            "LOW": 0
+          },
+          "risk_count": 0,
+          "policy_fitness": {
+            "total_score": 52.0,
+            "dimensions": {
+              "原创度": {
+                "score": 40,
+                "weight": 0.3,
+                "description": "内容是否为独立创作，非搬运/洗稿",
+                "weighted_score": 12.0
+              },
+              "真实性": {
+                "score": 35,
+                "weight": 0.25,
+                "description": "内容是否有可验证的事实/数据支撑",
+                "weighted_score": 8.8
+              },
+              "价值性": {
+                "score": 45,
+                "weight": 0.25,
+                "description": "内容是否提供知识/技能/情绪价值",
+                "weighted_score": 11.2
+              },
+              "合规性": {
+                "score": 100,
+                "weight": 0.2,
+                "description": "内容是否完全符合平台最新规则",
+                "weighted_score": 20.0
+              }
+            },
+            "grade": "C · 待优化",
+            "suggestion": "风险较高，建议大幅修改后重新评估，避免触发平台处罚。"
+          }
+        }
+      ],
+      "pre_audit": {
+        "version": "2.0.1",
+        "mode": "standard",
+        "brand": "规则甄查 · 甄先生 v2.0",
+        "tagline": "红绿灯双向导航 · 红灯避险 · 绿灯起量",
+        "risk_points": [
+          {
+            "level": "MEDIUM",
+            "category": "营销诱导 · 限流风险",
+            "word": "赚钱",
+            "risk": "金钱承诺，触发金融/投资类内容审查",
+            "replace_suggestion": "资产增值 / 商业赋能 / 价值增长",
+            "policy_ref": "2026《金融营销宣传合规指引》",
+            "action": "建议修改"
+          }
+        ],
+        "incentive_points": [],
+        "policy_fitness": {
+          "total_score": 50.0,
+          "dimensions": {
+            "原创度": {
+              "score": 40,
+              "weight": 0.3,
+              "description": "内容是否为独立创作，非搬运/洗稿",
+              "weighted_score": 12.0
+            },
+            "真实性": {
+              "score": 35,
+              "weight": 0.25,
+              "description": "内容是否有可验证的事实/数据支撑",
+              "weighted_score": 8.8
+            },
+            "价值性": {
+              "score": 45,
+              "weight": 0.25,
+              "description": "内容是否提供知识/技能/情绪价值",
+              "weighted_score": 11.2
+            },
+            "合规性": {
+              "score": 90,
+              "weight": 0.2,
+              "description": "内容是否完全符合平台最新规则",
+              "weighted_score": 18.0
+            }
+          },
+          "grade": "C · 待优化",
+          "suggestion": "风险较高，建议大幅修改后重新评估，避免触发平台处罚。"
+        },
+        "optimization_advice": [
+          "🟡 注意：修改营销诱导词 「赚钱」，降低限流概率",
+          "📊 政策契合度提升：重点优化「原创度」「真实性」「价值性」维度"
+        ],
+        "refined_content": "零成本创业，一学就会的资产增值方法。"
+      },
+      "post_audit": {
+        "version": "2.0.1",
+        "mode": "standard",
+        "brand": "规则甄查 · 甄先生 v2.0",
+        "tagline": "红绿灯双向导航 · 红灯避险 · 绿灯起量",
+        "risk_points": [],
+        "incentive_points": [],
+        "policy_fitness": {
+          "total_score": 52.0,
+          "dimensions": {
+            "原创度": {
+              "score": 40,
+              "weight": 0.3,
+              "description": "内容是否为独立创作，非搬运/洗稿",
+              "weighted_score": 12.0
+            },
+            "真实性": {
+              "score": 35,
+              "weight": 0.25,
+              "description": "内容是否有可验证的事实/数据支撑",
+              "weighted_score": 8.8
+            },
+            "价值性": {
+              "score": 45,
+              "weight": 0.25,
+              "description": "内容是否提供知识/技能/情绪价值",
+              "weighted_score": 11.2
+            },
+            "合规性": {
+              "score": 100,
+              "weight": 0.2,
+              "description": "内容是否完全符合平台最新规则",
+              "weighted_score": 20.0
+            }
+          },
+          "grade": "C · 待优化",
+          "suggestion": "风险较高，建议大幅修改后重新评估，避免触发平台处罚。"
+        },
+        "optimization_advice": [
+          "📊 政策契合度提升：重点优化「原创度」「真实性」「价值性」维度"
+        ],
+        "refined_content": "零成本启动，一学即用的价值增长路径。"
+      },
+      "verified_safe": true,
+      "mode": "standard"
+    },
+    {
+      "original_text": "点击领取私信我，最快入账方式，绝对赚钱。",
+      "final_text": "后台留言获取核心入账方式，确定性资产增值路径。",
+      "rounds": 1,
+      "round_history": [
+        {
+          "round": 1,
+          "text": "后台留言获取核心入账方式，确定性资产增值路径。",
+          "risk_counts": {
+            "HIGH": 0,
+            "MEDIUM": 0,
+            "LOW": 0
+          },
+          "risk_count": 0,
+          "policy_fitness": {
+            "total_score": 54.6,
+            "dimensions": {
+              "原创度": {
+                "score": 40,
+                "weight": 0.3,
+                "description": "内容是否为独立创作，非搬运/洗稿",
+                "weighted_score": 12.0
+              },
+              "真实性": {
+                "score": 35,
+                "weight": 0.25,
+                "description": "内容是否有可验证的事实/数据支撑",
+                "weighted_score": 8.8
+              },
+              "价值性": {
+                "score": 55,
+                "weight": 0.25,
+                "description": "内容是否提供知识/技能/情绪价值",
+                "weighted_score": 13.8
+              },
+              "合规性": {
+                "score": 100,
+                "weight": 0.2,
+                "description": "内容是否完全符合平台最新规则",
+                "weighted_score": 20.0
+              }
+            },
+            "grade": "C · 待优化",
+            "suggestion": "风险较高，建议大幅修改后重新评估，避免触发平台处罚。"
+          }
+        }
+      ],
+      "pre_audit": {
+        "version": "2.0.1",
+        "mode": "standard",
+        "brand": "规则甄查 · 甄先生 v2.0",
+        "tagline": "红绿灯双向导航 · 红灯避险 · 绿灯起量",
+        "risk_points": [
+          {
+            "level": "HIGH",
+            "category": "违禁词 · 封号风险",
+            "word": "最",
+            "risk": "最高级用语，易引发虚假宣传投诉",
+            "replace_suggestion": "核心 / 关键 / 深度",
+            "policy_ref": "2026视频号《内容推广规范》第2.1条",
+            "action": "强制拦截"
+          },
+          {
+            "level": "HIGH",
+            "category": "违禁词 · 封号风险",
+            "word": "绝对",
+            "risk": "绝对化断言，缺乏实证支撑",
+            "replace_suggestion": "确定性 / 高度一致",
+            "policy_ref": "2026《互联网广告管理办法》第11条",
+            "action": "强制拦截"
+          },
+          {
+            "level": "MEDIUM",
+            "category": "营销诱导 · 限流风险",
+            "word": "私信",
+            "risk": "诱导私域导流，触发平台导流检测",
+            "replace_suggestion": "后台留言 / 深度交流",
+            "policy_ref": "2026抖音《站外导流限制》第4条",
+            "action": "建议修改"
+          },
+          {
+            "level": "MEDIUM",
+            "category": "营销诱导 · 限流风险",
+            "word": "领取",
+            "risk": "利益诱导，触发'福利诱导'风控模型",
+            "replace_suggestion": "获取 / 体验 / 参与",
+            "policy_ref": "2026抖音《利益诱导内容限制》",
+            "action": "建议修改"
+          },
+          {
+            "level": "MEDIUM",
+            "category": "营销诱导 · 限流风险",
+            "word": "赚钱",
+            "risk": "金钱承诺，触发金融/投资类内容审查",
+            "replace_suggestion": "资产增值 / 商业赋能 / 价值增长",
+            "policy_ref": "2026《金融营销宣传合规指引》",
+            "action": "建议修改"
+          }
+        ],
+        "incentive_points": [],
+        "policy_fitness": {
+          "total_score": 33.6,
+          "dimensions": {
+            "原创度": {
+              "score": 40,
+              "weight": 0.3,
+              "description": "内容是否为独立创作，非搬运/洗稿",
+              "weighted_score": 12.0
+            },
+            "真实性": {
+              "score": 35,
+              "weight": 0.25,
+              "description": "内容是否有可验证的事实/数据支撑",
+              "weighted_score": 8.8
+            },
+            "价值性": {
+              "score": 35,
+              "weight": 0.25,
+              "description": "内容是否提供知识/技能/情绪价值",
+              "weighted_score": 8.8
+            },
+            "合规性": {
+              "score": 20,
+              "weight": 0.2,
+              "description": "内容是否完全符合平台最新规则",
+              "weighted_score": 4.0
+            }
+          },
+          "grade": "D · 高风险",
+          "suggestion": "⚠️ 高风险内容，强烈建议放弃当前版本，重新创作。"
+        },
+        "optimization_advice": [
+          "🔴 紧急：替换高风险词 「最」、「绝对」，建议改为 核心 / 关键 / 深度",
+          "🟡 注意：修改营销诱导词 「私信」、「领取」、「赚钱」，降低限流概率",
+          "📊 政策契合度提升：重点优化「原创度」「真实性」「价值性」「合规性」维度"
+        ],
+        "refined_content": "点击获取后台留言我，核心快入账方式，确定性资产增值。"
+      },
+      "post_audit": {
+        "version": "2.0.1",
+        "mode": "standard",
+        "brand": "规则甄查 · 甄先生 v2.0",
+        "tagline": "红绿灯双向导航 · 红灯避险 · 绿灯起量",
+        "risk_points": [],
+        "incentive_points": [],
+        "policy_fitness": {
+          "total_score": 54.6,
+          "dimensions": {
+            "原创度": {
+              "score": 40,
+              "weight": 0.3,
+              "description": "内容是否为独立创作，非搬运/洗稿",
+              "weighted_score": 12.0
+            },
+            "真实性": {
+              "score": 35,
+              "weight": 0.25,
+              "description": "内容是否有可验证的事实/数据支撑",
+              "weighted_score": 8.8
+            },
+            "价值性": {
+              "score": 55,
+              "weight": 0.25,
+              "description": "内容是否提供知识/技能/情绪价值",
+              "weighted_score": 13.8
+            },
+            "合规性": {
+              "score": 100,
+              "weight": 0.2,
+              "description": "内容是否完全符合平台最新规则",
+              "weighted_score": 20.0
+            }
+          },
+          "grade": "C · 待优化",
+          "suggestion": "风险较高，建议大幅修改后重新评估，避免触发平台处罚。"
+        },
+        "optimization_advice": [
+          "📊 政策契合度提升：重点优化「原创度」「真实性」「价值性」维度"
+        ],
+        "refined_content": "后台留言获取核心入账方式，确定性资产增值路径。"
+      },
+      "verified_safe": true,
+      "mode": "standard"
+    }
+  ],
+  "status": "completed",
+  "finished_at": "2026-05-09T13:59:22.463233",
+  "trend_collection": {
+    "collected_at": "2026-05-09T15:05:01.906556",
+    "keywords": [
+      "直播新规",
+      "违规封号",
+      "教案合规"
+    ],
+    "domains": {
+      "直播新规": 5,
+      "违规封号": 5,
+      "教案合规": 5
+    },
+    "total_incentives": 0,
+    "incentives": []
+  },
+  "deep_insight": {
+    "generated_at": "2026-05-09T15:47:06.355498",
+    "mock": true,
+    "pain_engine_map": {
+      "FPS": 0.45,
+      "MOS": 0.4,
+      "FMEA": 0.15
+    },
+    "thinking_engine_weights": {
+      "FPS": {
+        "weight": 85,
+        "rationale": "HIGH风险规则多且涉及话术规避等灰色地带，需回归规则本质矛盾，剥离营销包装，识别底层不可为行为"
+      },
+      "EGT": {
+        "weight": 90,
+        "rationale": "平台、创作者、用户、监管四方博弈激烈，话术规避与AI语义引擎形成动态对抗，需分析均衡点移动"
+      },
+      "FMEA": {
+        "weight": 95,
+        "rationale": "HIGH风险规则5条，需量化失效模式严重度、发生度、检测度，识别最高RPN风险点"
+      },
+      "MOS": {
+        "weight": 80,
+        "rationale": "涉及封号、断流等处罚，需计算安全边际，建立合规超额储备策略"
+      },
+      "RTT": {
+        "weight": 75,
+        "rationale": "新规涉及AI语义引擎、话术规避档案等政策变更，需监管溯源和趋势预判"
+      }
+    },
+    "platform_intent": {
+      "title": "平台意图：通过AI语义引擎和连带责任机制，彻底封堵话术规避漏洞，重塑直播合规秩序",
+      "detail": "基于FMEA和EGT引擎，平台当前面临话术规避泛滥导致审核失效的严重风险（HIGH规则5条）。引入AI语义理解引擎是博弈策略升级，将检测度从5提升至9，迫使创作者放弃谐音等低阶规避手段。连带责任机制（MCN机构累计3次全机构暂停）改变了支付矩阵，使机构有动力主动约束主播。平台意图不仅是惩罚，更是通过提高违规成本（三次永久封禁）和降低检测成本（AI+人工双重审核），将博弈均衡点推向全面合规。",
+      "driving_forces": [
+        "AI语义引擎技术成熟，可穿透谐音/变调/拆分等规避手段",
+        "监管压力（广告法、网络安全法）要求平台承担更严格治理责任",
+        "高风险品类（保健品/金融/医美）投诉率高，需事前报备降低风险"
+      ],
+      "lead_engine": "FMEA"
+    },
+    "policy_logic": {
+      "title": "核心逻辑：话术规避行为从'可能被罚'变为'必然被识破'，合规从可选变为强制",
+      "causal_chain": [
+        "话术规避行为（谐音/拆分/变调）导致审核失效，触发HIGH风险规则（FMEA）",
+        "AI语义引擎将检测度从5提升至9，使规避行为暴露概率大幅增加（EGT）",
+        "三次违规永久封禁的阶梯处罚，提高了违规成本，改变博弈均衡（EGT）",
+        "MCN连带责任使机构主动约束主播，形成内部合规压力（EGT）",
+        "直播前报备制度（保健品/金融/医美）将风险前置，降低事后处罚概率（MOS）"
+      ],
+      "impact_path": "创作者必须放弃所有话术规避手段，转向真实、合规表达；高风险品类需提前报备，否则面临断流或封禁；MCN机构需建立内部合规监控体系"
+    },
+    "fmea_table": [
+      {
+        "failure_mode": "使用谐音替换敏感词（如'砖钱'代替'赚钱'）",
+        "severity": 9,
+        "occurrence": 8,
+        "detection": 9,
+        "rpn": 648,
+        "recommendation": "完全禁用谐音替换，使用标准合规词汇；AI语义引擎可识别，建议直接使用'赚钱'等原词"
+      },
+      {
+        "failure_mode": "通过弹幕引导用户私信交易",
+        "severity": 8,
+        "occurrence": 7,
+        "detection": 8,
+        "rpn": 448,
+        "recommendation": "直播中禁止任何私信诱导话术，包括'私信我'、'看主页'等；建议在简介中设置合规联系方式"
+      },
+      {
+        "failure_mode": "使用变声器或语速变化绕过语音审核",
+        "severity": 9,
+        "occurrence": 6,
+        "detection": 9,
+        "rpn": 486,
+        "recommendation": "禁用变声器，保持自然语速；AI语义引擎可识别变调后的真实意图，无法规避"
+      },
+      {
+        "failure_mode": "在直播画面中叠加文字绕过语音审核",
+        "severity": 8,
+        "occurrence": 5,
+        "detection": 7,
+        "rpn": 280,
+        "recommendation": "画面文字需与语音内容一致，不得出现违规诱导文字；平台会进行画面OCR审核"
+      },
+      {
+        "failure_mode": "拆分敏感词为单字或倒序表达",
+        "severity": 9,
+        "occurrence": 7,
+        "detection": 9,
+        "rpn": 567,
+        "recommendation": "禁止任何形式的词汇拆分或重组，AI语义引擎可识别上下文语义，无法绕过"
+      }
+    ],
+    "counter_intuitive": [
+      {
+        "scenario": "主播使用'赚米'代替'赚钱'，认为这是行业黑话而非违规",
+        "common_belief": "'赚米'是行业通用黑话，平台不会严格处罚",
+        "reality": "AI语义引擎将'赚米'识别为'赚钱'的谐音替换，触发HIGH风险规则，首次警告即计入档案",
+        "reason": "基于FPS引擎：规则本质是禁止任何形式的收益诱导表述，不论用词形式；平台核心保护法益是用户免受虚假承诺",
+        "action": "立即停止使用'赚米'、'砖钱'等任何变体，直接使用'收入'、'收益'等中性词汇"
+      },
+      {
+        "scenario": "MCN机构认为只有违规主播受罚，机构本身无风险",
+        "common_belief": "MCN机构不会因个别主播违规受牵连",
+        "reality": "累计3次违规，全机构暂停直播权限7天，机构需承担连带责任",
+        "reason": "基于EGT引擎：平台通过改变支付矩阵，迫使机构主动监管主播，否则面临集体损失",
+        "action": "MCN机构应建立内部话术审核系统，对主播进行合规培训，并实时监控直播内容"
+      },
+      {
+        "scenario": "主播在视频号直播，认为话术合规分低于60分只需学习考试，不影响后续直播",
+        "common_belief": "学习考试只是形式，通过后即可正常开播",
+        "reality": "低于60分需完成合规学习考试方可再次开播，且评分记录影响账号权重和推荐流量",
+        "reason": "基于MOS引擎：安全边际建议将话术合规分维持在80分以上，60分是处罚阈值，低于此分将面临隐形降权",
+        "action": "每场直播后检查合规分，若低于80分则复盘话术，确保下次直播前调整；主动学习平台合规指南"
+      },
+      {
+        "scenario": "保健品主播认为直播前报备只需提交产品信息，话术可自由发挥",
+        "common_belief": "报备制度只审核产品，不审核话术",
+        "reality": "报备内容包括直播话术脚本，AI+人工双重审核，话术违规将直接导致直播取消或断流",
+        "reason": "基于RTT引擎：监管溯源至广告法第18条，保健品广告需经审查，平台细则将审查前置到直播前",
+        "action": "提前准备合规话术脚本，避免使用'治疗'、'根治'等医疗用语，使用'辅助'、'改善'等合规表述"
+      }
+    ]
+  },
+  "matrix_distill": {
+    "distilled_at": "2026-05-09T15:47:37.357387",
+    "files": {
+      "douyin": "E:\\MyCodeProjects\\data\\publish_douyin_20260509_154737.md",
+      "shipinhao": "E:\\MyCodeProjects\\data\\publish_shipinhao_20260509_154737.md",
+      "gongzhonghao": "E:\\MyCodeProjects\\data\\publish_gongzhonghao_20260509_154737.md"
+    },
+    "publish_flag": false,
+    "lead_engine": "FMEA",
+    "engine_weights": {
+      "FPS": 85,
+      "EGT": 90,
+      "FMEA": 95,
+      "MOS": 80,
+      "RTT": 75
+    },
+    "pain_engine_map": {
+      "FPS": 0.45,
+      "MOS": 0.4,
+      "FMEA": 0.15
+    },
+    "summary": {
+      "total_cases": 3,
+      "risk_found": 12,
+      "safe_passed": 3,
+      "trend_incentives": 0
+    }
+  }
+}

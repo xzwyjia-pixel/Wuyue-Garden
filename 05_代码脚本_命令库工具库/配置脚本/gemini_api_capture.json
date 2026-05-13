@@ -1,0 +1,26 @@
+[
+  {
+    "url": "https://gemini.google.com/_/BardChatUi/data/batchexecute?rpcids=MaZiqc&source-path=%2Fapp&bl=boq_assistant-bard-web-server_20260507.06_p3&f.sid=-3885219224438571166&hl=zh-CN&_reqid=4180164&rt=c",
+    "method": "POST",
+    "body": "f.req=%5B%5B%5B%22MaZiqc%22%2C%22%5B20%2C%5C%22tCtsEAY3EoXwWkXoO1g83sOqObWj4TKIfV2C3p%2FceHw29KP77rTLqHWm%2F6n%2F40c4PXCOK4g5WIwCcvG5NXwZXcigyTrxuem05B6o8Yp8ZqYT46BXsFoG5z%2Fa8Q5aGCIS2LmK58KCUoHZAKDIqmzElnh1GY9wEy14o0NwERA88lkJfU9EyBg1%2BEe8dZ8U%2BKmnHITK2tJwMpR73701QpJkYmjc64d0a61O5pnOTE783sSJgcv3zxIclBCcDpVB9XubEczKKLeFUsv%2ByH798K3us82GKFAecR3R7ExZWcjcdM%2BN5GQ0UMKF7iRjz22XwKBJ%2FoaJhaisG1qkrMZEec6Pf5e1pMxQ6sVsTZtcpVmqvmmhwQ2FOW96f5ACmxMV8juQN%2FCbpUeUxzGNCstiIp97YJGVU1b3sYymJRZLtwVEhoPBrRQYgidyfNO36WkX906hMaIZskjtlsLV%2FphzJJRugE6ZhGTTGiQX21YyzbCMhUPcIxT0mGG2YJxhxl%2FxO7Fni0ZqgnRJB52WNhLzdYSsrC9xCDbwHvenvrrmEzfelg9M%2B0C%2B%2BjsnPOeNr4PZ3lWIBHlTIcorv4f11GFQQV5gTTJbavtEY2XAL%2Ba0kzjkT0gc2hNdnqdZcdJ09BmnD9bnZSUYHYZyYTgGGulcWg%2BgLrSW2GN%2FM4zrd5yiWt4as9o2AlEne8Fd8JCJ%2FyRIWBweQGkbEdH7dTQa1y5OvmAo7bV%2BAHY9rUqgxRYG4Yk3h0RATF2dDtdjlfSRjYybkMeZVq6hr9IwUt4ih8pUtbxejYTjh427Ao4AMknCuvP6iEAI%3D%5C%22%2C%5B0%2Cnull%2C1%5D%5D%22%2Cnull%2C%22generic%22%5D%5D%5D&at=AOOh0PFZEaKSjsNu3_VMFxduiMyN%3A1778422563373&",
+    "headers": {
+      "content-type": "application/x-www-form-urlencoded;charset=UTF-8"
+    }
+  },
+  {
+    "url": "https://gemini.google.com/_/BardChatUi/data/batchexecute?rpcids=ESY5D&source-path=%2Fapp&bl=boq_assistant-bard-web-server_20260507.06_p3&f.sid=-3885219224438571166&hl=zh-CN&_reqid=4280164&rt=c",
+    "method": "POST",
+    "body": "f.req=%5B%5B%5B%22ESY5D%22%2C%22%5B%5B%5B%5C%22bard_activity_enabled%5C%22%5D%5D%5D%22%2Cnull%2C%22generic%22%5D%5D%5D&at=AOOh0PFZEaKSjsNu3_VMFxduiMyN%3A1778422563373&",
+    "headers": {
+      "content-type": "application/x-www-form-urlencoded;charset=UTF-8"
+    }
+  },
+  {
+    "url": "https://gemini.google.com/_/BardChatUi/data/batchexecute?rpcids=MaZiqc&source-path=%2Fapp&bl=boq_assistant-bard-web-server_20260507.06_p3&f.sid=-3885219224438571166&hl=zh-CN&_reqid=4380164&rt=c",
+    "method": "POST",
+    "body": "f.req=%5B%5B%5B%22MaZiqc%22%2C%22%5B20%2C%5C%22tCqQGAY3EoXy0a4uu64qC4EFsf78tgmMrGYWkQcgqnE%2Fa7JCNvXmktnt5or7OdN8gD9O0DSb748%2F9ErzhguwyrnLOqIEUnWFpq3jtG8mn1mfZpAwoqwJBglGRQMz8vneV0sAaitA7Qyzw6efIqYA2DUSF2rWLbaWBsJe2QOA%2BQeaLbCYddyoHWnW1BUnTuV44tgK7Mvq4%2FWfPWiYOLHAow%2Bdj4oCQcs4gakSh4ZS2awQfPdGU9q%2Bk2NAfQrbdmlXHYax0ZQDkAScw2KcizVVjsU%2BmG9XLrnmMuYIq%2BvDke8STPrC%2BzqCueHauvDYXtHvE5PCmL8MtD9DjbZRx2bPskAJvOJJdDFcngZkk1i%2BB3K8J2AwYPar%2BvSzKNuVSVSMHDQUi%2B8nzqj2ZWTkX7q10TfQZ81yosIACbYVLFHX1rT7l4KBPO8%2BHRPBEioJLx0rhzkpfkkfAASqoiSn5zHyH3iiD1ufNE%2B5oucxUMLtFDEmVyFT8OzNUhrOqKjBTtldCRsJEVtBXSockJYBv4tI0NJVqpXbMSODRg2uz2pOaQMqTUfvnzsiQyHuARJuqU0aRF3eOM%2FvV3XA8zIZEmo9O5GgX1Y8ppLiX0r%2FqGkMZ6qGHtFeSgilD%2FrRHUIy1iS%2FG4XNFrztqij1H%2FAW3arydZbo3dDwZ3rYMUUicCV%2BtswZYs%2FJFWbpsQ30NeLX62ONcvPnZIf7m3nhyMahsj8IN4jzVsPWtyInHJjbR28l%2FHzAJWolCepbYnWfcAneZ9mD%2FHe3NP8W%2BWk%2FqHEb2ZPp5bF7QNteaP46hU0ykLw7NFkJpYF%2FlvW9y%2ByUtF2dvl3%2BcNQgi8in6wOUbGTLejTQaD2fc2MolO%2FLMF%2FEerhDc5vebymQrra7CjkYZVbDElJKH7fNrDBUNFcedSMRimDcrpqsmNbWHDDfFb44GF16TlWLfdTr8X5gcetLaHK3ZwaSLAwRIQXWo8GR7l%2FgUwQLofStM2Yom3FGJvUk8hIZVDtMSLk8hXottqlioIqZVqGtVH%2BUYzK7YPQppT873aN8v1zVLs9uYoeiSDrI53LTXmMNyAocFfOwBEAI%3D%5C%22%2C%5B0%2Cnull%2C1%5D%5D%22%2Cnull%2C%22generic%22%5D%5D%5D&at=AOOh0PFZEaKSjsNu3_VMFxduiMyN%3A1778422563373&",
+    "headers": {
+      "content-type": "application/x-www-form-urlencoded;charset=UTF-8"
+    }
+  }
+]

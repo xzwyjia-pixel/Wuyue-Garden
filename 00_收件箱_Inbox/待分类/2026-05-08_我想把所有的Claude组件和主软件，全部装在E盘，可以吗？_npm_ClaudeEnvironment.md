@@ -1,0 +1,64 @@
+---
+title: 我想把所有的Claude组件和主软件，全部装在E盘，可以吗？
+source: gemini
+date: 2026-05-08
+category: 系统运维
+tags: [gemini, 系统运维]
+---
+
+## 我想把所有的Claude组件和主软件，全部装在E盘，可以吗？
+
+甄先生，这个想法非常符合**“极简精密”**的原则：将系统盘（C盘）保持纯净，将所有生产力工具与代码资产集中在数据盘（E盘）。
+从技术角度看，这是完全可行的，但由于 Node.js 默认会将全局包和缓存放在 C 盘的 AppData 中，我们需要通过几个精密的“重定向”指令，把 Claude 的全家桶迁往 E 盘。
+请按以下步骤操作，为您的“规则甄查”总部进行全盘迁移：
+
+第一阶段：在 E 盘建立“行政区划”
+首先，我们在 E 盘建立专门存放工具和缓存的目录，防止文件散乱。
+# 创建全局包存放地和缓存地
+New-Item -ItemType Directory -Path "E:\ClaudeEnvironment\npm_global" -Force
+New-Item -ItemType Directory -Path "E:\ClaudeEnvironment\npm_cache" -Force
+
+
+第二阶段：修改 npm 指向（搬家核心）
+我们要告诉系统：以后安装任何全局工具（包括 Claude Code 和三剑客），都直接去 E 盘。
+# 1. 修改全局安装路径
+npm config set prefix "E:\ClaudeEnvironment\npm_global"
+
+# 2. 修改缓存路径
+npm config set cache "E:\ClaudeEnvironment\npm_cache"
+
+# 3. 将新路径加入系统环境变量 (PATH)，否则系统找不到 E 盘的命令
+$newPath = "E:\ClaudeEnvironment\npm_global"
+[Environment]::SetEnvironmentVariable("Path", $env:Path + ";" + $newPath, "User")
+$env:Path += ";$newPath"
+
+
+第三阶段：全量装载（E 盘总部开业）
+现在开始安装，所有组件都会自动进入 E:\ClaudeEnvironment\npm_global。
+# 1. 安装 Claude Code 主程序
+npm install -g @anthropic-ai/claude-code
+
+# 2. 切换到项目目录安装“三剑客”
+cd "E:\MyCodeProjects"
+npx skills add juliusbrussee/caveman --skill caveman -y -g
+npx skills add juliusbrussee/superpowers --skill superpowers -y -g
+
+
+第四阶段：解决“顽固”的 AppData 缓存
+虽然软件装在了 E 盘，但 Claude Code 运行时仍会默认在 C:\Users\...\AppData 生成日志和配置。如果您追求绝对的 E 盘化，我们可以用 Windows 的 “符号链接 (Symbolic Link)” 技巧来欺骗系统：
+# 将 C 盘的配置目录“软链接”到 E 盘
+$cPath = "$env:AppData\claude-code"
+$ePath = "E:\ClaudeEnvironment\claude_config"
+New-Item -ItemType Directory -Path $ePath -Force
+cmd /c mklink /D "$cPath" "$ePath"
+
+
+甄先生的审计总结：
+
+优点：重装系统时，您的 Claude 环境、配置、技能插件全都毫发无损，重新挂载一下 PATH 就能用。
+极简提示：执行完以上操作后，您的 C 盘将不再承担任何 AI 开发的压力。
+
+甄先生，搬家指令已经准备就绪。需要我先帮您核对一下 E 盘的剩余空间，还是直接开始迁移？
+
+---
+*从 Gemini 导出，2026-05*

@@ -1,0 +1,87 @@
+# AI Bridge 配置
+# 使用前填写各平台API密钥
+
+models:
+  gpt:
+    name: "GPT-4o"
+    provider: "OpenAI"
+    api_base: "https://api.openai.com/v1"
+    api_key: ""  # ← 填入你的 OpenAI API Key
+    model: "gpt-4o"
+    max_tokens: 4096
+    temperature: 0.7
+
+  gemini:
+    name: "Gemini 2.0 Flash"
+    provider: "Google"
+    api_base: "https://generativelanguage.googleapis.com/v1beta"
+    api_key: ""  # ← 填入你的 Google AI API Key
+    model: "gemini-2.0-flash"
+    max_tokens: 8192
+    temperature: 0.7
+
+  claude:
+    name: "Claude 3.5 Sonnet"
+    provider: "Anthropic"
+    api_base: "https://api.anthropic.com/v1"
+    api_key: ""  # ← 填入你的 Anthropic API Key
+    model: "claude-3-5-sonnet-20241022"
+    max_tokens: 8192
+    temperature: 0.7
+
+  doubao:
+    name: "豆包 Pro"
+    provider: "火山引擎"
+    api_base: "https://ark.cn-beijing.volces.com/api/v3"
+    api_key: ""  # ← 填入火山引擎API Key
+    model: "doubao-pro-32k"
+    max_tokens: 4096
+    temperature: 0.7
+
+  tongyi:
+    name: "通义千问 Max"
+    provider: "阿里云"
+    api_base: "https://dashscope.aliyuncs.com/api/v1"
+    api_key: ""  # ← 填入阿里云DashScope API Key
+    model: "qwen-max"
+    max_tokens: 4096
+    temperature: 0.7
+
+  wenxin:
+    name: "文心一言 4.0"
+    provider: "百度"
+    api_base: "https://aip.baidubce.com/rpc/2.0/ai_custom/v1/wenxinworkshop"
+    api_key: ""  # ← 填入百度智能云 API Key
+    secret_key: ""  # ← 填入百度智能云 Secret Key
+    model: "ernie-4.0-8k"
+    max_tokens: 4096
+    temperature: 0.7
+
+  dpc:
+    name: "DPC"
+    provider: "DeepSeek"
+    api_base: "https://api.deepseek.com/v1"
+    api_key: ""  # ← 填入 DeepSeek API Key
+    model: "deepseek-chat"
+    max_tokens: 4096
+    temperature: 0.7
+
+# 飞书配置
+feishu:
+  app_id: ""       # ← 飞书开放平台 App ID
+  app_secret: ""   # ← 飞书开放平台 App Secret
+  webhook_port: 8080
+  group_chat_id: ""  # ← 飞书群聊 Chat ID
+
+# Obsidian配置
+obsidian:
+  api_url: "http://localhost:27123"
+  api_key: ""  # ← Obsidian Local REST API key
+  vault_path: "E:/MyCodeProjects"
+  output_dir: "AI研讨报告"
+
+# 并行分析配置
+parallel:
+  max_workers: 4
+  debate_rounds: 2
+  consensus_threshold: 0.7  # 70%一致性即汇总结论

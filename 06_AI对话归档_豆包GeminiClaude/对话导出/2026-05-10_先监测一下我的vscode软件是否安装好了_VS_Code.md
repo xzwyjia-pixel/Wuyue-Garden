@@ -1,0 +1,67 @@
+---
+title: 先监测一下我的vscode软件是否安装好了
+source: gemini
+date: 2026-05-10
+category: 系统运维
+tags: [gemini, 系统运维]
+---
+
+## 先监测一下我的vscode软件是否安装好了
+
+要监测 VS Code 是否安装好且“协议关联”是否生效，我们直接用 PowerShell 命令行来进行最客观的检测，而不是靠点击链接。
+请将以下代码复制并粘贴到你的 PowerShell 窗口中运行：
+Write-Host "--- Michael 的 VS Code 环境诊断 ---" -ForegroundColor Yellow
+
+# 1. 检测命令行工具是否存在
+$codePath = Get-Command code -ErrorAction SilentlyContinue
+if ($codePath) {
+    Write-Host "✅ [命令行成功]: 'code' 命令已安装在环境变量中。" -ForegroundColor Green
+    Write-Host "位置: $($codePath.Source)"
+} else {
+    Write-Host "❌ [命令行失败]: 找不到 'code' 命令。你可能需要在 VS Code 中运行 'Install code command in PATH'。" -ForegroundColor Red
+}
+
+# 2. 检测 VS Code 协议注册表 (这是跳转成功的关键)
+$registry = Get-ItemProperty -Path "HKCU:\Software\Classes\vscode" -ErrorAction SilentlyContinue
+if ($registry) {
+    Write-Host "✅ [协议成功]: Windows 注册表中已发现 'vscode://' 协议关联。" -ForegroundColor Green
+} else {
+    Write-Host "❌ [协议失败]: 注册表中找不到 vscode 协议。这是导致 Obsidian 点击没反应的核心原因。" -ForegroundColor Red
+}
+
+# 3. 尝试直接唤醒测试
+Write-Host "`n正在尝试唤醒 VS Code..." -ForegroundColor Cyan
+Start-Process "vscode://file/E:/Mycodeprojects"
+
+
+如何解读检测结果？
+
+
+如果弹出 VS Code 窗口：
+说明安装和协议完全没问题！之前打不开纯粹是因为 Obsidian 处于“编辑模式”或者缓存没刷新。
+
+解决： 回到 Obsidian，按下 Ctrl + E 进入阅读模式后再点。
+
+
+
+如果报错“找不到 vscode 协议”：
+说明 VS Code 安装时没有勾选“注册为支持的文件类型的编辑器”。
+
+解决： 1.  打开 VS Code。
+2.  按下 Ctrl+Shift+P。
+3.  输入并运行 Shell Command: Install 'code' command in PATH。
+4.  如果还不行，建议去官网下载 VS Code 安装包重新安装，安装时务必勾选所有“添加到 PATH”和“注册协议”的复选框。
+
+
+
+如果命令行没问题但唤醒没反应：
+说明是 Windows 权限拦截。
+
+解决： 检查你的防火墙或杀毒软件，看是否拦截了 vscode.exe 发起的网络或进程间通信。
+
+
+
+运行完上面的检测脚本后，输出的结果是绿色还是红色居多？VS Code 刚才有没有被成功叫醒？
+
+---
+*从 Gemini 导出，2026-05*

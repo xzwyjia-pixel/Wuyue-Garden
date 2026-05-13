@@ -1,0 +1,56 @@
+---
+title: Prompted
+source: gemini
+date: 2026-05-08
+category: Claude/MCP
+tags: [gemini, Claude/MCP]
+---
+
+## Prompted
+
+从你上传的第一张截图（image_54ffb5.png）来看，虽然你指定了模型为 claude-3-7-sonnet，但底层的 Anthropic base URL 依然顽固地指向了 https://api.deepseek.com/v1。
+这是因为环境变量在 Windows 中具有持久性，命令行参数虽然更改了模型名称，但没能覆盖已经写入系统的 API 地址。我们需要执行一次**“环境手术”**，把 DeepSeek 的痕迹彻底刮掉，换回你的 GPT-API 代理地址。
+请在原生的 PowerShell 中依次输入以下指令（请确保你已经准备好了代理商提供的 Base URL 和 API Key）：
+1. 彻底切断 DeepSeek 的“输血管”
+我们要强制覆盖掉系统中所有的 DeepSeek 配置，让 Claude Code 找不到它。
+# 删除用户级别的 DeepSeek 相关变量（如果存在）
+[Environment]::SetEnvironmentVariable("DEEPSEEK_API_KEY", $null, "User")
+
+# 强制将 Anthropic 地址指向你的 GPT-SAPI 代理地址 (请替换下方引号内的内容)
+$myProxyUrl = "https://你的代理商地址.com/v1" 
+$myProxyKey = "sk-你的代理商Key"
+
+[Environment]::SetEnvironmentVariable("ANTHROPIC_BASE_URL", $myProxyUrl, "User")
+[Environment]::SetEnvironmentVariable("ANTHROPIC_API_KEY", $myProxyKey, "User")
+
+# 立即刷新当前窗口的环境变量
+$env:ANTHROPIC_BASE_URL = $myProxyUrl
+$env:ANTHROPIC_API_KEY = $myProxyKey
+
+2. 重置 Claude Code 配置（关键一步）
+截图显示你的设置来源包括 User settings。为了防止旧配置干扰，我们需要清理它的缓存：
+# 彻底删除 Claude Code 的本地配置索引，强制它重新读取新的环境变量
+Remove-Item "$env:AppData\claude-code\config.json" -Force -ErrorAction SilentlyContinue
+
+3. 重新进入“Office 4.7/3.7”原生环境
+现在，请尝试用以下命令重新进入。这一次，它应该会通过你的代理网关去寻找真实的 Claude 模型：
+# 切换到非系统目录（推荐）
+cd /d D:\  # 或者你的项目目录
+
+# 启动并锁定模型
+claude --model claude-3-7-sonnet-20250219
+
+
+核实结果
+执行完后再次输入 /status。如果配置成功，你应该看到：
+
+Anthropic base URL: 显示为你刚才设置的代理地址。
+Model: claude-3-7-sonnet-20250219。
+MCP servers: 那些报错的服务器应该可以通过 /mcp reload 恢复，因为原生协议握手现在恢复正常了。
+
+关于 VS Code 的“大冒险”
+当你完成上述 PowerShell 的清理后，你的 Cline (VS Code) 插件也请同步修改为 OpenAI Compatible 模式，并填入相同的代理地址和 Key。这样，无论是在黑色终端还是在 VS Code 的精密界面里，你面对的都是同一个纯净的 Claude 环境。
+甄先生，现在的配置已经接近你的“极简精密”要求了，我们可以开始下一步的规则审计了吗？
+
+---
+*从 Gemini 导出，2026-05*

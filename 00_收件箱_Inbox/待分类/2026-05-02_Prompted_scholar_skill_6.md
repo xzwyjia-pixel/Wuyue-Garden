@@ -1,0 +1,57 @@
+---
+title: Prompted
+source: gemini
+date: 2026-05-02
+category: Claude/MCP
+tags: [gemini, Claude/MCP]
+---
+
+## Prompted
+
+看这里！Claude Code 已经成功识别到了您的本地大脑 qwen2.5-coder。现在您已经进入了“驾驶舱”，我们来完成 scholar-skill 的最后“点火”步骤。
+
+🚀 现在的首要任务：让 Claude 认识 Skill
+由于您当前是在 Claude Code 这个独立的终端环境里，它需要加载您的 MCP 设置才能调用 scholar-skill。
+1. 检查技能状态
+在当前光标处直接输入：
+/mcp
+
+这会列出所有当前 Claude 识别到的工具。如果列表中没有看到 scholar-skill，说明我们需要手动同步一下设置。
+2. 同步配置文件
+如果您在 VS Code 里已经改好了 cline_mcp_settings.json，但这里没显示，请尝试输入以下命令让它“刷新”记忆：
+/config reload
+
+
+🛠️ 如果还没配置，手把手教您写
+如果您还没把技能路径写进配置，请在 VS Code 中打开 cline_mcp_settings.json（您之前在 image_04b46e.png 中已经定位到它了），确保内容如下：
+{
+  "mcpServers": {
+    "scholar-skill": {
+      "command": "python",
+      "args": ["C:/AI_Skills/scholar-skill/main.py"],
+      "env": {
+        "PYTHONPATH": "C:/AI_Skills/scholar-skill"
+      }
+    }
+  }
+}
+
+
+注意：请务必核实 main.py 的实际路径。
+
+
+🎯 第一次实战演练
+一旦 /mcp 命令能看到 scholar-skill，您就可以直接下令了。针对您关注的领域，建议您输入以下内容测试：
+
+“甄先生，请启动 scholar-skill 对最新的‘六足仿生机器人步态控制算法’进行 L3 级深度解构，并对比分析不同算法在复杂地形下的稳定性表现。”
+
+
+🔍 您需要留意的细节
+
+2.5 小时异步任务：在执行长任务时，这个终端界面会显示进度。
+防呆机制：如果涉及到写入文件或长时间占用资源，终端会跳出提示询问您的意见，直接按 Enter 或输入 y 即可。
+
+您现在输入 /mcp 后，能看到 scholar-skill 吗？如果没看到，请告诉我，我帮您查一下配置路径是否冲突。
+
+---
+*从 Gemini 导出，2026-05*

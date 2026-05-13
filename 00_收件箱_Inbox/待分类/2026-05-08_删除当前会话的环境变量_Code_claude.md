@@ -1,0 +1,61 @@
+---
+title: 现在执行一个操作，在原生的powercell里边帮我把disc的大模型对接的所有的记录全部抹除，只保留office 4.7原来的模型对接，我在原生的powercell中端我以后打算直接用obs的office 4.7的模型不在是调用DC可V4的模型，这样的话我在登录的时候就不会切来切换，不需要切换也不用切来切去的。
+source: gemini
+date: 2026-05-08
+category: 系统运维
+tags: [gemini, 系统运维]
+---
+
+## 现在执行一个操作，在原生的powercell里边帮我把disc的大模型对接的所有的记录全部抹除，只保留office 4.7原来的模型对接，我在原生的powercell中端我以后打算直接用obs的office 4.7的模型不在是调用DC可V4的模型，这样的话我在登录的时候就不会切来切换，不需要切换也不用切来切去的。
+
+明白你的需求。为了实现“极简精密”的工作流，我们需要彻底清理 PowerShell 环境中残留的 DeepSeek 配置（包括 Base URL 和 API Key），确保它恢复到官方 Anthropic 的默认通道，直连 Claude 3.7 / 4.7 系列模型。
+请在原生的 PowerShell 终端中依次执行以下步骤：
+1. 彻底抹除 DeepSeek 相关环境变量
+这些变量是导致你频繁切换到 DeepSeek 的“元凶”。执行以下命令将它们从当前会话和用户永久设置中删除：
+# 删除当前会话的环境变量
+$env:ANTHROPIC_BASE_URL = ""
+$env:DEEPSEEK_API_KEY = ""
+
+# 从用户永久环境变量中彻底删除 (防止重启后复活)
+[Environment]::SetEnvironmentVariable("ANTHROPIC_BASE_URL", $null, "User")
+[Environment]::SetEnvironmentVariable("DEEPSEEK_API_KEY", $null, "User")
+
+2. 重置 Claude Code 的全局配置
+Claude Code 会在本地存储 config.json。我们需要强制它忘记之前的自定义端点。
+# 导航到 Claude Code 的配置目录 (Windows 标准路径)
+cd "$env:AppData\claude-code"
+
+# 如果该目录下有 config.json，建议直接更名备份或删除，让系统重新初始化
+if (Test-Path "config.json") {
+    Rename-Item "config.json" "config.json.bak_$(Get-Date -Format 'yyyyMMdd')"
+}
+
+3. 重新登录并锁定官方模型
+现在，使用官方默认设置重新登录。执行以下指令时，它会走官方 Anthropic 认证流程。
+# 重新初始化并登录
+claude auth login
+
+# 登录完成后，直接指定模型启动，确保以后默认调用官方最新模型
+# 注：根据 2026 年 5 月的最新命名规则，请确认模型名称
+claude --model claude-3-7-sonnet-20250219
+
+4. 环境核实
+执行完上述操作后，输入 /status。你应该看到：
+
+Anthropic base URL: [https://api.anthropic.com](https://api.anthropic.com) (不再是 deepseek 的地址)
+Model: claude-3-7... 或 claude-4-7...
+Auth token: Active
+
+
+关于 VS Code 与 OBS 的后续对接
+既然你打算用 VS Code + Cline 的组合来执行任务，你现在可以放心在 VS Code 里配置：
+
+API Provider: 选 Anthropic。
+API Key: 使用你的原生 Anthropic Key。
+模型: 直接在下拉框里选最新的 4.7。
+
+这样你在 PowerShell 终端和 VS Code 侧边栏里看到的就是同一套“官方原生”环境，再也不用担心 DeepSeek 的配置干扰你的工业审计逻辑了。
+注意： 记得先 cd 离开 C:\Windows\System32，去你的项目文件夹（比如 D:\RulesInvestigation）再开始愉快地“大冒险”！
+
+---
+*从 Gemini 导出，2026-05*

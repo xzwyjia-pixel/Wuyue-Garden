@@ -1,0 +1,1 @@
+{"content":"# Agent Skills Spec\n\nThe spec is now located at <https://agentskills.io/specification>\n"}

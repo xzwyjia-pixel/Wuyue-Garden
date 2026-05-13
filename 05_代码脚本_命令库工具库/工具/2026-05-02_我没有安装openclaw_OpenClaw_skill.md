@@ -1,0 +1,68 @@
+---
+title: 我没有安装openclaw
+source: gemini
+date: 2026-05-02
+category: 编程开发
+tags: [gemini, 编程开发]
+---
+
+## 我没有安装openclaw
+
+由于你的 E:\betting-skill 文件夹目前是空的，且你尚未安装 OpenClaw 本体，你需要先完成基础环境的搭建。根据视频中提到的“OpenClaw 是目前最火的开源 AI Agent”以及其庞大的社区生态（截至 2026 年 2 月已有 17,000+ Skills），你可以按照以下步骤在你的 E 盘开始构建：
+1. 部署 OpenClaw 本体
+既然你已经习惯在 PowerShell 中操作，请先将 OpenClaw 的代码克隆到你的 E 盘：
+
+切换到 E 盘：
+E:
+
+
+克隆项目：
+git clone https://github.com/OpenClaw/OpenClaw.git
+
+(注：如果文件夹已存在且为空，请先手动删除空文件夹或直接在 E 盘根目录执行)
+进入目录并安装依赖：
+cd OpenClaw
+pip install -r requirements.txt
+
+
+
+
+
+---
+
+### 2. 初始化 ClawHub 技能管理
+视频中提到的所有 Skill（如 `skill-vetting`, `self-improving-agent` 等）都是通过 **ClawHub** 进行分发的。在 OpenClaw 安装完成后，你需要通过其内置的指令来下载这些功能。
+
+**安装核心 Skill 的顺序建议：**
+
+*   **第 1 步：安装安全审查员 (`skill-vetting`)**
+    这是视频中强烈建议第一个安装的 Skill，它会在安装其他 Skill 之前扫描恶意代码和权限风险。
+    ```powershell
+    python main.py install skill-vetting
+    ```
+*   **第 2 步：安装自我进化引擎 (`self-improving-agent`)**
+    它可以解决 Agent 的“健忘”问题，将你的操作偏好和成功经验存入本地记忆库。
+    ```powershell
+    python main.py install self-improving-agent
+    ```
+
+---
+
+### 3. 关于 `E:\betting-skill` 的处理
+你之前尝试安装的路径 `E:\betting-skill` 应该是这个“武器库”中的其中一个技能。
+
+*   如果你想把这个技能装进 OpenClaw，你需要先将该技能的代码（如果是你从其他渠道获取的）放入 OpenClaw 的 `skills` 目录下。
+*   如果 `betting-skill` 本身就是 ClawHub 上的一个公开技能，你只需在 OpenClaw 目录下运行：
+    ```powershell
+    python main.py install betting-skill
+    ```
+
+### 总结建议清单
+为了达到视频中提到的“战力增强 3 倍”的效果，请确保你的本地环境已配置好 **Python 3.10+** 以及必要的 API 密钥（如 **Tavily** 用于搜索功能）。
+
+由于你已经在 2026 年 5 月成功配置过 VS Code 和 Ollama 等工具，在 OpenClaw 的 `config.yaml` 中配置这些本地 LLM 路径对你来说应该比较轻车熟路。
+
+你现在是否已经准备好去 GitHub 获取 OpenClaw 的源代码了？
+
+---
+*从 Gemini 导出，2026-05*

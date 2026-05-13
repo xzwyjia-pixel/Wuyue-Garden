@@ -1,0 +1,72 @@
+---
+title: 安装一下cc switch,告诉我命令。
+frontend-master这个skill 有4个功能，我只安装了一个。我想把其他的都安装。应该如何操作
+source: gemini
+date: 2026-05-09
+category: 系统运维
+tags: [gemini, 系统运维]
+---
+
+## 安装一下cc switch,告诉我命令。
+frontend-master这个skill 有4个功能，我只安装了一个。我想把其他的都安装。应该如何操作
+
+安装 cc-switch（通常指 Cloud Control 或相关的命令行切换工具）以及补全 frontend-master 技能包的操作其实非常直观。你可以通过以下步骤完成。
+
+1. 安装 cc-switch 的命令
+通常这类工具是通过 Node.js 的包管理器 npm 或 yarn 进行全局安装的。请在终端执行以下命令：
+# 使用 npm 安装
+npm install -g cc-switch
+
+# 或者使用 yarn 安装
+yarn global add cc-switch
+
+提示： 如果你在安装过程中遇到权限报错（EACCES），请在命令前加上 sudo（针对 macOS/Linux）或以管理员身份运行 PowerShell（针对 Windows）。
+
+2. 如何安装 frontend-master 的剩余功能
+如果你提到的 frontend-master 是一个内部工具、脚手架或者是某个 CLI 的插件包，而你目前只安装了部分功能，通常有以下两种解决路径：
+方案 A：重新运行安装/更新命令
+大部分 CLI 工具在检测到已有旧版本或不完整安装时，运行安装命令会自动补全缺失的依赖或子模块。
+# 尝试重新安装该技能包
+cc-switch install frontend-master --all
+
+(注：如果 --all 不起作用，可以直接尝试 cc-switch install frontend-master，它通常会覆盖安装所有组件。)
+方案 B：交互式选择
+某些高级 CLI 工具支持交互式勾选。你可以尝试进入配置界面：
+
+输入 cc-switch list 或 cc-switch status 查看已安装的功能列表。
+输入 cc-switch add frontend-master。
+看提示操作： 终端通常会弹出一个列表，按 空格键 勾选你之前没安装的那 3 个功能，然后按 回车 确认。
+
+
+常见操作命令参考表
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+目的命令示例查看所有可用技能cc-switch list查看已安装详情cc-switch info frontend-master更新特定技能cc-switch update frontend-master卸载后重装cc-switch uninstall frontend-master  cc-switch install frontend-master
+
+如果这不是你使用的特定工具（比如你在使用某个特定的 IDE 插件或私有框架），请告诉我你是在哪个环境下运行这些命令的，我会为你提供更精准的步骤！
+
+---
+*从 Gemini 导出，2026-05*

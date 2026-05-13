@@ -1,0 +1,82 @@
+# ============================================================================
+# 规则甄查 · 甄先生 v2.0 — 中心配置
+# ============================================================================
+# 所有脚本统一从此文件读取密钥、路径与阈值。
+# 由 orchestrator.py 自动生成并维护。
+
+api:
+  deepseek_key: "sk-cad1b7bcd5dd4644a03c87c14a1fa690"
+  deepseek_url: "https://api.deepseek.com/v1/chat/completions"
+  deepseek_model: "deepseek-chat"
+
+paths:
+  data_dir: "E:/MyCodeProjects/data"
+  notes_dir: "E:/MyCodeProjects/notes"
+  rules_path: "E:/MyCodeProjects/rules.json"
+  refine_path: "E:/MyCodeProjects/ai_refine_pro.py"
+  sentinel_cache: "E:/MyCodeProjects/data/sentinel_cache.db"
+  pipeline_state: "E:/MyCodeProjects/data/pipeline_state.json"
+  pending_sync: "E:/MyCodeProjects/data/pending_sync"
+
+thresholds:
+  engagement_drop: 0.30
+  refine_max_rounds: 3
+  sentinel_timeout_ms: 30000
+
+vision:
+  frame_interval: 30
+  qr_detect: true
+  text_detect: true
+  logo_detect: true
+  cover_title_check: true
+
+scheduler:
+  daily_time: "02:00"
+  task_name: "规则甄查每日全流程"
+
+google_drive:
+  credentials_path: "E:/MyCodeProjects/data/gdrive_credentials.json"
+  token_path: "E:/MyCodeProjects/data/gdrive_token.json"
+  root_folder: "Sentinel_Audit"
+
+webhook:
+  enabled: false
+  type: "generic"              # wechat_work / slack / discord / generic
+  url: ""
+  title: "规则甄查 · 流水线报告"
+
+feedback_collector:
+  enabled: false
+  login_url: ""
+  username: ""
+  password: ""
+  data_url: ""
+
+accounts:
+  - id: "main"
+    label: "主账号"
+    strategy: "standard"
+    export_subdir: "main"
+    enabled: true
+  - id: "sub_01"
+    label: "子账号A"
+    strategy: "aggressive"
+    export_subdir: "sub_01"
+    enabled: false
+
+trend:
+  keywords: ["知识分享", "职场", "创业", "理财", "AI", "科技"]
+  max_per_keyword: 5
+  enabled: false
+
+competitor:
+  enabled: false
+  max_comments_per_account: 30
+  max_pains: 50
+  accounts:
+    - id: "big_account_01"
+      label: "头部知识号A"
+      url: "https://www.douyin.com/user/xxx"
+    - id: "big_account_02"
+      label: "财经大号B"
+      url: "https://www.douyin.com/user/yyy"

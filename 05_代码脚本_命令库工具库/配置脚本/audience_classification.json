@@ -1,0 +1,161 @@
+{
+  "generated_at": "2026-05-12T08:10:41.982396",
+  "target": "E:\\MyCodeProjects\\04-宝妈直播诊断系统\\清晨烟火小厨",
+  "total_comments": 912,
+  "total_users": 24,
+  "segments": {
+    "未分类": {
+      "count": 207,
+      "percentage": 22.7,
+      "users": 18,
+      "suggestion": ""
+    },
+    "地域相关型": {
+      "count": 198,
+      "percentage": 21.7,
+      "users": 6,
+      "suggestion": "融入地域共鸣话术, '我们福建老乡都爱这个口味', 武夷山/千岛湖话术"
+    },
+    "价格敏感型": {
+      "count": 173,
+      "percentage": 19.0,
+      "users": 10,
+      "suggestion": "强调品质/性价比话术, 对比日常价 vs 直播价, 用'划算'替代'便宜'"
+    },
+    "食材讨论型": {
+      "count": 98,
+      "percentage": 10.7,
+      "users": 5,
+      "suggestion": "借机科普食材来源/品质, '这是福建武夷山的特产...', 建立选品专业形象"
+    },
+    "家庭生活型": {
+      "count": 83,
+      "percentage": 9.1,
+      "users": 4,
+      "suggestion": "家常话术拉近距离, '给家人做菜最幸福', 建立温暖家庭品牌"
+    },
+    "烹饪方法型": {
+      "count": 68,
+      "percentage": 7.5,
+      "users": 4,
+      "suggestion": "主动展示制作关键步骤, 回应烹饪疑问, '很多人问怎么做, 我教大家一个小窍门'"
+    },
+    "互动闲聊型": {
+      "count": 63,
+      "percentage": 6.9,
+      "users": 4,
+      "suggestion": "积极回应亲切互动, 点名感谢, 保持高情绪价值话术"
+    },
+    "粉丝支持型": {
+      "count": 22,
+      "percentage": 2.4,
+      "users": 1,
+      "suggestion": "强化信任背书, '很多老客户回购', 引导晒单互动"
+    }
+  },
+  "top_keywords": [
+    {
+      "keyword": "送",
+      "count": 94
+    },
+    {
+      "keyword": "缅北",
+      "count": 63
+    },
+    {
+      "keyword": "武夷山",
+      "count": 51
+    },
+    {
+      "keyword": "熏鹅",
+      "count": 45
+    },
+    {
+      "keyword": "点不了",
+      "count": 40
+    },
+    {
+      "keyword": "三千",
+      "count": 39
+    },
+    {
+      "keyword": "上饶",
+      "count": 38
+    },
+    {
+      "keyword": "早上好",
+      "count": 37
+    },
+    {
+      "keyword": "扯面",
+      "count": 36
+    },
+    {
+      "keyword": "大宝贝",
+      "count": 34
+    },
+    {
+      "keyword": "宝贝",
+      "count": 31
+    },
+    {
+      "keyword": "福建",
+      "count": 27
+    },
+    {
+      "keyword": "对的",
+      "count": 25
+    },
+    {
+      "keyword": "吃货",
+      "count": 21
+    },
+    {
+      "keyword": "老婆",
+      "count": 16
+    }
+  ],
+  "top_users": [
+    {
+      "user": "有缘人",
+      "count": 237
+    },
+    {
+      "user": "切顺其自然",
+      "count": 111
+    },
+    {
+      "user": "小灰灰",
+      "count": 111
+    },
+    {
+      "user": "酸蔡鱼里梅鱼",
+      "count": 98
+    },
+    {
+      "user": "小灰",
+      "count": 58
+    },
+    {
+      "user": "混世魔壬",
+      "count": 38
+    },
+    {
+      "user": "竹本无心",
+      "count": 36
+    },
+    {
+      "user": "以封 (一风",
+      "count": 29
+    },
+    {
+      "user": "茶泡饭",
+      "count": 28
+    },
+    {
+      "user": "小委屈'啦",
+      "count": 25
+    }
+  ],
+  "suggestions": []
+}

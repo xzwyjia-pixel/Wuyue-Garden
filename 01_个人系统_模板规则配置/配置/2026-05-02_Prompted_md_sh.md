@@ -1,0 +1,43 @@
+---
+title: Prompted
+source: gemini
+date: 2026-05-02
+category: 系统运维
+tags: [gemini, 系统运维]
+---
+
+## Prompted
+
+从你提供的截图来看，我们遇到了一个典型的技术误区：安装指令指向的是一个 Markdown 文档（.md），而不是真正的脚本文件（.sh）。
+在终端中，bash 尝试把说明文档当成指令执行，所以会出现 command not found 和 syntax error（语法错误）。
+请按照以下修正后的步骤操作：
+1. 找到正确的安装脚本
+由于 INSTALL_FOR_AGENTS.md 只是一个阅读文档，它里面通常会包含真正的安装命令。请尝试运行该项目通用的安装脚本：
+在终端输入并回车：
+curl -sL https://raw.githubusercontent.com/garrytan/gbrain/master/install.sh | bash
+
+2. 检查代理设置 (针对截图顶部的报错)
+你的截图顶部显示 WSL 不支持 localhost 代理。这可能会导致 curl 无法下载脚本。
+如果上面的命令报错（例如 Could not resolve host），请先尝试暂时关闭你的 Windows 代理软件，或者在终端输入以下命令尝试绕过：
+export ALL_PROXY=""
+curl -sL https://raw.githubusercontent.com/garrytan/gbrain/master/install.sh | bash
+
+3. 激活 Systemd (完成之前的配置)
+你已经在 etc/wsl.conf 中正确添加了 systemd=true。要让它生效，你需要重启 WSL：
+
+关闭所有打开的 WSL 终端窗口。
+在 Windows 搜索框输入 PowerShell 并打开。
+在 PowerShell 中输入：wsl --shutdown。
+重新打开 Ubuntu 终端。
+
+4. 验证安装环境
+重启后，你可以输入以下命令检查环境是否就绪：
+
+检查 Systemd 是否成功： systemctl is-system-running（如果返回 running 或 degraded 说明成功了）。
+检查 Ollama： ollama --version（确保你为“规则甄查-甄先生”准备的本地模型底层可用）。
+
+总结建议：
+不要去运行那个 .md 后缀的文件。直接尝试我上面第一步提供的 install.sh 命令。如果还是不行，可能需要进入该 GitHub 项目的主页查看最新的安装指南，通常 README.md 会给出最准确的单行安装命令。
+
+---
+*从 Gemini 导出，2026-05*

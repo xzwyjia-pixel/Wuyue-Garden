@@ -1,0 +1,2 @@
+Using CPU. Note: This module is much faster with a GPU.
+

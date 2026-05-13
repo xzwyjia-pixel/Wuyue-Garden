@@ -1,0 +1,52 @@
+---
+title: 清理现在的Claude的缓存
+source: gemini
+date: 2026-05-09
+category: 项目管理
+tags: [gemini, 项目管理]
+---
+
+## 清理现在的Claude的缓存
+
+如果你是指清理 Claude (Desktop App/Web) 或者是你当前正在使用的 Claude Project (项目空间) 的上下文缓存，可以根据你的使用场景采取以下操作：
+1. 清理 Claude Project (项目空间) 缓存
+如果你是在网页端的 "Projects" 里工作，觉得模型开始“变笨”或者响应变慢（因为上下文堆积太厚）：
+
+最直接的方法： 点击对话窗口上方的 "Start a new chat"。这会清空当前对话的短期记忆，但保留你上传到 Project Content 中的核心文件。
+清理过时文件： 检查 Project 右侧的 "Project Knowledge"。把你之前移动、改名或已经归档的旧版 README 或旧代码手动删除，否则模型会一直读取旧的路径信息。
+
+2. 清理 Claude 桌面客户端缓存 (Windows)
+如果你使用的是 Claude 的桌面应用程序，它本质上是个套壳浏览器，会产生本地缓存。
+
+强制刷新： 选中窗口按下 Ctrl + Shift + R。
+手动清理目录：
+
+关闭 Claude App。
+打开资源管理器，地址栏输入：%AppData%\Claude。
+删除 Cache、Code Cache 和 GPUCache 文件夹。
+
+
+
+3. 清理 Claude 控制的工程环境 (针对 MCP/Terminal)
+在你的 E:/MyCodeProjects 环境中，如果你让 Claude 调用的工具出现了“记忆偏差”，可以运行：
+
+重置 MCP 状态：
+重启 Claude App 或者在设置中重载 MCP 服务器。
+清理 .claude 隐身文件夹：
+# 删除本地对话生成的临时设置或状态（如果有）
+rm -rf .claude/
+
+
+
+4. 网页版浏览器缓存
+如果你在 Chrome/Edge 中使用：
+
+按下 F12 -> 右键点击浏览器顶部的 刷新按钮 -> 选择 “清空缓存并硬性重新加载”。
+
+
+特别提醒：
+由于你刚刚完成了 01-Production 的大规模目录重构，建议你务必执行一次“Start a new chat”。
+因为 Claude 的当前对话窗口里还残留着你重构前的目录结构记忆。如果你不开启新对话，它可能会继续尝试去旧路径找文件，导致写入失败（比如刚才 skill-creator 的报错）。
+
+---
+*从 Gemini 导出，2026-05*

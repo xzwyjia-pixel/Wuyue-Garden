@@ -1,0 +1,67 @@
+---
+title: Prompted
+source: gemini
+date: 2026-05-02
+category: 系统运维
+tags: [gemini, 系统运维]
+---
+
+## Prompted
+
+太棒了！看到你已经在 PowerShell 中成功运行了 qwen2.5-coder (见 image_1d8557.png)，这说明你的本地“大脑”已经激活。同时，我也注意到你打开了工具的 Launch 界面 (见 image_43b171.png)，那里提供了多种 AI Agent 的启动选项。
+接下来的安装步骤非常关键，我们分两步走：
+
+第一步：启动你的 AI 助手
+在 image_43b171.png 中，你有几个很棒的选择。既然你已经配置好了 qwen2.5-coder，建议优先使用支持本地模型的 Agent。
+
+复制命令：在 Launch 界面中，点击 Claude 或 OpenCode 后方的复制图标。
+在终端运行：回到你的 PowerShell 窗口（或者新开一个），粘贴命令（如 ollama launch claude）并执行。
+
+注意：这会启动 Agent 的图形界面或交互环境，它将作为你安装 Skill 的操作台。
+
+
+
+
+第二步：配置并挂载 scholar-skill
+现在我们要让这个启动的助手学会使用 scholar-skill。
+
+
+找到配置文件：
+在你之前的检测中，我们发现 Cline 的配置路径在：
+C:\Users\think\AppData\Roaming\Code\User\globalStorage\saoudrizwan.claude-dev\settings\cline_mcp_settings.json
+
+
+修改配置：
+直接在 VS Code 中打开这个 JSON 文件，将 scholar-skill 加入 mcpServers 列表。一定要确保 args 路径指向你存放该技能的实际位置：
+
+
+{
+  "mcpServers": {
+    "scholar-skill": {
+      "command": "python",
+      "args": ["C:/你的存放路径/scholar-skill/main.py"], 
+      "env": {
+        "PYTHONPATH": "C:/你的存放路径/scholar-skill"
+      }
+    }
+  }
+}
+
+
+安装 Python 依赖（这一步常被忽略）：
+打开一个新的 PowerShell，进入该技能文件夹，运行：
+pip install -r requirements.txt
+
+
+
+
+💡 接下来做什么？
+完成配置并重启 VS Code 中的 Cline 后，你可以直接在对话框里测试它的“学术解构”能力。
+试着对它说：
+
+“甄先生已经准备好了。请调用 scholar-skill 帮我检索并深度解构关于‘低空经济’或‘仿生机器人控制算法’的最新学术报告。”
+
+如果你在执行 ollama launch 或者修改 JSON 配置文件时遇到任何报错（比如路径找不到或权限问题），请随时把截图发给我，我帮你排查！
+
+---
+*从 Gemini 导出，2026-05*

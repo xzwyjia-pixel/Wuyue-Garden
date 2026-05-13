@@ -1,0 +1,73 @@
+---
+title: Prompted
+source: gemini
+date: 2026-04-30
+category: 编程开发
+tags: [gemini, 编程开发]
+---
+
+## Prompted
+
+太棒了，看到您已经在 image_f1f5d4.png 中打开了 VS Code 的 Claude Code 界面，我们离目标又近了一步。
+１． 电脑环境状态报告
+根据您之前的操作和图片反馈，您的环境检查如下：
+
+已就绪：
+
+Node.js & npm: 基础运行环境正常。
+Python: 逻辑编写工具正常。
+Git: 已成功安装，现在 VS Code 侧边栏的源代码管理应该可以正常识别项目了。
+VS Code & Claude Code 扩展: 已安装并成功启动。
+
+
+待补充：
+
+身份验证（登录）: 图片显示您正处于登录选择界面。
+
+
+
+
+２． 关于“免费版本”的执行路径
+从图片 image_f1f5d4.png 可以看到，Claude Code 提供了三种登录方式。如果您希望寻找免费额度，请按以下操作：
+
+点击“Anthropic Console”按钮：
+
+这是使用 API 计费的模式。
+原因：Anthropic 经常会给新注册 Console 账户的用户提供 5 美元的免费测试额度（Initial Credits）。
+
+
+检查额度：
+
+登录后，查看 Settings -> Billing 页面。如果有这 5 美元，您可以免费运行 Claude Code 相当长一段时间。
+
+
+如果额度为 0 且不想付费：
+
+由于 Claude Code 本身目前不提供类似 Claude.ai 网页端的纯免费对话模式，如果您没有 API 余额，该插件将无法执行 Agent 指令。
+
+
+
+
+３． 您的第一步具体操作建议
+考虑到您正在推进 “规则甄查 - 甄先生” (Rules Detection - Mr. Zhen) 品牌，我建议您直接从开发自定义 Skill (MCP Server) 开始，这一步在本地编写代码是完全免费的。
+行动清单：
+
+尝试登录：点击图片中的 "Anthropic Console"，看看有没有那 5 美元的“意外之喜”。
+初始化本地工作区：
+
+在左侧文件浏览器中点击 "Open Folder"。
+选择您的项目目录（例如 E:\MyCodeProjects）。
+
+
+命令行安装 MCP 依赖：
+
+在终端输入：npm install -g @modelcontextprotocol/sdk
+这是开发 Agent 技能（Skill）的官方工具包。
+
+
+
+下一步：
+您是想让我先带您写一个简单的 Python Skill 模板（比如一个能自动扫描本地文档违规词的工具），还是先去确认您的 API 免费额度？
+
+---
+*从 Gemini 导出，2026-04*

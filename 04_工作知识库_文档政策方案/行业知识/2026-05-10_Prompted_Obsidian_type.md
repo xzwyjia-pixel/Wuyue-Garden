@@ -1,0 +1,92 @@
+---
+title: Prompted
+source: gemini
+date: 2026-05-10
+category: Obsidian配置
+tags: [gemini, Obsidian配置]
+---
+
+## Prompted
+
+很好，我看你已经安装好了 Open In Other Editor 插件。既然插件已经就绪，我们现在就开始搭建这条“自动化公路”。
+为了让你能在 Claude 界面（或通过简单的快捷方式）完成所有任务，我们将分步落实。
+
+第一步：配置插件，实现“一键回传”
+请在 Obsidian 中点击该插件的 “选项 (Settings)”：
+
+找到 Editor Path 或类似设置。
+确保填入的是 VS Code 的可执行路径（通常 Windows 下默认支持 code 指令，如果不行，请填入类似 C:\Users\YourName\AppData\Local\Programs\Microsoft VS Code\Code.exe）。
+测试：随便打开一个 Obsidian 笔记，按 Ctrl + P 搜索 Open in other editor，如果能成功唤起 VS Code，说明“传送门”打通了。
+
+
+第二步：建立全自动化“指挥中心”
+为了减少你写代码和人工操作，我为你编写了一个 “全自动联动脚本”。你只需要执行一次（我会告诉你如何让它自动运行），它就会负责把 E 盘的内容“织”进 Obsidian。
+自动化脚本功能：
+
+自动分类：识别 Python、前端、或普通文档项目。
+自动双链：在 Obsidian 生成 MOC（内容地图），项目之间会通过 #标签 自动建立视觉联系。
+零人工：直接调用你现有的 Local REST API 推送数据。
+
+请在 Claude 的终端或你的 PowerShell 中运行以下指令（已为你适配好路径和 API）：
+# 1. 定义你的环境
+$apiKey = "8212fe30470f760008c2bc5a9faa24f07d838267fc995c09b8292a8464ab770c"
+$sourceDir = "E:\Mycodeprojects"
+$apiVaultUrl = "http://127.0.0.1:27123/vault/Michael_Product"
+
+# 2. 确保 Obsidian 目标文件夹存在
+$headers = @{ "Authorization" = "Bearer $apiKey"; "Content-Type" = "text/markdown" }
+
+# 3. 扫描并同步
+Get-ChildItem $sourceDir -Directory | ForEach-Object {
+    $name = $_.Name
+    $path = $_.FullName
+    $type = "General"
+    
+    # 自动识别项目特征
+    if (Test-Path "$path\requirements.txt") { $type = "AI_Python" }
+    elseif (Test-Path "$path\package.json") { $type = "Frontend" }
+    elseif ($name -like "*Rule*") { $type = "Compliance_Audit" }
+
+    # 构建带有一键跳转功能的 Markdown 笔记内容
+    $content = @"
+# 项目: $name
+- **类型**: #$type
+- **物理路径**: `$path`
+- **操作**: [点此在 VS Code 中打开](vscode://file/$($path.Replace('\', '/')))
+
+---
+## 项目联系网
+- 所属分类: [[Type_$type]]
+- 关联审计库: [[Rule_Investigator_Master]]
+"@
+
+    # 推送到 Obsidian
+    $targetUrl = "$apiVaultUrl/$name.md"
+    Invoke-RestMethod -Method Put -Uri $targetUrl -Headers $headers -Body ([System.Text.Encoding]::UTF8.GetBytes($content))
+}
+
+
+第三步：实现“实时联动”的无感化操作
+你提到希望减少人工，这里有两个进阶方案：
+
+
+方案 A：Claude 托管执行（推荐）
+以后每次我为你生成新代码或分析完直播间规则，你只需对我说：“同步到我的项目网”。我会自动生成一段包含新内容的 API 指令，你点一下执行，Obsidian 和 E 盘就会同步更新。
+
+
+方案 B：Windows 自动触发
+我们可以把上面的脚本保存为 SyncData.ps1，放在你的桌面上。你每次在 E 盘操作完，双击它一下，Obsidian 里的关系图谱（Graph View）就会瞬间刷新。
+
+
+
+第四步：如何在 Obsidian 中查看“相互联系”
+
+打开 Obsidian。
+点击左侧的 “关系图谱 (Graph View)”。
+在图谱设置的“颜色 (Groups)”里，添加一个查询规则：tag:#AI_Python（设为绿色），tag:#Compliance_Audit（设为红色）。
+你会看到：原本散乱的文件会根据项目类型自动聚集成群，且所有通过脚本生成的笔记都带有指向彼此的链接。
+
+现在，你想让我先尝试为你同步一次 E:\Mycodeprojects 下的现有文件，看看在 Obsidian 里的呈现效果吗？
+
+---
+*从 Gemini 导出，2026-05*

@@ -1,0 +1,83 @@
+---
+title: ╭─── Claude Code v2.1.133 ─────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                    │ Tips for getting started                                        │
+│                    Welcome back!                   │ Run /init to create a CLAUDE.md file with instructions for Cla… │
+│                                                    │ ─────────────────────────────────────────────────────────────── │
+│                       ▐▛███▜▌                      │ What's new                                                      │
+│                      ▝▜█████▛▘                     │ Fixed OAuth authentication failing with a 401 retry loop when … │
+│                        ▘▘ ▝▝                       │ Added `ANTHROPIC_BEDROCK_SERVICE_TIER` environment variable to… │
+│                                                    │ Pasting a PR URL into the `/resume` search box now finds the s… │
+│ deepseek-chat with high effort · API Usage Billing │ /release-notes for more                                         │
+│        E:\MyCodeProjects\New Claude Project        │                                                                 │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+> “Hello. 你现在是否在使用 DeepSeek 引擎？请用一个词形容当前的连接质量。”
+  ⎿  Retrying in 0s · attempt 4/10
+
+✽ Prestidigitating… (1m 23s)
+  ⎿  Tip: Use /btw to ask a quick side question without interrupting Claude's current work
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+>
+source: gemini
+date: 2026-05-08
+category: 编程开发
+tags: [gemini, 编程开发]
+---
+
+## ╭─── Claude Code v2.1.133 ─────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                    │ Tips for getting started                                        │
+│                    Welcome back!                   │ Run /init to create a CLAUDE.md file with instructions for Cla… │
+│                                                    │ ─────────────────────────────────────────────────────────────── │
+│                       ▐▛███▜▌                      │ What's new                                                      │
+│                      ▝▜█████▛▘                     │ Fixed OAuth authentication failing with a 401 retry loop when … │
+│                        ▘▘ ▝▝                       │ Added `ANTHROPIC_BEDROCK_SERVICE_TIER` environment variable to… │
+│                                                    │ Pasting a PR URL into the `/resume` search box now finds the s… │
+│ deepseek-chat with high effort · API Usage Billing │ /release-notes for more                                         │
+│        E:\MyCodeProjects\New Claude Project        │                                                                 │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+> “Hello. 你现在是否在使用 DeepSeek 引擎？请用一个词形容当前的连接质量。”
+  ⎿  Retrying in 0s · attempt 4/10
+
+✽ Prestidigitating… (1m 23s)
+  ⎿  Tip: Use /btw to ask a quick side question without interrupting Claude's current work
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+>
+
+看到 Prestidigitating（变戏法中）这个状态持续了一分多钟，并且出现了多次 Retrying，这说明 Claude Code v2.1.133 虽然已经加载了 DeepSeek 的配置，但当前的**流式传输（Streaming）**被拦截或严重降速了。
+在 2026 年的环境下，Claude Code 这种原生终端工具对网络延迟（Latency）和中转节点的协议支持非常敏感。
+为什么会卡在“变戏法”阶段？
+
+高努力模式负载 (High Effort)：你当前的模式是 with high effort，这会增加模型思考的 Token 消耗，导致请求体巨大，极易触发代理节点的限速。
+SSL/TLS 二次握手：正如之前 curl 日志显示的，DeepSeek 的服务器会频繁请求连接重协商，这在长连接（Claude Code 的工作方式）中会导致链路反复断开。
+
+
+甄先生，尝试这个“降维打击”的方案：
+请按下 Ctrl + C 终止当前卡住的进程，然后尝试用“轻量化”模式启动。
+1. 强制“低努力”启动（减少 Token 吞吐量）
+在启动命令中直接指定，避免它进行复杂的初始化扫描：
+claude --model deepseek-chat --thinking-budget 0
+
+关闭思考预算可以让模型响应变快，绕过长连接超时。
+2. 给代理软件（Clash）降压
+如果你的代理软件中有 "UDP Proxy" 或 "Sniffing" 选项，请尝试关闭它们。Claude Code 的 Node.js 引擎在处理加密流量时，如果代理软件尝试“嗅探”包内容，会导致握手超时。
+3. 极简指令验证
+一旦进入 > 提示符，不要发长句子，发一个单词：
+
+ping
+
+
+如果依然显示 Retrying：
+这说明你的代理节点在处理 api.deepseek.com:443 的双向握手时存在兼容性问题。
+快速替代方案：
+既然你已经有了 Key 并且 curl 是通的，如果你急于处理“规则甄查”的代码，可以暂时弃用 Claude Code 这种重型终端，直接在 VS Code 里安装 Cline 插件。
+
+Cline 对代理的支持比 Claude Code 这种独立 CLI 工具要稳健得多。
+在 Cline 中设置好同样的 Base URL 和 Key 即可。
+
+甄先生，目前的状况就像是“车漆很亮（配置对了），但火花塞积碳（网络重协商）”。 只要能回一个词，这个链路就彻底通了。要不要尝试一下强制 low thinking 模式启动？
+
+---
+*从 Gemini 导出，2026-05*

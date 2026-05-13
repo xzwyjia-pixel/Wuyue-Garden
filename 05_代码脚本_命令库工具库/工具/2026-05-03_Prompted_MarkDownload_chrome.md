@@ -1,0 +1,49 @@
+---
+title: Prompted
+source: gemini
+date: 2026-05-03
+category: Obsidian配置
+tags: [gemini, Obsidian配置]
+---
+
+## Prompted
+
+甄先生，从你的截图（image_17a39e.jpg）来看，你已经非常接近成功了！你已经输入了 allow pasting 并执行了脚本，但看起来脚本并没有真正触达到 MarkDownload 插件的存储空间。
+这是因为你目前是在 Momentum 插件的页面（控制台左侧显示的是它的背景）中运行代码，而每个插件的存储空间是相互隔离的。
+请按照以下三个步骤进行最后的“精准打击”：
+1. 切换至正确的插件上下文（Context）
+在你的控制台（Console）面板中，找到那个写着 top 的下拉菜单（它位于蓝色漏斗图标 Filter 的左侧）：
+
+点击 top。
+在弹出的列表中，一定要找到并选择 包含 MarkDownload 或以 pklbla... 开头的选项。
+只有切换到这个环境，代码中的 chrome.storage.local 才能指代 MarkDownload 的数据。
+
+2. 重新执行注入脚本
+切换好环境后，再次粘贴并运行这段代码：
+chrome.storage.local.set({
+    "obsidianIntegration": true,
+    "obsidianServer": "https://127.0.0.1:27124", 
+    "obsidianApiKey": "8212fe30470f760008c2b", // 对应你之前的 Key
+    "obsidianVault": "Obsidian" 
+}, function() {
+    if (chrome.runtime.lastError) {
+        console.error("写入失败: ", chrome.runtime.lastError);
+    } else {
+        console.log("✅ 写入成功！请刷新任意网页尝试 Sync。");
+    }
+});
+
+3. 处理证书“握手”
+由于你使用的是加密端口 27124，如果浏览器之前没有访问过这个地址，它会默默拦截请求。
+
+直接在浏览器新标签页访问：[https://127.0.0.1:27124/](https://127.0.0.1:27124/)。
+如果显示“不是私密连接”，点击 “高级” -> “继续访问”。
+直到页面显示出类似 {"status":"OK"} 的文字，说明管道彻底通了。
+
+
+特别提醒：
+你的 Obsidian 库名在截图中显示为 Obsidian（位于 A1B2 下方），脚本中已按此配置。如果一切顺利，你现在回到任何网页点击 MarkDownload，那个红色的报错就应该消失了。
+这套“工业级”绕过方案虽然有点绕，但能彻底解决 UI 页面被拦截的问题。期待听到你配置成功的消息！
+
+---
+*从 Gemini 导出，2026-05*

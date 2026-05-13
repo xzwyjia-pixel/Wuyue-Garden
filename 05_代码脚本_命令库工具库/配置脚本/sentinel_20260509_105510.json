@@ -1,0 +1,186 @@
+{
+  "scan_id": "20260509_105510",
+  "scanned_at": "2026-05-09T10:55:10.066449",
+  "engine": "platform_sentinel v2.0",
+  "brand": "规则甄查 · 甄先生",
+  "summary": {
+    "total_targets": 4,
+    "success": 4,
+    "failed": 0,
+    "with_new_content": 3
+  },
+  "targets": [
+    {
+      "platform": "douyin",
+      "platform_name": "抖音",
+      "page_type": "help_center",
+      "label": "帮助中心 / 规则指引",
+      "url": "https://www.douyin.com/help",
+      "page_title": "抖音-常见问题",
+      "status": "success",
+      "scanned_at": "2026-05-09T10:54:33.974249",
+      "articles": [
+        {
+          "title": "发布视频/图文",
+          "url": "https://creator.douyin.com/",
+          "date": "",
+          "summary": ""
+        },
+        {
+          "title": "视频管理",
+          "url": "https://creator.douyin.com/creator-micro/content/manage",
+          "date": "",
+          "summary": ""
+        },
+        {
+          "title": "作品数据",
+          "url": "https://creator.douyin.com/creator-micro/data/stats/overview",
+          "date": "",
+          "summary": ""
+        },
+        {
+          "title": "开直播",
+          "url": "https://streamingtool.douyin.com/",
+          "date": "",
+          "summary": ""
+        },
+        {
+          "title": "直播数据",
+          "url": "https://livedata.douyin.com/",
+          "date": "",
+          "summary": ""
+        },
+        {
+          "title": "创作者学习中心",
+          "url": "https://creator.douyin.com/creator-school",
+          "date": "",
+          "summary": ""
+        },
+        {
+          "title": "创作者中心",
+          "url": "https://www.douyin.com//creator.douyin.com/",
+          "date": "",
+          "summary": ""
+        },
+        {
+          "title": "剪映专业版",
+          "url": "https://api.amemv.com/magic/eco/runtime/release/6461f944e84c15036369f2a8",
+          "date": "",
+          "summary": ""
+        }
+      ],
+      "full_text_length": 680
+    },
+    {
+      "platform": "douyin",
+      "platform_name": "抖音",
+      "page_type": "about",
+      "label": "关于抖音 / 平台规范",
+      "url": "https://www.douyin.com/about",
+      "page_title": "【抖音】记录美好生活-Douyin.com",
+      "status": "no_articles_found",
+      "scanned_at": "2026-05-09T10:54:50.356080",
+      "articles": [],
+      "full_text_length": 159,
+      "full_text_excerpt": "抖音 | 记录美好生活\n页面不见啦\n回首页看看\n\n2026 © 抖音  | 京ICP备16016397号-3 | 北京微播视界科技有限公司\n\n中国互联网举报中心 | 网络文化许可证-京网文-（2016）2282-264号 | 违法和不良信息举报：400-140-2108\n\n 京公网安备 11000002002046号"
+    },
+    {
+      "platform": "wechat_video",
+      "platform_name": "视频号",
+      "page_type": "terms",
+      "label": "微信使用条款 / 视频号规范",
+      "url": "https://weixin.qq.com/cgi-bin/readtemplate?t=weixin_agreement&s=terms",
+      "page_title": "软件许可及服务协议",
+      "status": "success",
+      "scanned_at": "2026-05-09T10:54:57.597554",
+      "articles": [
+        {
+          "title": "公众平台",
+          "url": "https://mp.weixin.qq.com",
+          "date": "",
+          "summary": ""
+        },
+        {
+          "title": "开放平台",
+          "url": "https://open.weixin.qq.com",
+          "date": "",
+          "summary": ""
+        },
+        {
+          "title": "微信支付",
+          "url": "https://pay.weixin.qq.com/",
+          "date": "",
+          "summary": ""
+        },
+        {
+          "title": "微信广告",
+          "url": "https://ad.weixin.qq.com/",
+          "date": "",
+          "summary": ""
+        },
+        {
+          "title": "企业微信",
+          "url": "https://work.weixin.qq.com/",
+          "date": "",
+          "summary": ""
+        },
+        {
+          "title": "表情开放平台",
+          "url": "https://sticker.weixin.qq.com/",
+          "date": "",
+          "summary": ""
+        }
+      ],
+      "full_text_length": 10000
+    },
+    {
+      "platform": "wechat_video",
+      "platform_name": "视频号",
+      "page_type": "operator",
+      "label": "运营规范 / 视频号运营规则",
+      "url": "https://weixin.qq.com/cgi-bin/readtemplate?t=weixin_agreement&s=operator",
+      "page_title": "软件许可及服务协议",
+      "status": "success",
+      "scanned_at": "2026-05-09T10:55:10.059424",
+      "articles": [
+        {
+          "title": "公众平台",
+          "url": "https://mp.weixin.qq.com",
+          "date": "",
+          "summary": ""
+        },
+        {
+          "title": "开放平台",
+          "url": "https://open.weixin.qq.com",
+          "date": "",
+          "summary": ""
+        },
+        {
+          "title": "微信支付",
+          "url": "https://pay.weixin.qq.com/",
+          "date": "",
+          "summary": ""
+        },
+        {
+          "title": "微信广告",
+          "url": "https://ad.weixin.qq.com/",
+          "date": "",
+          "summary": ""
+        },
+        {
+          "title": "企业微信",
+          "url": "https://work.weixin.qq.com/",
+          "date": "",
+          "summary": ""
+        },
+        {
+          "title": "表情开放平台",
+          "url": "https://sticker.weixin.qq.com/",
+          "date": "",
+          "summary": ""
+        }
+      ],
+      "full_text_length": 10000
+    }
+  ]
+}

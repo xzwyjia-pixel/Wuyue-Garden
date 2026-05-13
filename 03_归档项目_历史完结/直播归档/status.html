@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><title>规则甄查 · 甄先生 v2.0</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,'微软雅黑',sans-serif; background:#1a1a2e; color:#e0e0e0; padding:24px; }
+  h1 { font-size:1.5em; color:#e94560; margin-bottom:4px; }
+  .sub { color:#888; font-size:0.85em; margin-bottom:24px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:12px; margin-bottom:24px; }
+  .card { background:#16213e; border-radius:8px; padding:16px; }
+  .card .num { font-size:1.8em; font-weight:700; }
+  .card .label { font-size:0.8em; color:#888; margin-top:4px; }
+  table { width:100%; border-collapse:collapse; margin-bottom:24px; }
+  th,td { padding:8px 12px; text-align:left; border-bottom:1px solid #333; font-size:0.9em; }
+  th { color:#e94560; font-weight:600; }
+  a { color:#4fc3f7; text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  .ok { color:#2eb886; }
+  .fail { color:#e01e5a; }
+  ul { list-style:none; }
+  li { padding:4px 0; font-size:0.9em; }
+  .section { margin-bottom:24px; }
+  .section h2 { color:#e94560; font-size:1.1em; margin-bottom:8px; border-bottom:1px solid #333; padding-bottom:4px; }
+  .timeline { position:relative; padding-left:24px; border-left:2px solid #333; }
+  .tl-item { position:relative; padding:8px 0 8px 16px; }
+  .tl-dot { position:absolute; left:-7px; top:12px; width:10px; height:10px; border-radius:50%; }
+  .tl-item.current .tl-dot { box-shadow:0 0 8px #e94560; }
+  .tl-version { font-weight:700; color:#e94560; }
+  .tl-date { color:#888; font-size:0.85em; margin-left:8px; }
+  .tl-label { color:#666; font-size:0.8em; }
+  .wordcloud { line-height:2.2; padding:8px 0; }
+  .cloud-word { display:inline-block; padding:4px 6px; cursor:default; transition:transform 0.2s; }
+  .cloud-word:hover { transform:scale(1.15); }
+  .copy-area { background:#0d1b2a; border:1px solid #333; border-radius:6px; padding:12px; font-family:'Consolas','Courier New',monospace; font-size:0.85em; white-space:pre-wrap; word-break:break-all; max-height:400px; overflow-y:auto; margin-bottom:8px; }
+  .copy-btn { background:#e94560; color:#fff; border:none; border-radius:4px; padding:6px 16px; cursor:pointer; font-size:0.85em; }
+  .copy-btn:hover { background:#c0392b; }
+  .copy-btn.ok { background:#2eb886; }
+  .publish-card { background:#16213e; border-left:3px solid #e94560; padding:12px; margin-bottom:8px; border-radius:0 6px 6px 0; }
+  .publish-card .meta { color:#888; font-size:0.8em; }
+  .quote-card { background:#16213e; padding:14px 16px; margin-bottom:10px; border-radius:0 8px 8px 0; }
+  .quote-tag { display:inline-block; font-size:0.7em; color:#888; letter-spacing:1px; margin-bottom:6px; }
+  .quote-text { margin:0; font-size:0.95em; line-height:1.6; color:#e0e0e0; }
+  .direction-item { background:#16213e; padding:12px; margin-bottom:8px; border-radius:8px; }
+  .direction-item.urgency-high { border-left:3px solid #e94560; }
+  .direction-item.urgency-med { border-left:3px solid #ffa726; }
+  .direction-item.urgency-low { border-left:3px solid #4fc3f7; }
+  .direction-meta { font-size:0.75em; color:#888; margin-left:8px; }
+  .direction-pain { display:block; font-size:0.8em; color:#ffa726; margin-top:4px; }
+  .direction-inc { display:block; font-size:0.8em; color:#2eb886; margin-top:2px; }
+  /* 思维引擎看板 */
+  .engine-row { display:flex; align-items:center; margin-bottom:8px; }
+  .engine-label { width:80px; font-size:0.85em; color:#ccc; }
+  .engine-bar-bg { flex:1; height:22px; background:#0d1b2a; border-radius:4px; overflow:hidden; position:relative; }
+  .engine-bar-fill { height:100%; border-radius:4px; transition:width 0.6s; }
+  .engine-bar-text { position:absolute; right:8px; top:2px; font-size:0.75em; color:#fff; }
+  .engine-bar-rationale { font-size:0.75em; color:#888; margin-left:12px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:200px; }
+  .engine-fps .engine-bar-fill { background:linear-gradient(90deg,#4fc3f7,#0288d1); }
+  .engine-egt .engine-bar-fill { background:linear-gradient(90deg,#e94560,#c62828); }
+  .engine-fmea .engine-bar-fill { background:linear-gradient(90deg,#ffa726,#e65100); }
+  .engine-mos .engine-bar-fill { background:linear-gradient(90deg,#2eb886,#00695c); }
+  .engine-rtt .engine-bar-fill { background:linear-gradient(90deg,#ab47bc,#4a148c); }
+  .lead-badge { display:inline-block; padding:2px 10px; border-radius:10px; font-size:0.8em; font-weight:600; color:#fff; margin-left:6px; }
+  .loading { color:#888; font-style:italic; padding:16px; text-align:center; }
+  .error-load { color:#e01e5a; padding:16px; }
+  /* 痛点引擎匹配 */
+  .match-row { display:flex; align-items:center; margin-bottom:6px; }
+  .match-engine { width:80px; font-size:0.8em; }
+  .match-bar { height:16px; border-radius:3px; margin-right:8px; }
+  .match-pct { font-size:0.8em; color:#888; }
+</style></head><body>
+<h1>⚡ 规则甄查 · 甄先生 v2.0</h1>
+<p class="sub" id="subtitle">加载中...</p>
+
+<!-- 概览卡片 -->
+<div class="grid" id="overviewGrid"></div>
+
+<!-- 思维研判看板（新增） -->
+<div class="section" id="thinkingDashboard" style="display:none">
+  <h2>🧠 思维研判看板</h2>
+  <div id="thinkingContent"></div>
+</div>
+
+<div class="section">
+<h2>步骤明细</h2>
+<table id="stepsTable"><tr><th>步骤</th><th>名称</th><th>状态</th><th>耗时</th></tr><tr><td colspan="4" class="loading">加载中...</td></tr></table>
+</div>
+
+<div class="section">
+<h2>规则库</h2>
+<table id="rulesTable"><tr><th>等级</th><th>数量</th></tr><tr><td colspan="2" class="loading">加载中...</td></tr></table>
+</div>
+
+<div class="section">
+<h2>规则进化路径</h2>
+<div class="timeline" id="timeline"><p class="loading">加载中...</p></div>
+</div>
+
+<div class="section">
+<h2>近 7 日趋势词云</h2>
+<div class="wordcloud" id="wordcloud"><p class="loading">加载中...</p></div>
+</div>
+
+<div class="section">
+<h2>激励点总览</h2>
+<table id="incentivesTable"><tr><th>等级</th><th>数量</th></tr><tr><td colspan="2" class="loading">加载中...</td></tr></table>
+</div>
+
+<!-- 发布文案区 -->
+<div class="section" id="publishSection" style="display:none">
+<h2>待发布文案</h2>
+<div id="publishContent"></div>
+</div>
+
+<div class="section" id="painSection" style="display:none">
+<h2>用户痛点趋势</h2>
+<div id="painContent"></div>
+</div>
+
+<script>
+const ENGINE_COLORS = {FPS:'#4fc3f7',EGT:'#e94560',FMEA:'#ffa726',MOS:'#2eb886',RTT:'#ab47bc'};
+const ENGINE_LABELS = {FPS:'第一性原理',EGT:'演化博弈',FMEA:'FMEA',MOS:'安全边际',RTT:'监管溯源'};
+
+async function load() {
+  try {
+    const resp = await fetch('../data/pipeline_state.json');
+    const state = await resp.json();
+
+    // 时间
+    const now = state.finished_at || state.deep_insight?.generated_at || new Date().toISOString();
+    document.getElementById('subtitle').textContent = `流水线状态 · ${now.slice(0,16).replace('T',' ')}`;
+
+    const di = state.deep_insight || {};
+    const md = state.matrix_distill || {};
+    const refineResults = state.refine_results || [];
+    const steps = state.steps || [];
+    const trend = state.trend_collection || {};
+
+    // 统计
+    let riskFound = 0, safePassed = 0;
+    refineResults.forEach(r => {
+      riskFound += (r.pre_audit?.risk_points || []).length;
+      if (r.verified_safe) safePassed++;
+    });
+    const totalDur = steps.reduce((a,s) => a + (s.duration_s||0), 0);
+    const leadEngine = md.lead_engine || di.platform_intent?.lead_engine || '';
+    const engineWeights = di.thinking_engine_weights || {};
+
+    // 概览卡片
+    const grid = document.getElementById('overviewGrid');
+    grid.innerHTML = `
+      <div class="card"><div class="num ${state.status==='completed'?'ok':'fail'}">${state.status||'—'}</div><div class="label">流水线状态</div></div>
+      <div class="card"><div class="num">${refineResults.length}</div><div class="label">处理文案</div></div>
+      <div class="card"><div class="num">${safePassed}</div><div class="label">零风险通过</div></div>
+      <div class="card"><div class="num">${riskFound}</div><div class="label">风险点</div></div>
+      <div class="card"><div class="num">${totalDur.toFixed(1)}s</div><div class="label">总耗时</div></div>
+      <div class="card"><div class="num">${leadEngine ? `<span style="color:${ENGINE_COLORS[leadEngine]||'#e94560'}">${leadEngine}</span>` : '—'}</div><div class="label">主导思维引擎</div></div>
+    `;
+
+    // 思维研判看板
+    if (di.thinking_engine_weights && Object.keys(di.thinking_engine_weights).length > 0) {
+      document.getElementById('thinkingDashboard').style.display = 'block';
+      renderThinkingDashboard(di);
+    }
+
+    // 步骤
+    const stepsBody = document.getElementById('stepsTable').querySelector('tbody') || document.getElementById('stepsTable');
+    if (steps.length) {
+      stepsBody.innerHTML = '<tr><th>步骤</th><th>名称</th><th>状态</th><th>耗时</th></tr>' +
+        steps.map(s => `<tr><td>${s.step||'?'}</td><td>${s.name||''}</td><td style="color:${s.status==='ok'?'#2eb886':'#e01e5a'}">● ${s.status||'?'}</td><td>${(s.duration_s||0).toFixed(1)}s</td></tr>`).join('');
+    }
+  } catch(e) {
+    document.querySelectorAll('.loading').forEach(el => el.textContent = '数据加载失败');
+    document.getElementById('subtitle').textContent = '加载失败: ' + e.message;
+  }
+}
+
+function renderThinkingDashboard(di) {
+  const weights = di.thinking_engine_weights || {};
+  const fmea = di.fmea_table || [];
+  const painMap = di.pain_engine_map || {};
+  const ci = di.counter_intuitive || [];
+
+  let html = '';
+
+  // 引擎权重条
+  html += '<div style="margin-bottom:16px">';
+  html += '<div style="display:flex;justify-content:space-between;margin-bottom:8px"><span style="color:#888;font-size:0.85em">思维引擎权重分布</span><span style="color:#888;font-size:0.85em">' + Object.keys(weights).length + ' 引擎活跃</span></div>';
+  for (const [id, data] of Object.entries(weights)) {
+    const w = data.weight || 0;
+    const rationale = data.rationale || '';
+    const label = ENGINE_LABELS[id] || id;
+    html += `<div class="engine-row engine-${id.toLowerCase()}">
+      <div class="engine-label">${label}</div>
+      <div class="engine-bar-bg">
+        <div class="engine-bar-fill" style="width:${w}%"></div>
+        <span class="engine-bar-text">${w}</span>
+      </div>
+      <div class="engine-bar-rationale" title="${rationale}">${rationale}</div>
+    </div>`;
+  }
+  html += '</div>';
+
+  // 主导引擎标识
+  const lead = di.platform_intent?.lead_engine || '';
+  if (lead && ENGINE_LABELS[lead]) {
+    const color = ENGINE_COLORS[lead] || '#e94560';
+    html += `<div style="margin-bottom:16px;padding:10px 14px;background:#0d1b2a;border-radius:6px;border-left:3px solid ${color}">
+      <span style="font-size:0.85em;color:#888">主导引擎</span>
+      <span class="lead-badge" style="background:${color}">${ENGINE_LABELS[lead]}</span>
+      <span style="font-size:0.85em;color:#ccc;margin-left:8px">${di.platform_intent?.title || ''}</span>
+    </div>`;
+  }
+
+  // 痛点→引擎匹配
+  if (Object.keys(painMap).length > 0) {
+    html += '<div style="margin-bottom:16px">';
+    html += '<div style="color:#888;font-size:0.85em;margin-bottom:6px">Logic Adapter · 痛点→引擎匹配度</div>';
+    const maxPct = Math.max(...Object.values(painMap));
+    for (const [engine, pct] of Object.entries(painMap)) {
+      const label = ENGINE_LABELS[engine] || engine;
+      const color = ENGINE_COLORS[engine] || '#888';
+      const barW = (pct / maxPct) * 100;
+      html += `<div class="match-row">
+        <div class="match-engine" style="color:${color}">${label}</div>
+        <div style="flex:1;background:#0d1b2a;border-radius:3px;height:16px;overflow:hidden">
+          <div class="match-bar" style="width:${barW}%;background:${color};height:100%"></div>
+        </div>
+        <span class="match-pct">${(pct*100).toFixed(0)}%</span>
+      </div>`;
+    }
+    html += '</div>';
+  }
+
+  // FMEA Top 5
+  if (fmea.length > 0) {
+    html += '<div style="margin-bottom:16px">';
+    html += '<div style="color:#888;font-size:0.85em;margin-bottom:6px">FMEA 风险优先级 Top 5</div>';
+    html += '<table><tr><th>失效模式</th><th>S</th><th>O</th><th>D</th><th>RPN</th></tr>';
+    fmea.slice(0,5).forEach(item => {
+      const rpn = item.rpn || (item.severity||0) * (item.occurrence||0) * (item.detection||0);
+      html += `<tr><td>${(item.failure_mode||'').slice(0,24)}</td><td>${item.severity||0}</td><td>${item.occurrence||0}</td><td>${item.detection||0}</td><td style="color:${rpn>100?'#e94560':rpn>50?'#ffa726':'#2eb886'};font-weight:700">${rpn}</td></tr>`;
+    });
+    html += '</table></div>';
+  }
+
+  // 平台意图
+  const pi = di.platform_intent || {};
+  if (pi.title) {
+    html += `<div style="margin-bottom:16px;padding:10px 14px;background:#0d1b2a;border-radius:6px;">
+      <span style="color:#888;font-size:0.85em">平台意图</span>
+      <p style="margin:4px 0 0;font-size:0.95em;line-height:1.5">${pi.title}</p>
+    </div>`;
+  }
+
+  // 反直觉快照
+  if (ci.length > 0) {
+    html += '<div style="margin-bottom:16px">';
+    html += `<div style="color:#888;font-size:0.85em;margin-bottom:6px">反直觉边界案例 (${ci.length} 条)</div>`;
+    ci.slice(0,2).forEach(item => {
+      html += `<div class="quote-card" style="margin-bottom:6px">
+        <div class="quote-tag">${item.scenario||''}</div>
+        <p class="quote-text" style="font-size:0.85em">❌ ${(item.common_belief||'').slice(0,60)}</p>
+        <p class="quote-text" style="font-size:0.9em;color:#2eb886">✅ ${(item.reality||'').slice(0,80)}</p>
+      </div>`;
+    });
+    html += '</div>';
+  }
+
+  document.getElementById('thinkingContent').innerHTML = html;
+}
+
+load();
+</script>
+</body></html>

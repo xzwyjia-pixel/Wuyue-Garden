@@ -1,0 +1,36 @@
+---
+title: Prompted
+source: gemini
+date: 2026-05-05
+category: 文案创作
+tags: [gemini, 文案创作]
+---
+
+## Prompted
+
+看到你最新的截图，操作行云流水！
+当前进展确认
+
+脚本运行成功：截图显示你已经成功执行了 python test_baidu.py，输出了“页面标题：百度一下，你就知道”。
+录制模式启动：你接着运行了 python -m playwright codegen [https://www.baidu.com](https://www.baidu.com)。
+双窗口联动：屏幕左侧是 Playwright 自动拉起的浏览器，右侧是 Playwright Inspector（录制器面板）。
+
+
+接下来你可以尝试的操作：
+1. 自动生成代码
+你在左侧浏览器里的每一次点击、输入（比如在百度搜索框输入“规则甄查”），右侧的 Inspector 窗口都会实时生成对应的 Python 代码。
+2. 复制并保存
+当你操作完后，直接点击 Inspector 窗口右上角的 Copy 按钮，然后把这些代码粘贴进你的 test_baidu.py。下次运行脚本时，它就会完全复现你刚才的所有动作。
+3. 定位器（Locator）探索
+你可以注意到左侧浏览器下方有一个 locator("html")。当你把鼠标悬停在页面的不同按钮或文字上时，它会告诉你这个元素的“坐标”（Selector）。这对于你后续编写敏感词检测工具非常有用，因为你需要告诉程序准确地去检查哪个位置。
+进阶建议：
+既然你已经成功部署了 Python 环境，下一步可以尝试把你的敏感词检测逻辑集成进去。例如：
+
+用 page.content() 获取页面所有文本。
+用简单的 Python if 语句匹配你的敏感词库。
+如果发现匹配，自动调用 page.screenshot() 截图存证。
+
+你的动手能力很强，这套“录制+修改”的模式是最高效的学习路径。需要我帮你写一个简单的“敏感词扫描脚本”模版吗？
+
+---
+*从 Gemini 导出，2026-05*

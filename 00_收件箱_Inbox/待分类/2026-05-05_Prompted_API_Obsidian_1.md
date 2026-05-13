@@ -1,0 +1,40 @@
+---
+title: Prompted
+source: gemini
+date: 2026-05-05
+category: Obsidian配置
+tags: [gemini, Obsidian配置]
+---
+
+## Prompted
+
+根据你最新的截图，我已经确认了问题所在：
+你使用的这款插件是 Obsidian 官方 Web Clipper。在当前的 General 设置页面中，确实没有显示 API Key 的输入框，这是因为该插件的逻辑是在第一次尝试同步时自动弹出验证，或者隐藏在特定的连接管理中。
+由于你已经手动安装并启用了 Local REST API 插件，请按照以下步骤强制唤起 API Key 的填写窗口：
+1. 强制唤起认证窗口
+
+随便打开一个网页（例如百度或任何新闻页）。
+点击浏览器右上角的 Obsidian Web Clipper 插件图标。
+点击那个紫色的按钮（通常显示 "Save to Obsidian" 或 "Add to A1B2"）。
+此时浏览器会弹出一个原生的权限请求窗口，或者在插件界面出现一个红色的错误横幅，提示 "Please configure your API key"。
+关键点： 直接点击那个红色的错误横幅文字。这会强制插件跳转到隐藏的认证页面。
+
+2. 手动检查 "Vaults" 的连接状态
+在你的截图 image_1e9e04.png 中，你已经添加了库名 A1B2：
+
+尝试点击 A1B2 名字旁边的空白处，看看是否会展开隐藏的 Connection Settings。
+有些版本的插件需要你点击那个输入框再次按下回车，触发它去寻找本地的 Obsidian 进程。
+
+3. 核对 API Key 信息
+一旦弹窗出现，请准备好你在 image_1f0ea4.png 中看到的以下信息进行粘贴：
+
+API Key: 8212fe30470f760008cc2b...。
+Port: 27123 (这是你的 Non-encrypted HTTP 端口)。
+
+
+特别提醒：
+你的库名是 A1B2。如果插件依然提示找不到库，请确保你的 Obsidian 软件当前正处于打开状态，并且左上角显示的库名字确实是这四个字符。
+如果点击红色报错依然无法跳转，请尝试重启浏览器。一旦连接成功，你就可以开始为你那两个孩子（10年级的儿子和4年级的女儿）整理相关的教育资料了。
+
+---
+*从 Gemini 导出，2026-05*

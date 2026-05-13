@@ -1,0 +1,50 @@
+---
+title: Prompted
+source: gemini
+date: 2026-05-04
+category: 编程开发
+tags: [gemini, 编程开发]
+---
+
+## Prompted
+
+从图片 image_aafe5b.png 来看，安装失败主要是因为命令格式不正确以及包名在 PyPI 仓库中确实不存在。
+由于你正在进行 Python 审计工具的开发，且涉及到敏感词检测等任务，强烈建议直接使用 openai 库来调用 MiniMax 的 API。这是目前大模型接入最通用、报错最少的方式。
+以下是针对你当前问题的直接修复方案：
+
+1. 修复命令格式
+你在图片中执行的 pip install minimax-api -i 报错，是因为 -i 参数后面必须紧跟镜像源地址，且不能带方括号。请直接复制运行以下命令：
+pip install openai -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+2. 在代码中配置 MiniMax 接入
+安装好 openai 库后，你不需要专门的 minimax SDK。在你的 Python 审计工具脚本中，按如下方式配置即可：
+from openai import OpenAI
+
+client = OpenAI(
+    api_key="你的_MINIMAX_API_KEY", 
+    base_url="https://api.minimaxi.com/v1"
+)
+
+# 调用示例
+response = client.chat.completions.create(
+    model="abab6.5-chat", # 或者你需要的其他模型系列
+    messages=[
+        {"role": "system", "content": "你是一个内容审计专家。"},
+        {"role": "user", "content": "请检查这段文本是否有违规词。"}
+    ]
+)
+
+print(response.choices[0].message.content)
+
+
+为什么不建议安装 minimax-api？
+
+包名不存在： 官方目前并没有维护名为 minimax-api 或 minimax-sdk 的公开 PyPI 安装包。
+协议兼容性： MiniMax 官方文档目前主推兼容 OpenAI 接口协议，这意味着你可以直接复用已有的 openai 库生态，无需学习新的 SDK 语法。
+稳定性： openai 库更新频率高，对流式输出（Streaming）和异步调用的支持非常成熟，更适合你目前正在处理的短视频脚本审计等高频任务。
+
+总结建议
+既然你已经成功配置过 MCP 环境和 Ollama，使用 pip install openai 这种“标准件”方式最符合你追求高效、规则化的工作风格。如果后续在 VS Code 或 Claude Code 中集成时遇到 API 连接问题，请检查你的 base_url 是否配置正确。
+
+---
+*从 Gemini 导出，2026-05*

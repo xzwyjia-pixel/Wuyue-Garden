@@ -41,9 +41,7 @@
     "/",
     "//gemini-scribe/gemini-scribe/Agent-Sessions",
     "//gemini-scribe/gemini-scribe/Background-Tasks",
-    "//速查",
-    "//00_收件箱_Inbox",
-    "//03_归档项目_历史完结"
+    "//速查"
   ],
   "expandFolderOnClick": true,
   "spacesFolder": "Tags",

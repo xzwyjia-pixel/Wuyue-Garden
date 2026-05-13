@@ -1,0 +1,42 @@
+---
+title: Prompted
+source: gemini
+date: 2026-05-07
+category: Claude/MCP
+tags: [gemini, Claude/MCP]
+---
+
+## Prompted
+
+从你的截图来看，报错的原因很简单：你直接在 Windows PowerShell 里输入了 /plugin 指令，但这个指令是 Claude Code 的内部命令，而不是 Windows 的系统命令。
+这就好比你在餐厅还没坐下，就在马路上对着路人喊“点菜”，路人（PowerShell）当然听不懂。
+
+解决步骤
+你需要先进入 Claude Code 的运行环境，然后再输入指令。请按照以下顺序操作：
+1. 先启动 Claude Code
+在你的 PowerShell 窗口中输入：
+claude
+
+（如果你已经安装了 Claude Code，这时它会启动，你会看到一个类似 claude > 的输入提示符。）
+2. 在 Claude 内部安装
+进入 Claude Code 环境后，再粘贴运行：
+/plugin install superpowers@claude-plugins-official
+
+
+如果输入 claude 报错怎么办？
+如果你输入 claude 提示找不到命令，说明你还没安装 Claude Code 本身。你需要先执行：
+
+确保已安装 Node.js（版本建议 18 或以上）。
+安装 Claude CLI：
+npm install -g @anthropic-ai/claude-code
+
+
+重新尝试上面的步骤 1 和 2。
+
+
+💡 为什么会出现这个错误？
+PowerShell 是操作系统的管家，它只认识系统级命令（如 cd, dir, npm 等）。以 / 开头的命令通常是特定软件（如 Claude Code, Slack, Discord）内部的快捷指令。必须先“进门”（进入软件），这些指令才会生效。
+既然你在研究 Claude Code 的 Superpowers 框架，是打算用它来辅助你进行 MCP（Model Context Protocol） 的开发，还是用来做项目的自动化测试？
+
+---
+*从 Gemini 导出，2026-05*

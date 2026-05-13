@@ -1,0 +1,43 @@
+---
+title: Prompted
+source: gemini
+date: 2026-05-05
+category: 编程开发
+tags: [gemini, 编程开发]
+---
+
+## Prompted
+
+从你提供的截图来看，我们已经非常接近终点了。
+你现在打开的 Interpreter 界面（图 image_1f0ea4.png）是用于配置 AI（如 Anthropic/OpenAI）来处理网页内容的，这里不是填 Obsidian API 的地方，请先点击 Cancel 或关闭那个弹窗。
+真正解决问题的关键在你的另一张截图 image_1f0798.png 中。请按照以下步骤操作：
+1. 关闭 "Legacy mode" (旧版模式)
+在 image_1f0798.png 的 Behavior 板块中，我看到你的 Legacy mode 是关闭的，这很好，请保持关闭。如果它是开启的，插件会尝试用旧的 URI 方式连接，而不是 REST API。
+2. 找到隐藏的 "Local REST API" 配置项
+在 image_1f0798.png 页面中，请注意 Behavior 和 Advanced 之间，或者 Advanced 板块的下方。
+这个插件（官方的 Obsidian Web Clipper）有一个逻辑：
+
+当你的 Save behavior 设置为 "Add to Obsidian" 时（如图中所示），它才会显示 API 配置。
+如果页面上还是看不见，请尝试刷新该设置页面，或者在 Vaults 列表里点击一下你刚刚添加的 A1B2。
+
+3. 正确的填写位置
+一旦配置项出现，你会看到以下两个框：
+
+API Key: 填入你在 Obsidian 里获取的那串 8212fe...。
+Port: 填入 27123。
+
+
+如果依然找不到（手动触发法）
+这是一个非常有效的小技巧：
+
+随便打开一个网页（比如百度或 GitHub）。
+点击浏览器右上角的剪藏插件图标。
+它会再次弹出那个红色的 "Please configure your Obsidian API key..." 报错。
+关键动作：用鼠标直接点击那段红色的报错文字。
+插件会自动帮你跳转回设置页面，并直接定位到需要填 API Key 的那个隐藏输入框。
+
+温馨提示：你之前在做 Python 敏感词检测工具，等这个 API 连通后，你剪藏进 Obsidian 的内容就可以直接被你的 Python 脚本读取并审计了。
+如果点击红色报错后依然没反应，请告诉我，我再帮你看看是不是插件版本的问题。
+
+---
+*从 Gemini 导出，2026-05*

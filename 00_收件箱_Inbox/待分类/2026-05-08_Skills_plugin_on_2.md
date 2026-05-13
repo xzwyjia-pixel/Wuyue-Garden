@@ -1,0 +1,95 @@
+---
+title:   Skills
+  56 skills · Space to cycle, Enter to save, / to search, t to sort, Esc to cancel
+
+  ╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+  │ ⌕ Search skills…                                                                                                 │
+  ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+  > 🔒 on         cockroachdb:analyzing-range-distribution · plugin · ~90 tok · locked by plugin
+    🔒 on         cockroachdb:analyzing-schema-change-storage-risk · plugin · ~99 tok · locked by plugin
+    🔒 on         cockroachdb:auditing-cloud-cluster-security · plugin · ~86 tok · locked by plugin
+    🔒 on         cockroachdb:auditing-table-statistics · plugin · ~79 tok · locked by plugin
+    🔒 on         cockroachdb:benchmarking-transaction-patterns · plugin · ~118 tok · locked by plugin
+    🔒 on         superpowers:brainstorming · plugin · ~56 tok · locked by plugin
+    🔒 on         caveman:cavecrew · plugin · ~142 tok · locked by plugin
+    🔒 on         caveman:caveman · plugin · ~102 tok · locked by plugin
+    🔒 on         caveman:caveman-commit · plugin · ~92 tok · locked by plugin
+    🔒 on         caveman:caveman-help · plugin · ~54 tok · locked by plugin
+    🔒 on         caveman:caveman-review · plugin · ~83 tok · locked by plugin
+    🔒 on         caveman:caveman-stats · plugin · ~70 tok · locked by plugin
+    🔒 on         cockroachdb:cockroachdb-sql · plugin · ~93 tok · locked by plugin
+    🔒 on         caveman:compress · plugin · ~88 tok · locked by plugin
+    🔒 on         cockroachdb:configuring-audit-logging · plugin · ~80 tok · locked by plugin
+    🔒 on         cockroachdb:configuring-ip-allowlists · plugin · ~76 tok · locked by plugin
+    🔒 on         cockroachdb:configuring-log-export · plugin · ~81 tok · locked by plugin
+    ↓ 39 more below
+
+  Plugin skills are managed via /plugin
+source: gemini
+date: 2026-05-08
+category: 系统运维
+tags: [gemini, 系统运维]
+---
+
+##   Skills
+  56 skills · Space to cycle, Enter to save, / to search, t to sort, Esc to cancel
+
+  ╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+  │ ⌕ Search skills…                                                                                                 │
+  ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+  > 🔒 on         cockroachdb:analyzing-range-distribution · plugin · ~90 tok · locked by plugin
+    🔒 on         cockroachdb:analyzing-schema-change-storage-risk · plugin · ~99 tok · locked by plugin
+    🔒 on         cockroachdb:auditing-cloud-cluster-security · plugin · ~86 tok · locked by plugin
+    🔒 on         cockroachdb:auditing-table-statistics · plugin · ~79 tok · locked by plugin
+    🔒 on         cockroachdb:benchmarking-transaction-patterns · plugin · ~118 tok · locked by plugin
+    🔒 on         superpowers:brainstorming · plugin · ~56 tok · locked by plugin
+    🔒 on         caveman:cavecrew · plugin · ~142 tok · locked by plugin
+    🔒 on         caveman:caveman · plugin · ~102 tok · locked by plugin
+    🔒 on         caveman:caveman-commit · plugin · ~92 tok · locked by plugin
+    🔒 on         caveman:caveman-help · plugin · ~54 tok · locked by plugin
+    🔒 on         caveman:caveman-review · plugin · ~83 tok · locked by plugin
+    🔒 on         caveman:caveman-stats · plugin · ~70 tok · locked by plugin
+    🔒 on         cockroachdb:cockroachdb-sql · plugin · ~93 tok · locked by plugin
+    🔒 on         caveman:compress · plugin · ~88 tok · locked by plugin
+    🔒 on         cockroachdb:configuring-audit-logging · plugin · ~80 tok · locked by plugin
+    🔒 on         cockroachdb:configuring-ip-allowlists · plugin · ~76 tok · locked by plugin
+    🔒 on         cockroachdb:configuring-log-export · plugin · ~81 tok · locked by plugin
+    ↓ 39 more below
+
+  Plugin skills are managed via /plugin
+
+甄先生，看到这张 Skills 列表，我发现了一个关键的“错位”：Super Powers 等核心能力之所以被锁定（🔒 Locked by plugin），是因为插件系统虽然开启了，但模型与插件之间的授权握手尚未完成。
+要解锁 superpowers:brainstorming 以及其他精密审计能力，我们需要在当前的 > 提示符下进行一次“权限对齐”。
+
+1. 深度解锁：打开 Super Powers 枷锁
+列表显示 superpowers:brainstorming 状态为 🔒 on。这意味着插件已安装，但被安全策略“锁死”了。请依次执行：
+
+激活插件权限：
+输入 /plugin enable superpowers 并回车。如果系统弹出授权确认（Permission Request），请直接按 Enter 允许。
+刷新技能树：
+输入 /mcp reload。这会强制 Agent 重新扫描所有已加载的插件，尝试将“🔒 锁定”变为“✅ 激活”。
+
+2. 移除冗余：实现真正的“极简”
+你现在的技能树里挤满了 cockroachdb。对于你的工业自动化和规则审计项目来说，这些属于“杂讯”，不仅占用 Token 预算，还会导致重要技能描述被 Drop。
+
+操作建议： 在 /skills 界面中，通过方向键移动到 cockroachdb 相关的每一项，按 Space（空格） 将它们设为 off。
+目标： 只保留 superpowers、caveman（如果你需要代码提交增强）以及你后续会添加的自定义审计工具。
+
+3. 提升精密度的关键配置
+为了不再让核心技能被“Drop”，请务必执行这一行命令：
+/config set skillListingBudgetFraction 0.05
+
+这样 AI 会给每个技能分配更多的“记忆空间”，让你的 Agent 在执行复杂审计任务时更聪明。
+
+甄先生的下一步：从“环境调试”转向“VS Code 协作”
+既然你打算使用 VS Code + Cline，这些在终端里设置好的权限（如 Super Powers）会自动同步到 Cline 的执行环境里。
+现在请尝试在 VS Code 里操作：
+
+打开你的新项目目录 E:\MyCodeProjects\New Claude Project。
+在 Cline 侧边栏里，尝试输入：“甄先生，请帮我检查当前项目的所有 Skills 是否已解锁，并针对 Rules Investigation 初始化代码环境。”
+
+如果 Cline 能够直接列出非锁定的 Super Power 技能，那么你的“大冒险”环境就正式宣告满血复活了。
+我们需要现在就为你那 56 个技能进行一次“大扫除”，只留下你最需要的精锐工具吗？
+
+---
+*从 Gemini 导出，2026-05*

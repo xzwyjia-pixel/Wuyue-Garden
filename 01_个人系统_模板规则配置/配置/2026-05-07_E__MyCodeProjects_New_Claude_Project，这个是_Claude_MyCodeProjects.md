@@ -1,0 +1,48 @@
+---
+title: E:\MyCodeProjects\New Claude Project，这个是我的目标文件夹。根据这个文件夹。告诉下面第一步应该先做什么
+source: gemini
+date: 2026-05-07
+category: 编程开发
+tags: [gemini, 编程开发]
+---
+
+## E:\MyCodeProjects\New Claude Project，这个是我的目标文件夹。根据这个文件夹。告诉下面第一步应该先做什么
+
+既然已经成功进入了 Claude Code 界面，现在的首选任务是将 AI 的“注意力”从敏感的系统目录移开，精准锚定到你的开发目标上。
+在这台 64GB 内存的 P15v 上，为了确保 Opus 4.7 能以最精密的逻辑启动，请按照以下三个步骤操作：
+1. 切换工作目录（切换阵地）
+在当前 Claude Code 的命令行 ❯ 后输入：
+
+cd E:\MyCodeProjects\New Claude Project
+
+注意： 如果路径中有空格，建议加上引号：
+cd "E:\MyCodeProjects\New Claude Project"
+
+2. 初始化项目上下文（建立规则）
+输入以下命令：
+
+/init
+
+这是 最关键的一步。它会引导你创建一个 CLAUDE.md 文件。对于你的“规则甄查”和图标匹配项目，我建议你在初始化时或手动在该文件中加入以下“精密指令”：
+
+项目目标： 实现图标三级匹配算法（本地 > API > 兜底）。
+风格指南： 极简精密（Minimalist & Precise），代码需包含严谨的错误处理。
+环境约束： 使用 Python 3.12+，本地模型调用 Ollama。
+
+
+3. 进行“首轮审计”（全面扫描）
+项目锚定后，执行以下指令让 Claude 告诉你当前的现状：
+
+❯ 扫描当前文件夹，列出所有脚本文件，并分析 analyze_folder.py 与项目目标的匹配程度。
+
+
+💡 甄先生的专业提醒：
+
+路径权限： E 盘通常没有 C 盘系统目录那么多限制，Opus 处理起来会非常顺滑。
+自动保存： Claude Code 会实时监测文件变化，你不需要手动保存。
+Token 节省： 既然你的项目在 E 盘，Claude 扫描文件时会消耗一些 Token。由于你现在是 API 计费模式，建议先处理核心的 analyze_folder.py，等逻辑稳固后再扩展其他功能。
+
+现在请执行 cd 命令切换过去，然后看看 /init 之后 Claude 给你生成的项目建议是什么？
+
+---
+*从 Gemini 导出，2026-05*

@@ -1,0 +1,23 @@
+---
+title: Prompted
+source: gemini
+date: 2026-05-07
+category: 编程开发
+tags: [gemini, 编程开发]
+---
+
+## Prompted
+
+现在你需要回到刚才那个黑色背景的 Claude Code 终端界面。
+请按照以下步骤操作：
+
+点击浏览器页面上的 "Copy Code" 按钮（或者手动复制那串蓝色背景的长代码）。
+切换回你的命令行窗口（终端）。
+在出现 Paste code here if prompted > 的地方，点击右键或使用快捷键（通常是 Ctrl + V）粘贴这段代码。
+按下 回车键 (Enter)。
+
+完成后，终端应该会显示登录成功的提示，然后你就可以开始使用 Claude Code 来分析或编写代码了。
+祝你使用愉快！如有其他问题随时问我。
+
+---
+*从 Gemini 导出，2026-05*

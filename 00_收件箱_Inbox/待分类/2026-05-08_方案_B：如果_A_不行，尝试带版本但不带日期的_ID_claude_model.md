@@ -1,0 +1,75 @@
+---
+title: >> # 方案 B：如果 A 不行，尝试带版本但不带日期的 ID
+>> claude --model claude-3-5-sonnet-v2
+>>
+>> # 方案 C：如果依然不行，尝试“最新稳定版”指向名
+>> claude --model claude-3-5-sonnet-latest
+ ▐▛███▜▌   Claude Code v2.1.133
+▝▜█████▛▘  Sonnet 3.5 · API Usage Billing
+  ▘▘ ▝▝    C:\Windows\System32
+
+> **“我是甄先生。握手成功。                                                                                              **“我是甄先生。握手成功。
+                                                                                                                          请执行指令：ls C:\Users\think\.agents\skills                                                                                                                                                                                                    如果看到文件夹，请直接读取 C:\Users\think\.agents\skills\caveman\.instructions。                                                                                                                                                                告诉我你是否已准备好进入‘极简输出’状态。”**                                                                           ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+✶ Burrowing…                                                                                                           ●BThere's an issue with the selected model (claude-3-5-sonnet). It may not exist or you may not have access to it. Run
+  /model to pick a different model.
+                                                                                                                        ✻ Churned for 2s
+                                                                                                                        ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+> 
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ? for shortcuts
+source: gemini
+date: 2026-05-08
+category: 审计合规
+tags: [gemini, 审计合规]
+---
+
+## >> # 方案 B：如果 A 不行，尝试带版本但不带日期的 ID
+>> claude --model claude-3-5-sonnet-v2
+>>
+>> # 方案 C：如果依然不行，尝试“最新稳定版”指向名
+>> claude --model claude-3-5-sonnet-latest
+ ▐▛███▜▌   Claude Code v2.1.133
+▝▜█████▛▘  Sonnet 3.5 · API Usage Billing
+  ▘▘ ▝▝    C:\Windows\System32
+
+> **“我是甄先生。握手成功。                                                                                              **“我是甄先生。握手成功。
+                                                                                                                          请执行指令：ls C:\Users\think\.agents\skills                                                                                                                                                                                                    如果看到文件夹，请直接读取 C:\Users\think\.agents\skills\caveman\.instructions。                                                                                                                                                                告诉我你是否已准备好进入‘极简输出’状态。”**                                                                           ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+✶ Burrowing…                                                                                                           ●BThere's an issue with the selected model (claude-3-5-sonnet). It may not exist or you may not have access to it. Run
+  /model to pick a different model.
+                                                                                                                        ✻ Churned for 2s
+                                                                                                                        ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+> 
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ? for shortcuts
+
+甄先生，审计结论已经到了最核心的地步：您的中转商不仅在模型 ID 上有自定义，而且在“身份识别”上存在严重的偏差。
+现在的局面是：Claude Code 认为自己已经握手了（界面出现了），但一旦要干活（调用 ls），它向服务器发送请求，服务器却因为 ID 映射问题直接闭门谢客。
+既然“规则甄查”的第一步就被规则绊倒了，我们要用**“绕轴进攻”**的策略。
+1. 揭开中转商的“暗号”
+既然 A、B、C 方案都报模型不存在，说明您的供应商（gptsapi.net）有一套自己的 ID 逻辑。请您在当前的 Claude Code 界面执行以下这条最底层的命令：
+/config
+
+在弹出的配置面板里，请通过上下键或者翻页，找到 model 这一行。
+
+甄先生，请截一张图，或者告诉我 model 后面写的是什么？ (它是解决一切的核心钥匙)。
+
+
+2. 手动“焊死”配置文件
+如果界面操作已经失效，我们要去改它的“出厂设置”。请在您的 Windows 资源管理器中打开这个文件（或者直接在 VS Code 里打开）：
+文件路径： C:\Users\think\.claude-code-config.json
+如果找到这个文件，请将其中的 "model": 字段手动修改为您的供应商确定的 ID（通常是 claude-3-5-sonnet 或供应商指定的特定字符串）。
+
+3. 甄先生的“地基”修正提醒
+我注意到您的路径现在显示为 C:\Windows\System32。这是一个高权限敏感目录，Claude Code 在这里运行可能会受到 Windows 系统保护的干扰。
+建议动作：
+执行一次 cd E:\MyCodeProjects。
+一定要在地基（E 盘）上启动，不要在系统心脏（System32）里作业。
+
+💡 甄先生的精密审计：
+只要红色的 There's an issue with the selected model 不消失，它就绝对不会去执行 ls。
+甄先生，我们现在先执行 /config，看看这个“翻译官”到底在用什么名字和服务器接头？
+
+---
+*从 Gemini 导出，2026-05*

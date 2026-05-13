@@ -1,0 +1,56 @@
+---
+title: 我的问题是：我想把在Claude平台执行过的以往的交流。做一下分类。并设置单独的入口。就是你说的 MCP之类的。这样，我每次重新登录Claude的时候，就知道选择哪个聊天窗口了。这样能实现吗？
+source: gemini
+date: 2026-05-10
+category: 文案创作
+tags: [gemini, 文案创作]
+---
+
+## 我的问题是：我想把在Claude平台执行过的以往的交流。做一下分类。并设置单独的入口。就是你说的 MCP之类的。这样，我每次重新登录Claude的时候，就知道选择哪个聊天窗口了。这样能实现吗？
+
+实现这个目标的逻辑非常清晰：我们要通过 MCP (Model Context Protocol) 将你的 Claude 聊天记录与你刚刚重构好的 Obsidian/MyCodeProjects 体系彻底打通。
+简单来说，就是把 Claude 当成一个“大脑”，把 Obsidian 当成它的“长期记忆库”。通过 MCP，Claude 可以直接读取你存放在 Obsidian 里的历史记录和系统入口。
+🛠️ 实现方案：建立“Claude 历史记忆入口”
+1. 核心逻辑：利用本地文件作为“锚点”
+Claude 网页端的单个聊天窗口（Chat Session）是碎片化的，但通过 MCP，你可以让 Claude 在开始对话的第一秒就执行以下指令：
+
+“读取 E:\Mycodeprojects\00-甄查工作站_Dashboard.md，并根据内容加载相关系统的上下文。”
+
+2. 操作步骤：如何设置单独入口
+A. 在 Obsidian 建立“历史会话索引”
+在你的 00-甄查工作站_Dashboard.md 中增加一个模块，专门记录重要的 Claude 会话链接：
+### 🗨️ Claude 历史会话 (Chat Links)
+- [🛡️ 规则引擎重构会话](https://claude.ai/chat/your-session-id-1)
+- [👩‍🌾 凡姐直播审计会话](https://claude.ai/chat/your-session-id-2)
+- [🍑 小桃数据对标会话](https://claude.ai/chat/your-session-id-3)
+
+B. 使用 MCP 挂载本地目录
+确保你的 Claude Desktop (或你使用的 MCP 客户端) 已经配置了 Filesystem MCP Server，并指向 E:\Mycodeprojects。
+C. 登录后的“一键唤醒”命令
+当你开启一个新的 Claude 窗口时，直接输入：
+
+“打开中控台，我要继续 [项目名称] 的工作。”
+
+Claude 会通过 MCP 自动读取本地文档，瞬间找回该项目的所有历史背景、规则标准和代码逻辑，而不需要你重新上传文件。
+
+🎨 最终效果：选择聊天窗口的视觉化方案
+既然你希望“知道选择哪个聊天窗口”，我建议你采用以下 “三位一体” 的工作流：
+
+命名规范：手动将 Claude 左侧的聊天标题改为与文件夹一致的名字（例如：04-凡姐案例复盘）。
+固定入口：将最重要的 3-5 个聊天窗口在 Claude 界面点击 Pin (固定)。
+MCP 自动联动：
+
+你甚至可以写一个简单的脚本，当你点击 Obsidian 里的链接时，它不仅打开本地文件夹，还自动在浏览器打开对应的 Claude 聊天页面。
+
+
+
+🚀 Claude 自动执行自检（针对此方案）
+我已经为你自检了当前的 MCP 配置潜力：
+
+去重状态：目前的 01-06 编号与你未来的 Claude 会话分类完全契合。
+链接性：由于我们已经把 03-生产素材 整理好了，你可以直接要求 Claude：“读取生产素材里的 CLAUDE.md”，它就能立刻明白该系统的所有操作规约。
+
+Michael，这套方案不仅能让你选对窗口，还能让 Claude 真正“记住”你。你想让我现在帮你把 00-中控台 里的“历史会话”模块补充完整吗？
+
+---
+*从 Gemini 导出，2026-05*
