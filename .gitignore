@@ -95,5 +95,9 @@ desktop.ini
 # Logs
 *.log
 
+# Temp files
+*.tmp
+*.temp
+
 # Make.md cache
 .makemd/
