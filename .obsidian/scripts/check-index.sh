@@ -12,27 +12,23 @@ date
 tasklist //FI "IMAGENAME eq Obsidian.exe" 2>&1 | grep Obsidian | wc -l | xargs -I{} echo "Processes: {}"
 
 # Memory (max PID)
-tasklist //FI "IMAGENAME eq Obsidian.exe" 2>&1 | grep Obsidian | awk '{print $NF}' | sort -rn | head -1 | xargs -I{} echo "Max mem: {} KB"
+mem=$(tasklist //FI "IMAGENAME eq Obsidian.exe" //FO CSV 2>/dev/null | grep Obsidian | sed 's/.*","//;s/ K"//;s/,//g' | sort -rn | head -1)
+echo "Max mem: ${mem} KB"
 
 # IndexedDB (real index)
+IDB="$HOME/AppData/Roaming/Obsidian/IndexedDB/app_obsidian.md_0.indexeddb.leveldb"
 if [ -d "$IDB" ]; then
   last=$(find "$IDB" -type f -printf '%T@\n' 2>/dev/null | sort -rn | head -1)
   now=$(date +%s)
   idle=$((now - ${last%.*}))
   size=$(du -sh "$IDB" 2>/dev/null | cut -f1)
   tables=$(ls "$IDB"/*.ldb 2>/dev/null | wc -l)
-
   echo "Index: $size ($tables tables)"
-
-  if [ $idle -lt 180 ]; then
-    echo "Status: ACTIVE"
-  elif [ $idle -lt 600 ]; then
-    echo "Status: RECENT"
-  else
-    echo "Status: STABLE (idle ${idle}s)"
-  fi
+  [ $idle -lt 180 ] && echo "Status: ACTIVE"
+  [ $idle -ge 180 ] && [ $idle -lt 600 ] && echo "Status: RECENT"
+  [ $idle -ge 600 ] && echo "Status: STABLE (idle ${idle}s)"
 else
-  echo "Index: NONE (not built)"
+  echo "Index: NONE"
 fi
 
 # omnisearch config (not index!)
