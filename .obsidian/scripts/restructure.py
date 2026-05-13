@@ -71,21 +71,21 @@ def get_frontmatter_field(content, field):
     return m.group(1).strip().strip('"\'') if m else ''
 
 def extract_date(content, filename, filepath):
-    """Extract date from frontmatter, filename, or mtime."""
+    """Extract date from frontmatter, filename, or mtime. Returns YYYY_MM_DD."""
     # Frontmatter date
     d = get_frontmatter_field(content, 'date')
     if d and re.match(r'\d{4}-\d{2}-\d{2}', d):
-        return d[:10]
+        return d[:10].replace('-', '_')
     # Date in body
     body = strip_frontmatter(content)
     m = re.search(r'(\d{4}-\d{2}-\d{2})', body[:500])
     if m:
-        return m.group(1)
+        return m.group(1).replace('-', '_')
     # Date in filename
-    m = re.search(r'(\d{4}[-/]\d{2}[-/]\d{2})', filename)
+    m = re.search(r'(\d{4}[-/_]\d{2}[-/_]\d{2})', filename)
     if m:
-        return m.group(1).replace('/', '-')
-    return datetime.fromtimestamp(os.path.getmtime(filepath)).strftime('%Y-%m-%d')
+        return m.group(1).replace('-', '_').replace('/', '_')
+    return datetime.fromtimestamp(os.path.getmtime(filepath)).strftime('%Y_%m_%d')
 
 def extract_title(content, filename):
     """First heading from body (after frontmatter)."""
@@ -122,12 +122,18 @@ def extract_keywords(content, max_kw=3):
     return [w for w, c in top[:max_kw]]
 
 def generate_filename(fname, content, fpath):
-    """YYYY-MM-DD_Title.md — clean, readable."""
+    """YYYY_MM_DD_Title.md — clean, readable, hyphens→underscores."""
     date = extract_date(content, fname, fpath)
     title_raw = extract_title(content, fname)
     # Windows-safe: strip forbidden chars
     title = re.sub(r'[\\/:*?"<>|！#？\n\r]', '', title_raw)[:50]
-    kw = extract_keywords(content, max_kw=2)
+    # Replace all hyphens with underscores
+    title = title.replace('-', '_')
+    # Strip leading date pattern from title (avoid duplicate dates)
+    title = re.sub(r'^\d{4}_\d{2}_\d{2}_*', '', title)
+    kw = [w.replace('-', '_') for w in extract_keywords(content, max_kw=2)]
+    # Strip leading dates from keywords too
+    kw = [w for w in kw if not re.match(r'\d{4}_\d{2}_\d{2}', w)]
 
     parts = [date]
     if title:
@@ -137,7 +143,18 @@ def generate_filename(fname, content, fpath):
     else:
         parts.append('note')
 
-    name = re.sub(r'_+', '_', '_'.join(parts)) + '.md'
+    name = '_'.join(parts) + '.md'
+    # Final cleanup: double underscores, trailing junk
+    name = re.sub(r'_+', '_', name)
+    name = re.sub(r'[_\-. ]+\.md$', '.md', name)  # ensure .md is clean
+    if len(name) > 220:
+        base, ext = os.path.splitext(name)
+        name = base[:215] + ext
+    return name
+
+    # Final cleanup: double underscores, trailing junk
+    name = re.sub(r'_+', '_', name)
+    name = re.sub(r'[_\-. ]+\.md$', '.md', name)  # ensure .md is clean
     if len(name) > 220:
         base, ext = os.path.splitext(name)
         name = base[:215] + ext
@@ -328,7 +345,7 @@ def cleanup(dry_run=True):
     log(f"Empty dirs: {len(removed)}")
     return removed
 
-def report(files, moves, changes, inbox_count, dupes):
+def report(files, moves, changes, inbox_count, dupes, media=None):
     lines = ["# Obsidian Vault Restructure Report",
              f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n",
              "## 1. 总体统计",
@@ -336,7 +353,8 @@ def report(files, moves, changes, inbox_count, dupes):
              f"- 需移动/改名: {len(moves)}",
              f"- Wikilink 更新: {changes} 个文件",
              f"- 重复分组: {len(dupes)}",
-             f"- Inbox 待分类: {inbox_count}\n",
+             f"- Inbox 待分类: {inbox_count}",
+             f"- 图片迁移: {len(media) if media else 0} 个文件",
              "## 2. 新目录结构"]
 
     for i, d in enumerate(DIRECTORIES):
@@ -366,9 +384,55 @@ def report(files, moves, changes, inbox_count, dupes):
     lines.append("## 5. 维护规则\n"
                  "- 新笔记放 00_收件箱_Inbox/待分类/\n"
                  "- 定期运行本脚本重新分类 inbox\n"
-                 "- 命名格式: YYYY-MM-DD_核心主题.md\n")
+                 "- 命名格式: YYYY_MM_DD_核心主题.md\n")
 
     return '\n'.join(lines)
+
+IMAGE_EXTENSIONS = {'.png', '.jpg', '.jpeg', '.gif', '.webp', '.bmp', '.svg', '.ico', '.tif', '.tiff', '.psd', '.HEIC'}
+MEDIA_TARGET = os.path.join(VAULT, "07_素材资源_截图附件模板")
+
+def relocate_media(dry_run=True):
+    """Move all image/media files to 07_素材 and leave .md link at original path."""
+    moved = []
+    total_sz = 0
+    for root, dirs, fnames in os.walk(VAULT):
+        rel = os.path.relpath(root, VAULT)
+        parts = rel.split(os.sep)
+        if any(p in EXCLUDE for p in parts): continue
+        if rel.startswith("07_素材资源_截图附件模板"): continue
+
+        for fname in fnames:
+            ext = os.path.splitext(fname)[1].lower()
+            if ext not in IMAGE_EXTENSIONS: continue
+
+            old_path = os.path.join(root, fname)
+            fsize = os.path.getsize(old_path)
+            total_sz += fsize
+
+            target_name = fname
+            target_path = os.path.join(MEDIA_TARGET, target_name)
+            counter = 1
+            while not dry_run and os.path.exists(target_path) and target_path != old_path:
+                stem, e = os.path.splitext(fname)
+                target_name = f"{stem}_{counter}{e}"
+                target_path = os.path.join(MEDIA_TARGET, target_name)
+                counter += 1
+
+            link_path = old_path + '.md'
+            rel_target = os.path.relpath(target_path, os.path.dirname(old_path)).replace('\\', '/')
+
+            if not dry_run:
+                os.makedirs(MEDIA_TARGET, exist_ok=True)
+                shutil.move(old_path, target_path)
+                with open(link_path, 'w', encoding='utf-8') as f:
+                    f.write(f"![]({rel_target})\n\n> 附件已迁移至: `{os.path.join('07_素材资源_截图附件模板', target_name)}`\n")
+
+            moved.append((old_path, target_path, link_path, fsize))
+
+    log(f"Media files relocated: {len(moved)}")
+    if moved:
+        log(f"  Total size: ~{total_sz/1024/1024:.1f} MB")
+    return moved
 
 def main():
     dry = '--execute' not in sys.argv
@@ -394,8 +458,9 @@ def main():
     changes = update_wikilinks(files, mapping, dry)
     moves = execute(files, dry)
     removed = cleanup(dry)
+    media = relocate_media(dry)
 
-    rpt = report(files, moves, changes, inbox_count, dupes)
+    rpt = report(files, moves, changes, inbox_count, dupes, media)
     rpt_path = os.path.join(VAULT, ".obsidian", "scripts", "restructure-report.md")
     with open(rpt_path, 'w', encoding='utf-8') as f:
         f.write(rpt)
