@@ -1,76 +1,73 @@
 ---
-title: Prompted
+title: 点击后没反应
 source: gemini
 date: 2026-05-10
-category: 文案创意
-old_category: 系统运维
-tags: [gemini, 文案创意]
+category: 编程开发
+tags: [gemini, 编程开发]
 ---
 
-## Prompted
+## 点击后没反应
 
-## Prompted
-
-从你提供的截图来看，Local REST API 插件的配置非常完美（HTTP 服务器已开启，API Key 也匹配）。既然插件通信没问题，但“点击链接没反应”，这说明 Obsidian 内部拦截了非 https 环境下的系统调用，或者路径中的编码格式在 Windows 11 下失效了。
-我们不需要在设置里纠结了。为了彻底解决 VS Code 打不开的问题，我们采取 “协议补丁” 策略。
-1. 修复：让链接在任何模式下都“变绿”
-Obsidian 默认会为了安全限制 file:// 的跳转。请运行下面这个 PowerShell 脚本，它使用了 Markdown 最严苛的链接格式，并去掉了所有图标，强制让 Obsidian 识别为合规链接。
+从你截取的这张图来看，问题原因已经非常清晰了：Obsidian 并没有把那个链接识别为可点击的“外部协议链接”，而是把它当成了一段纯文本。
+注意到图中链接显示为 [🚀 Click to Open in VS Code](vscode://...) 这种原始格式，而不是一个蓝色的、可点击的超链接。这是因为在 PowerShell 写入时，某些特殊字符导致 Obsidian 的 Markdown 解析出现了微小偏差。
+我们直接用最粗暴、最有效的方法修复它。请在 PowerShell 中执行下面这段“超兼容版”脚本，它去掉了所有可能干扰解析的图标和复杂转义：
 $apiKey = "8212fe30470f760008c2bc5a9faa24f07d838267fc995c09b8292a8464ab770c"
-$apiVaultUrl = "http://127.0.0.1:27123/vault/Michael_Product"
 $sourceDir = "E:\Mycodeprojects"
+$apiVaultUrl = "http://127.0.0.1:27123/vault/Michael_Product"
 
-$projects = Get-ChildItem $sourceDir -Directory | Where-Object { $_.Name -notlike ".*" }
+$projects = Get-ChildItem $sourceDir -Directory | Where-Object { $_.Name -notlike ".*" -and $_.Name -notlike "__*" }
 $headers = @{ "Authorization" = "Bearer $apiKey"; "Content-Type" = "text/markdown" }
 
 foreach ($project in $projects) {
     $name = $project.Name
     $path = $project.FullName
-    # 核心修复：Windows 下必须包含磁盘冒号且斜杠一致
-    $formattedPath = $path.Replace("\", "/")
+    # 转换为标准 URL 路径格式
+    $urlPath = $path.Replace("\", "/")
     
+    $tag = "General"
+    if (Test-Path "$path\requirements.txt") { $tag = "AI_Python" }
+
+    # 重点：简化 Markdown 结构，确保链接被激活
     $content = @"
 # Project: $name
 
-- [Open_in_VS_Code](vscode://file/$formattedPath)
-- [Open_in_Explorer](file:///$formattedPath)
+- Type: #$tag
+- Folder: $path
+
+[Open_in_VS_Code](vscode://file/$urlPath)
 
 ---
-Path: $path
+- [[Michael_Product_MOC]] | [[Category_$tag]]
 "@
 
     $targetUrl = "$apiVaultUrl/$name.md"
     Invoke-RestMethod -Method Put -Uri $targetUrl -Headers $headers -Body ([System.Text.Encoding]::UTF8.GetBytes($content))
+    Write-Host "Re-Linked: $name" -ForegroundColor Cyan
 }
-Write-Host "✅ 补丁已部署。请检查 Obsidian 中的 Open_in_VS_Code 链接。" -ForegroundColor Cyan
 
 
-2. 必须的操作：解除 Obsidian 的“点击封印”
-即便脚本写对了，Obsidian 默认在 编辑模式 下点击链接是不会跳转的（为了防止误触）。
+执行后的关键操作：
 
-请在 Obsidian 中打开 Audit_Assets。
-切换到阅读模式：按下 Ctrl + E（或者点击右上角的“预览/书本”图标）。
-尝试点击：
 
-如果点击 Open_in_VS_Code 弹出了“是否允许”的系统提示，点击 “是”。
-如果依然没反应，请按住键盘上的 Ctrl 键再点击。
+切换到“阅读模式”：
+在 Obsidian 中，点击右上角的 “书本”图标（或者按下 Ctrl + E）。
 
+在编辑模式下，链接是不可以直接点击的（除非按住 Ctrl）。
+在阅读模式下，你应该能看到 Open_in_VS_Code 变成了蓝色。
 
 
 
-3. 如果还是不行：VS Code 内部修复
-如果上述两步都没用，那说明你的电脑里 VS Code 没有正确注册到 Windows 注册表。
+点击测试：
+点击那个蓝色的 Open_in_VS_Code。
 
-操作：打开 VS Code 软件。
-按下 F1，输入 Shell。
-选择 Shell Command: Install 'code' command in PATH。
-重启电脑。
 
-💡 为什么你的截图显示配置正确却报错？
-图中显示你开启了 Non-encrypted (HTTP) 服务器。有些时候 Obsidian 内部的插件会因为当前库没开启 HTTPS 而限制这种“危险”的系统外部调用。
-请先尝试 Ctrl + E 进入阅读模式点击。如果文件夹弹不出来，点击 VS Code 链接却弹出了“协议询问”，那就说明我们离成功只差最后一次 Windows 确认了。
+如果系统弹出弹窗：
+它会问你“是否允许 Obsidian 打开此链接？”，请务必选择 “是/允许”。
+
+
+为什么之前不行？
+从截图看，你的 Obsidian 还在编辑模式，且 Markdown 语法因为前后的空格或特殊字符（🚀）可能没有被正确触发成超链接。这次我精简了格式，去掉了所有花哨的装饰，确保它在任何模式下都能被系统识别为 vscode:// 协议。
+请再次运行这段代码，然后切换到阅读模式点一下试试，这次应该能直接唤醒 VS Code 了！
 
 ---
 *从 Gemini 导出，2026-05*
-
----
-*从 Gemini 导出 · 分类: 文案创意 · 2026-05*

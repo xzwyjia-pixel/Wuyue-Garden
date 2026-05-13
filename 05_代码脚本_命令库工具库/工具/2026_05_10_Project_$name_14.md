@@ -1,25 +1,33 @@
 ---
-title: 我现在要先解决一个VS code不能打开的问题
+title: 还是不可以
 source: gemini
 date: 2026-05-10
-category: Obsidian配置
-tags: [gemini, Obsidian配置]
+category: 系统运维
+tags: [gemini, 系统运维]
 ---
 
-## 我现在要先解决一个VS code不能打开的问题
+## 还是不可以
 
-既然 vscode:// 协议已经能在浏览器地址栏唤起弹窗，说明系统层面的“大门”已经打开了，但在 Obsidian 内部点击依然没反应，这通常是由于 Obsidian 的内部链接解析滞后 或 安全沙箱限制 导致的。
-我们现在用两个最直接的操作彻底解决它：
-1. 强制刷新 Obsidian 的“外部链接”缓存
-有时候 Obsidian 在编辑模式下会对新生成的 API 链接有“保护机制”。
+从你最新的截图来看，链接已经变成了蓝色且带有“外部链接”图标（小箭头），这说明 Obsidian 已经正确识别了它是一个外部协议请求。
+如果点击依然没反应，这通常不是代码问题，而是 Windows 系统协议关联 或 Obsidian 安全拦截 的问题。我们通过以下三个方案彻底排查并修复：
 
-操作：按下 Ctrl + R (重新加载) 或者完全关闭 Obsidian 再重新打开。
-验证：打开 Audit_Assets 笔记，按住 Ctrl 键再点击 那个蓝色的链接。
+方案一：手动唤醒 Windows 的“协议记忆”
+有时候 Windows 并没有把 vscode:// 和安装路径对上。
+
+请直接在你的 浏览器地址栏（Chrome 或 Edge）里输入：
+vscode://file/E:/Mycodeprojects/Audit_Assets
+按下回车。
+看反馈：
+
+如果弹出窗口 问你“是否打开 Visual Studio Code？”，点击**“打开”**。
+如果没反应，说明 VS Code 的环境变量或 URL Handler 损坏了。你需要重新安装一次 VS Code，或者在 VS Code 里按 F1 输入 Shell Command: Install 'code' command in PATH。
 
 
-2. 在脚本中加入“备用物理路径”（Plan B）
-如果协议跳转在某些情况下不稳定，我们在笔记里多加一个资源管理器直接打开的链接。这样万一 VS Code 没弹出来，你点一下就能直接打开 E 盘文件夹，右键“用 VS Code 打开”即可。
-请在 PowerShell 运行这个“双重保障版”同步代码：
+
+
+方案二：绕过协议，改用 Obsidian 原生文件链接
+如果 vscode:// 协议死活不响应，我们换一种 Obsidian 百分之百支持的方式。这种方式会直接打开 E 盘对应的文件夹，你再手动在 VS Code 中处理。
+请在 PowerShell 运行这段备用脚本：
 $apiKey = "8212fe30470f760008c2bc5a9faa24f07d838267fc995c09b8292a8464ab770c"
 $sourceDir = "E:\Mycodeprojects"
 $apiVaultUrl = "http://127.0.0.1:27123/vault/Michael_Product"
@@ -30,15 +38,14 @@ $headers = @{ "Authorization" = "Bearer $apiKey"; "Content-Type" = "text/markdow
 foreach ($project in $projects) {
     $name = $project.Name
     $path = $project.FullName
-    $urlPath = $path.Replace("\", "/")
-    
+    # 使用 file:/// 协议，这是 Windows 最底层的协议
+    $filePath = "file:///" + $path.Replace("\", "/")
+
     $content = @"
 # Project: $name
-- Folder: `$path`
+- Folder: $path
 
-## 🚀 快捷执行
-- [在 VS Code 中打开](vscode://file/$urlPath)
-- [在资源管理器中打开](file:///$urlPath)
+[📂 在资源管理器中打开文件夹]($filePath)
 
 ---
 - [[Michael_Product_MOC]]
@@ -47,16 +54,20 @@ foreach ($project in $projects) {
     $targetUrl = "$apiVaultUrl/$name.md"
     Invoke-RestMethod -Method Put -Uri $targetUrl -Headers $headers -Body ([System.Text.Encoding]::UTF8.GetBytes($content))
 }
-Write-Host "✅ 双重链接已部署，请回到 Obsidian 测试。" -ForegroundColor Cyan
 
 
-3. 如果点击依然“无感”，请检查这个设置：
-如果点击 file:/// 能打开文件夹，但 vscode:// 还是不行，请检查：
+方案三：检查 Obsidian 的“安全信任”
+Obsidian 有时会静默拦截外部协议：
 
-VS Code 是否正在运行？ 有时候 VS Code 在后台卡死会导致协议失效，请尝试关闭所有 VS Code 窗口再试。
-Obsidian 插件干扰：请尝试暂时禁用你之前截图里的 Open vault in VS Code 插件。有时候同类插件会争夺 Ctrl+点击 的控制权。
+在 Obsidian 中按下 Ctrl + ,（逗号）进入 设置。
+检查 “文件与链接 (Files & Links)” 选项。
+虽然 Obsidian 没有显式的外部链接开关，但请尝试 退出并重新打开 Obsidian。有时候在 API 写入大量链接后，它需要重启来重新加载协议处理器。
 
-你现在运行完这个脚本后，点一下那个新增的“在资源管理器中打开”，文件夹能弹出来吗？ 如果文件夹能出，说明路径没问题，我们只需要最后微调一下 VS Code 的唤醒参数。
+
+💡 现在的终极测试
+在你截图的那个界面，请尝试 按住 Ctrl 键再点击 那个蓝色的链接。
+如果 vscode:// 依然无感，请运行上面的 方案二 脚本。如果 file:/// 协议能打开文件夹，至少证明了“Obsidian -> 外部系统”这条路是通的。
+请运行方案二，看看能不能通过 Obsidian 成功打开 E 盘的文件夹？
 
 ---
 *从 Gemini 导出，2026-05*

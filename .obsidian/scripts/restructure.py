@@ -170,6 +170,9 @@ def extract_subfolder(rel_dir):
 # ── Inbox classification (conservative) ──
 
 INBOX_RULES = [
+    # AI conversation exports (filename patterns)
+    (6, "对话导出", ["_vs_", "追加_", "对比维度", "concept"]),
+    # AI conversation exports (content patterns)
     (6, "Gemini", ["source: gemini", "source_gemini", "source: claude", "source_claude",
                    "你是一个.*ai", "你是一个.*助手", "作为ai助手",
                    "请生成", "帮我写", "给我生成",
@@ -177,9 +180,19 @@ INBOX_RULES = [
     (2, "直播复盘", ["直播", "douyin", "抖音", "带货", "直播间", "曝光", "进入率"]),
     (2, "审计项目", ["审计", "hclg", "kaldi", "asr", "交换机", "路由器"]),
     (4, "参考文档", ["指南", "教程", "参考文档", "说明书", "操作指南",
-                     "技术规格"]),
+                     "技术规格", "agent_skills_spec", "managed_agents"]),
+    (4, "活动记录", ["活动记录", "takeout", "gmail_活动"]),
+    (4, "Theme设计", ["arctic_frost", "botanical_garden", "desert_rose",
+                      "forest_canopy", "golden_hour", "midnight_galaxy",
+                      "modern_minimalist", "ocean_depths", "sunset_boulevard",
+                      "tech_innovation"]),
     (4, "Prompts", ["prompt:", "提示词:", "system prompt"]),
-    (1, "模板", ["模板", "template", "日记模板", "周记模板"]),
+    (5, "项目配置", ["project_", ".claude", ".githooks", "pycache", "temp_frames"]),
+    (5, "代码片段", [".py.md", "powershell", "skill_creator"]),
+    (2, "语音笔记", ["语音笔记", "语音转写"]),
+    (2, "工作日报", ["日报", "日记", "work log"]),
+    (1, "模板", ["模板", "template", "日记模板", "周记模板", "day_planner"]),
+    (1, "个人", ["hello", "test"]),
 ]
 
 def classify_inbox(content, fname):

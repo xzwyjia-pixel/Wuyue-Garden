@@ -1,1 +1,76 @@
-{"content":"---\ntitle: 还是不可以\nsource: gemini\ndate: 2026-05-10\ncategory: 系统运维\nsubcategory: PowerShell\nold_category: 系统运维\ntags: [gemini, 系统运维, PowerShell]\n---\n\n## 还是不可以\n\n## 还是不可以\n\n从你最新的截图来看，链接已经变成了蓝色且带有“外部链接”图标（小箭头），这说明 Obsidian 已经正确识别了它是一个外部协议请求。\n如果点击依然没反应，这通常不是代码问题，而是 Windows 系统协议关联 或 Obsidian 安全拦截 的问题。我们通过以下三个方案彻底排查并修复：\n\n方案一：手动唤醒 Windows 的“协议记忆”\n有时候 Windows 并没有把 vscode:// 和安装路径对上。\n\n请直接在你的 浏览器地址栏（Chrome 或 Edge）里输入：\nvscode://file/E:/Mycodeprojects/Audit_Assets\n按下回车。\n看反馈：\n\n如果弹出窗口 问你“是否打开 Visual Studio Code？”，点击**“打开”**。\n如果没反应，说明 VS Code 的环境变量或 URL Handler 损坏了。你需要重新安装一次 VS Code，或者在 VS Code 里按 F1 输入 Shell Command: Install 'code' command in PATH。\n\n\n\n\n方案二：绕过协议，改用 Obsidian 原生文件链接\n如果 vscode:// 协议死活不响应，我们换一种 Obsidian 百分之百支持的方式。这种方式会直接打开 E 盘对应的文件夹，你再手动在 VS Code 中处理。\n请在 PowerShell 运行这段备用脚本：\n$apiKey = \"8212fe30470f760008c2bc5a9faa24f07d838267fc995c09b8292a8464ab770c\"\n$sourceDir = \"E:\\Mycodeprojects\"\n$apiVaultUrl = \"http://127.0.0.1:27123/vault/Michael_Product\"\n\n$projects = Get-ChildItem $sourceDir -Directory | Where-Object { $_.Name -notlike \".*\" -and $_.Name -notlike \"__*\" }\n$headers = @{ \"Authorization\" = \"Bearer $apiKey\"; \"Content-Type\" = \"text/markdown\" }\n\nforeach ($project in $projects) {\n    $name = $project.Name\n    $path = $project.FullName\n    # 使用 file:/// 协议，这是 Windows 最底层的协议\n    $filePath = \"file:///\" + $path.Replace(\"\\\", \"/\")\n\n    $content = @\"\n# Project: $name\n- Folder: $path\n\n[📂 在资源管理器中打开文件夹]($filePath)\n\n---\n- [[Michael_Product_MOC]]\n\"@\n\n    $targetUrl = \"$apiVaultUrl/$name.md\"\n    Invoke-RestMethod -Method Put -Uri $targetUrl -Headers $headers -Body ([System.Text.Encoding]::UTF8.GetBytes($content))\n}\n\n\n方案三：检查 Obsidian 的“安全信任”\nObsidian 有时会静默拦截外部协议：\n\n在 Obsidian 中按下 Ctrl + ,（逗号）进入 设置。\n检查 “文件与链接 (Files & Links)” 选项。\n虽然 Obsidian 没有显式的外部链接开关，但请尝试 退出并重新打开 Obsidian。有时候在 API 写入大量链接后，它需要重启来重新加载协议处理器。\n\n\n💡 现在的终极测试\n在你截图的那个界面，请尝试 按住 Ctrl 键再点击 那个蓝色的链接。\n如果 vscode:// 依然无感，请运行上面的 方案二 脚本。如果 file:/// 协议能打开文件夹，至少证明了“Obsidian -> 外部系统”这条路是通的。\n请运行方案二，看看能不能通过 Obsidian 成功打开 E 盘的文件夹？\n\n---\n*从 Gemini 导出，2026-05*\n\n---\n*Gemini · 系统运维 / PowerShell · 2026-05-10*\n"}
+---
+title: Prompted
+source: gemini
+date: 2026-05-10
+category: 文案创意
+old_category: 系统运维
+tags: [gemini, 文案创意]
+---
+
+## Prompted
+
+## Prompted
+
+从你提供的截图来看，Local REST API 插件的配置非常完美（HTTP 服务器已开启，API Key 也匹配）。既然插件通信没问题，但“点击链接没反应”，这说明 Obsidian 内部拦截了非 https 环境下的系统调用，或者路径中的编码格式在 Windows 11 下失效了。
+我们不需要在设置里纠结了。为了彻底解决 VS Code 打不开的问题，我们采取 “协议补丁” 策略。
+1. 修复：让链接在任何模式下都“变绿”
+Obsidian 默认会为了安全限制 file:// 的跳转。请运行下面这个 PowerShell 脚本，它使用了 Markdown 最严苛的链接格式，并去掉了所有图标，强制让 Obsidian 识别为合规链接。
+$apiKey = "8212fe30470f760008c2bc5a9faa24f07d838267fc995c09b8292a8464ab770c"
+$apiVaultUrl = "http://127.0.0.1:27123/vault/Michael_Product"
+$sourceDir = "E:\Mycodeprojects"
+
+$projects = Get-ChildItem $sourceDir -Directory | Where-Object { $_.Name -notlike ".*" }
+$headers = @{ "Authorization" = "Bearer $apiKey"; "Content-Type" = "text/markdown" }
+
+foreach ($project in $projects) {
+    $name = $project.Name
+    $path = $project.FullName
+    # 核心修复：Windows 下必须包含磁盘冒号且斜杠一致
+    $formattedPath = $path.Replace("\", "/")
+    
+    $content = @"
+# Project: $name
+
+- [Open_in_VS_Code](vscode://file/$formattedPath)
+- [Open_in_Explorer](file:///$formattedPath)
+
+---
+Path: $path
+"@
+
+    $targetUrl = "$apiVaultUrl/$name.md"
+    Invoke-RestMethod -Method Put -Uri $targetUrl -Headers $headers -Body ([System.Text.Encoding]::UTF8.GetBytes($content))
+}
+Write-Host "✅ 补丁已部署。请检查 Obsidian 中的 Open_in_VS_Code 链接。" -ForegroundColor Cyan
+
+
+2. 必须的操作：解除 Obsidian 的“点击封印”
+即便脚本写对了，Obsidian 默认在 编辑模式 下点击链接是不会跳转的（为了防止误触）。
+
+请在 Obsidian 中打开 Audit_Assets。
+切换到阅读模式：按下 Ctrl + E（或者点击右上角的“预览/书本”图标）。
+尝试点击：
+
+如果点击 Open_in_VS_Code 弹出了“是否允许”的系统提示，点击 “是”。
+如果依然没反应，请按住键盘上的 Ctrl 键再点击。
+
+
+
+
+3. 如果还是不行：VS Code 内部修复
+如果上述两步都没用，那说明你的电脑里 VS Code 没有正确注册到 Windows 注册表。
+
+操作：打开 VS Code 软件。
+按下 F1，输入 Shell。
+选择 Shell Command: Install 'code' command in PATH。
+重启电脑。
+
+💡 为什么你的截图显示配置正确却报错？
+图中显示你开启了 Non-encrypted (HTTP) 服务器。有些时候 Obsidian 内部的插件会因为当前库没开启 HTTPS 而限制这种“危险”的系统外部调用。
+请先尝试 Ctrl + E 进入阅读模式点击。如果文件夹弹不出来，点击 VS Code 链接却弹出了“协议询问”，那就说明我们离成功只差最后一次 Windows 确认了。
+
+---
+*从 Gemini 导出，2026-05*
+
+---
+*从 Gemini 导出 · 分类: 文案创意 · 2026-05*
