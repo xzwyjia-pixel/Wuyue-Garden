@@ -1,1 +1,0 @@
-{"content":"---\ncreated: 2026-05-12T12:50:27.499942\ntype: voice-note\ntags: [语音]\n---\n\n# 测试从Claude注入笔记\n\n> 语音转写\n\n这是一个测试\n"}

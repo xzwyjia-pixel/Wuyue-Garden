@@ -1,1 +1,0 @@
-{"content":"---\ncreated: 2026-05-12T13:44:45.903539\ntype: ocr\nsource: C:\\Users\\think\\AppData\\Local\\Temp\\ocr_final_test.png\ntags: [OCR]\n---\n\n# 伟联OCR测试\n\n## OCR 识别结果\n\n```\n伟 联 私 有 云 系 统\n```\n"}
