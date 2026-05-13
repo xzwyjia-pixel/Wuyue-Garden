@@ -1,0 +1,41 @@
+---
+title: Prompted
+source: gemini
+date: 2026-05-03
+category: Obsidian配置
+tags: [gemini, Obsidian配置]
+---
+
+## Prompted
+
+从你提供的截图来看，操作路径确实隐藏得有点深。在 Chrome 的这个菜单里，你需要点击 “管理扩展程序” (Manage extensions) 才能进入真正的设置页面。
+请按照以下步骤操作：
+1. 进入 MarkDownload 的设置中心
+
+在截图显示的菜单中，点击倒数第三项：管理扩展程序 (Manage extensions)。
+进入新页面后，找到 MarkDownload 卡片，点击其中的 “扩展程序选项” (Extension options)。这会打开一个独立的配置网页。
+
+
+2. 找到 Obsidian 配置项
+在打开的配置网页中，请在左侧栏或主页面向下滚动，找到 "Obsidian settings" 这一节。
+你会看到以下几个需要填写的框：
+
+Obsidian API Key: 这里粘贴你从 Obsidian 插件里获取的那串 Key。
+Obsidian server address: 默认是 [https://127.0.0.1:27124](https://127.0.0.1:27124)。
+
+
+3. 必须完成的“握手”步骤（非常重要）
+填好 Key 后，你会发现下面有一个按钮叫 "Test API"。请务必点击它。
+
+如果报错或没反应：点击那个 [https://127.0.0.1:27124](https://127.0.0.1:27124) 的链接。
+浏览器会弹出一个警告页面，说“您的连接不是私密连接”。
+点击页面上的 “高级”，然后点击最下面的 “继续访问 127.0.0.1（不安全）”。
+当你看到页面显示一行代码（比如 {"status":"OK"}）时，说明浏览器已经允许插件和 Obsidian 通信了。
+
+
+4. 保存并使用
+回到插件设置页面，点击最下方的 "Save" (保存)。
+现在你回到网页，再次点击那个紫色的 "Sync to Obsidian" 按钮，应该就可以直接成功保存了。
+
+---
+*从 Gemini 导出，2026-05*

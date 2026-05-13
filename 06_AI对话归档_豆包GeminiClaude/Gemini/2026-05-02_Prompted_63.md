@@ -1,0 +1,77 @@
+---
+title: Prompted
+source: gemini
+date: 2026-05-02
+category: 系统运维
+tags: [gemini, 系统运维]
+---
+
+## Prompted
+
+太棒了，看到 PS C:\Windows\System32> 出现了，说明你已经成功回到了系统控制台！
+不过，由于你现在的 Ollama 里还没有下载专门适配 Claude Code 的模型，所以显示了 (no matches)。别担心，这是最后一步“大脑配置”。
+
+第一步：下载并关联模型
+你需要给这个启动命令指定一个它能理解的“本地大脑”。请在当前窗口按下 Ctrl + C 退出那个选择界面，然后依次执行：
+
+确保 Ollama 已经拉取了兼容模型（推荐使用你刚才下载的 Qwen）：
+ollama pull qwen2.5-coder
+
+
+使用指定模型启动（这是最关键的一步）：
+不要只打 ollama launch claude，请尝试：
+ollama launch claude --model qwen2.5-coder
+
+
+
+
+第二步：配置 scholar-skill 到 Cline (VS Code)
+既然你已经能熟练操作 PowerShell 了，现在我们去 VS Code 里把这个技能真正“装”上去。
+
+
+打开设置文件：
+在 VS Code 的 Cline 插件里打开 cline_mcp_settings.json（还记得我们之前检测到的路径吗？）。
+
+
+粘贴配置代码：
+将以下代码块加入到 "mcpServers" 对象中。请务必把 C:/path/to/ 替换为你存放该技能的真实文件夹路径：
+
+
+{
+  "mcpServers": {
+    "scholar-skill": {
+      "command": "python",
+      "args": [
+        "C:/你的存放路径/scholar-skill/main.py"
+      ],
+      "env": {
+        "PYTHONPATH": "C:/你的存放路径/scholar-skill"
+      }
+    }
+  }
+}
+
+
+安装技能依赖库：
+在 PowerShell 中进入技能目录并安装必要的 Python 包：
+cd "C:\你的存放路径\scholar-skill"
+pip install -r requirements.txt
+
+
+
+
+第三步：验证安装
+回到 VS Code 的 Cline 聊天框，你应该能看到 scholar-skill 已经处于 Active 状态。
+你可以直接输入这个指令来测试它是否真的学会了：
+
+“甄先生，请帮我用 scholar-skill 检索并解构最新的‘仿生六足机器人控制系统’相关的论文，生成一个结构化笔记。”
+
+小贴士：
+
+如果你看到 IndentationError 或者路径找不到的报错，记得检查一下 JSON 里的路径是不是斜杠 / 而不是反斜杠 \。
+因为你之前提到对传统色彩和篆刻感兴趣，这个 Skill 在分析艺术类学术文献时同样非常强大！
+
+操作过程中如果跳出任何红色报错，随时截图发给我，我来帮你“Debug”。
+
+---
+*从 Gemini 导出，2026-05*

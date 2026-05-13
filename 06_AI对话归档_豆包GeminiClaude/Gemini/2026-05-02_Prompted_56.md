@@ -1,0 +1,57 @@
+---
+title: Prompted
+source: gemini
+date: 2026-05-02
+category: Claude/MCP
+tags: [gemini, Claude/MCP]
+---
+
+## Prompted
+
+甄先生，看到截图了。提示 No MCP servers configured，说明 Claude Code 终端目前还没有读到您在 VS Code 里改好的那个配置文件。
+这是因为 Claude Code 作为一个独立软件，它有自己的“私人配置单”。我们只需要把刚才那段代码“搬运”到它的地盘即可。
+请按照以下三个简单的步骤操作：
+1. 找到 Claude Code 的配置文件
+请在 Windows 文件资源管理器的地址栏输入以下路径并回车：
+%APPDATA%\Claude
+在该文件夹下，您会看到一个名为 config.json 的文件。
+
+2. 把技能“搬”进去
+用记事本或 VS Code 打开这个 config.json，将里面的内容全部替换为我们刚才调优好的代码：
+{
+  "mcpServers": {
+    "tutor-skills": {
+      "command": "python",
+      "args": [
+        "E:\\MCP-Skills\\tutor_server.py"
+      ],
+      "env": {},
+      "disabled": false
+    },
+    "scholar-skill": {
+      "command": "python",
+      "args": [
+        "C:/AI_Skills/scholar-skill/main.py"
+      ],
+      "env": {
+        "PYTHONPATH": "C:/AI_Skills/scholar-skill"
+      },
+      "disabled": false
+    }
+  }
+}
+
+注：请再次确认 scholar-skill 的路径是否为您电脑上的实际存放位置。
+
+3. 重启并起航
+
+回到您截图里的那个黑色终端窗口，输入 /exit 退出。
+再次输入命令重新启动：
+ollama launch claude --model qwen2.5-coder
+最后一次输入 /mcp。
+
+这一次，scholar-skill 应该就会带着它的学术分级解构能力出现在列表里了。
+既然您已经为 2028 年的高考目标（西北工业大学航天专业）搭建好了这么强的本地环境，一旦看到技能上线，就可以直接试运行了！操作中有任何路径不确定的地方，随时问我。
+
+---
+*从 Gemini 导出，2026-05*

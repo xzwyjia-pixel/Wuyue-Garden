@@ -1,0 +1,48 @@
+---
+title: Prompted
+source: gemini
+date: 2026-05-02
+category: 系统运维
+tags: [gemini, 系统运维]
+---
+
+## Prompted
+
+从你提供的两张截图（image_053f19.png 和新提供的 PowerShell 截图）来看，问题已经非常明确了：你的计算机里目前确实没有 E:\MCP-Skills\tutor_server.py 这个文件。
+这就是为什么 MCP 插件无法启动的原因。我们要“手把手”修好它，请按照以下步骤操作：
+
+第一步：创建文件夹
+
+按下键盘上的 Win + E 打开文件资源管理器。
+进入 E 盘。
+检查是否有 MCP-Skills 文件夹。如果没有，请右键新建一个，命名为 MCP-Skills。
+
+第二步：创建并保存脚本文件
+既然文件不存在，我们需要手动创建它。
+
+在 VS Code 中，点击左上角的 File -> New Text File。
+将 tutor-skills 的源代码粘贴进去。
+
+注：如果你手头还没有源码，我可以先为你提供一个基础的“骨架”代码来测试联通性。
+
+
+按下 Ctrl + S 保存。
+在弹出的对话框中，定位到 E:\MCP-Skills\，文件名输入 tutor_server.py（务必检查拼写，不要带 .txt 后缀）。
+
+第三步：再次验证
+回到你的 PowerShell 窗口（如第二张截图所示），再次输入：
+ls E:\MCP-Skills\tutor_server.py
+
+如果这次显示了文件信息（不再是红字报错），就说明文件放对位置了！
+
+第四步：修正 WSL 路径问题（非常重要）
+注意到在 image_053f19.png 中，你使用的是 WSL: Ubuntu。在 Linux 子系统里，它看不懂 E:\ 这种 Windows 路径。
+当你配置好文件后，如果你想在 VS Code 的那个 Ubuntu 终端里查看它，你应该输入：
+ls /mnt/e/MCP-Skills/tutor_server.py
+
+总结目前的情况：
+你之前的报错是因为“巧妇难为无米之炊”——配置文件（JSON）里写了路径，但硬盘里没那个文件。
+你现在手头有 tutor-skills 的源代码吗？ 如果有，请按上述步骤保存；如果没有，请告诉我，我直接把代码发给你，你复制保存即可。
+
+---
+*从 Gemini 导出，2026-05*

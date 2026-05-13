@@ -1,0 +1,73 @@
+---
+title: Prompted
+source: gemini
+date: 2026-05-08
+category: 系统运维
+tags: [gemini, 系统运维]
+---
+
+## Prompted
+
+从你最后一张截图（image_6067e2.png）来看，程序已经实现了全自动化路径探测，但两个路径组合都失败了。这通常是因为中转站对 API 的请求头（Headers）有极其严格的格式要求，或者你的 API Key 填入位置不对。
+既然你追求“减少人工干预”，这里有一段**“全协议自适应”脚本**。它不仅自动尝试路径，还会自动尝试不同的 Header 组合（比如有些中转站要求用 Authorization: Bearer 而不是 x-api-key）。
+PowerShell 终端一键对接（增强版）
+请在 PowerShell 窗口直接执行以下代码（仅需修改前两行）：
+# 1. 核心参数
+$myBaseURL = "https://你的中转域名.com/v1"
+$apiKey = "你的_API_KEY"
+$proxy = "http://127.0.0.1:7890"
+
+# 2. 注入全局环境变量 (确保后续 Cloud Code CLI 直接可用)
+$env:HTTP_PROXY = $proxy; $env:HTTPS_PROXY = $proxy
+$env:ANTHROPIC_BASE_URL = $myBaseURL
+$env:ANTHROPIC_API_KEY = $apiKey
+$env:NODE_TLS_REJECT_UNAUTHORIZED = "0"
+
+Write-Host "`n✅ [环境变量] 注入成功。" -ForegroundColor Green
+
+# 3. 暴力尝试所有可能的接口组合 (路径 x 鉴权方式)
+$cleanURL = $myBaseURL.TrimEnd('/')
+$paths = @("$cleanURL/messages", "$cleanURL/v1/messages", "$cleanURL")
+$headerStyles = @(
+    @{ "x-api-key" = $apiKey },                             # 标准 Anthropic 格式
+    @{ "Authorization" = "Bearer $apiKey" }                 # 某些 OpenAI 格式的中转站
+)
+
+Write-Host "📡 [链路验证] 正在尝试多种协议组合对接 DC 模型..." -ForegroundColor Yellow
+
+$success = $false
+foreach ($p in $paths) {
+    foreach ($h in $headerStyles) {
+        $json = '{"model":"claude-3-5-sonnet-20240620","max_tokens":10,"messages":[{"role":"user","content":"hi"}]}'
+        
+        # 组装 curl 命令，加上 -i 显示 Header 辅助诊断
+        $curlArgs = @("-k", "-s", "-i", "-X", "POST", $p, "-d", $json, "-x", $proxy, "-H", "Content-Type: application/json", "-H", "anthropic-version: 2023-06-01")
+        foreach ($key in $h.Keys) { $curlArgs += "-H"; $curlArgs += "$key: $($h[$key])" }
+
+        $res = & curl.exe @curlArgs
+        if ($res -like "*HTTP/* 200*" -and $res -like "*content*") {
+            Write-Host "`n🚀 成功连通！有效接口：$p" -ForegroundColor Green
+            Write-Host "使用的鉴权方式：$($h.Keys)" -ForegroundColor Cyan
+            $success = $true; break
+        }
+    }
+    if ($success) { break }
+}
+
+if ($success) {
+    Write-Host "`n✨ 终端对接完成！你现在可以运行 Cloud Code 审计命令了。" -ForegroundColor White
+} else {
+    Write-Host "`n❌ 所有组合均失败。请检查：`n1. 代理软件（如 Clash）的日志是否有红色条目？`n2. 中转站是否要求特定的 Header？" -ForegroundColor Red
+}
+
+为什么之前的尝试会失败？（针对你截图的分析）
+
+路径误判：截图显示你尝试了 /v1/v1/messages，这通常是多叠了一层。新的脚本会自动测试单层、双层和根目录。
+鉴权协议不兼容：很多中转站虽然接入的是 Claude (DC)，但为了兼容 OpenAI 的生态，它们要求使用 Authorization: Bearer 这种 Header。新的脚本会自动帮你“盲测”这两种主流鉴权方式。
+EOF 依然存在：截图里的报错暗示连接可能在握手之后被中转站主动 Reset。这通常是因为没带正确的 anthropic-version 或者 Content-Type，新脚本已将其强制补全。
+
+执行建议：
+执行完成后，只要有一个组合变绿，这个 PowerShell 窗口就成了永久有效的审计终端。你在这个窗口里运行 cloud-code 或 python audit_tool.py 都会直接走通。
+
+---
+*从 Gemini 导出，2026-05*

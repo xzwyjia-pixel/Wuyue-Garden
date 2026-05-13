@@ -1,0 +1,90 @@
+---
+title: > “你好，我是甄先生。请确认你能否连接。如果成功，请告诉我当前的目录。”
+
+● There's an issue with the selected model (claude-3-7-sonnet-20250219). It may not exist or you may not
+  have access to it. Run /model to pick a different model.
+
+✻ Crunched for 2s
+
+> /model claude-3-5-sonnet-20241022
+  ⎿  Model 'claude-3-5-sonnet-20241022' not found
+
+> “你好，我是甄先生。请确认你能否连接。如果成功，请告诉我当前的目录。”
+
+● There's an issue with the selected model (claude-3-7-sonnet-20250219). It may not exist or you may not
+  have access to it. Run /model to pick a different model.
+
+✻ Baked for 1s
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────
+> 
+────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ? for shortcuts
+source: gemini
+date: 2026-05-08
+category: Claude/MCP
+tags: [gemini, Claude/MCP]
+---
+
+## > “你好，我是甄先生。请确认你能否连接。如果成功，请告诉我当前的目录。”
+
+● There's an issue with the selected model (claude-3-7-sonnet-20250219). It may not exist or you may not
+  have access to it. Run /model to pick a different model.
+
+✻ Crunched for 2s
+
+> /model claude-3-5-sonnet-20241022
+  ⎿  Model 'claude-3-5-sonnet-20241022' not found
+
+> “你好，我是甄先生。请确认你能否连接。如果成功，请告诉我当前的目录。”
+
+● There's an issue with the selected model (claude-3-7-sonnet-20250219). It may not exist or you may not
+  have access to it. Run /model to pick a different model.
+
+✻ Baked for 1s
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────
+> 
+────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ? for shortcuts
+
+甄先生，咱们现在的情况就像是已经修好了路（API 地址是对的），但手里拿的“通行证”（模型名称）在对方的关卡对不上。
+Model not found 说明中转商对模型名称有特定的命名规则。为了不再盲目猜测，咱们用“极简精密”的方法直击要害。
+1. 甄查代理商支持的“真实名称”
+请在 > 提示符下输入以下指令，看看你的代理商到底给这个模型起了什么名字：
+/model
+
+这时候会弹出一个列表。 请仔细观察：
+
+是否有 claude-3-5-sonnet-latest？
+或者只是简单的 claude-3-5-sonnet？
+如果列表里没有 3.7，那就选那个带 3-5-sonnet 字样的选项。
+
+2. 纠正当前的工作目录 (CWD)
+甄先生，你现在的终端路径在 C:\Windows\System32，这会导致 AI 无法读写你的 E:\MyCodeProjects 代码。请务必执行以下动作切换战场：
+
+输入 exit 退出 Claude 界面。
+在 PowerShell 中输入：
+cd "E:\MyCodeProjects"
+claude
+
+
+
+3. 给中转地址加一个“后缀” (关键修正)
+根据你之前截图中 gptsapi 的说明，有时需要更完整的路径。如果切换模型后还是报错，请退出后在 PowerShell 执行最后一次加固：
+# 尝试将地址精确到 v1 节点
+$env:ANTHROPIC_BASE_URL = "https://api.gptsapi.net/v1"
+
+
+甄先生的“极简”通关路径：
+
+退出 Claude (输入 exit)。
+进入 E 盘 (cd E:\MyCodeProjects)。
+重新启动 (claude)。
+选对模型 (在 /model 弹出的列表里选一个存在的 Sonnet 模型)。
+打个招呼：“你好，我是甄先生。”
+
+只要在 /model 列表里选中了对方认可的名字，你的“规则甄查”计划就能立刻从 E 盘起航了。列表里现在显示了哪些模型？
+
+---
+*从 Gemini 导出，2026-05*

@@ -1,3 +1,0 @@
-window: [⠂ 启动 SuSu 直播监控专业版] pos=(471,71) size=(1191x749)
-window: [抖音] pos=(-32000,-32000) size=(160x28)
-window: [多直播间监控 - 个人 - Microsoft​ Edge] pos=(-32000,-32000) size=(160x28)

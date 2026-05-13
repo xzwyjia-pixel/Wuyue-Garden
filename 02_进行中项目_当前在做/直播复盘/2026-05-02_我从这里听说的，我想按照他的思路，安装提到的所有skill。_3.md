@@ -1,0 +1,97 @@
+---
+title: 我从这里听说的，我想按照他的思路，安装提到的所有skill。
+source: gemini
+date: 2026-05-02
+category: 编程开发
+tags: [gemini, 编程开发]
+---
+
+## 我从这里听说的，我想按照他的思路，安装提到的所有skill。
+
+没问题！原来你是在刷到了关于 OpenClaw（一个基于开源 Agent 框架的增强版）的视频。
+视频中提到的这 10 个核心 Skill 并不是通过普通的 pip install 从 Python 官方仓库下载的，而是通过 ClawHub（OpenClaw 的专用插件市场）来获取和管理的。
+🚀 如何安装 OpenClaw 核心 Skills
+要安装视频中提到的 skill-vetting、self-improving-agent 等技能，你需要先确保你的 OpenClaw 环境已经搭建好。
+1. 使用内置命令安装（最推荐）
+OpenClaw 提供了一个名为 find-skills 的内置功能，它可以让你通过自然语言直接搜索并安装技能。
+
+第一步： 在你的 OpenClaw 终端中输入：
+claw install skill-vetting
+
+
+第二步： 按照视频的建议，务必第一个安装 skill-vetting，因为它会在后续安装其他插件时自动扫描安全风险。
+
+2. 视频中提到的 10 大核心 Skill 清单
+你可以根据下表，在 OpenClaw 中依次执行 claw install [技能名] 来安装：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+类别技能名称 (Skill Name)核心功能安全skill-vetting必装！ 扫描插件安全性，防止代码投毒。记忆self-improving-agent解决“健忘”问题，将经验存入本地记忆库。搜索tavily-searchAI 专属搜索引擎，返回结构化、AI 友好的内容。摘要summarize全格式支持，可将长网页、PDF 压缩至 500 字。发现find-skills“技能中的技能”，帮你寻找并配置其他技能。纪律using-superpowers强制 Agent 先检查现有 Skill 再行动，防止乱跑。开发vercel-react-best-practicesVercel 官方标准，生成高性能的 React 代码。设计frontend-designAnthropic 出品，让 Agent 先思考 UI 设计再写代码。代码github让 Agent 直接管理你的仓库（Issues, PR, CI）。办公agent-browser像真人一样操作浏览器（点击、填表、截图）。
+
+⚠️ 注意事项：
+
+环境前提：这些 Skill 依赖于 OpenClaw 框架。如果你还没安装 OpenClaw 本体，需要先去它的 GitHub 页面（或者视频中提到的 ClawHub）完成基础部署。
+API 密钥：像 tavily-search 这样的技能需要你先去 Tavily 官网 申请一个免费的 API Key，并在 OpenClaw 的配置文件中进行填写。
+权限：安装 github 或 agent-browser 技能时，系统可能会弹出权限申请，请务必确认是在受信任的环境下操作。
+
+由于你已经在 E 盘准备好了目录，你可以将 OpenClaw 的项目克隆到 E:\OpenClaw，然后在这个环境下运行安装命令。
+
+---
+*从 Gemini 导出，2026-05*

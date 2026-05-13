@@ -1,0 +1,106 @@
+---
+title: ───> 
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  Press Ctrl-C again to exit
+
+Resume this session with:
+claude --resume 34368636-163d-47b4-9e14-1784c6e124f4
+PS E:\MyCodeProjects> # 方案 A (概率最高):
+>> claude --model claude-3-5-sonnet-20241022
+ ▐▛███▜▌   Claude Code v2.1.133
+▝▜█████▛▘  Sonnet 3.5 · API Usage Billing
+  ▘▘ ▝▝    E:\MyCodeProjects
+
+> “我是甄先生。                                                                                                          “我是甄先生。
+                                                                                                                          环境已精准对齐。                                                                                                                                                                                                                                执行 ls C:\Users\think\.agents\skills 确认目录。                                                                                                                                                                                                读取 caveman 指令：cat C:\Users\think\.agents\skills\caveman\.instructions 并立即生效。                                                                                                                                                         此后回复请遵循‘极简精密’审美。”                                                                                       ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────                                                                                                                        · Generating…                                                                                                         ●GThere's an issue with the selected model (claude-3-5-sonnet-20241022). It may not exist or you may not have access to  it. Run /model to pick a different model.
+                                                                                                                        ✻ Crunched for 3s
+                                                                                                                        ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────> 
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  Press Ctrl-C again to exit
+
+Resume this session with:
+claude --resume 2c1b4cd8-df57-4cf0-9d80-01cdde27b50f
+PS E:\MyCodeProjects> claude --model claude-3-5-sonnet
+ ▐▛███▜▌   Claude Code v2.1.133
+▝▜█████▛▘  Sonnet 3.5 · API Usage Billing
+  ▘▘ ▝▝    E:\MyCodeProjects
+
+> 请告诉我： 您的供应商给 Sonnet 3.5 标注的那个确切字符串是什么？                                                                                                                                                                            
+· Seasoning…                                                                                                                                                                                                                               ●SThere's an issue with the selected model (claude-3-5-sonnet). It may not exist or you may not have access to it. Run /model to pick a different model.
+
+✻ Brewed for 2s                                                                                                                                                                                                                              
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+> 
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ? for shortcuts
+source: gemini
+date: 2026-05-08
+category: Claude/MCP
+tags: [gemini, Claude/MCP]
+---
+
+## ───> 
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  Press Ctrl-C again to exit
+
+Resume this session with:
+claude --resume 34368636-163d-47b4-9e14-1784c6e124f4
+PS E:\MyCodeProjects> # 方案 A (概率最高):
+>> claude --model claude-3-5-sonnet-20241022
+ ▐▛███▜▌   Claude Code v2.1.133
+▝▜█████▛▘  Sonnet 3.5 · API Usage Billing
+  ▘▘ ▝▝    E:\MyCodeProjects
+
+> “我是甄先生。                                                                                                          “我是甄先生。
+                                                                                                                          环境已精准对齐。                                                                                                                                                                                                                                执行 ls C:\Users\think\.agents\skills 确认目录。                                                                                                                                                                                                读取 caveman 指令：cat C:\Users\think\.agents\skills\caveman\.instructions 并立即生效。                                                                                                                                                         此后回复请遵循‘极简精密’审美。”                                                                                       ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────                                                                                                                        · Generating…                                                                                                         ●GThere's an issue with the selected model (claude-3-5-sonnet-20241022). It may not exist or you may not have access to  it. Run /model to pick a different model.
+                                                                                                                        ✻ Crunched for 3s
+                                                                                                                        ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────> 
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  Press Ctrl-C again to exit
+
+Resume this session with:
+claude --resume 2c1b4cd8-df57-4cf0-9d80-01cdde27b50f
+PS E:\MyCodeProjects> claude --model claude-3-5-sonnet
+ ▐▛███▜▌   Claude Code v2.1.133
+▝▜█████▛▘  Sonnet 3.5 · API Usage Billing
+  ▘▘ ▝▝    E:\MyCodeProjects
+
+> 请告诉我： 您的供应商给 Sonnet 3.5 标注的那个确切字符串是什么？                                                                                                                                                                            
+· Seasoning…                                                                                                                                                                                                                               ●SThere's an issue with the selected model (claude-3-5-sonnet). It may not exist or you may not have access to it. Run /model to pick a different model.
+
+✻ Brewed for 2s                                                                                                                                                                                                                              
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+> 
+─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  ? for shortcuts
+
+甄先生，审计结论已经到了最后一步：您的中转商后端（gptsapi.net）对 ID 的校验极其严苛，甚至可能在后台使用了非标准的自定义字符串。
+既然 claude-3-5-sonnet 及其全称都无法过校验，而界面已经能进，说明我们只需要找到那个正确的“开门暗号”。
+请立即执行以下操作：
+1. 从 API 后台抓取“真名”
+请您在浏览器中打开 https://api.gptsapi.net/，登录后进入 “可用模型” 或 “API 文档”。
+
+甄先生，请找一下那张表格，或者看一眼“对话测试”里的模型下拉框，Sonnet 3.5 的 ID 到底是叫什么？
+常见非标准 ID 可能性：claude-3-5-sonnet-v2-20241022 或简简单单的 sonnet-3.5。
+
+
+2. 尝试“万能降维”ID
+有些中转商为了节省流量或兼容，会使用以下这种 ID。请先退出 Claude，在 PowerShell 尝试最后一次“盲试”启动：
+# 方案 X (许多 API 聚合商使用的 ID)
+claude --model claude-3-5-sonnet-20240620
+
+
+3. 甄先生的“暴力破解”逻辑
+如果以上都报红，意味着即便我们物理注入了配置文件，Claude Code 在每次执行指令前都会进行一次 API 在线验证，验证不通过则封锁 /run（本地执行）权限。
+我们可以通过这种方式确认它到底想要什么：
+在界面里输入：
+
+/model
+
+然后看列表。如果第 5 项带钩（√）但依然报红，请看一眼钩子旁边的完整灰色文字。
+
+💡 甄先生的精密预判：
+只要模型 ID 对齐（左下角红点变绿），您只需要下达这一个指令，Caveman 就会接管对话：
+
+/run cat C:\Users\think\.agents\skills\caveman\.instructions
+
+甄先生，供应商后台给您的模型列表里，Sonnet 3.5 叫什么名字？这是我们激活“全明星”插件的最后防线。
+
+---
+*从 Gemini 导出，2026-05*

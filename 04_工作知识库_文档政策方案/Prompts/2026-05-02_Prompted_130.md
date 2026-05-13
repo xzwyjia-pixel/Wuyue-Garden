@@ -1,0 +1,32 @@
+---
+title: Prompted
+source: gemini
+date: 2026-05-02
+category: 项目管理
+tags: [gemini, 项目管理]
+---
+
+## Prompted
+
+甄先生，观察到 image_02e25a.png 中的一个关键变化：底部的模型显示为 ollama:qwen2.5-coder:1.5b。
+由于 Qwen 1.5B 模型的参数量较小，它在理解 Cline 复杂的智能体（Agentic）工作流时可能有些吃力。这就是为什么 Cline 弹出了红色的提醒，并要求您点击 "Proceed Anyways"（无论如何都要继续）。
+
+🛠️ 当前的操作建议：
+
+点击 "Proceed Anyways"：
+由于您现在处于 Act（执行）模式，必须点击这个蓝色按钮，Cline 才会真正尝试去运行 tutor_setup 工具。
+关注资源占用：
+1.5B 模型虽然运行速度快，但有时会“复读”指令。如果它在点击后没有正确调用工具，建议您在 Ollama 中切换回 7B 版本的模型，那会更稳定地处理 MCP 工具调用。
+验证工具调用状态：
+点击后，观察 Cline 是否弹出一个黄色或绿色的方块，询问是否允许运行 python E:\MCP-Skills\tutor_server.py。
+
+
+💡 针对“规则甄查”项目的调试技巧：
+
+分段指令：如果 1.5B 模型理解不了长指令，您可以尝试分步走。先说：“list_tools” 确认它能看到导师工具。
+任务追踪：看到屏幕上生成的 <task_progress> 了吗？这非常符合您在 Siemens 和 ABB 积累的工程项目管理习惯。您可以根据这个列表，一项项核对 AI 导师对您 RulesBureau 代码目录的扫描进度。
+
+请先点击 "Proceed Anyways"。如果接下来它还是卡在“Thinking”或者开始胡言乱语，咱们就换回 7B 模型试试。
+
+---
+*从 Gemini 导出，2026-05*

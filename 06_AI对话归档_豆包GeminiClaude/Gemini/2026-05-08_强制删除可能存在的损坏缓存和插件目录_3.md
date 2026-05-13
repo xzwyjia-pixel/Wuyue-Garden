@@ -1,0 +1,55 @@
+---
+title: Prompted
+source: gemini
+date: 2026-05-08
+category: 系统运维
+tags: [gemini, 系统运维]
+---
+
+## Prompted
+
+看到您第二张截图中使用的代理软件（OK CLOUD），一切都对上号了。504 错误的根源已经非常明确：即便您的代理显示“已连接”，但由于使用的是“规则”模式，且终端（PowerShell）往往不会自动走代理，导致 Claude Code 在尝试从 GitHub 下载二进制插件包时，请求在中转站（api.gptsapi.net）卡死并超时。
+咱们的“死磕”进入最后冲刺阶段，请按以下三个具体动作操作，彻底打通环境：
+
+动作一：开启“全局模式”并强制接管终端
+在您的代理软件（OK CLOUD）界面：
+
+将顶部的 “规则” 切换为 “全局”。
+确保您的节点选择的是延迟较低的（比如您截图中绿色 161ms 的“香港 2 备用方案”）。
+核心操作： 为了确保 VS Code 的终端真正走代理，请在 PowerShell（Claude 模式外）输入以下命令：
+$env:HTTP_PROXY="http://127.0.0.1:7890"  # 请确认您的软件本地端口是否是7890，通常在“设置”里看
+$env:HTTPS_PROXY="http://127.0.0.1:7890"
+
+
+
+
+动作二：清理“僵尸”插件文件
+从图 1 看，系统显示 Successfully installed 但又报 Unknown command，这是典型的“下载了一半”的僵尸状态。我们要手动清理：
+请在 PowerShell 中粘贴并执行：
+# 强制删除可能存在的损坏缓存和插件目录
+Remove-Item -Recurse -Force "$env:USERPROFILE\.claude-code\plugins\cache\caveman" -ErrorAction SilentlyContinue
+Remove-Item -Recurse -Force "$env:USERPROFILE\.claude-code\plugins\caveman" -ErrorAction SilentlyContinue
+
+
+动作三：在“全局代理”下重新安装
+现在，回到 claude 提示符下，分步执行：
+
+彻底卸载残留记录：
+/plugin remove caveman
+
+
+执行安装（在全局代理保护下）：
+/plugin marketplace add JuliusBrussee/caveman
+/plugin install caveman@caveman
+
+
+
+
+💡 为什么之前会失败？
+如图所示，当您处于“规则模式”时，终端发出的 GitHub 下载请求可能被判断为“直连”，而由于众所周知的原因，直连下载极慢甚至无法建立连接。此时您的 ANTHROPIC_BASE_URL（gptsapi.net）作为中转站，等不到下载完成就触发了 60 秒的网关超时（504）。
+甄先生，现在的关键点是：
+只要您在 “全局模式” 下能通过 curl.exe -I https://github.com 看到 HTTP 200，那么这一次 /plugin install 就一定会成功。
+请执行这三步，如果还是报错，请告诉我您的代理软件“设置”里的“本地端口”是多少（比如 7890 或 1080），我为您微调代理命令。
+
+---
+*从 Gemini 导出，2026-05*

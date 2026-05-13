@@ -1,0 +1,53 @@
+---
+title: 昨天晚上到今天早上装了几次野鸡活了几次，但是Cloud house，现在无法在界面的下面显示。 第二个就是Super Power，现在在技能里边显示不出来，再有一个就是昨天显示出来之后上面显示的全部是锁闭的状态，那么现在我应该怎么做，因为已经退出，重启过几次了。
+source: gemini
+date: 2026-05-08
+category: 审计合规
+tags: [gemini, 审计合规]
+---
+
+## 昨天晚上到今天早上装了几次野鸡活了几次，但是Cloud house，现在无法在界面的下面显示。 第二个就是Super Power，现在在技能里边显示不出来，再有一个就是昨天显示出来之后上面显示的全部是锁闭的状态，那么现在我应该怎么做，因为已经退出，重启过几次了。
+
+甄先生，明白您的挫败感。既然已经重启过几次，底部状态栏（HUD）依然“隐身”，且 Superpowers 技能直接从列表消失或依然锁死，这说明 插件并没有真正进入核心配置单，或者配置文件被重置了。
+我们要解决“野鸡活（配置未固化）”的问题，必须跳过反复重启，直接执行**“硬核激活”**。请按以下步骤操作：
+1. 解决 HUD 状态栏不显示的问题
+如果重启后底部依然没有彩色条，请直接在终端输入这行强制开启指令：
+/statusline claude-hud
+
+注意：
+
+物理遮挡： 输入完后，请务必将您的 Windows 窗口垂直拉高。Windows 终端经常会把最后一行“吃掉”。
+强制刷新： 如果还没出，请对 Claude 说："Enable the claude-hud statusline and save it to my permanent settings."
+
+
+2. 找回并解锁 Superpowers
+Superpowers 现在显示不出来，是因为它的“插件目录”没被激活。请依次输入以下两条指令：
+
+第一步（重新挂载插件包）：
+/plugin add superpowers
+
+
+第二步（彻底解锁）：
+如果出现您之前看到的“黄色锁头”，请不要点选对话框，直接对 Claude 下死命令：
+
+“请立即读取并修改 ~/.claude/settings.json，把 superpowers 插件的所有技能权限强制设为 true，并移除所有 locked 状态。我要现在就能用 writing-skills。”
+
+
+
+
+3. 为什么会“反复失败”？（避坑指南）
+从您之前的截图看，您可能在不同的文件夹路径下启动了 claude。
+
+关键点： 请确保您始终在同一个初始目录（比如您的用户主目录 C:\Users\think）启动。
+权限申请： 当 Claude 提出修改 settings.json 时，必须选 2 (Yes, allow reading from .claude/)。
+
+现在的操作建议：
+您现在先输入 /skills。
+
+如果列表里只有 skill-creator：说明插件丢了。请执行上面的 /plugin add superpowers。
+如果列表里有锁头：说明没权限。请让 Claude 帮您改 settings.json。
+
+甄先生，您先操作这两步，看看能否把锁头变成绿色对勾？ 只要对勾绿了，您的“规则甄查”武器库才算真正落成。
+
+---
+*从 Gemini 导出，2026-05*

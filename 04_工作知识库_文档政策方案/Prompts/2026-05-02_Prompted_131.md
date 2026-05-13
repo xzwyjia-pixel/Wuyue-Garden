@@ -1,0 +1,52 @@
+---
+title: Prompted
+source: gemini
+date: 2026-05-02
+category: 文案创意
+old_category: 编程开发
+tags: [gemini, 文案创意]
+---
+
+## Prompted
+
+## Prompted
+
+甄先生，从您在 image_03ec85.png 中的代码来看，问题出在 JSON 格式的层级嵌套上，导致文件多出了多余的闭合括号。
+右下角的红色报错是因为在第 20 行 } 之后，第 21 行和 22 行的两个 } 变成了“多余”的代码，JSON 结构不平衡。
+请直接将以下代码全部复制，然后全选（Ctrl+A）并替换您文件里的所有内容：
+{
+  "mcpServers": {
+    "tutor-skills": {
+      "command": "python",
+      "args": [
+        "E:\\MCP-Skills\\tutor_server.py"
+      ],
+      "env": {},
+      "disabled": false
+    },
+    "scholar-skill": {
+      "command": "python",
+      "args": [
+        "C:/AI_Skills/scholar-skill/main.py"
+      ],
+      "env": {
+        "PYTHONPATH": "C:/AI_Skills/scholar-skill"
+      },
+      "disabled": false
+    }
+  }
+}
+
+为什么这样能修好？
+
+括号对齐：JSON 必须以一个 { 开始，并以一个对应的 } 结束。您之前的代码在中间提前结束了。
+技能衔接：在第一个技能 tutor-skills 结束后的第 10 行增加了一个逗号 ,，这是在一个配置中添加多个技能的标准方式。
+
+替换并按下 Ctrl+S 保存后，右下角的红色报错应该会立即消失。这时候，您的 AI 环境就已经准备好为您分析航天工程相关的学术资料了。
+修改后报错消失了吗？
+
+---
+*从 Gemini 导出，2026-05*
+
+---
+*从 Gemini 导出 · 分类: 文案创意 · 2026-05*

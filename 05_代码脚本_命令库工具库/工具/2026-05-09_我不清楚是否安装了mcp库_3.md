@@ -1,0 +1,33 @@
+---
+title: 我不清楚是否安装了mcp库
+source: gemini
+date: 2026-05-09
+category: 审计合规
+tags: [gemini, 审计合规]
+---
+
+## 我不清楚是否安装了mcp库
+
+不用猜，直接让 Claude Code 帮你完成环境自检和安装。
+在你的终端里直接执行这条指令，它会一次性解决检测、安装、验证所有问题：
+"Check if the Python package 'mcp' is installed. If not, install it using pip. Then, verify the installation by running a simple python script to import 'mcp' and print its version. If there are multiple Python environments, ensure it's installed in the one used by my global path."
+
+瑶瑶避坑指南（为什么要这么干）：
+
+环境一致性：因为你用的是 ThinkPad P15V 做专业技术工作，可能装了多个 Python 版本。这条指令会让 Claude Code 找到你当前正在用的那个环境，避免“装在 A 环境，B 环境用不了”的尴尬。
+静默处理：不需要你去翻 pip list 的清单，Claude 会直接告诉你 Installed 或 Already exists。
+
+
+进阶：如果安装成功，下一步直接激活“审计能力”
+一旦安装完成，你可以紧接着运行下面这条命令，把之前提到的 mcp_rule_checker.py 真正“挂载”到你的 Claude 上：
+"Write the following code to 'E:/MyCodeProjects/01-Production/规则甄查系统/03_Internal_Tools/mcp_rule_checker.py'. Then, locate my Claude Desktop configuration file (usually in %APPDATA%/Claude/claude_desktop_config.json) and add this file as a new MCP server named 'Rule-Investigator'."
+
+为什么这对你的“咨询业务”很重要？
+当你帮公司做 “AI 化改造咨询” 时，你不需要向他们推销复杂的软件。你只需要展示：
+
+“你看，我把你们公司的合规手册录入了这个小脚本，现在我的 Claude 就像你们的法务部一样，写任何文案都能自动避雷。”
+
+这种**“即插即用”的咨询交付物**，比写 50 页的 PPT 更有说服力。执行完告诉我，我们来试运行第一次审计。
+
+---
+*从 Gemini 导出，2026-05*

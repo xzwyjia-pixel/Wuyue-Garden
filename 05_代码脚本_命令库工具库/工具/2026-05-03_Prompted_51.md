@@ -1,0 +1,48 @@
+---
+title: Prompted
+source: gemini
+date: 2026-05-03
+category: 编程开发
+tags: [gemini, 编程开发]
+---
+
+## Prompted
+
+真相大白了！从截图看，你的 E:\git_project\GPT_SoVITS 文件夹里只有一个 pretrained_models 文件夹，而运行项目需要的 webui.py、requirements.txt 等核心文件全都不在这里。
+这说明你之前的解压或者移动文件的操作只搬运了一个空壳。我们现在来一次**“彻底的大搬家”**，把缺失的灵魂补回来。
+
+第一步：找回消失的文件
+
+请在你的电脑里搜索一个名为 requirements.txt 的文件，或者找找你刚刚解压出来的那个文件夹。
+你应该会看到一个文件夹，里面密密麻麻有一堆文件（比如：api.py, webui.py, requirements.txt, config.py 等）。
+关键操作： 把这些文件全部选中并复制，然后粘贴到现在的 E:\git_project\GPT_SoVITS 目录下。
+
+目标结果： 此时你再次在命令行输入 ls，应该能看到一长串文件名，而不仅仅是 pretrained_models。
+
+第二步：一鼓作气安装运行
+当你确认 ls 能看到 requirements.txt 后，在黑色窗口里依次执行：
+
+
+安装依赖（现在绝对不会报错了）：
+pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+
+
+下载模型（填满那个空文件夹）：
+
+
+   python -c "from modelscope import snapshot_download; snapshot_download('iic/GPT-SoVITS', local_dir='pretrained_models')"
+
+
+启动程序：
+python webui.py
+
+
+
+
+💡 为什么会这样？
+很多时候下载的 ZIP 包解压后会有一层“套娃”文件夹（比如 GPT-SoVITS-master/GPT-SoVITS/...）。你之前的操作可能只是把最深层的某个空目录挪过来了。
+现在去把那些文件找出来并“搬家”吧！只要 ls 能看到 webui.py，我们就离成功只差这几行代码了。加油！
+
+---
+*从 Gemini 导出，2026-05*

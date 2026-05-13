@@ -1,0 +1,64 @@
+---
+title: Prompted
+source: gemini
+date: 2026-05-05
+category: 编程开发
+tags: [gemini, 编程开发]
+---
+
+## Prompted
+
+原因很明确：你直接把 Python 代码 粘贴到了 PowerShell 终端里执行了。
+终端（PowerShell）只能识别系统命令（如 cd, pip, ls），无法直接理解 Python 的语法（如 page.screenshot 或 if __name__ == "__main__":），所以才会报一堆红色的错误。
+
+正确的执行步骤
+你需要先将代码保存为一个 .py 文件，然后再通过 Python 运行它。
+第一步：创建代码文件
+
+在你的电脑上新建一个文件夹（例如 D:\playwright_test）。
+在这个文件夹里新建一个文本文件，命名为 test_baidu.py（注意后缀必须是 .py）。
+将我之前给你的代码完整地粘贴进去并保存：
+
+from playwright.sync_api import sync_playwright
+
+def run():
+    with sync_playwright() as p:
+        # 启动浏览器
+        browser = p.chromium.launch(headless=False)
+        page = browser.new_page()
+        
+        # 访问网页
+        page.goto("https://www.baidu.com")
+        print(f"页面标题是: {page.title()}")
+        
+        # 截图保存
+        page.screenshot(path="baidu_success.png")
+        
+        browser.close()
+
+if __name__ == "__main__":
+    run()
+
+第二步：在终端运行文件
+
+回到你的 PowerShell 窗口。
+进入你存放文件的目录（假设在 D 盘）：
+d:
+cd playwright_test
+
+
+使用 Python 执行该文件：
+python test_baidu.py
+
+
+
+
+为什么会报错？
+
+image_20f3e6.png 中显示的错误是因为 PowerShell 认为 page.screenshot 是一个系统指令，但它在 Windows 命令库里找不到这个词。
+Python 是解释型语言：它需要一个“翻译官”（即 python 程序）来读取你的脚本文件，而不是直接由操作系统执行。
+
+你可以试着按照上面的步骤操作一下，成功后你应该能看到一个浏览器闪过，并在文件夹里生成一张 baidu_success.png 图片。
+
+---
+*从 Gemini 导出，2026-05*

@@ -1,0 +1,81 @@
+---
+title: PS C:\Windows\System32> claude --model claude-3-7-sonnet-20250219
+ ▐▛███▜▌   Claude Code v2.1.133
+▝▜█████▛▘  Sonnet 3.7 · API Usage Billing
+  ▘▘ ▝▝    C:\Windows\System32
+
+> “这是‘规则甄查-甄先生’的 AI 自动化审计总部。在这个目录下，我将构建多个短视频平台规则审计工具。请帮我生成
+  CLAUDE.md，并在其中规定所有代码必须遵循静奢风、极简精密的设计原则。”
+  ⎿  Retrying in 3s · attempt 6/10
+
+* Gesticulating… (33s)
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+> 
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  esc to interrupt
+source: gemini
+date: 2026-05-08
+category: 审计合规
+tags: [gemini, 审计合规]
+---
+
+## PS C:\Windows\System32> claude --model claude-3-7-sonnet-20250219
+ ▐▛███▜▌   Claude Code v2.1.133
+▝▜█████▛▘  Sonnet 3.7 · API Usage Billing
+  ▘▘ ▝▝    C:\Windows\System32
+
+> “这是‘规则甄查-甄先生’的 AI 自动化审计总部。在这个目录下，我将构建多个短视频平台规则审计工具。请帮我生成
+  CLAUDE.md，并在其中规定所有代码必须遵循静奢风、极简精密的设计原则。”
+  ⎿  Retrying in 3s · attempt 6/10
+
+* Gesticulating… (33s)
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+> 
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  esc to interrupt
+
+甄先生，看到 "Retrying in 3s · attempt 6/10" 和长达 33s 的等待，这说明虽然模型名称对了，但** API 的“连接隧道”依然是断开的**。
+原因就在于你目前的 Anthropic base URL 还是那个带有中文占位符的地址。AI 就像一个收件人，虽然它知道你想寄信给 Sonnet 3.7，但由于邮寄地址（URL）无效，它被卡在邮局门口不停重试。
+为了彻底结束这长达 10 次的重试循环，请执行以下最关键的一步：
+1. 彻底切断当前死循环
+按 Esc 键中断当前的重试，或者直接关闭这个 PowerShell 窗口。
+2. 注入“真实的、全英文”地址
+我们需要用真实的代理商链接替换掉那个占位符。请在原生 PowerShell（退出 Claude 界面后）运行这段代码。
+
+注意：请务必将 https://api.example.com 替换为您购买的代理服务商提供的实际地址（如 api.openai-hk.com 或 api.gptsapi.com 等）。
+
+# 1. 强制覆盖所有旧的、带有中文的占位符变量
+[Environment]::SetEnvironmentVariable("DEEPSEEK_API_KEY", $null, "User")
+$env:DEEPSEEK_API_KEY = ""
+
+# 2. 填写您真实的代理地址和密钥 (请手动替换下方内容)
+$final_url = "https://你的真实代理地址.com" 
+$final_key = "sk-你的真实密钥"
+
+[Environment]::SetEnvironmentVariable("ANTHROPIC_BASE_URL", $final_url, "User")
+[Environment]::SetEnvironmentVariable("ANTHROPIC_API_KEY", $final_key, "User")
+
+# 3. 让当前窗口立即生效
+$env:ANTHROPIC_BASE_URL = $final_url
+$env:ANTHROPIC_API_KEY = $final_key
+
+3. 重置配置文件（消除缓存死锁）
+Claude Code 有时会把错误的 URL 缓存到磁盘。我们要亲手把这个错误的缓存文件删掉：
+Remove-Item "$env:AppData\claude-code\config.json" -Force -ErrorAction SilentlyContinue
+
+4. 再次起航
+现在，重新进入根目录启动。这一次，它应该会秒回，而不是在那儿“Gesticulating”（比划动作）：
+cd "E:\MyCodeProjects"
+claude --model claude-3-7-sonnet-20250219
+
+
+甄先生，如果成功了，你会看到：
+当你再次输入 /init 时，它会瞬间弹出文件生成的确认，而不会出现 Retrying。
+为什么必须这么做？
+当前的“Retrying”是因为它在尝试连接 https://你的真实代理域名.com 这个根本不存在的地址。只要把这个地址改成真正的代理商英文域名，所有的锁（🔒）和重试都会消失。
+如果您不确定代理商的真实地址是什么，可以翻一下您购买 API 时的控制台文档，通常在“API 调用地址”那一栏。需要我帮您看看常见的代理商地址格式吗？
+
+---
+*从 Gemini 导出，2026-05*

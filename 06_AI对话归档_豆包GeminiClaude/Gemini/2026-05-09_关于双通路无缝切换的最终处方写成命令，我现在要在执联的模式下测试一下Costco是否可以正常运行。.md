@@ -1,0 +1,58 @@
+---
+title: 关于双通路无缝切换的最终处方写成命令，我现在要在执联的模式下测试一下Costco是否可以正常运行。
+source: gemini
+date: 2026-05-09
+category: 审计合规
+tags: [gemini, 审计合规]
+---
+
+## 关于双通路无缝切换的最终处方写成命令，我现在要在执联的模式下测试一下Costco是否可以正常运行。
+
+既然直连通路已经彻底打通，你可以直接在当前的 Claude 界面（即显示 E:\MyCodeProjects 的提示符后）测试 MCP 服务或其他逻辑。
+关于实现双通路无缝切换的最终脚本处方及 Costco（或是你指的 MCP/代码逻辑）测试命令如下：
+1. 双通路无缝切换脚本处方
+请确保你的两个 .ps1 脚本末尾均已统一为 npx 调用方式，以规避之前的路径报错：
+脚本一：中转保底模式 (start-claude-proxy.ps1)
+$env:ANTHROPIC_BASE_URL = "你的中转站地址"
+$env:ANTHROPIC_API_KEY  = "你的中转API_KEY"
+npx @anthropic-ai/claude-code
+
+脚本二：直连高性能模式 (start-claude-direct.ps1)
+$env:ANTHROPIC_BASE_URL = "https://api.deepseek.com/anthropic"
+$env:ANTHROPIC_API_KEY  = "sk-cad1b7bcd5dd4644a03c87c14a1fa690"
+npx @anthropic-ai/claude-code
+
+
+2. 在直连模式下测试服务运行
+在你目前的 Claude 提示符 > 后，输入以下指令来确认你的项目资产（如 mcp_audit_server.py 或相关逻辑）是否能正常工作：
+A. 检查环境与文件识别：
+
+/ls
+
+
+目的：确认 AI 是否能看到 E:\MyCodeProjects 下的所有“规则甄查”相关文件。
+
+B. 测试 MCP 服务器/代码逻辑：
+
+请检查当前目录下的 mcp_audit_server.py，确认它是否可以正常加载，并尝试运行其中的基础审计逻辑。
+
+
+注意：如果弹出类似 image_fdc796.png 的权限请求，请点击“批准”。
+
+C. 验证直连稳定性：
+
+你能通过 DeepSeek 模型分析一下本项目中 .clinerules 定义的规则吗？
+
+
+目的：通过实际的逻辑推理任务，验证直连链路在处理你核心“规则甄查”资产时的响应速度和准确度。
+
+
+3. 操作小贴士
+
+无缝切换：如果你在测试过程中发现直连响应极慢或报错，只需输入 /exit 退出，然后双击运行 start-claude-proxy.ps1 即可瞬间切换回中转模式。
+资产同步：由于两个脚本都指向 E:\MyCodeProjects，无论切换到哪个通路，你的“规则甄查”资料都是实时同步的。
+
+你现在可以直接在那个终端窗口输入上述 B 项指令开始测试了。
+
+---
+*从 Gemini 导出，2026-05*

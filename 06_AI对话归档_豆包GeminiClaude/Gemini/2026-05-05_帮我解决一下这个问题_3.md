@@ -1,0 +1,49 @@
+---
+title: 帮我解决一下这个问题
+source: gemini
+date: 2026-05-05
+category: Obsidian配置
+tags: [gemini, Obsidian配置]
+---
+
+## 帮我解决一下这个问题
+
+这个问题通常出现在你尝试使用浏览器插件（如 MarkDownload, Roam-to-Obsidian, 或类似的剪藏插件）将网页内容同步到 Obsidian 时。
+错误提示很明确：你还没有在插件设置中填写 Obsidian 的 API Key。
+要解决这个问题，你需要完成以下两个主要步骤：
+
+第一步：在 Obsidian 中获取 API Key
+你需要一个能让插件与 Obsidian 通信的“桥梁”。通常使用的是 Obsidian Local REST API 插件。
+
+打开你的 Obsidian。
+点击左下角的 Settings（设置图标）。
+前往 Community plugins（社区插件），点击 Browse（浏览），搜索并安装 Local REST API。
+安装后点击 Enable（启用）。
+在设置面板左侧找到 Local REST API 的配置选项：
+
+确保 Enable Non-HTTPS Server（启用非 HTTPS 服务器）是打开的（如果是在同一台电脑上使用）。
+找到 API Key 这一栏。点击 Show（显示）并复制这一串长代码。
+
+
+
+
+第二步：在浏览器插件中进行配置
+
+回到你的浏览器（Chrome, Edge 等）。
+右键点击报错的那个插件图标，选择 Options（选项）或 Settings（设置）。
+在设置页面寻找 Obsidian Integration 或 API Settings。
+将你刚才在 Obsidian 里复制的 API Key 粘贴到对应的输入框中。
+通常还需要填写 Server URL，默认一般是：[http://127.0.0.1:27123](http://127.0.0.1:27123)。
+点击 Save（保存）。
+
+
+常见排查点：
+
+Obsidian 必须处于运行状态：如果你关闭了 Obsidian 程序，同步会失败。
+端口冲突：如果提示连接不上，检查 27123 端口是否被其他程序占用。
+防火墙：确保你的防火墙没有拦截 Obsidian 的本地网络连接。
+
+设置好后再点击 "Sync to Obsidian" 应该就能正常工作了！如果还有问题，可以告诉我你具体使用的是哪款浏览器插件。
+
+---
+*从 Gemini 导出，2026-05*

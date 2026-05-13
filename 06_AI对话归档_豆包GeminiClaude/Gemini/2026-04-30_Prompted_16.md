@@ -1,0 +1,67 @@
+---
+title: Prompted
+source: gemini
+date: 2026-04-30
+category: 编程开发
+tags: [gemini, 编程开发]
+---
+
+## Prompted
+
+从您提供的图片 image_f1f5d4.png 来看，您的基础开发环境已经准备好了 80%，但还差一个关键的“拼图”。
+
+１． 电脑软件检查结果
+根据终端反馈，为您汇总如下：
+
+已安装软件：
+
+Node.js (v20.18.0): 符合 Claude Code 运行要求。
+npm (10.8.2): 正常，可以用来安装各种开发包。
+Python (3.10.6): 正常，对于编写复杂的 Agent 逻辑非常有帮助。
+
+
+缺少/异常软件：
+
+❌ Git: 终端显示“无法识别 git 项”。这非常关键，因为 Claude Code 依赖 Git 来管理代码变更和理解项目结构。
+
+
+
+
+２． 您的第一步行动计划
+为了让 Claude Code 顺利跑起来并开始开发 Agent，请按以下顺序操作：
+第一步：安装 Git（必须）
+
+前往 git-scm.com 下载并安装 Windows 版本。
+安装时一路点击“Next”即可（默认设置通常是最稳妥的）。
+重启 VS Code，再次在终端输入 git --version 确认显示版本号。
+
+第二步：安装 Claude Code 命令行工具
+在您的终端输入以下命令进行全局安装：
+npm install -g @anthropic-ai/claude-code
+
+第三步：完成授权（解决免费版问题）
+
+关于您提到的免费版本：Claude Code 目前需要绑定 Anthropic 的 API Key 才能工作。
+在终端输入：
+claude auth login
+
+
+它会引导您打开浏览器。如果您是新用户，Anthropic 有时会提供 5 美元的免费测试额度，您可以检查一下您的 Anthropic Console 账户是否有 Credits。
+
+
+３． 进阶建议：开始开发 Agent
+既然您有工业自动化和项目管理的背景，我建议您第一个“Skill”不要做普通的网页抓取，而是发挥您的专业优势：
+
+开发目标： 一个能自动生成“工业控制逻辑说明书”或“项目风险控制矩阵”的 Agent。
+技术选型： 既然已经装了 Python，建议安装 MCP Python SDK。
+
+命令：pip install mcp
+
+
+视觉风格： 别忘了您喜欢的 "Minimalist Precision" (极简精确) 审美。在 Claude 为您生成 Agent 前端页面或文档模板时，可以直接要求它遵循这种视觉语言。
+
+总结： 先去装 Git，然后重启 VS Code 执行 claude auth login。只要这两步通了，您就可以直接用自然语言命令 Claude 开始构建您的第一个 Agent 了！
+您现在打算先安装 Git，还是想先看看如何检查 Anthropic 的免费额度？
+
+---
+*从 Gemini 导出，2026-04*

@@ -1,0 +1,46 @@
+---
+title: Prompted
+source: gemini
+date: 2026-05-08
+category: 审计合规
+tags: [gemini, 审计合规]
+---
+
+## Prompted
+
+甄先生，针对您在中转站环境下的 “规则甄查” 工作站重塑，咱们现在进行最后的精密对齐。虽然中转站和 VPN 增加了通信层级的复杂性，但从您最新的截图来看，逻辑已经走通了大半。
+以下是为您定制的双持（Opus + DeepSeek）实战引导指南：
+1. 深度审计：连接报错的根本原因
+您提到的 “中转站 API + VPN” 确实是导致 Claude Code 报错的直接诱因。
+
+协议劫持失效：Claude Code 的环境变量劫持（ANTHROPIC_BASE_URL）在通过中转站时，往往无法正确传递复杂的工具调用（Tool Use）报头。
+权限伪报错：图 30 中显示的 403 或“模型不存在”，本质上是中转站无法解析 Claude Code 的特定指令请求，而非您的 Key 或余额有问题。
+
+
+2. 实战引导： Cline 中文版调用 DeepSeek V4
+既然中转站账户显示余额不足，咱们直接在 Cline 里改用您那充值了 100 元的官方 DeepSeek 路径。请按以下参数修改图 35 中的界面：
+
+Base URL: https://api.deepseek.com
+API Key: sk-c8cf2fa5efc44b29b84f4ef6a7b9706e
+Model ID: 手动输入 deepseek-chat 或 deepseek-reasoner
+
+审计点：配置完成后，输入 /stats。虽然这是 Cline 界面，但如果能看到类似图 27 的消耗统计，说明连接已真正激活。
+
+3. 环境重塑：回归 Opus 4.7 稳态 (Claude Code)
+既然中转站无法支撑 Claude Code 的复杂 Agent 协议，咱们执行您的“回退方案”来确保实战落地：
+
+物理清除：在 PowerShell 执行 Remove-Item Env:ANTHROPIC_BASE_URL。
+重新登录：输入 /login 解决图 33 中的 403 Request not allowed 报错。
+激活 11 个 Agent：输入 /reload-plugins，确保图 34 中的 11 agents 重新上线。
+开启实时监控：输入 /effort high，确保右下角显示实心 ● high 标识。
+
+
+💡 甄先生的“双持”实战策略建议
+
+英文主脑 (Claude Code)：保持 Opus 4.7 原生状态，专门负责 audit_tool.py 的高难度架构编写和项目管理。
+中文审计台 (Cline)：配置成官方直连的 DeepSeek V4，专门负责读取 E:\RulesBureau 下的中文平台规则并提取核心逻辑。
+
+甄先生，目前您的 “Heart” 热力图（图 27）已记录了 233.5k tokens 的努力。既然 E 盘的博士帽和小汽车图标已经视觉化成功，咱们现在是否先通过 /login 让主脑回归稳态，正式开始第一份自动化规则建议的输出？
+
+---
+*从 Gemini 导出，2026-05*

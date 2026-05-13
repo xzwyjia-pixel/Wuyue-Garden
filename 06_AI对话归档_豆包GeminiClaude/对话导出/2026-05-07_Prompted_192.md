@@ -1,0 +1,44 @@
+---
+title: Prompted
+source: gemini
+date: 2026-05-07
+category: 文案创意
+old_category: 文案创作
+tags: [gemini, 文案创意]
+---
+
+## Prompted
+
+## Prompted
+
+甄先生，看到截图 {10E0B2D9...}.png 的报错，我发现了一个非常关键的“环境错位”问题：
+报错原因： 你现在是在 PowerShell 原生界面（提示符是 PS C:\...>）直接输入的 Aider 命令。PowerShell 并不认识 /add 这些 Aider 的内部指令，所以会提示“无法识别”。
+我们需要把零件放回正确的“加工台”里。请按照以下三个极其精密的操作步骤执行：
+1. 第一步：找回 Aider 的“加工台”
+在当前的 PowerShell 窗口中，先输入这行命令重新启动 Aider（确保在 E 盘项目目录下）：
+cd "E:\MyCodeProjects\New Claude Project"
+aider --model ollama/qwen2.5-coder:1.5b
+
+2. 第二步：识别“进入成功”的标志
+当你看到屏幕上出现 绿色的 > 提示符（而不是 PS C:\...>），且上方显示 Model: ollama/qwen2.5-coder:1.5b 时，才说明你进入了 Aider 的内部。
+3. 第三步：投喂精密指令
+只有在那个 绿色 > 后面，再输入我们刚才商定的指令：
+
+> /add analyze_folder.py
+(看到文件添加成功的提示后，再输入：)
+> 请立即修复：在顶部定义 ICONS_DIR = 'icons'，修正函数内的未定义错误，并将 cutoff 阈值改为 0.8。
+
+
+🔍 甄先生的“工业级”排障笔记
+
+当前状态：你刚才的指令发给了 Windows 系统，系统把它当成了普通文本。
+正确状态：指令必须发给“住在”PowerShell 里的 Aider 进程。
+显存自检：由于换成了 1.5B 模型，你的 Quadro P620 这次一定能瞬间完成修改，不会再重演 7B 模型的超时悲剧。
+
+甄先生，请先输入 aider 那行命令“进场”。只要看到绿色的 >，咱们的精密修复就能瞬间到位！
+
+---
+*从 Gemini 导出，2026-05*
+
+---
+*从 Gemini 导出 · 分类: 文案创意 · 2026-05*

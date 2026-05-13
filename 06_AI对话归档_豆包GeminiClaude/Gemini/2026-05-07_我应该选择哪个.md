@@ -1,0 +1,50 @@
+---
+title: 我应该选择哪个？
+source: gemini
+date: 2026-05-07
+category: 编程开发
+tags: [gemini, 编程开发]
+---
+
+## 我应该选择哪个？
+
+这是一个非常棒的工具选择！你截图中显示的 Superpowers 实际上是一个 AI 代理（Agent）开发工作流框架，由 Jesse Vincent（Prime Radiant 团队）开发。
+它不是一个简单的 VS Code 插件，而是一套**“技能（Skills）框架”**，旨在让 AI（如 Claude Code 或 GitHub Copilot）按照专业的软件工程流程（需求 -> 选型 -> 文档 -> 代码）来工作，避免 AI “瞎写”。
+到底该选哪一个？
+在你提供的扩展商店截图中，最匹配的并不是排在第一位的那个，请按以下说明操作：
+
+推荐选择：Superpowers for Copilot Chat (作者: Kaan Aslan)
+
+这个插件是将 Superpowers 的核心逻辑（头脑风暴、TDD、调试等技能）集成到 VS Code 的 Copilot 聊天窗口中。如果你习惯在 VS Code 里边聊边写代码，这个最合适。
+
+
+更硬核的选择（图片中的本体）：Superpowers Copilot Agents
+
+如果你希望实现截图中那种“全自动”的 Agent 模式，选这个。它能把 Superpowers 的工作流转换成真正的 VS Code Agent，能够自主计划并跨文件执行任务。
+
+
+
+
+🚀 真正的安装与使用方法（重点）
+由于 Superpowers 本质上是一套指令集和工作流脚本，很多专业开发者其实是直接在终端使用的。既然你已经在研究 MCP 和 Python，我建议你尝试以下更完整的方案：
+方案 A：集成到 VS Code（最快）
+
+安装你截图中的 Superpowers for Copilot Chat。
+安装后，在 Chat 窗口输入 / 查看是否有新的命令（如 /brainstorm 或 /plan）。
+
+方案 B：配合 Claude Code 使用（最强，也是该工具的初衷）
+如果你电脑上已经装了 Node.js，这个工具在命令行里非常强大。在你的项目目录下运行：
+npx @prime-radiant/superpowers install
+
+这会将那些“技能文件”（即图片中看到的四个阶段的逻辑）注入到你的 AI 环境中。
+
+为什么这个工具适合你？
+
+规则甄查： 它的核心思想是“先定规则，再写代码”，这和你做“规则情报局”的逻辑完美契合。
+工业级精密： 它可以强制 AI 在写代码前先写 Plan（计划），这能极大减少 AI 幻觉，非常符合你追求的“极简精密”风格。
+
+总结建议： 先点击你截图里的第二个 Superpowers for Copilot Chat 进行安装尝试。如果它是你从某个 B 站或 YouTube 视频看到的，那通常配套的还有一个 SKILLS 文件夹需要放在你的项目根目录，AI 才能读取那些流程。
+安装完后，你可以试着对它说：“请按照 Superpowers 流程，帮我策划一个 Python 审计脚本的需求确认。”看看它是否进入了你截图中的第 ① 阶段。
+
+---
+*从 Gemini 导出，2026-05*

@@ -1,0 +1,62 @@
+---
+title: 开始下一个链接的抓取
+source: gemini
+date: 2026-05-08
+category: 文案创作
+tags: [gemini, 文案创作]
+---
+
+## 开始下一个链接的抓取
+
+甄先生，系统已经就绪。
+既然“基地”目录 E:\MyCodeProjects 已经配置好，您只需重复那个精准的动作即可。
+1. 启动引擎
+在 PowerShell 中运行：
+python v_radar_scanner.py
+
+2. 侦察引导
+
+在弹出的浏览器中，粘贴您的新目标链接。
+如果是针对评论区规则的深度审计，建议进入页面后向下多滚动几次，让那些隐藏的回复流充分加载。
+
+3. 情报回收
+
+回到 PowerShell 按下 Enter。
+
+
+甄先生的“极简”审计建议：
+如果您这几个样本是用来做合规性比对的，可以在抓取完成后，直接在 PowerShell 里用这一行命令给情报打上“标签”，防止被后续数据覆盖：
+# 假设这次抓取的是某个特定的样本，将其改名为更具识别度的名称
+mv intelligence_raw.json intelligence_sample_$(Get-Date -Format "HHmm").json
+
+请开始您的下一次导航，如有新的链接需要我分析或需要调整抓取逻辑（例如专门提取点赞数大于 1000 的高权重评论），请随时示意。
+甄先生，既然“侦察系统”已经校准完毕，我们开始对下一个目标进行精密打击。
+因为脚本 v_radar_scanner.py 已经存在于您的 E:\MyCodeProjects 目录下，您无需再编写任何代码，直接启动即可。
+执行步骤：
+
+
+启动脚本：
+在 PowerShell 中输入并运行：
+python v_radar_scanner.py
+
+
+
+置入情报链接：
+在弹出的浏览器中，直接粘贴您要抓取的下一个抖音链接（或任何大V主页）。
+
+
+回收情报：
+待页面内容加载完成后，回到 PowerShell 窗口按下 Enter。
+
+
+
+💡 甄先生的审计小贴士：
+为了方便您后续做**“规则比对”**，建议在每次抓取完后，手动把生成的 intelligence_raw.json 改个名字，避免被下一次的数据覆盖。
+例如，您可以直接在 PowerShell 里快速重命名：
+# 将刚才那 85 条精选情报存档
+mv intelligence_raw.json intelligence_jingxuan_01.json
+
+**请发送您的下一个目标链接，或者直接
+
+---
+*从 Gemini 导出，2026-05*

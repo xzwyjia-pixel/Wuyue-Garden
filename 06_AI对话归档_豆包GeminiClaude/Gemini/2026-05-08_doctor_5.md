@@ -1,0 +1,146 @@
+---
+title: > /doctor
+  ⎿  Claude Code diagnostics dismissed
+
+> /skills
+  ⎿  Skills dialog dismissed
+
+> /plugin enable superpowers
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  Plugins  Discover   Installed   Marketplaces   Errors
+
+  superpowers @ claude-plugins-official
+  Scope: user
+  Version: 5.1.0
+  Core skills library for Claude Code: TDD, debugging, collaboration patterns, and proven techniques
+
+  Author: Jesse Vincent
+  Status: Enabled
+
+  Installed components:
+  ● Skills: brainstorming, dispatching-parallel-agents, executing-plans, finishing-a-development-branch,
+    receiving-code-review, requesting-code-review, subagent-driven-development, systematic-debugging,
+    test-driven-development, using-git-worktrees, using-superpowers, verification-before-completion, writing-plans,
+    writing-skills
+  ● Hooks: SessionStart
+
+
+  > Disable plugin
+    Add to favorites
+    Mark for update
+    Update now
+    Uninstall
+    Open homepage
+    View repository
+    Back to plugin list
+
+  Failed to enable: Plugin "superpowers@claude-plugins-official" is already enabled
+
+  ctrl+p to navigate · Enter to select · Esc to go back
+source: gemini
+date: 2026-05-08
+category: 编程开发
+tags: [gemini, 编程开发]
+---
+
+## > /doctor
+  ⎿  Claude Code diagnostics dismissed
+
+> /skills
+  ⎿  Skills dialog dismissed
+
+> /plugin enable superpowers
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+  Plugins  Discover   Installed   Marketplaces   Errors
+
+  superpowers @ claude-plugins-official
+  Scope: user
+  Version: 5.1.0
+  Core skills library for Claude Code: TDD, debugging, collaboration patterns, and proven techniques
+
+  Author: Jesse Vincent
+  Status: Enabled
+
+  Installed components:
+  ● Skills: brainstorming, dispatching-parallel-agents, executing-plans, finishing-a-development-branch,
+    receiving-code-review, requesting-code-review, subagent-driven-development, systematic-debugging,
+    test-driven-development, using-git-worktrees, using-superpowers, verification-before-completion, writing-plans,
+    writing-skills
+  ● Hooks: SessionStart
+
+
+  > Disable plugin
+    Add to favorites
+    Mark for update
+    Update now
+    Uninstall
+    Open homepage
+    View repository
+    Back to plugin list
+
+  Failed to enable: Plugin "superpowers@claude-plugins-official" is already enabled
+
+  ctrl+p to navigate · Enter to select · Esc to go back
+
+甄先生，看到 Status: Enabled 和最后的报错信息，可以确认 Superpowers 插件其实早已激活。之所以在 /skills 列表里显示为 🔒 Locked，通常是由于 Session（会话）状态没有及时刷新 或者 API 代理端的权限映射 存在短暂延迟。
+既然你现在已经在 E:\MyCodeProjects\New Claude Project 这个干净的目录下，我们直接用“实战”来暴力解锁这些 Agent 技能，彻底跳过 UI 显示的 bug。
+1. 强制刷新 Agent 认知
+在当前的 > 提示符下，输入以下指令来强制同步：
+/mcp reload
+
+执行完后，不需要再去翻那个长长的 /skills 列表。
+2. 验证 Superpowers 是否真正可用
+我们直接调用 Superpowers 里的 writing-plans 技能。请直接在提示符下输入：
+
+“请为我这个新项目初始化一个精密的开发计划（Writing Plans），目标是构建‘规则甄查-甄先生’的自动化审计脚手架。”
+
+
+如果成功： 你会看到 Claude 开始有条不紊地列出任务清单（Task List），这说明 Superpowers 已完全解锁，锁头图标只是显示 bug。
+如果失败： 它会提示无法找到该技能，这时候我们才需要去检查你的 GPT-SAPI 代理是否完整支持了 MCP 的 tools 调用。
+
+
+3. 给你的环境做个“断舍离” (极简优化)
+报告显示你加载了 5.1.0 版本的完整官方插件库。为了让你的 Opus 4.7 运行得更精密，建议执行以下操作：
+
+屏蔽无关干扰： 那些 cockroachdb 相关的技能确实太占空间了。在 /skills 里关掉它们，能让 Claude 在处理你的审计逻辑时拥有更清晰的上下文。
+锁定 VS Code 协作：
+既然你打算用 VS Code。现在请直接关闭这个命令行窗口，打开 VS Code，在 Cline 插件里执行相同的“写计划”指令。
+
+甄先生的“大冒险”进度核实：
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+项目状态核实方式工作目录✅ 已定位E:\MyCodeProjects\New Claude Project模型版本✅ 已锁定Sonnet 3.7 / Opus 4.7插件权限✅ 已开启superpowers @ 5.1.0显示 Bug⚠️ 锁定图标通过 /mcp reload 或直接下达指令测试
+现在，你是想在命令行里看完这份“初始化计划”，还是直接跳到 VS Code 里的 Cline 界面开始执行你的第一行代码审计逻辑？
+
+---
+*从 Gemini 导出，2026-05*

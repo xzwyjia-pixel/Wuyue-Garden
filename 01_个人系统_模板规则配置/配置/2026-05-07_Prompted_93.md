@@ -1,0 +1,52 @@
+---
+title: Prompted
+source: gemini
+date: 2026-05-07
+category: 系统运维
+tags: [gemini, 系统运维]
+---
+
+## Prompted
+
+太好了，看到截图中左下角显示 “Opus 4.7 · API Usage Billing”，说明你已经成功绕过了账号登录，直接通过 API 激活了 Claude Code！
+⚠️ 重要提醒： 你在截图中展示了完整的 API Key。请立即去 Anthropic 控制台废弃（Revoke）这个 Key 并生成一个新的。 这种 Key 一旦公开，任何人都可以消耗你的额度。
+既然现在已经处于就绪状态，你可以按照以下步骤安装 Superpowers：
+
+第一步：在 > 提示符后安装
+直接复制并运行：
+/plugin install superpowers@claude-plugins-official
+
+第二步：如果 /plugin 报错（手动注入）
+如果你的版本暂时不支持 /plugin 命令（有时 API 模式下会有权限限制），请按照以下“规则审计”的逻辑进行手动配置：
+
+
+初始化项目：
+在 > 提示符后输入：
+/init
+
+这会在当前目录生成一个 CLAUDE.md 文件。
+
+
+注入 Superpowers 核心规则：
+你可以直接对 Claude 说：
+
+“请帮我启用 Superpowers 框架模式，并在 CLAUDE.md 中添加 TDD（测试驱动开发）和代码审计的执行标准。”
+
+
+
+
+💡 针对你当前环境的配置建议
+从截图看，你目前正在 C:\Users\think（用户主目录）下运行。对于习惯了精密工业标准的你来说，这可能不是一个好的实践。
+
+建议做法： 先退出（输入 exit 或按 Ctrl+C），然后 cd 进入你具体的开发项目文件夹（比如你的规则审计脚本目录），再重新运行 claude。
+持久化 API Key： 你现在的 Key 只在当前 PowerShell 窗口有效。如果你希望以后打开就能用，可以将其添加到系统环境变量中：
+
+右键“此电脑” -> 属性 -> 高级系统设置 -> 环境变量。
+新建用户变量：变量名 ANTHROPIC_API_KEY，变量值填入你的新 Key。
+
+
+
+既然 Superpowers 已经准备就绪，你打算先让它帮你审计哪段代码的“隐藏规则”？
+
+---
+*从 Gemini 导出，2026-05*

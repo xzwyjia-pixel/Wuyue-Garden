@@ -1,0 +1,45 @@
+---
+title: 哪个文件是粗腰定位的文件
+source: gemini
+date: 2026-05-02
+category: 系统运维
+tags: [gemini, 系统运维]
+---
+
+## 哪个文件是粗腰定位的文件
+
+要在 Cline 或 Claude Code 中成功安装 scholar-skill，您需要定位并修改的是存放 MCP 服务器配置的文件。
+从您提供的文件列表截图来看，最关键的目标文件是：
+1. 核心目标文件：cline_mcp_settings.json
+在您的第二张截图 image_044b17.png 中，最上方的那个文件就是我们要找的：
+
+完整路径：C:\Users\think\AppData\Roaming\Code\User\globalStorage\saoudrizwan.claude-dev\settings\cline_mcp_settings.json
+为什么是它：这是 Cline 插件专门用来读取自定义技能（MCP Servers）的配置文件。
+
+
+2. 备选/同步文件：config.json
+如果您使用的是独立的 Claude Code 终端（即 image_045238.png 中的环境），您可能还需要检查第一张截图 image_045cfb.png 中的这个文件：
+
+路径：C:\Users\think\AppData\Roaming\Claude\config.json
+
+
+💡 下一步操作建议
+既然已经定位到了文件，您可以按照以下步骤进行“手把手”配置：
+
+打开文件：右键点击第一个文件 cline_mcp_settings.json，选择“使用代码打开”或“使用记事本打开”。
+粘贴配置：在 mcpServers 大括号内加入 scholar-skill 的定义：
+"scholar-skill": {
+  "command": "python",
+  "args": ["C:/你的存放路径/scholar-skill/main.py"],
+  "env": {
+    "PYTHONPATH": "C:/你的存放路径/scholar-skill"
+  }
+}
+
+
+保存并重启：保存 JSON 文件后，回到 VS Code 的 Cline 面板，点击刷新或重启，它就会自动加载这个具备“学术深度解构”能力的技能了。
+
+您现在可以打开这个 cline_mcp_settings.json 文件看看内容吗？如果有不确定的地方，可以把文件内容贴出来。
+
+---
+*从 Gemini 导出，2026-05*

@@ -1,0 +1,193 @@
+---
+title: Windows PowerShell
+版权所有（C） Microsoft Corporation。保留所有权利。
+
+安装最新的 PowerShell，了解新功能和改进！https://aka.ms/PSWindows
+
+PS C:\Users\think> npm install -g @claudecode/everything-claude-code && \
+所在位置 行:1 字符: 51
++ npm install -g @claudecode/everything-claude-code && \
++                                                   ~~
+标记“&&”不是此版本中的有效语句分隔符。
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : InvalidEndOfLine
+
+PS C:\Users\think> npx gsd-ai@latest init && \
+所在位置 行:1 字符: 24
++ npx gsd-ai@latest init && \
++                        ~~
+标记“&&”不是此版本中的有效语句分隔符。
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : InvalidEndOfLine
+
+PS C:\Users\think> npx hermes-code@latest setup && \
+所在位置 行:1 字符: 30
++ npx hermes-code@latest setup && \
++                              ~~
+标记“&&”不是此版本中的有效语句分隔符。
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : InvalidEndOfLine
+
+PS C:\Users\think> npx openspec@latest init
+\(node:20736) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error could not determine executable to run
+npm error A complete log of this run can be found in: E:\ClaudeEnvironment\npm_cache\_logs\2026-05-09T06_52_19_469Z-debug-0.log
+PS C:\Users\think> npm install -g @claudecode/everything-claude-code; npx gsd-ai@latest init; npx hermes-code@latest setup; npx openspec@latest init
+\(node:18904) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error code E404
+npm error 404 Not Found - GET https://registry.npmjs.org/@claudecode%2feverything-claude-code - Not found
+npm error 404
+npm error 404  '@claudecode/everything-claude-code@*' is not in this registry.
+npm error 404
+npm error 404 Note that you can also install from a
+npm error 404 tarball, folder, http url, or git url.
+npm error A complete log of this run can be found in: E:\ClaudeEnvironment\npm_cache\_logs\2026-05-09T06_52_23_640Z-debug-0.log
+\(node:15268) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error code E404
+npm error 404 Not Found - GET https://registry.npmjs.org/gsd-ai - Not found
+npm error 404
+npm error 404  'gsd-ai@latest' is not in this registry.
+npm error 404
+npm error 404 Note that you can also install from a
+npm error 404 tarball, folder, http url, or git url.
+npm error A complete log of this run can be found in: E:\ClaudeEnvironment\npm_cache\_logs\2026-05-09T06_52_25_517Z-debug-0.log
+\(node:19264) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error code E404
+npm error 404 Not Found - GET https://registry.npmjs.org/hermes-code - Not found
+npm error 404
+npm error 404  'hermes-code@latest' is not in this registry.
+npm error 404
+npm error 404 Note that you can also install from a
+npm error 404 tarball, folder, http url, or git url.
+npm error A complete log of this run can be found in: E:\ClaudeEnvironment\npm_cache\_logs\2026-05-09T06_52_27_597Z-debug-0.log
+\(node:17948) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error could not determine executable to run
+npm error A complete log of this run can be found in: E:\ClaudeEnvironment\npm_cache\_logs\2026-05-09T06_52_30_090Z-debug-0.log
+PS C:\Users\think>
+source: gemini
+date: 2026-05-09
+category: 系统运维
+tags: [gemini, 系统运维]
+---
+
+## Windows PowerShell
+版权所有（C） Microsoft Corporation。保留所有权利。
+
+安装最新的 PowerShell，了解新功能和改进！https://aka.ms/PSWindows
+
+PS C:\Users\think> npm install -g @claudecode/everything-claude-code && \
+所在位置 行:1 字符: 51
++ npm install -g @claudecode/everything-claude-code && \
++                                                   ~~
+标记“&&”不是此版本中的有效语句分隔符。
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : InvalidEndOfLine
+
+PS C:\Users\think> npx gsd-ai@latest init && \
+所在位置 行:1 字符: 24
++ npx gsd-ai@latest init && \
++                        ~~
+标记“&&”不是此版本中的有效语句分隔符。
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : InvalidEndOfLine
+
+PS C:\Users\think> npx hermes-code@latest setup && \
+所在位置 行:1 字符: 30
++ npx hermes-code@latest setup && \
++                              ~~
+标记“&&”不是此版本中的有效语句分隔符。
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : InvalidEndOfLine
+
+PS C:\Users\think> npx openspec@latest init
+\(node:20736) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error could not determine executable to run
+npm error A complete log of this run can be found in: E:\ClaudeEnvironment\npm_cache\_logs\2026-05-09T06_52_19_469Z-debug-0.log
+PS C:\Users\think> npm install -g @claudecode/everything-claude-code; npx gsd-ai@latest init; npx hermes-code@latest setup; npx openspec@latest init
+\(node:18904) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error code E404
+npm error 404 Not Found - GET https://registry.npmjs.org/@claudecode%2feverything-claude-code - Not found
+npm error 404
+npm error 404  '@claudecode/everything-claude-code@*' is not in this registry.
+npm error 404
+npm error 404 Note that you can also install from a
+npm error 404 tarball, folder, http url, or git url.
+npm error A complete log of this run can be found in: E:\ClaudeEnvironment\npm_cache\_logs\2026-05-09T06_52_23_640Z-debug-0.log
+\(node:15268) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error code E404
+npm error 404 Not Found - GET https://registry.npmjs.org/gsd-ai - Not found
+npm error 404
+npm error 404  'gsd-ai@latest' is not in this registry.
+npm error 404
+npm error 404 Note that you can also install from a
+npm error 404 tarball, folder, http url, or git url.
+npm error A complete log of this run can be found in: E:\ClaudeEnvironment\npm_cache\_logs\2026-05-09T06_52_25_517Z-debug-0.log
+\(node:19264) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error code E404
+npm error 404 Not Found - GET https://registry.npmjs.org/hermes-code - Not found
+npm error 404
+npm error 404  'hermes-code@latest' is not in this registry.
+npm error 404
+npm error 404 Note that you can also install from a
+npm error 404 tarball, folder, http url, or git url.
+npm error A complete log of this run can be found in: E:\ClaudeEnvironment\npm_cache\_logs\2026-05-09T06_52_27_597Z-debug-0.log
+\(node:17948) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+(Use `node --trace-warnings ...` to show where the warning was created)
+npm error could not determine executable to run
+npm error A complete log of this run can be found in: E:\ClaudeEnvironment\npm_cache\_logs\2026-05-09T06_52_30_090Z-debug-0.log
+PS C:\Users\think>
+
+看起来你遇到了两个典型问题：一是 Windows PowerShell 的语法兼容性，二是 包名不匹配导致的 404 错误。
+由于这些工具处于极速迭代中，部分包名使用了 Scope（即 @ 开头的私有域）。根据最新的 registry 信息，我为你修正了命令。
+1. 修正后的安装命令
+请在 PowerShell (管理员) 中逐条复制并运行以下命令（不要一次性全部粘贴，因为部分命令需要你输入 y 确认安装）：
+安装 Everything Claude Code (ECC):
+npm install -g ecc-universal
+
+安装 GSD (Get Shit Done):
+npm install -g gsd-code-first
+
+安装 Hermes:
+npm install -g hermes-parser
+
+安装 OpenSpec:
+npm install -g @fission-ai/openspec
+
+
+2. 为什么你之前安装失败？
+
+404 Not Found: 你之前使用的包名（如 @claudecode/...）可能是某些教程中的占位符或者是已被更名的旧包。例如，ECC 现在主要以 ecc-universal 名义发布，而 OpenSpec 必须加上 @fission-ai/ 前缀。
+SSL/TLS 警告: 你的终端显示了 NODE_TLS_REJECT_UNAUTHORIZED = '0'。这通常是因为你为了绕过网络环境限制设置了该环境变量。这不影响安装过程，但它在提醒你目前的连接是不安全的。
+语法错误: 之前的 && 报错是因为旧版 PowerShell（5.1）不支持这种简写。现在我给你的命令是单行拆分的，最稳妥。
+
+
+3. 安装后的初始化（重要）
+安装完程序后，你需要进入你的项目目录（比如 E 盘的代码文件夹），执行初始化命令来生成配置文件：
+# 进入你的项目盘符和目录
+E:
+cd \你的项目路径
+
+# 初始化各个工具
+gsd init
+opsx init
+
+验证是否成功
+在窗口输入以下命令，如果能看到版本号或帮助文档，说明已经搞定：
+
+ecc --help
+gsd --version
+opsx --version
+
+注意： 因为你已经有 Superpowers 了，如果初始化时提示 CLAUDE.md 已存在，建议选 N（不覆盖），或者先备份一下。这些工具都想往这个文件里写规则，可能会有“打架”的情况。
+
+---
+*从 Gemini 导出，2026-05*

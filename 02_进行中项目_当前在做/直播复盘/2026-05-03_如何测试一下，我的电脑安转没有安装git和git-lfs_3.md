@@ -1,0 +1,67 @@
+---
+title: 如何测试一下，我的电脑安转没有安装git和git-lfs?
+source: gemini
+date: 2026-05-03
+category: 系统运维
+tags: [gemini, 系统运维]
+---
+
+## 如何测试一下，我的电脑安转没有安装git和git-lfs?
+
+测试电脑是否安装了 Git 和 Git-LFS 非常简单，只需要在终端（Terminal）或命令行（Command Prompt）中输入对应的版本查询指令即可。
+以下是具体的步骤和操作建议：
+1. 执行测试指令
+打开你的终端（Windows 用户建议使用 PowerShell 或 CMD；Mac/Linux 用户使用 Terminal），依次输入以下两条命令：
+测试 Git：
+git --version
+
+
+已安装： 会返回类似 git version 2.4x.x 的字样。
+未安装： 会提示“不是内部或外部命令”或“command not found”。
+
+测试 Git-LFS：
+git lfs version
+
+
+已安装： 会返回类似 git-lfs/3.x.x (GitHub; ...)  的字样。
+未安装： 即使安装了 Git，如果没有单独安装 LFS，也会报错提示“unknown command”。
+
+
+2. 为什么这两个都很重要？
+对于你想要做的“GitHub 每日收集”或“IndexTTS2 微调”来说，这两个工具分工明确：
+
+Git： 负责管理代码逻辑。它是你克隆大神的仓库、追踪代码更新的基础。
+Git-LFS (Large File Storage)： 专门负责管理大文件（如：TTS 的模型权重文件、视频素材、预训练包）。
+
+注意： 如果你只装了 Git 而没装 LFS，在克隆某些包含 AI 模型的仓库时，下载下来的可能只是几个 KB 的“指针文件”，导致模型无法运行。
+
+
+
+
+3. 如果发现没有安装，该怎么办？
+如果你发现尚未安装，建议按照以下方式配置：
+
+Windows：
+
+前往 git-scm.com 下载安装包，它通常会询问是否集成 Git-LFS。
+或者使用包管理器：winget install --id GitHub.GitLFS。
+
+
+Mac：
+使用 Homebrew 最精密快捷：
+brew install git git-lfs
+
+
+安装后的关键一步：
+安装完成后，必须运行一次初始化命令来激活 LFS：
+git lfs install
+
+如果显示 Git LFS initialized.，说明你的环境已经完全准备好处理那些硬核的 AI 模型仓库了。
+
+
+4. 进阶小技巧：在 VS Code 中检查
+既然你习惯使用 VS Code，可以直接按 Ctrl + ~ 打开内置终端执行上述命令。如果 VS Code 右下角没有弹出“建议安装 Git”的提示，通常说明环境已经配置妥当。
+测试结果如何？如果安装遇到报错，可以把错误信息发给我，我帮你针对性解决。
+
+---
+*从 Gemini 导出，2026-05*

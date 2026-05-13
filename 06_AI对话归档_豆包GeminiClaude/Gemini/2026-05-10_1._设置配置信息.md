@@ -1,0 +1,176 @@
+---
+title: SyntaxError: invalid syntax
+>>>
+>>> ## ⚡ 快速操作
+>>> - [🚀 在 VS Code 中打开此项目](vscode://file/$linuxPath)
+  File "<stdin>", line 1
+    - [🚀 在 VS Code 中打开此项目](vscode://file/$linuxPath)
+       ^
+SyntaxError: invalid character '🚀' (U+1F680)
+>>> - [📂 在资源管理器中查看](file:///$linuxPath)
+  File "<stdin>", line 1
+    - [📂 在资源管理器中查看](file:///$linuxPath)
+       ^
+SyntaxError: invalid character '📂' (U+1F4C2)
+>>>
+>>> ## 🔗 知识关联
+>>> - 分类索引: [[Category_$tag]]
+  File "<stdin>", line 1
+    - 分类索引: [[Category_$tag]]
+          ^
+SyntaxError: invalid syntax
+>>> - 开发者: [[Michael]]
+  File "<stdin>", line 1
+    - 开发者: [[Michael]]
+    ^^^^^
+SyntaxError: illegal target for annotation
+>>> "@
+  File "<stdin>", line 1
+    "@
+    ^
+SyntaxError: unterminated string literal (detected at line 1)
+>>>
+>>>     # 推送到 Obsidian
+>>>     Invoke-RestMethod -Method Put -Uri "$apiVaultUrl/$name.md" -Headers $headers -Body ([System.Text.Encoding]::UTF8.GetBytes($content))
+  File "<stdin>", line 1
+    Invoke-RestMethod -Method Put -Uri "$apiVaultUrl/$name.md" -Headers $headers -Body ([System.Text.Encoding]::UTF8.GetBytes($content))
+IndentationError: unexpected indent
+>>> }
+  File "<stdin>", line 1
+    }
+    ^
+SyntaxError: unmatched '}'
+>>>
+>>> Write-Host "✅ 完成！请打开 Obsidian 的 Michael_Product 文件夹查看效果。" -ForegroundColor Cyan
+  File "<stdin>", line 1
+    Write-Host "✅ 完成！请打开 Obsidian 的 Michael_Product 文件夹查看效果。" -ForegroundColor Cyan
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax
+>>>
+source: gemini
+date: 2026-05-10
+category: Obsidian配置
+tags: [gemini, Obsidian配置]
+---
+
+## SyntaxError: invalid syntax
+>>>
+>>> ## ⚡ 快速操作
+>>> - [🚀 在 VS Code 中打开此项目](vscode://file/$linuxPath)
+  File "<stdin>", line 1
+    - [🚀 在 VS Code 中打开此项目](vscode://file/$linuxPath)
+       ^
+SyntaxError: invalid character '🚀' (U+1F680)
+>>> - [📂 在资源管理器中查看](file:///$linuxPath)
+  File "<stdin>", line 1
+    - [📂 在资源管理器中查看](file:///$linuxPath)
+       ^
+SyntaxError: invalid character '📂' (U+1F4C2)
+>>>
+>>> ## 🔗 知识关联
+>>> - 分类索引: [[Category_$tag]]
+  File "<stdin>", line 1
+    - 分类索引: [[Category_$tag]]
+          ^
+SyntaxError: invalid syntax
+>>> - 开发者: [[Michael]]
+  File "<stdin>", line 1
+    - 开发者: [[Michael]]
+    ^^^^^
+SyntaxError: illegal target for annotation
+>>> "@
+  File "<stdin>", line 1
+    "@
+    ^
+SyntaxError: unterminated string literal (detected at line 1)
+>>>
+>>>     # 推送到 Obsidian
+>>>     Invoke-RestMethod -Method Put -Uri "$apiVaultUrl/$name.md" -Headers $headers -Body ([System.Text.Encoding]::UTF8.GetBytes($content))
+  File "<stdin>", line 1
+    Invoke-RestMethod -Method Put -Uri "$apiVaultUrl/$name.md" -Headers $headers -Body ([System.Text.Encoding]::UTF8.GetBytes($content))
+IndentationError: unexpected indent
+>>> }
+  File "<stdin>", line 1
+    }
+    ^
+SyntaxError: unmatched '}'
+>>>
+>>> Write-Host "✅ 完成！请打开 Obsidian 的 Michael_Product 文件夹查看效果。" -ForegroundColor Cyan
+  File "<stdin>", line 1
+    Write-Host "✅ 完成！请打开 Obsidian 的 Michael_Product 文件夹查看效果。" -ForegroundColor Cyan
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax
+>>>
+
+看来你遇到了一个非常典型的“环境误用”问题：你把 PowerShell 代码 粘贴到了 Python 解释器（交互式窗口）里运行了。
+这就像是用中文语法去写英文，所以系统报错提示“语法错误（Syntax Error）”。
+解决办法：换个窗口运行
+请按照以下步骤操作，不需要你写任何代码：
+
+关闭当前的窗口（那个显示 >>> 的地方是 Python）。
+在电脑左下角搜索框输入 PowerShell。
+右键点击 Windows PowerShell，选择 “以管理员身份运行”。
+将下面的代码完整复制，直接粘贴进去，然后按回车。
+
+
+重新执行指令（已移除可能引起干扰的特殊字符）
+# 1. 设置配置信息
+$apiKey = "8212fe30470f760008c2bc5a9faa24f07d838267fc995c09b8292a8464ab770c"
+$sourceDir = "E:\Mycodeprojects"
+$apiVaultUrl = "http://127.0.0.1:27123/vault/Michael_Product"
+
+# 2. 扫描文件夹并推送
+if (Test-Path $sourceDir) {
+    $projects = Get-ChildItem $sourceDir -Directory
+    $headers = @{ "Authorization" = "Bearer $apiKey"; "Content-Type" = "text/markdown" }
+
+    foreach ($project in $projects) {
+        $name = $project.Name
+        $path = $project.FullName
+        $linuxPath = $path.Replace('\', '/')
+        
+        # 自动贴标签
+        $tag = "General"
+        if (Test-Path "$path\package.json") { $tag = "Web_Project" }
+        if (Test-Path "$path\requirements.txt") { $tag = "AI_Python" }
+
+        # 生成 Markdown 内容
+        $content = @"
+# Project: $name
+- Type: #$tag
+- Path: $path
+
+## Actions
+- [Open in VS Code](vscode://file/$linuxPath)
+- [Open in Explorer](file:///$linuxPath)
+
+## Links
+- Category: [[Category_$tag]]
+"@
+
+        # 推送到 Obsidian (Michael_Product 文件夹)
+        $targetUrl = "$apiVaultUrl/$name.md"
+        Invoke-RestMethod -Method Put -Uri $targetUrl -Headers $headers -Body ([System.Text.Encoding]::UTF8.GetBytes($content))
+        Write-Host "Synced: $name" -ForegroundColor Green
+    }
+    Write-Host "All Done! Check Michael_Product folder in Obsidian." -ForegroundColor Cyan
+} else {
+    Write-Host "Error: E:\Mycodeprojects not found!" -ForegroundColor Red
+}
+
+
+为什么这次能行？
+
+正确的环境：PowerShell 是 Windows 用来管理文件和执行系统级任务（如创建链接、调用 API）的专业工具。
+自动化：这段代码会自动循环处理 E:\Mycodeprojects 下的所有子文件夹，你不需要一个一个手动录入。
+一键跳转：生成的 vscode:// 链接在 Obsidian 里点击后，会自动绕过任何插件设置，直接唤起 VS Code。
+
+执行后的检查：
+
+Obsidian 侧边栏：应该会出现一个 Michael_Product 文件夹，里面装满了你的项目笔记。
+关系图谱：打开 Obsidian 的 Graph View，你会看到这些项目因为 [[Category_...]] 的存在，已经自动连成了网。
+
+运行完请告诉我，Obsidian 里是否已经出现了这些文件？
+
+---
+*从 Gemini 导出，2026-05*

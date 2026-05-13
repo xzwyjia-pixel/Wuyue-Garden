@@ -1,0 +1,44 @@
+---
+title: 这个问题如何解决？
+source: gemini
+date: 2026-05-03
+category: Obsidian配置
+tags: [gemini, Obsidian配置]
+---
+
+## 这个问题如何解决？
+
+这个错误提示非常直接：你的浏览器插件（通常是 MarkDownload 或类似的剪藏工具）还没有建立与 Obsidian 软件之间的“通话渠道”。
+要解决这个问题，你需要完成以下两个步骤：
+
+第一步：在 Obsidian 中开启 API 权限
+你需要确保 Obsidian 能够接收来自外部插件的信息。
+
+打开你的 Obsidian。
+进入 Settings (设置) -> Community plugins (社区插件)。
+搜索并安装 Local REST API 插件（这是最常用的连接方式）。
+安装后点击 Enable (启用)。
+在 Local REST API 的插件设置页面中，找到 API Key（通常会自动生成，如果没有，点击生成按钮）。
+复制这个 API Key。
+
+
+第二步：在浏览器扩展中配置 Key
+现在你需要把刚才复制的“钥匙”交给浏览器插件。
+
+点击浏览器右上角的扩展图标，找到你正在使用的那个剪藏插件（例如 MarkDownload）。
+点击 Settings (设置 / 选项)。
+找到 Obsidian Integration 或 Obsidian Settings 部分。
+将刚才复制的 API Key 粘贴到对应的输入框中。
+确保底部的 Server Address（服务器地址）通常设置为 [https://127.0.0.1:27124](https://127.0.0.1:27124) 或 http://localhost:27124。
+点击 Save (保存) 或 Test Connection (测试连接)。
+
+
+常见排查点：
+
+Obsidian 必须处于运行状态：如果你关闭了 Obsidian，插件是无法同步的。
+HTTPS 证书问题：如果使用的是 Local REST API 插件，第一次连接时浏览器可能会拦截非安全连接。你可能需要手动点击插件设置里的测试链接，在浏览器弹出的页面中选择“继续访问（不安全）”，以此来授权本地通信。
+
+设置好之后，再次点击那个紫色的 Sync to Obsidian 按钮应该就能成功了。
+
+---
+*从 Gemini 导出，2026-05*

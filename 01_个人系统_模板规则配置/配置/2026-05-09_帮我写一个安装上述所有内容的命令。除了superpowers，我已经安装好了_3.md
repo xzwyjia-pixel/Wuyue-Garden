@@ -1,0 +1,54 @@
+---
+title: 帮我写一个安装上述所有内容的命令。除了superpowers，我已经安装好了
+source: gemini
+date: 2026-05-09
+category: 系统运维
+tags: [gemini, 系统运维]
+---
+
+## 帮我写一个安装上述所有内容的命令。除了superpowers，我已经安装好了
+
+由于你已经安装了 Superpowers，剩下的工具大多是通过 npm 或 bun 全局安装，或者通过 npx 动态调用的。
+由于 Everything Claude Code (ECC)、GSD、Hermes 和 OpenSpec 分属不同的开发者，目前并没有一个官方的“合集安装包”，我们可以用一条复合命令一次性完成环境搭建。
+你可以根据你使用的包管理器（推荐用 npm 或 bun），在终端执行以下命令：
+1. 一键安装/初始化命令
+如果你使用 npm：
+npm install -g @claudecode/everything-claude-code && \
+npx gsd-ai@latest init && \
+npx hermes-code@latest setup && \
+npx openspec@latest init
+
+如果你更喜欢 Bun (速度更快)：
+bun add -g @claudecode/everything-claude-code && \
+bunx gsd-ai@latest init && \
+bunx hermes-code@latest setup && \
+bunx openspec@latest init
+
+
+2. 关键组件说明及后续动作
+安装完成后，你通常需要针对当前项目进行简单的激活，以下是各工具的“启动”姿势：
+
+Everything Claude Code (ECC):
+通常它是通过 ecc 命令来管理 MCP 服务或配置。安装后可以运行 ecc --help 查看当前可用的工业级配置模板。
+GSD (Get Shit Done):
+运行 gsd init 会在当前目录下生成配置文件。之后在 Claude Code 中使用时，它会自动介入上下文隔离。
+Hermes:
+主要用于长任务编排。你可以通过 hermes plan "你的复杂任务" 来启动它。
+OpenSpec:
+它的核心是 opsx。运行 opsx init 后，它会引导你通过“设计先行”的模式来重构或编写新功能。
+
+3. 特别提示：冲突预防
+既然你已经有了 Superpowers，在运行上述命令后，你的项目根目录下可能会出现多个 .clauderc 或 CLAUDE.md 的指令冲突。
+建议做法：
+
+备份原有的 CLAUDE.md：这些工具都会尝试修改这个文件，建议先 git commit 一次。
+按需组合：如果你想要 ECC 的配置 + GSD 的流程，你可能需要手动合并 CLAUDE.md 中的指令（Instructions）部分，确保 AI 知道什么时候该用哪套规则。
+
+安装完成后，你可以直接在 Claude Code 终端输入：
+
+"Check my environment and list available tools from ECC, GSD, and OpenSpec."
+
+让 AI 帮你确认所有工具是否已就绪。
+
+---
+*从 Gemini 导出，2026-05*

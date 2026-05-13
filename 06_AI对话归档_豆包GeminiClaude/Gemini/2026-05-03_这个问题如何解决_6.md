@@ -1,0 +1,39 @@
+---
+title: 这个问题如何解决？
+source: gemini
+date: 2026-05-03
+category: Obsidian配置
+tags: [gemini, Obsidian配置]
+---
+
+## 这个问题如何解决？
+
+要解决提示中的 “Please configure your Obsidian API key in the extension settings” 错误，你需要为 Gemini Voyager 插件配置 Obsidian Local REST API 密钥。
+这通常发生在你想将 Gemini 的聊天记录或 Prompt 导出（Sync）到 Obsidian 本地笔记库时。
+第一步：在 Obsidian 中获取 API Key
+Gemini Voyager 并不是直接连接文件，而是通过 Obsidian 的一个插件进行通信。
+
+打开 Obsidian。
+进入 Settings (设置) -> Community plugins (社区插件)。
+确保你已安装并启用了 Local REST API 插件（如果没装，请在浏览界面搜索安装）。
+进入 Local REST API 的插件设置页面。
+在设置中找到 API Key（通常是一串随机字符）。点击旁边的复制按钮或“生成”新密钥。
+
+第二步：在浏览器扩展中配置
+
+回到 Chrome 或 Edge 浏览器，点击右上角的 Gemini Voyager 扩展图标。
+点击 Settings (设置) 或齿轮图标。
+找到 Obsidian Integration (Obsidian 集成) 或 API Settings 板块。
+在 Obsidian API Key 输入框中，粘贴你刚才从 Obsidian 复制的密钥。
+（可选）确认 Server URL 是否正确，默认通常是 [https://127.0.0.1:27124](https://127.0.0.1:27124)。
+
+常见问题排查
+
+连接失败：确保 Obsidian 软件处于打开状态，否则 API 无法运行。
+证书问题：如果提示 HTTPS 安全错误，可能需要在浏览器中访问一次 [https://127.0.0.1:27124](https://127.0.0.1:27124) 并点击“接受风险并继续”。
+防火墙阻挡：部分杀毒软件可能会拦截 27124 端口的本地通信，请确保该端口已被放行。
+
+完成配置后，再次点击 "Sync to Obsidian" 按钮即可成功同步。
+
+---
+*从 Gemini 导出，2026-05*

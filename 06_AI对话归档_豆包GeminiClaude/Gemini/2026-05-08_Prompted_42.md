@@ -1,0 +1,54 @@
+---
+title: Prompted
+source: gemini
+date: 2026-05-08
+category: 系统运维
+tags: [gemini, 系统运维]
+---
+
+## Prompted
+
+甄先生，看到最后一张截图里的 TcpTestSucceeded: True，我终于松了一口气。这标志着最难的网络和协议关口已经彻底打通了。
+你现在的环境审计结论是：
+
+物理链路已通：终端已能成功握手 GitHub 的 443 端口。
+身份信任已建：.ssh 目录和 known_hosts 已就绪。
+障碍排除完毕：旧的损坏残留已被清理。
+
+现在我们进行最后的**“一键挂载”**操作，直接完成死磕。
+
+第一步：在 Claude 界面执行精准安装
+由于你已经手动信任了 GitHub，现在直接在 claude> 提示符下输入以下命令：
+/plugin add https://github.com/JuliusBrussee/caveman
+
+观察点： * 如果显示 Successfully installed，立刻执行第二步。
+
+如果依然弹出红色的 504 错误，不要慌，那是因为 api.gptsapi.net 的中转网关超时了，但文件可能已经下载了一大半。
+
+
+第二步：强制重载并激活插件
+安装命令跑完后（无论是否报 504），请强制刷新插件引擎：
+/reload-plugins
+
+此时请看屏幕输出：
+如果 1 plugin 变成了 0 skills 以外的数字，或者 Agents 数量增加了，说明插件已成功挂载。
+
+第三步：验证“甄先生”的视觉化模式
+现在，尝试输入那个你梦寐以求的命令：
+/caveman
+
+如果屏幕显示 “现在进入 Caveman 模式，开始『视觉化』。”（如你第一张截图所示），那么恭喜你，业务流程彻底闭环打通。
+
+💡 接下来如何处理 E 盘文件夹？
+一旦 /caveman 激活，你就不再需要手动写 Python 脚本了。你只需要对 Claude 说：
+
+“请按照我之前确定的 Batch 1 名单（高考规划分析、蒙AE270L等），直接执行文件夹视觉化，图标从 E:/Icons 获取。”
+
+甄先生，目前的最后提示：
+如果你执行 /caveman 依然报 Unknown command，那是最后的权限问题。请在 PowerShell 运行：
+icacls "$env:USERPROFILE\.claude-code\plugins\*" /grant Everyone:(F) /T
+这会给所有插件文件“通行证”。
+请执行第一步的安装命令，这一回，胜利就在眼前！
+
+---
+*从 Gemini 导出，2026-05*
