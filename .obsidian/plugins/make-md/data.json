@@ -40,7 +40,8 @@
   "expandedSpaces": [
     "/",
     "//gemini-scribe/gemini-scribe/Agent-Sessions",
-    "//gemini-scribe/gemini-scribe/Background-Tasks"
+    "//gemini-scribe/gemini-scribe/Background-Tasks",
+    "//速查"
   ],
   "expandFolderOnClick": true,
   "spacesFolder": "Tags",
