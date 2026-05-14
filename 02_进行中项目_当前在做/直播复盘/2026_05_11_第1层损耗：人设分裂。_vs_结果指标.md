@@ -1,1 +1,0 @@
-{"content":"---\ncreated: 2026-05-11\naliases: [\"第1层损耗：人设分裂。 vs 结果指标\"]\ntags: [contrast, concept]\n---\n\n# 第1层损耗：人设分裂。 vs 结果指标\n\n## 同时出现于\n\n- [[直播互动话术批判性分析.md]]\n\n## 对比维度\n\n<!-- 请在此处填写对比维度 -->\n-\n"}

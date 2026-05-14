@@ -3,6 +3,11 @@
   "hideExcluded": false,
   "recencyBoost": "0",
   "downrankedFoldersFilters": [],
+  "excludedFoldersFilters": [
+    "07_素材资源_截图附件模板",
+    "Tags",
+    "gemini-scribe"
+  ],
   "ignoreDiacritics": true,
   "ignoreArabicDiacritics": false,
   "indexedFileTypes": [],
