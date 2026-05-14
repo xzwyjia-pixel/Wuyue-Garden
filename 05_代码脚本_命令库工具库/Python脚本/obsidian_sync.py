@@ -1,161 +1,361 @@
+# -*- coding: utf-8 -*-
 """
-ai_bridge/obsidian_sync.py — Obsidian自动保存
-研讨报告自动存入Obsidian，支持MD/Excel/Excalidraw多格式
+规则甄查 · 甄先生 v2.0 — Obsidian 审计报告同步器
+===================================================
+读取 data/ 下最新审计产物 → 生成带双链的 Obsidian Markdown 报告
+输出：notes/YYYY-MM-DD 规则演变报告.md
 """
-import json, csv, os, yaml
-from pathlib import Path
+
+import json
+import sys
 from datetime import datetime
+from pathlib import Path
 from typing import Optional
 
-try:
-    import httpx
-except ImportError:
-    httpx = None
+if sys.platform == "win32" and hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
 
-CONFIG_PATH = Path(__file__).parent / "config.yaml"
-DEFAULT_VAULT = "E:/MyCodeProjects"
-DEFAULT_DIR = "AI研讨报告"
+_NOTES_DIR = Path(__file__).resolve().parent.parent.parent / "notes"
+_DATA_DIR = Path(__file__).resolve().parent.parent.parent / "data"
+_RULES_PATH = Path(__file__).resolve().parent.parent.parent / "rules.json"
+_NOTES_DIR.mkdir(parents=True, exist_ok=True)
 
 
-class ObsidianSync:
-    """Obsidian自动同步"""
+# ──────────────────────────────────────────────
+# 辅助函数
+# ──────────────────────────────────────────────
 
-    def __init__(self, vault_path: str = "", api_url: str = "", api_key: str = ""):
-        self.vault_path = Path(vault_path or DEFAULT_VAULT)
-        self.api_url = api_url
-        self.api_key = api_key
-        self._load_config()
+def _find_latest(glob_pattern: str) -> Optional[Path]:
+    files = sorted(_DATA_DIR.glob(glob_pattern), reverse=True)
+    return files[0] if files else None
 
-    def _load_config(self):
-        if not self.api_url and CONFIG_PATH.exists():
-            cfg = yaml.safe_load(CONFIG_PATH.read_text(encoding="utf-8"))
-            oc = cfg.get("obsidian", {})
-            self.api_url = oc.get("api_url", self.api_url)
-            self.api_key = oc.get("api_key", self.api_key)
-            self.vault_path = Path(oc.get("vault_path", DEFAULT_VAULT))
-        self.output_dir = self.vault_path / DEFAULT_DIR
-        self.output_dir.mkdir(parents=True, exist_ok=True)
 
-    # ── Markdown保存 ──
-    def save_markdown(self, title: str, content: str, tags: list = None) -> Path:
-        """保存MD格式报告"""
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        fname = f"{title[:40].replace(' ', '_')}_{timestamp}.md"
-        fpath = self.output_dir / fname
+def _load_json(path: Path) -> dict:
+    return json.loads(path.read_text(encoding="utf-8"))
 
-        header = "---\n"
-        header += f"created: {datetime.now().isoformat()}\n"
-        if tags:
-            header += f"tags: {json.dumps(tags, ensure_ascii=False)}\n"
-        header += "---\n\n"
 
-        fpath.write_text(header + content, encoding="utf-8")
-        print(f"[MD] 已保存: {fpath}")
+def _indicator(value) -> str:
+    """Obsidian-compatible status indicator"""
+    if value is True or value == "success":
+        return "✅"
+    if value is False or value == "failed":
+        return "❌"
+    if value == "no_change":
+        return "🔄"
+    return "—"
 
-        # 同步到Obsidian API
-        self._obsidian_api_sync(str(fpath), fname)
-        return fpath
 
-    # ── Excel/CSV保存 ──
-    def save_csv(self, title: str, data: list[dict]) -> Path:
-        """保存CSV格式数据"""
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        fname = f"{title[:30].replace(' ', '_')}_{timestamp}.csv"
-        fpath = self.output_dir / fname
+def _get_report_date() -> str:
+    return datetime.now().strftime("%Y-%m-%d")
 
-        if not data:
-            fpath.write_text("", encoding="utf-8-sig")
-            return fpath
 
-        with open(fpath, "w", encoding="utf-8-sig", newline="") as f:
-            writer = csv.DictWriter(f, fieldnames=data[0].keys())
-            writer.writeheader()
-            writer.writerows(data)
+def _get_report_title() -> str:
+    return f"规则演变报告 {_get_report_date()}"
 
-        print(f"[CSV] 已保存: {fpath}")
-        return fpath
 
-    # ── JSON保存 ──
-    def save_json(self, title: str, data: dict) -> Path:
-        """保存JSON格式原始数据"""
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        fname = f"{title[:30].replace(' ', '_')}_{timestamp}.json"
-        fpath = self.output_dir / fname
-        fpath.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
-        print(f"[JSON] 已保存: {fpath}")
-        return fpath
+# ──────────────────────────────────────────────
+# 数据读取
+# ──────────────────────────────────────────────
 
-    # ── Excalidraw保存 ──
-    def save_excalidraw(self, title: str, elements: list, description: str = "") -> Path:
-        """保存Excalidraw可视化格式"""
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        fname = f"{title[:30].replace(' ', '_')}_{timestamp}.excalidraw.md"
-        fpath = self.output_dir / fname
+def _collect_data() -> dict:
+    """聚合所有可用的审计数据源"""
+    data = {
+        "date": _get_report_date(),
+        "scan": None,
+        "rules_current": None,
+        "rules_backup": None,
+        "has_backup_diff": False,
+    }
 
-        content = f"""---
+    # 最新哨兵报告
+    sentinel_path = _find_latest("sentinel_*.json")
+    if sentinel_path:
+        data["scan"] = _load_json(sentinel_path)
+        data["scan_filename"] = sentinel_path.name
 
-excalidraw-plugin: parsed
-tags: [AI研讨, 可视化]
+    # 当前规则
+    if _RULES_PATH.exists():
+        data["rules_current"] = _load_json(_RULES_PATH)
+
+    # 最新规则备份（用于 diff）
+    backup_path = _find_latest("rules_backup_*.json")
+    if backup_path:
+        data["rules_backup"] = _load_json(backup_path)
+        data["backup_filename"] = backup_path.name
+        if data["rules_current"]:
+            data["has_backup_diff"] = (
+                data["rules_backup"].get("version") != data["rules_current"].get("version")
+            )
+
+    return data
+
+
+# ──────────────────────────────────────────────
+# 报告构建
+# ──────────────────────────────────────────────
+
+def _build_frontmatter(data: dict) -> str:
+    tags = ["审计报告", "规则演变"]
+    if data.get("scan"):
+        tags.append("平台监控")
+    if data.get("rules_current"):
+        tags.append("规则库")
+
+    return f"""---
+tags: [{', '.join(tags)}]
+date: {data['date']}
+title: {_get_report_title()}
+generator: obsidian_sync v2.0
+status: 自动生成
+---
+
+"""
+
+
+def _build_conclusion(data: dict) -> str:
+    """结论先行 — 核心摘要"""
+    lines = [
+        "## 核心结论",
+        "",
+    ]
+    scan = data.get("scan")
+    rules = data.get("rules_current")
+    backup = data.get("rules_backup")
+    has_diff = data.get("has_backup_diff")
+
+    # 平台扫描状态
+    if scan:
+        s = scan["summary"]
+        ok = s["success"]
+        fail = s["failed"]
+        lines.append(f"- **平台扫描**: 成功 {ok} / 失败 {fail}")
+        for t in scan.get("targets", []):
+            indicator = _indicator(t["status"])
+            count = len(t.get("articles", []))
+            lines.append(f"  - {indicator} {t['platform_name']} — {t['label']} ({count} 条目)")
+    else:
+        lines.append("- **平台扫描**: 无数据")
+
+    # 规则演变
+    if rules:
+        v = rules.get("version", "?")
+        if has_diff and backup:
+            old_v = backup.get("version", "?")
+            lines.append(f"- **规则库**: v{old_v} → v{v}")
+        else:
+            lines.append(f"- **规则库**: v{v}（无变更）")
+        risk_count = sum(
+            len(rules.get("risk_levels", {}).get(l, {}).get("focus", {}))
+            for l in ("HIGH", "MEDIUM", "LOW")
+        )
+        lines.append(f"- **风险词**: {risk_count} 个")
+    else:
+        lines.append("- **规则库**: 未加载")
+
+    lines.append("")
+    return "\n".join(lines)
+
+
+def _build_platform_status(data: dict) -> str:
+    scan = data.get("scan")
+    if not scan:
+        return ""
+
+    lines = [
+        "## 平台监控状态",
+        "",
+        f"扫描时间: {scan.get('scanned_at', '?')[:19]}",
+        f"数据来源: ``{data.get('scan_filename', '?')}``",
+        "",
+        "| 平台 | 页面 | 状态 | 条目 |",
+        "| :--- | :--- | :--- | :--- |",
+    ]
+    for t in scan.get("targets", []):
+        lines.append(
+            f"| {t['platform_name']} | {t['label']} | {t['status']} | {len(t.get('articles', []))} |"
+        )
+    lines.append("")
+    return "\n".join(lines)
+
+
+def _build_risk_diff(data: dict) -> str:
+    """对比备份与当前规则，列出新增风险词"""
+    backup = data.get("rules_backup")
+    current = data.get("rules_current")
+    if not backup or not current:
+        return ""
+
+    lines = [
+        "## 风险词变更",
+        "",
+    ]
+
+    # 收集新旧词
+    old_words = set()
+    for level in ("HIGH", "MEDIUM", "LOW"):
+        for word in backup.get("risk_levels", {}).get(level, {}).get("focus", {}):
+            old_words.add(word)
+
+    new_words = set()
+    new_details = []
+    for level in ("HIGH", "MEDIUM", "LOW"):
+        focus = current.get("risk_levels", {}).get(level, {}).get("focus", {})
+        for word, info in focus.items():
+            if word not in old_words:
+                new_words.add(word)
+                new_details.append((level, word, info))
+
+    if new_details:
+        for level, word, info in new_details:
+            lines.append(f"- **[{level}]** `{word}`")
+            lines.append(f"  - 风险: {info.get('risk', '?')}")
+            lines.append(f"  - 替换: {info.get('replace', '?')}")
+        lines.append("")
+    else:
+        lines.append("无新增风险词。")
+        lines.append("")
+
+    return "\n".join(lines)
+
+
+def _build_incentive_diff(data: dict) -> str:
+    """对比备份与当前规则，列出新增激励点"""
+    backup = data.get("rules_backup")
+    current = data.get("rules_current")
+    if not backup or not current:
+        return ""
+
+    lines = [
+        "## 激励信号变更",
+        "",
+    ]
+
+    # 收集新旧激励类别
+    def _collect_cats(rules, level):
+        items = rules.get("incentive_points", {}).get(level, [])
+        return {i.get("category", "") for i in items if isinstance(i, dict)}
+
+    new_cats = []
+    for level in ("GREEN_HIGH", "GREEN_MEDIUM", "GREEN_LOW"):
+        old = _collect_cats(backup, level)
+        items = current.get("incentive_points", {}).get(level, [])
+        for item in items:
+            if isinstance(item, dict) and item.get("category", "") not in old:
+                new_cats.append((level, item))
+
+    if new_cats:
+        for level, item in new_cats:
+            lines.append(f"- **[{level}]** {item.get('category', '?')}")
+            lines.append(f"  - {item.get('description', '?')}")
+            indicators = item.get("indicators", [])
+            if indicators:
+                lines.append(f"  - 指标: {' / '.join(indicators[:3])}")
+        lines.append("")
+    else:
+        lines.append("无新增激励信号。")
+        lines.append("")
+
+    return "\n".join(lines)
+
+
+def _build_policy_fitness(data: dict) -> str:
+    """当前规则政策契合度维度"""
+    rules = data.get("rules_current")
+    if not rules:
+        return ""
+
+    dims = rules.get("policy_fitness", {}).get("dimensions", [])
+    if not dims:
+        return ""
+
+    lines = [
+        "## 政策契合度维度",
+        "",
+        "| 维度 | 权重 | 说明 |",
+        "| :--- | :--- | :--- |",
+    ]
+    for d in dims:
+        lines.append(f"| {d['name']} | {d['weight']} | {d['description']} |")
+    lines.append("")
+    return "\n".join(lines)
+
+
+def _build_action_items(data: dict) -> str:
+    lines = [
+        "## 行动清单",
+        "",
+    ]
+    scan = data.get("scan")
+    rules = data.get("rules_current")
+    has_diff = data.get("has_backup_diff")
+
+    if scan and any(t["status"] == "failed" for t in scan.get("targets", [])):
+        lines.append("- [ ] 检查扫描失败的平台页面")
+    if has_diff:
+        lines.append("- [ ] 人工复核新增规则项")
+        lines.append("- [ ] 更新规则测试用例")
+    if rules:
+        lines.append("- [ ] 检查规则覆盖是否完整")
+    lines.append("- [ ] 排查新增违规案例")
+
+    lines.append("")
+    return "\n".join(lines)
+
+
+def _build_wikilinks() -> str:
+    """Obsidian [[双链]] 关联笔记"""
+    return """## 关联笔记
+
+- [[红灯避险]] — 违规风险拦截规则库
+- [[绿灯起量]] — 平台激励信号识别库
+- [[规则引擎]] — 审计核心引擎
+- [[平台哨兵]] — 平台规则监控
 
 ---
-==⚠ Switch to EXCALIDRAW VIEW in the MORE OPTIONS menu. ⚠==
 
-# {title}
-
-{description}
-
-```json
-{{
-  "type": "excalidraw",
-  "version": 2,
-  "source": "AIBridge",
-  "elements": {json.dumps(elements, ensure_ascii=False)},
-  "appState": {{"viewBackgroundColor": "#ffffff"}}
-}}
-```
+*报告由 规则甄查 · 甄先生 v2.0 · obsidian_sync 自动生成*
 """
-        fpath.write_text(content, encoding="utf-8")
-        print(f"[EXCALIDRAW] 已保存: {fpath}")
-        return fpath
 
-    # ── Obsidian Local REST API同步 ──
-    def _obsidian_api_sync(self, file_path: str, filename: str):
-        """通过Obsidian Local REST API将文件写入vault"""
-        if not self.api_url or not httpx:
-            return
 
-        try:
-            file_content = Path(file_path).read_text(encoding="utf-8")
-            vault_relative = str(Path(file_path).relative_to(self.vault_path).as_posix())
+# ──────────────────────────────────────────────
+# 主流程
+# ──────────────────────────────────────────────
 
-            with httpx.Client(timeout=10) as client:
-                r = client.put(
-                    f"{self.api_url}/vault/{vault_relative}",
-                    headers={
-                        "Authorization": f"Bearer {self.api_key}",
-                        "Content-Type": "text/markdown; charset=utf-8",
-                    },
-                    content=file_content.encode("utf-8"),
-                )
-            if r.status_code in (200, 201):
-                print(f"[OBSIDIAN-API] 同步成功: {vault_relative}")
-            else:
-                print(f"[OBSIDIAN-API] 同步失败 HTTP {r.status_code}")
-        except Exception as e:
-            print(f"[OBSIDIAN-API] 同步异常: {e}")
+def build_report() -> str:
+    data = _collect_data()
 
-    # ── 一键保存所有格式 ──
-    def save_all(self, title: str, md_content: str, csv_data: list[dict] = None,
-                 json_data: dict = None, excalidraw_elements: list = None,
-                 tags: list = None) -> dict:
-        """一键保存多格式输出"""
-        result = {"md": str(self.save_markdown(title, md_content, tags))}
+    parts = [
+        _build_frontmatter(data),
+        _build_conclusion(data),
+        _build_platform_status(data),
+        _build_risk_diff(data),
+        _build_incentive_diff(data),
+        _build_policy_fitness(data),
+        _build_action_items(data),
+        _build_wikilinks(),
+    ]
 
-        if csv_data:
-            result["csv"] = str(self.save_csv(title, csv_data))
-        if json_data:
-            result["json"] = str(self.save_json(title, json_data))
-        if excalidraw_elements:
-            result["excalidraw"] = str(self.save_excalidraw(title, excalidraw_elements))
+    return "\n".join(parts)
 
-        return result
+
+def sync():
+    print("=" * 48)
+    print("  规则甄查 · 甄先生 v2.0 — Obsidian 同步")
+    print("=" * 48)
+
+    report = build_report()
+    filename = f"{_get_report_date()} 规则演变报告.md"
+    filepath = _NOTES_DIR / filename
+    filepath.write_text(report, encoding="utf-8")
+
+    print(f"\n[OUTPUT] notes/{filename}")
+    print(f"[LINKS]  内置 [[双链]]: 红灯避险, 绿灯起量, 规则引擎, 平台哨兵")
+    print("[DONE]\n")
+
+    # 打印前 20 行预览
+    for line in report.strip().split("\n")[:20]:
+        print(f"  {line}")
+
+
+if __name__ == "__main__":
+    sync()

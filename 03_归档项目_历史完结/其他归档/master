@@ -1,8 +1,0 @@
-0000000000000000000000000000000000000000 e454c987527c6570315d137d5c604edd87525b4b Your Name (aider) <you@example.com> 1778154126 +0800	commit (initial): feat: 添加文件 analyze_folder.py
-e454c987527c6570315d137d5c604edd87525b4b bc7c7dbb3c1281f0df81495e5ce8d3d5eb82af5c Your Name <you@example.com> 1778154176 +0800	commit: refactor(icons): 调整相似度阈值并限制文件扩展名
-bc7c7dbb3c1281f0df81495e5ce8d3d5eb82af5c cd9b18fdbd8aea20a14855e995999d421dbb47dc Your Name <you@example.com> 1778155140 +0800	commit: chore: 添加 ICONS_DIR 变量定义
-cd9b18fdbd8aea20a14855e995999d421dbb47dc f1eaa2af60a2b29f354b52bc211166dffe20fec5 Your Name <you@example.com> 1778155588 +0800	commit: fix: 确保 `ICONS_DIR` 在 `search_local_icon` 函数内是可用的
-f1eaa2af60a2b29f354b52bc211166dffe20fec5 74a937452469a3d3c307eb604f2ecf25a93592f1 Your Name (aider) <you@example.com> 1778157411 +0800	commit: fix: update icon directory path
-74a937452469a3d3c307eb604f2ecf25a93592f1 d175bfe1bd57a4282e322d14f865f5c2b51df82a Your Name <you@example.com> 1778157415 +0800	commit: fix: add icon search functionality
-d175bfe1bd57a4282e322d14f865f5c2b51df82a 8bbda2797a5a6b644be5549c5c6bf15de2b6fee8 Your Name <you@example.com> 1778157553 +0800	commit: fix: add requests call for icon retrieval in search_local_icon
-8bbda2797a5a6b644be5549c5c6bf15de2b6fee8 31c13753159755e1023eb16f7898fba9c74c3cd7 Your Name <you@example.com> 1778162094 +0800	commit: refactor: update API URL to use HTTPS

@@ -1,47 +1,44 @@
 import os
 import re
-from openai import OpenAI
 
-# 初始化客户端
-client = OpenAI(
-    api_key=os.getenv("DEEPSEEK_API_KEY"),
-    base_url="https://api.deepseek.com/v1"
-)
+# 甄先生，这里需要安装一个轻量级库来处理拼音
+# 请在终端输入: pip install pypinyin
+from pypinyin import lazy_pinyin
 
-def local_scan(text):
-    rules = {"威信": "威-信|微-x", "赚钱": "赚￥钱|赚.钱", "最强": "蕞强|最.强"}
-    hits = []
-    for word, pattern in rules.items():
-        if re.search(pattern, text):
-            hits.append(word)
-    return hits
+def run_audit():
+    blacklist_file = 'blacklist.txt'
+    if not os.path.exists(blacklist_file):
+        print(f"--- 错误：找不到 {blacklist_file} ---")
+        return
 
-def deepseek_audit(text):
-    print("\n📡 正在连接 DeepSeek 进行 AI 深度建模审计...")
-    try:
-        response = client.chat.completions.create(
-            model="deepseek-chat",
-            messages=[
-                {"role": "system", "content": "你是一位短视频风控专家。请分析文案中的隐性违规，并给出‘静奢’风格的优化建议。"},
-                {"role": "user", "content": f"请审计：{text}"}
-            ],
-            stream=False
-        )
-        return response.choices[0].message.content, response.usage
-    except Exception as e:
-        return f"❌ 审计失败: {str(e)}", None
+    with open(blacklist_file, 'r', encoding='utf-8') as f:
+        keywords = [line.strip() for line in f if line.strip()]
+    
+    # 测试文案：包含了“威-信”、“赚￥钱”和同音字“蕞强”
+    test_content = "欢迎来到直播间，点击头像加 威-信，教你如何快速 赚￥钱，掌握 蕞强 引流技巧！"
+    
+    print(f"--- 规则情报局：正在执行【谐音+变体】深度扫描 ---")
+    print(f"待测文案：{test_content}\n")
+    
+    # 预处理：提取文案纯净拼音流
+    clean_content = re.sub(r'[^\u4e00-\u9fa5a-zA-Z0-9]', '', test_content)
+    content_pinyin = ''.join(lazy_pinyin(clean_content))
+    
+    found_any = False
+    for word in keywords:
+        # 1. 逻辑 A：正则穿透（识别 威-信）
+        pattern = '.*'.join(list(word))
+        
+        # 2. 逻辑 B：拼音穿透（识别 蕞强/最强）
+        word_pinyin = ''.join(lazy_pinyin(word))
+        
+        if re.search(pattern, test_content) or word in clean_content or word_pinyin in content_pinyin:
+            print(f"⚠️ [高风险] 命中规则变体: {word} (匹配模式: 穿透或谐音)")
+            found_any = True
+            
+    if not found_any:
+        print("✅ 扫描完毕，暂未发现违规规避手段。")
+    print(f"\n--- 审核流程结束 ---")
 
 if __name__ == "__main__":
-    content_to_test = "欢迎来到直播间，点击头像加 威-信，教你如何快速 赚￥钱，掌握 蕞强 引流技巧！"
-    print(f"\n--- 规则甄查 - 甄先生专用版 ---")
-    
-    # 1. 本地扫描
-    hits = local_scan(content_to_test)
-    for h in hits: print(f"⚠️ [本地风险] 命中关键词: {h}")
-    
-    # 2. AI 审计
-    report, usage = deepseek_audit(content_to_test)
-    print(f"\n--- AI 深度审计报告 ---\n{report}")
-    
-    if usage:
-        print(f"\n--- 💡 消耗统计: 输入 {usage.prompt_tokens} | 输出 {usage.completion_tokens} | 总计 {usage.total_tokens} Tokens ---")
+    run_audit()
